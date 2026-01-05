@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trouwen bij Villa 1855 | Trouwlocatie Tilburg</title>
+    <meta name="description" content="Trouw in een monumentale stadsvilla in het hart van Tilburg. Villa 1855 biedt exclusiviteit, historische charme en persoonlijke aandacht voor jullie droombruiloft.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           VILLA 1855 - BRUILOFTEN PAGINA
+           ============================================ */
+        
+        :root {
+            --color-primary-darkest: #102B2A;
+            --color-primary-dark: #405656;
+            --color-primary: #6F8281;
+            --color-primary-light: #9FADAD;
+            --color-primary-lighter: #CED8D8;
+            --color-primary-lightest: #E7ECEC;
+            --color-accent: #B58C67;
+            --color-accent-hover: #9A7555;
+            --color-white: #FFFFFF;
+            --color-off-white: #F5F7F8;
+            --color-text: #102B2A;
+            --color-text-light: #6F8281;
+            --font-heading: 'Lora', Georgia, serif;
+            --font-body: 'Public Sans', -apple-system, sans-serif;
+            --section-padding: 6rem;
+            --container-width: 1200px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            font-weight: 300;
+            color: var(--color-text);
+            background-color: var(--color-off-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--color-text);
+        }
+        
+        .label {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .label::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--color-accent);
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .btn-primary {
+            background: var(--color-accent);
+            color: var(--color-white);
+        }
+        
+        .btn-primary:hover {
+            background: var(--color-accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-secondary {
+            background: var(--color-primary-darkest);
+            color: var(--color-white);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+        }
+        
+        .btn-outline:hover {
+            background: var(--color-accent);
+            color: var(--color-white);
+        }
+        
+        .btn svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn:hover svg {
+            transform: translateX(4px);
+        }
+        
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.25rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            background: rgba(16, 43, 42, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-logo {
+            height: 45px;
+            width: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--color-white);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+        
+        .nav-cta {
+            padding: 0.6rem 1.25rem !important;
+            border: 1px solid var(--color-accent) !important;
+        }
+        
+        .nav-cta:hover {
+            background: var(--color-accent);
+        }
+        
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .nav-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--color-white);
+        }
+        
+        /* ============================================
+           PAGE HERO (Smaller than homepage)
+           ============================================ */
+        .page-hero {
+            height: 70vh;
+            min-height: 500px;
+            background: var(--color-primary-darkest);
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .page-hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(16, 43, 42, 0.9) 0%, rgba(64, 86, 86, 0.8) 100%);
+            z-index: 1;
+        }
+        
+        .page-hero-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        
+        .page-hero-content .label {
+            justify-content: center;
+        }
+        
+        .page-hero-content .label::before {
+            display: none;
+        }
+        
+        .page-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--color-white);
+            margin-bottom: 1.5rem;
+            line-height: 1.15;
+        }
+        
+        .page-hero h1 em {
+            font-style: italic;
+            color: var(--color-accent);
+        }
+        
+        .page-hero p {
+            font-size: 1.15rem;
+            color: var(--color-primary-light);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-primary-light);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+        
+        /* ============================================
+           INTRO / LEAD SECTION
+           ============================================ */
+        .intro {
+            padding: var(--section-padding) 0;
+            background: var(--color-white);
+        }
+        
+        .intro-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .intro-content h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin-bottom: 1.5rem;
+        }
+        
+        .intro-content p {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            line-height: 1.9;
+        }
+        
+        .intro-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--color-primary-lighter);
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--color-accent);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        /* ============================================
+           IMAGE + TEXT SECTIONS (Alternating)
+           ============================================ */
+        .feature-section {
+            padding: var(--section-padding) 0;
+        }
+        
+        .feature-section:nth-child(even) {
+            background: var(--color-primary-lightest);
+        }
+        
+        .feature-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        
+        .feature-section:nth-child(even) .feature-content {
+            direction: rtl;
+        }
+        
+        .feature-section:nth-child(even) .feature-content > * {
+            direction: ltr;
+        }
+        
+        .feature-image {
+            position: relative;
+        }
+        
+        .feature-image img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+        }
+        
+        .feature-image::after {
+            content: '';
+            position: absolute;
+            inset: 15px;
+            border: 1px solid var(--color-accent);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        
+        .feature-text h2 {
+            font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-text p {
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+        
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: var(--color-text-light);
+        }
+        
+        .feature-list li svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-accent);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        /* ============================================
+           TIMELINE / PROCESS SECTION
+           ============================================ */
+        .timeline {
+            padding: var(--section-padding) 0;
+            background: var(--color-primary-darkest);
+        }
+        
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .timeline-header h2 {
+            color: var(--color-white);
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-header p {
+            color: var(--color-primary-light);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .timeline-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            position: relative;
+        }
+        
+        .timeline-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--color-primary-dark);
+        }
+        
+        .timeline-step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--color-white);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .timeline-step h3 {
+            color: var(--color-white);
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .timeline-step p {
+            color: var(--color-primary-light);
+            font-size: 0.9rem;
+        }
+        
+        /* ============================================
+           PACKAGES / PRICING SECTION
+           ============================================ */
+        .packages {
+            padding: var(--section-padding) 0;
+            background: var(--color-white);
+        }
+        
+        .packages-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .packages-header h2 {
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+        
+        .packages-header p {
+            color: var(--color-text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .package-card {
+            background: var(--color-off-white);
+            padding: 2.5rem;
+            position: relative;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(16, 43, 42, 0.1);
+        }
+        
+        .package-card.featured {
+            border-color: var(--color-accent);
+            background: var(--color-white);
+        }
+        
+        .package-card.featured::before {
+            content: 'Populair';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-accent);
+            color: var(--color-white);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.4rem 1rem;
+        }
+        
+        .package-name {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .package-description {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--color-primary-lighter);
+        }
+        
+        .package-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .package-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+        }
+        
+        .package-features li svg {
+            width: 18px;
+            height: 18px;
+            color: var(--color-accent);
+            flex-shrink: 0;
+        }
+        
+        .package-price {
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+        }
+        
+        .package-price span {
+            display: block;
+            font-size: 2rem;
+            color: var(--color-text);
+        }
+        
+        .package-card .btn {
+            width: 100%;
+            justify-content: center;
+        }
+        
+        /* ============================================
+           REVIEWS SECTION
+           ============================================ */
+        .reviews {
+            padding: var(--section-padding) 0;
+            background: var(--color-primary-lightest);
+        }
+        
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .reviews-header h2 {
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .review-card {
+            background: var(--color-white);
+            padding: 2.5rem;
+            position: relative;
+        }
+        
+        .review-card::before {
+            content: '"';
+            font-family: var(--font-heading);
+            font-size: 6rem;
+            color: var(--color-accent);
+            opacity: 0.2;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            line-height: 1;
+        }
+        
+        .review-stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .review-stars svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--color-accent);
+        }
+        
+        .review-text {
+            font-size: 1rem;
+            color: var(--color-text-light);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--color-primary-lighter);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--color-primary-dark);
+        }
+        
+        .review-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .review-info span {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+        }
+        
+        .reviews-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .reviews-cta a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .reviews-cta a:hover {
+            text-decoration: underline;
+        }
+        
+        /* ============================================
+           GALLERY PREVIEW
+           ============================================ */
+        .gallery-preview {
+            padding: var(--section-padding) 0;
+            background: var(--color-white);
+        }
+        
+        .gallery-preview-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .gallery-preview-header h2 {
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        
+        .gallery-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        
+        .gallery-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        /* ============================================
+           FAQ SECTION
+           ============================================ */
+        .faq {
+            padding: var(--section-padding) 0;
+            background: var(--color-primary-lightest);
+        }
+        
+        .faq-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+        }
+        
+        .faq-header h2 {
+            font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+            margin-bottom: 1rem;
+        }
+        
+        .faq-header p {
+            color: var(--color-text-light);
+            margin-bottom: 2rem;
+        }
+        
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .faq-item {
+            background: var(--color-white);
+            border: 1px solid var(--color-primary-lighter);
+        }
+        
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--color-text);
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            color: var(--color-accent);
+        }
+        
+        .faq-question svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .faq-item.active .faq-question svg {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+        
+        .faq-answer p {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+        
+        /* ============================================
+           CTA SECTION
+           ============================================ */
+        .cta {
+            padding: 5rem 0;
+            background: var(--color-accent);
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            color: var(--color-white);
+            margin-bottom: 1rem;
+        }
+        
+        .cta p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .cta .btn-secondary {
+            background: var(--color-primary-darkest);
+        }
+        
+        .cta .btn-outline {
+            border-color: var(--color-white);
+            color: var(--color-white);
+        }
+        
+        .cta .btn-outline:hover {
+            background: var(--color-white);
+            color: var(--color-accent);
+        }
+        
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            background: var(--color-primary-darkest);
+            padding: 5rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .footer-brand {
+            max-width: 300px;
+        }
+        
+        .footer-logo {
+            height: 60px;
+            width: auto;
+            margin-bottom: 1.5rem;
+            filter: brightness(0) invert(1);
+        }
+        
+        .footer-brand p {
+            color: var(--color-primary-light);
+            font-size: 0.95rem;
+        }
+        
+        .footer-column h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: var(--color-white);
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-column a {
+            color: var(--color-primary-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: var(--color-accent);
+        }
+        
+        .footer-contact p {
+            color: var(--color-primary-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-contact a {
+            color: var(--color-accent);
+        }
+        
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-primary-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-bottom p {
+            color: var(--color-primary);
+            font-size: 0.85rem;
+        }
+        
+        .footer-bottom a {
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--color-primary-dark);
+            color: var(--color-primary-light);
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+        
+        .social-links svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 1024px) {
+            .feature-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .feature-section:nth-child(even) .feature-content {
+                direction: ltr;
+            }
+            
+            .timeline-steps {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 3rem;
+            }
+            
+            .timeline-steps::before {
+                display: none;
+            }
+            
+            .packages-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .reviews-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .faq-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .intro-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 4rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .nav-toggle {
+                display: flex;
+            }
+            
+            .page-hero {
+                height: 60vh;
+            }
+            
+            .timeline-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item.large {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-brand {
+                max-width: 100%;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .intro-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ============================================
+         NAVIGATION
+         ============================================ -->
+    <nav class="nav">
+        <a href="/">
+            <img src="assets/villa1855-logo.png" alt="Villa 1855" class="nav-logo">
+        </a>
+        <ul class="nav-links">
+            <li><a href="/bruiloften" style="color: var(--color-accent);">Bruiloften</a></li>
+            <li><a href="/zakelijk">Zakelijk</a></li>
+            <li><a href="/locatie">De Locatie</a></li>
+            <li><a href="/cases">Cases</a></li>
+            <li><a href="/contact" class="nav-cta">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- ============================================
+         PAGE HERO
+         ============================================ -->
+    <section class="page-hero">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&q=80" alt="Bruiloft Villa 1855" class="page-hero-image">
+        <div class="page-hero-bg"></div>
+        <div class="page-hero-content">
+            <div class="label">Trouwen bij Villa 1855</div>
+            <h1>Jullie <em>droombruiloft</em> begint hier</h1>
+            <p>Een monumentale stadsvilla, exclusief voor jullie. Waar historie en romantiek samenkomen voor de mooiste dag van jullie leven.</p>
+            <a href="#contact" class="btn btn-primary">
+                Plan een bezichtiging
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- ============================================
+         INTRO WITH STATS
+         ============================================ -->
+    <section class="intro">
+        <div class="container">
+            <div class="intro-content">
+                <h2>Een onvergetelijke dag verdient een onvergetelijke locatie</h2>
+                <p>Villa 1855 is meer dan een trouwlocatie – het is de plek waar jullie verhaal een nieuw hoofdstuk begint. In onze monumentale villa uit 1855 combineren we historische grandeur met persoonlijke aandacht. Hier voelen jullie je geen gasten, maar de belangrijkste mensen van de dag.</p>
+                
+                <div class="intro-stats">
+                    <div class="stat">
+                        <div class="stat-number">170+</div>
+                        <div class="stat-label">Bruiloften</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Exclusiviteit</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">1855</div>
+                        <div class="stat-label">Bouwjaar</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">4.9</div>
+                        <div class="stat-label">Beoordeling</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FEATURE: EXCLUSIVITEIT
+         ============================================ -->
+    <section class="feature-section">
+        <div class="container">
+            <div class="feature-content">
+                <div class="feature-image">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80" alt="Exclusieve trouwlocatie">
+                </div>
+                <div class="feature-text">
+                    <div class="label">Exclusiviteit</div>
+                    <h2>De hele villa, alleen voor jullie</h2>
+                    <p>Op jullie trouwdag is Villa 1855 volledig van jullie. Geen andere gasten, geen gedeelde ruimtes – alleen jullie, jullie geliefden en ons toegewijde team. Van de eerste voorbereidingen tot het laatste dansje.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Volledige privacy voor jullie en je gasten
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Flexibele indeling naar eigen wens
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Ceremonie en feest op één locatie
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FEATURE: DE LOCATIE
+         ============================================ -->
+    <section class="feature-section">
+        <div class="container">
+            <div class="feature-content">
+                <div class="feature-image">
+                    <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80" alt="Historische trouwzaal">
+                </div>
+                <div class="feature-text">
+                    <div class="label">De Locatie</div>
+                    <h2>Historische charme, modern comfort</h2>
+                    <p>Onze villa ademt de grandeur van de 19e eeuw, maar is voorzien van alle moderne gemakken. De sfeervolle zalen, lichte serre en groene binnentuin bieden de perfecte setting voor elk moment van jullie dag.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Monumentaal pand met authentieke details
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Prachtige binnentuin voor ceremonie of receptie
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Capaciteit tot 120 gasten (diner) of 150 (borrel)
+                        </li>
+                    </ul>
+                    <a href="/locatie" class="btn btn-outline">Bekijk de ruimtes</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FEATURE: CATERING
+         ============================================ -->
+    <section class="feature-section">
+        <div class="container">
+            <div class="feature-content">
+                <div class="feature-image">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Culinaire catering">
+                </div>
+                <div class="feature-text">
+                    <div class="label">Culinair</div>
+                    <h2>Onvergetelijk tafelen met Cookaholics</h2>
+                    <p>De catering van Villa 1855 wordt verzorgd door Cookaholics – bekend om hun creatieve keuken en gebruik van verse, lokale ingrediënten. Van stijlvol diner tot relaxte foodstations: wij creëren een culinaire ervaring die past bij jullie.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Sit-down diner, walking dinner of buffet
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Seizoensgebonden menu's met lokale producten
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Eigen bruidstaart of sweet table mogelijk
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         TIMELINE / PROCESS
+         ============================================ -->
+    <section class="timeline">
+        <div class="container">
+            <div class="timeline-header">
+                <h2>Van eerste contact tot ja-woord</h2>
+                <p>Zo begeleiden wij jullie naar de perfecte dag</p>
+            </div>
+            <div class="timeline-steps">
+                <div class="timeline-step">
+                    <div class="step-number">1</div>
+                    <h3>Kennismaking</h3>
+                    <p>Vrijblijvende bezichtiging en kennismaking. We luisteren naar jullie wensen en dromen.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">2</div>
+                    <h3>Voorstel</h3>
+                    <p>Op maat gemaakt voorstel met indeling, menu en alle details die jullie dag bijzonder maken.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">3</div>
+                    <h3>Voorbereiding</h3>
+                    <p>Samen werken we alles uit: draaiboek, proefmenu, decoratie-afspraken en meer.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">4</div>
+                    <h3>De grote dag</h3>
+                    <p>Wij regelen alles. Jullie hoeven alleen maar te genieten van de mooiste dag.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PACKAGES
+         ============================================ -->
+    <section class="packages">
+        <div class="container">
+            <div class="packages-header">
+                <h2>Onze arrangementen</h2>
+                <p>Elk arrangement is volledig aan te passen aan jullie wensen. Dit zijn onze uitgangspunten.</p>
+            </div>
+            <div class="packages-grid">
+                <!-- Package 1 -->
+                <div class="package-card">
+                    <h3 class="package-name">Intiem</h3>
+                    <p class="package-description">Voor ceremonies tot 50 gasten</p>
+                    <ul class="package-features">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Exclusief gebruik villa
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Ontvangst met bubbels
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            3-gangen diner
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Feestavond tot 01:00
+                        </li>
+                    </ul>
+                    <div class="package-price">
+                        Vanaf
+                        <span>€95 p.p.</span>
+                    </div>
+                    <a href="#contact" class="btn btn-outline">Meer informatie</a>
+                </div>
+                
+                <!-- Package 2 (Featured) -->
+                <div class="package-card featured">
+                    <h3 class="package-name">Klassiek</h3>
+                    <p class="package-description">Voor ceremonies tot 100 gasten</p>
+                    <ul class="package-features">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Alles van Intiem, plus:
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Walking dinner of 4-gangen
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Avondborrel met bites
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Weddingplanner begeleiding
+                        </li>
+                    </ul>
+                    <div class="package-price">
+                        Vanaf
+                        <span>€125 p.p.</span>
+                    </div>
+                    <a href="#contact" class="btn btn-primary">Vraag offerte aan</a>
+                </div>
+                
+                <!-- Package 3 -->
+                <div class="package-card">
+                    <h3 class="package-name">Uitgebreid</h3>
+                    <p class="package-description">Voor ceremonies tot 120 gasten</p>
+                    <ul class="package-features">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Alles van Klassiek, plus:
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            5-gangen chef's menu
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Open bar gehele avond
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Feestavond tot 02:00
+                        </li>
+                    </ul>
+                    <div class="package-price">
+                        Vanaf
+                        <span>€165 p.p.</span>
+                    </div>
+                    <a href="#contact" class="btn btn-outline">Meer informatie</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         REVIEWS
+         ============================================ -->
+    <section class="reviews">
+        <div class="container">
+            <div class="reviews-header">
+                <h2>Wat stellen zeggen over hun dag</h2>
+            </div>
+            <div class="reviews-grid">
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <div class="review-stars">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="review-text">"Vanaf het eerste moment voelden we ons welkom. Het team heeft werkelijk aan alles gedacht. Onze gasten spreken nog steeds over het eten en de prachtige locatie."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">E&M</div>
+                        <div class="review-info">
+                            <h4>Eline & Michiel</h4>
+                            <span>Getrouwd september 2024</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <div class="review-stars">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="review-text">"De binnentuin was perfect voor onze ceremonie. En wat een eten! Het walking dinner was een schot in de roos. Villa 1855 is echt een verborgen parel."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">S&T</div>
+                        <div class="review-info">
+                            <h4>Sophie & Thomas</h4>
+                            <span>Getrouwd juni 2024</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review 3 -->
+                <div class="review-card">
+                    <div class="review-stars">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="review-text">"We wilden iets bijzonders, geen standaard feestzaal. Villa 1855 gaf ons precies dat: een intieme, stijlvolle dag met persoonlijke aandacht. Perfect geregeld!"</p>
+                    <div class="review-author">
+                        <div class="review-avatar">L&B</div>
+                        <div class="review-info">
+                            <h4>Lisa & Bram</h4>
+                            <span>Getrouwd mei 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="reviews-cta">
+                <a href="/reviews">
+                    Bekijk alle reviews
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         GALLERY PREVIEW
+         ============================================ -->
+    <section class="gallery-preview">
+        <div class="container">
+            <div class="gallery-preview-header">
+                <h2>Sfeerimpressie</h2>
+                <p>Een glimp van bruiloften bij Villa 1855</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item large">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80" alt="Bruiloft ceremonie">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80" alt="Tafel decoratie">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80" alt="Bruidspaar">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80" alt="Bloemen">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1470290378698-263fa7ca60ab?w=600&q=80" alt="Feestzaal">
+                </div>
+            </div>
+            <div class="gallery-cta">
+                <a href="/cases" class="btn btn-outline">Bekijk onze bruiloften</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FAQ SECTION
+         ============================================ -->
+    <section class="faq">
+        <div class="container">
+            <div class="faq-content">
+                <div class="faq-header">
+                    <h2>Veelgestelde vragen</h2>
+                    <p>De antwoorden op de meest gestelde vragen over trouwen bij Villa 1855.</p>
+                    <a href="/contact" class="btn btn-primary" style="margin-top: 1rem;">Andere vraag? Neem contact op</a>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Hoeveel gasten kunnen er bij Villa 1855 terecht?
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Bij een diner kunnen maximaal 120 gasten plaatsnemen. Voor een borrel of receptie is er ruimte voor maximaal 150 gasten. Voor intieme ceremonies vanaf 30 personen zijn wij ook de perfecte locatie.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Kunnen we ook de ceremonie bij jullie houden?
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Ja, Villa 1855 is een officiële trouwlocatie. Jullie kunnen hier zowel het burgerlijk huwelijk als een vrije ceremonie houden. De binnentuin en de grote zaal zijn populaire ceremonieplekken.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Mogen we onze eigen leveranciers meenemen?
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>De catering wordt exclusief verzorgd door Cookaholics. Voor andere leveranciers zoals fotograaf, DJ, bloemist en decoratie zijn jullie vrij om eigen keuzes te maken. We werken ook graag samen met onze vaste partners.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Tot hoe laat mag het feest duren?
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Standaard is het feest tot 01:00 uur. In overleg is verlenging tot 02:00 uur mogelijk. We vragen wel rekening te houden met onze buren in het centrum van Tilburg.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Is er parkeergelegenheid voor onze gasten?
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Er is betaald parkeren in de directe omgeving en diverse parkeergarages binnen 5 minuten lopen. Het centrum van Tilburg is ook uitstekend bereikbaar met OV – het station ligt op 10 minuten loopafstand.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CTA SECTION
+         ============================================ -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Klaar om jullie droombruiloft te plannen?</h2>
+                <p>Plan een vrijblijvende bezichtiging en ontdek of Villa 1855 de perfecte locatie is voor jullie dag. We maken graag tijd voor jullie.</p>
+                <div class="cta-buttons">
+                    <a href="/cdn-cgi/l/email-protection#91f3e3e4f8fdfef7e5f4ffd1e7f8fdfdf0a0a9a4a4bffffd" class="btn btn-secondary">Plan een bezichtiging</a>
+                    <a href="tel:+310852736709" class="btn btn-outline">Bel 085 273 6709</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/villa1855-logo.png" alt="Villa 1855" class="footer-logo">
+                    <p>Een monumentale stadsvilla in het hart van Tilburg. De perfecte setting voor bijzondere momenten, verzorgd door Cookaholics.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Navigatie</h4>
+                    <ul>
+                        <li><a href="/bruiloften">Bruiloften</a></li>
+                        <li><a href="/zakelijk">Zakelijk</a></li>
+                        <li><a href="/locatie">De Locatie</a></li>
+                        <li><a href="/cases">Cases</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Openingstijden</h4>
+                    <ul>
+                        <li><a href="#">Do t/m zo geopend</a></li>
+                        <li><a href="#">Aangepast op events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column footer-contact">
+                    <h4>Contact</h4>
+                    <p>Noordstraat 36</p>
+                    <p>5038 EJ Tilburg</p>
+                    <p style="margin-top: 1rem;"><a href="tel:+310852736709">085 273 6709</a></p>
+                    <p><a href="/cdn-cgi/l/email-protection#751c1b131a35031c191914444d40405b1b19"><span class="__cf_email__" data-cfemail="731a1d151c33051a1f1f12424b46465d1d1f">[email&#160;protected]</span></a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Villa 1855 · <a href="https://www.cookaholics.nl" target="_blank">Een Cookaholics locatie</a></p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/villa_1855/" target="_blank" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 4H8a4 4 0 00-4 4v8a4 4 0 004 4h8a4 4 0 004-4V8a4 4 0 00-4-4z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16.5 7.5h.01" />
+                        </svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@villa18554" target="_blank" aria-label="TikTok">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         JAVASCRIPT
+         ============================================ -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all items
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.prev

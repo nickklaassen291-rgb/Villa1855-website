@@ -1,0 +1,2149 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zakelijke Events | Villa 1855 Tilburg</title>
+    <meta name="description" content="Organiseer uw zakelijke event in een monumentale stadsvilla in Tilburg. Van netwerkborrels tot bedrijfsfeesten - maak indruk op uw relaties bij Villa 1855.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           VILLA 1855 - ZAKELIJKE EVENTS PAGINA
+           ============================================ */
+        
+        :root {
+            --color-primary-darkest: #102B2A;
+            --color-primary-dark: #405656;
+            --color-primary: #6F8281;
+            --color-primary-light: #9FADAD;
+            --color-primary-lighter: #CED8D8;
+            --color-primary-lightest: #E7ECEC;
+            --color-accent: #B58C67;
+            --color-accent-hover: #9A7555;
+            --color-white: #FFFFFF;
+            --color-off-white: #F5F7F8;
+            --color-text: #102B2A;
+            --color-text-light: #6F8281;
+            --font-heading: 'Lora', Georgia, serif;
+            --font-body: 'Public Sans', -apple-system, sans-serif;
+            --section-padding: 6rem;
+            --container-width: 1200px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            font-weight: 300;
+            color: var(--color-text);
+            background-color: var(--color-off-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--color-text);
+        }
+        
+        .label {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .label::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--color-accent);
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .btn-primary {
+            background: var(--color-accent);
+            color: var(--color-white);
+        }
+        
+        .btn-primary:hover {
+            background: var(--color-accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-secondary {
+            background: var(--color-primary-darkest);
+            color: var(--color-white);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+        }
+        
+        .btn-outline:hover {
+            background: var(--color-accent);
+            color: var(--color-white);
+        }
+        
+        .btn svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn:hover svg {
+            transform: translateX(4px);
+        }
+        
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.25rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            background: rgba(16, 43, 42, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-logo {
+            height: 45px;
+            width: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--color-white);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+        
+        .nav-cta {
+            padding: 0.6rem 1.25rem !important;
+            border: 1px solid var(--color-accent) !important;
+        }
+        
+        .nav-cta:hover {
+            background: var(--color-accent);
+        }
+        
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .nav-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--color-white);
+        }
+        
+        /* ============================================
+           PAGE HERO
+           ============================================ */
+        .page-hero {
+            height: 70vh;
+            min-height: 500px;
+            background: var(--color-primary-darkest);
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .page-hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(16, 43, 42, 0.92) 0%, rgba(64, 86, 86, 0.85) 100%);
+            z-index: 1;
+        }
+        
+        .page-hero-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        
+        .page-hero-content .label {
+            justify-content: center;
+        }
+        
+        .page-hero-content .label::before {
+            display: none;
+        }
+        
+        .page-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--color-white);
+            margin-bottom: 1.5rem;
+            line-height: 1.15;
+        }
+        
+        .page-hero h1 em {
+            font-style: italic;
+            color: var(--color-accent);
+        }
+        
+        .page-hero p {
+            font-size: 1.15rem;
+            color: var(--color-primary-light);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-primary-light);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+        
+        /* ============================================
+           VIDEO SECTION (Brandblocks Style)
+           ============================================ */
+        .video-section {
+            background: var(--color-primary-darkest);
+            padding: 0;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-fallback {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-primary-dark);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .video-fallback.active {
+            display: flex;
+        }
+        
+        .video-fallback-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            opacity: 0.6;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .video-fallback-content {
+            position: relative;
+            z-index: 2;
+            color: var(--color-white);
+        }
+        
+        .video-fallback-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-white);
+        }
+        
+        .video-fallback-content p {
+            color: var(--color-primary-light);
+            margin-bottom: 1.5rem;
+        }
+        
+        .video-fallback-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--color-accent);
+            color: var(--color-white);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        
+        .video-fallback-btn:hover {
+            background: var(--color-accent-hover);
+            transform: translateY(-2px);
+        }
+        
+        .video-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .video-header h2 {
+            color: var(--color-white);
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+        
+        .video-header p {
+            color: var(--color-primary-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* ============================================
+           INTRO / LEAD SECTION
+           ============================================ */
+        .intro {
+            padding: var(--section-padding) 0;
+            background: var(--color-white);
+        }
+        
+        .intro-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .intro-content h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin-bottom: 1.5rem;
+        }
+        
+        .intro-content p {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            line-height: 1.9;
+        }
+        
+        .intro-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--color-primary-lighter);
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--color-accent);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        /* ============================================
+           FEATURE SECTIONS
+           ============================================ */
+        .feature-section {
+            padding: var(--section-padding) 0;
+        }
+        
+        .feature-section:nth-child(even) {
+            background: var(--color-primary-lightest);
+        }
+        
+        .feature-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        
+        .feature-section:nth-child(even) .feature-content {
+            direction: rtl;
+        }
+        
+        .feature-section:nth-child(even) .feature-content > * {
+            direction: ltr;
+        }
+        
+        .feature-image {
+            position: relative;
+        }
+        
+        .feature-image img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+        }
+        
+        .feature-image::after {
+            content: '';
+            position: absolute;
+            inset: 15px;
+            border: 1px solid var(--color-accent);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        
+        .feature-text h2 {
+            font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-text p {
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+        
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: var(--color-text-light);
+        }
+        
+        .feature-list li svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-accent);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        /* ============================================
+           EVENT TYPES GRID
+           ============================================ */
+        .event-types {
+            padding: var(--section-padding) 0;
+            background: var(--color-white);
+        }
+        
+        .event-types-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .event-types-header h2 {
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+        
+        .event-types-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        
+        .event-type-card {
+            background: var(--color-off-white);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .event-type-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-accent);
+            box-shadow: 0 20px 50px rgba(16, 43, 42, 0.1);
+        }
+        
+        .event-type-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-primary-lightest);
+            border-radius: 50%;
+        }
+        
+        .event-type-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--color-primary-darkest);
+        }
+        
+        .event-type-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .event-type-card p {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+        
+        /* ============================================
+           ARRANGEMENT CONFIGURATOR
+           ============================================ */
+        .configurator {
+            padding: var(--section-padding) 0;
+            background: var(--color-primary-darkest);
+        }
+        
+        .configurator-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .configurator-header h2 {
+            color: var(--color-white);
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+        
+        .configurator-header p {
+            color: var(--color-primary-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .configurator-box {
+            background: var(--color-white);
+            border-radius: 8px;
+            overflow: hidden;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        /* Configurator Controls */
+        .configurator-controls {
+            padding: 2.5rem;
+            background: var(--color-off-white);
+            border-bottom: 1px solid var(--color-primary-lighter);
+        }
+        
+        .controls-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 2rem;
+            align-items: end;
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .control-group label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-text);
+        }
+        
+        /* Arrangement Tabs */
+        .arrangement-tabs {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .arrangement-tab {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: var(--color-white);
+            border: 2px solid var(--color-primary-lighter);
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .arrangement-tab:hover {
+            border-color: var(--color-accent);
+        }
+        
+        .arrangement-tab.active {
+            background: var(--color-primary-darkest);
+            border-color: var(--color-primary-darkest);
+            color: var(--color-white);
+        }
+        
+        .arrangement-tab .tab-name {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        
+        .arrangement-tab .tab-type {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+        }
+        
+        .arrangement-tab.active .tab-type {
+            color: var(--color-accent);
+        }
+        
+        /* Input fields */
+        .control-input {
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--color-primary-lighter);
+            background: var(--color-white);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .control-input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+        
+        /* Configurator Content */
+        .configurator-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 450px;
+        }
+        
+        /* Arrangement Details */
+        .arrangement-details {
+            padding: 2.5rem;
+            border-right: 1px solid var(--color-primary-lighter);
+        }
+        
+        .arrangement-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+        
+        .arrangement-description {
+            color: var(--color-text-light);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        
+        .sample-program {
+            background: var(--color-off-white);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .sample-program h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+        }
+        
+        .program-timeline {
+            list-style: none;
+        }
+        
+        .program-timeline li {
+            display: flex;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--color-primary-lighter);
+            font-size: 0.95rem;
+        }
+        
+        .program-timeline li:last-child {
+            border-bottom: none;
+        }
+        
+        .program-time {
+            font-weight: 500;
+            color: var(--color-text);
+            min-width: 60px;
+        }
+        
+        .program-activity {
+            color: var(--color-text-light);
+        }
+        
+        /* Pricing Options */
+        .pricing-options {
+            padding: 2.5rem;
+            background: var(--color-primary-lightest);
+        }
+        
+        .pricing-options h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-subtitle {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .pricing-card {
+            background: var(--color-white);
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .pricing-card:hover {
+            border-color: var(--color-accent);
+        }
+        
+        .pricing-card.selected {
+            border-color: var(--color-accent);
+            background: rgba(181, 140, 103, 0.05);
+        }
+        
+        .pricing-card-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .pricing-card-info p {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+        
+        .pricing-card-price {
+            text-align: right;
+        }
+        
+        .pricing-card-price .price {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--color-accent);
+        }
+        
+        .pricing-card-price .unit {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+        }
+        
+        .configurator-cta {
+            padding: 2rem 2.5rem;
+            background: var(--color-off-white);
+            border-top: 1px solid var(--color-primary-lighter);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .price-estimate {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+        
+        .price-estimate strong {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--color-text);
+            margin-top: 0.25rem;
+        }
+        
+        /* ============================================
+           REVIEWS SECTION
+           ============================================ */
+        .reviews {
+            padding: var(--section-padding) 0;
+            background: var(--color-white);
+        }
+        
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .reviews-header h2 {
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .review-card {
+            background: var(--color-off-white);
+            padding: 2.5rem;
+            position: relative;
+        }
+        
+        .review-card::before {
+            content: '"';
+            font-family: var(--font-heading);
+            font-size: 6rem;
+            color: var(--color-accent);
+            opacity: 0.2;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            line-height: 1;
+        }
+        
+        .review-stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .review-stars svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--color-accent);
+        }
+        
+        .review-text {
+            font-size: 1rem;
+            color: var(--color-text-light);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--color-primary-lighter);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--color-primary-dark);
+        }
+        
+        .review-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .review-info span {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+        }
+        
+        /* ============================================
+           FAQ SECTION
+           ============================================ */
+        .faq {
+            padding: var(--section-padding) 0;
+            background: var(--color-primary-lightest);
+        }
+        
+        .faq-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+        }
+        
+        .faq-header h2 {
+            font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+            margin-bottom: 1rem;
+        }
+        
+        .faq-header p {
+            color: var(--color-text-light);
+            margin-bottom: 2rem;
+        }
+        
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .faq-item {
+            background: var(--color-white);
+            border: 1px solid var(--color-primary-lighter);
+        }
+        
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--color-text);
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            color: var(--color-accent);
+        }
+        
+        .faq-question svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .faq-item.active .faq-question svg {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+        
+        .faq-answer p {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+        
+        /* ============================================
+           CTA SECTION
+           ============================================ */
+        .cta {
+            padding: 5rem 0;
+            background: var(--color-accent);
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            color: var(--color-white);
+            margin-bottom: 1rem;
+        }
+        
+        .cta p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .cta .btn-secondary {
+            background: var(--color-primary-darkest);
+        }
+        
+        .cta .btn-outline {
+            border-color: var(--color-white);
+            color: var(--color-white);
+        }
+        
+        .cta .btn-outline:hover {
+            background: var(--color-white);
+            color: var(--color-accent);
+        }
+        
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            background: var(--color-primary-darkest);
+            padding: 5rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .footer-brand {
+            max-width: 300px;
+        }
+        
+        .footer-logo {
+            height: 60px;
+            width: auto;
+            margin-bottom: 1.5rem;
+            filter: brightness(0) invert(1);
+        }
+        
+        .footer-brand p {
+            color: var(--color-primary-light);
+            font-size: 0.95rem;
+        }
+        
+        .footer-column h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: var(--color-white);
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-column a {
+            color: var(--color-primary-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: var(--color-accent);
+        }
+        
+        .footer-contact p {
+            color: var(--color-primary-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-contact a {
+            color: var(--color-accent);
+        }
+        
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-primary-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-bottom p {
+            color: var(--color-primary);
+            font-size: 0.85rem;
+        }
+        
+        .footer-bottom a {
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--color-primary-dark);
+            color: var(--color-primary-light);
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+        
+        .social-links svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 1024px) {
+            .feature-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .feature-section:nth-child(even) .feature-content {
+                direction: ltr;
+            }
+            
+            .event-types-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .controls-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .configurator-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .arrangement-details {
+                border-right: none;
+                border-bottom: 1px solid var(--color-primary-lighter);
+            }
+            
+            .reviews-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .faq-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .intro-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 4rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .nav-toggle {
+                display: flex;
+            }
+            
+            .page-hero {
+                height: 60vh;
+            }
+            
+            .event-types-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .arrangement-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .arrangement-tab {
+                flex: 1 1 calc(50% - 0.25rem);
+            }
+            
+            .configurator-cta {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-brand {
+                max-width: 100%;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .intro-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ============================================
+         NAVIGATION
+         ============================================ -->
+    <nav class="nav">
+        <a href="/">
+            <img src="assets/villa1855-logo.png" alt="Villa 1855" class="nav-logo">
+        </a>
+        <ul class="nav-links">
+            <li><a href="/bruiloften">Bruiloften</a></li>
+            <li><a href="/zakelijk" style="color: var(--color-accent);">Zakelijk</a></li>
+            <li><a href="/locatie">De Locatie</a></li>
+            <li><a href="/cases">Cases</a></li>
+            <li><a href="/contact" class="nav-cta">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- ============================================
+         PAGE HERO
+         ============================================ -->
+    <section class="page-hero">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80" alt="Zakelijk event Villa 1855" class="page-hero-image">
+        <div class="page-hero-bg"></div>
+        <div class="page-hero-content">
+            <div class="label">Zakelijke Events</div>
+            <h1>Maak indruk met <em>karakter</em></h1>
+            <p>Organiseer uw zakelijke event in een monumentale setting. Van netwerkborrels tot bedrijfsfeesten – Villa 1855 biedt de perfecte backdrop voor succes.</p>
+            <a href="#configurator" class="btn btn-primary">
+                Stel uw event samen
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- ============================================
+         VIDEO SECTION (Brandblocks Style)
+         ============================================ -->
+    <section class="video-section">
+        <div class="video-wrapper">
+            <div class="video-header">
+                <h2>Bekijk Villa 1855 in actie</h2>
+                <p>Een impressie van onze monumentale locatie en de mogelijkheden voor uw zakelijke event.</p>
+            </div>
+            <div class="video-container">
+                <iframe 
+                    id="youtube-video"
+                    src="https://www.youtube.com/embed/FYhpMGblwMo?rel=0&modestbranding=1&playsinline=1" 
+                    title="Villa 1855 - Zakelijke Events"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    loading="lazy">
+                </iframe>
+                <div class="video-fallback" id="video-fallback">
+                    <img src="https://img.youtube.com/vi/FYhpMGblwMo/maxresdefault.jpg" alt="Villa 1855 Video" class="video-fallback-thumbnail">
+                    <div class="video-fallback-content">
+                        <h3>Video niet beschikbaar</h3>
+                        <p>Klik hieronder om de video op YouTube te bekijken</p>
+                        <a href="https://www.youtube.com/watch?v=FYhpMGblwMo" target="_blank" class="video-fallback-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 20px; height: 20px;">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Bekijk video op YouTube
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         INTRO WITH STATS
+         ============================================ -->
+    <section class="intro">
+        <div class="container">
+            <div class="intro-content">
+                <h2>Een locatie die voor u werkt</h2>
+                <p>Villa 1855 combineert historische grandeur met professionele faciliteiten. Of het nu gaat om een belangrijke presentatie, een relatiedag of een bedrijfsfeest – onze monumentale villa biedt de setting die uw event verdient. Met exclusieve beschikbaarheid en persoonlijke begeleiding staat uw boodschap centraal.</p>
+                
+                <div class="intro-stats">
+                    <div class="stat">
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">Zakelijke Events</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Exclusiviteit</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">150</div>
+                        <div class="stat-label">Max. Gasten</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">4.9</div>
+                        <div class="stat-label">Beoordeling</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         EVENT TYPES
+         ============================================ -->
+    <section class="event-types">
+        <div class="container">
+            <div class="event-types-header">
+                <h2>Welk event organiseert u?</h2>
+                <p>Villa 1855 is geschikt voor diverse zakelijke gelegenheden</p>
+            </div>
+            <div class="event-types-grid">
+                <div class="event-type-card">
+                    <div class="event-type-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <h3>Netwerkborrel</h3>
+                    <p>Informeel netwerken in een inspirerende omgeving</p>
+                </div>
+                <div class="event-type-card">
+                    <div class="event-type-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3>Presentatie</h3>
+                    <p>Professionele setting voor uw verhaal</p>
+                </div>
+                <div class="event-type-card">
+                    <div class="event-type-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z" />
+                        </svg>
+                    </div>
+                    <h3>Bedrijfsfeest</h3>
+                    <p>Vier successen in stijl</p>
+                </div>
+                <div class="event-type-card">
+                    <div class="event-type-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </div>
+                    <h3>Relatiedag</h3>
+                    <p>Versterk uw zakelijke relaties</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FEATURE: PROFESSIONELE FACILITEITEN
+         ============================================ -->
+    <section class="feature-section">
+        <div class="container">
+            <div class="feature-content">
+                <div class="feature-image">
+                    <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&q=80" alt="Vergaderruimte Villa 1855">
+                </div>
+                <div class="feature-text">
+                    <div class="label">Faciliteiten</div>
+                    <h2>Professioneel tot in detail</h2>
+                    <p>Onze monumentale zalen zijn uitgerust met moderne AV-apparatuur en bieden de flexibiliteit die uw event vraagt. Van intieme vergaderingen tot grote presentaties – wij faciliteren uw succes.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Beamer, groot scherm en geluidsinstallatie
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Flexibele opstellingen (theater, U-vorm, cabaret)
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Snel WiFi en technische ondersteuning
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FEATURE: CATERING
+         ============================================ -->
+    <section class="feature-section">
+        <div class="container">
+            <div class="feature-content">
+                <div class="feature-image">
+                    <img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=800&q=80" alt="Zakelijke catering">
+                </div>
+                <div class="feature-text">
+                    <div class="label">Catering</div>
+                    <h2>Culinair op niveau</h2>
+                    <p>De catering wordt verzorgd door Cookaholics – gespecialiseerd in zakelijke evenementen. Van working lunch tot uitgebreid diner: elk gerecht maakt indruk.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Luxe koffiemomenten en working lunches
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Walking dinner of sit-down diner
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            Uitgebreide borrelplateaus
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         ARRANGEMENT CONFIGURATOR
+         ============================================ -->
+    <section class="configurator" id="configurator">
+        <div class="container">
+            <div class="configurator-header">
+                <h2>Stel uw arrangement samen</h2>
+                <p>Kies een eventtype, bepaal uw datum en aantal gasten, en ontdek direct de mogelijkheden en richtprijzen.</p>
+            </div>
+            
+            <div class="configurator-box">
+                <!-- Controls -->
+                <div class="configurator-controls">
+                    <div class="controls-grid">
+                        <div class="control-group">
+                            <label>Kies uw eventtype</label>
+                            <div class="arrangement-tabs">
+                                <div class="arrangement-tab active" data-arrangement="1">
+                                    <span class="tab-name">Optie 1</span>
+                                    <span class="tab-type">Netwerkborrel</span>
+                                </div>
+                                <div class="arrangement-tab" data-arrangement="2">
+                                    <span class="tab-name">Optie 2</span>
+                                    <span class="tab-type">Vergaderdag</span>
+                                </div>
+                                <div class="arrangement-tab" data-arrangement="3">
+                                    <span class="tab-name">Optie 3</span>
+                                    <span class="tab-type">Relatiedag</span>
+                                </div>
+                                <div class="arrangement-tab" data-arrangement="4">
+                                    <span class="tab-name">Optie 4</span>
+                                    <span class="tab-type">Bedrijfsfeest</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Datum event</label>
+                            <input type="date" class="control-input" id="event-date">
+                        </div>
+                        <div class="control-group">
+                            <label>Aantal personen</label>
+                            <input type="number" class="control-input" id="guest-count" placeholder="Bijv. 50" min="20" max="150">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content -->
+                <div class="configurator-content">
+                    <!-- Arrangement Details (Left) -->
+                    <div class="arrangement-details">
+                        <div id="arrangement-info">
+                            <!-- Content changes based on selected arrangement -->
+                            <h3>Netwerkborrel</h3>
+                            <p class="arrangement-description">Een informele setting om relaties te versterken. Ideaal voor netwerkevents, productlanceringen of seizoensborrels. De monumentale sfeer van Villa 1855 zorgt voor gespreksstof en een onvergetelijke indruk.</p>
+                            
+                            <div class="sample-program">
+                                <h4>Voorbeeldprogramma</h4>
+                                <ul class="program-timeline">
+                                    <li>
+                                        <span class="program-time">17:00</span>
+                                        <span class="program-activity">Ontvangst met welkomstdrankje</span>
+                                    </li>
+                                    <li>
+                                        <span class="program-time">17:30</span>
+                                        <span class="program-activity">Korte speech of presentatie</span>
+                                    </li>
+                                    <li>
+                                        <span class="program-time">18:00</span>
+                                        <span class="program-activity">Netwerken met borrelhapjes</span>
+                                    </li>
+                                    <li>
+                                        <span class="program-time">20:00</span>
+                                        <span class="program-activity">Afsluiting</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pricing Options (Right) -->
+                    <div class="pricing-options">
+                        <h3>Kies uw arrangement</h3>
+                        <p class="pricing-subtitle">Selecteer het niveau dat bij uw event past</p>
+                        
+                        <div class="pricing-cards" id="pricing-cards">
+                            <div class="pricing-card selected" data-price="50">
+                                <div class="pricing-card-info">
+                                    <h4>Basis</h4>
+                                    <p>Locatie, basisborrel, standaard hapjes</p>
+                                </div>
+                                <div class="pricing-card-price">
+                                    <span class="price">€50</span>
+                                    <span class="unit">p.p.</span>
+                                </div>
+                            </div>
+                            <div class="pricing-card" data-price="60">
+                                <div class="pricing-card-info">
+                                    <h4>Comfort</h4>
+                                    <p>+ Premium drankenpakket, uitgebreide hapjes</p>
+                                </div>
+                                <div class="pricing-card-price">
+                                    <span class="price">€60</span>
+                                    <span class="unit">p.p.</span>
+                                </div>
+                            </div>
+                            <div class="pricing-card" data-price="70">
+                                <div class="pricing-card-info">
+                                    <h4>Premium</h4>
+                                    <p>+ Luxe borrelbuffet, champagne ontvangst</p>
+                                </div>
+                                <div class="pricing-card-price">
+                                    <span class="price">€70</span>
+                                    <span class="unit">p.p.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CTA -->
+                <div class="configurator-cta">
+                    <div class="price-estimate">
+                        Geschatte investering
+                        <strong id="total-estimate">Vul aantal personen in</strong>
+                    </div>
+                    <a href="#contact" class="btn btn-primary">
+                        Vrijblijvende offerte aanvragen
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         REVIEWS
+         ============================================ -->
+    <section class="reviews">
+        <div class="container">
+            <div class="reviews-header">
+                <h2>Wat bedrijven zeggen</h2>
+            </div>
+            <div class="reviews-grid">
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <div class="review-stars">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="review-text">"De locatie maakte direct indruk op onze internationale klanten. Professionele begeleiding, uitstekende catering en een sfeer die perfect bij ons merk past."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">JV</div>
+                        <div class="review-info">
+                            <h4>Jan Vermeer</h4>
+                            <span>Marketing Director, TechCorp</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <div class="review-stars">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="review-text">"Onze strategiedag was een groot succes. De ruimtes zijn perfect voor afwisseling tussen plenaire sessies en break-outs. Aanrader voor elk bedrijf."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">MK</div>
+                        <div class="review-info">
+                            <h4>Marieke Koster</h4>
+                            <span>HR Manager, De Groep</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review 3 -->
+                <div class="review-card">
+                    <div class="review-stars">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="review-text">"Ons eindejaarsfeest bij Villa 1855 was memorabel. De combinatie van historie en moderne service overtrof alle verwachtingen. Team was enthousiast!"</p>
+                    <div class="review-author">
+                        <div class="review-avatar">PB</div>
+                        <div class="review-info">
+                            <h4>Pieter Bakker</h4>
+                            <span>Directeur, Bakker & Co</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FAQ SECTION
+         ============================================ -->
+    <section class="faq">
+        <div class="container">
+            <div class="faq-content">
+                <div class="faq-header">
+                    <h2>Veelgestelde vragen</h2>
+                    <p>Antwoorden op de meest gestelde vragen over zakelijke events bij Villa 1855.</p>
+                    <a href="/contact" class="btn btn-primary" style="margin-top: 1rem;">Andere vraag? Neem contact op</a>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Wat is de capaciteit voor zakelijke events?
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Villa 1855 biedt ruimte voor maximaal 120 gasten bij een dinersetting en 150 gasten bij een staande receptie of borrel. Voor vergaderingen en presentaties zijn opstellingen mogelijk tot 80 personen theateropstelling.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Welke AV-faciliteiten zijn beschikbaar?
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Wij beschikken over een beamer met groot scherm, professionele geluidsinstallatie, draadloze microfoons, en snel WiFi. Technische ondersteuning is op aanvraag beschikbaar.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Zijn er parkeervoorzieningen?
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Er is betaald parkeren in de directe omgeving en meerdere parkeergarages binnen 5 minuten lopen. Op aanvraag kunnen wij parkeerkaarten verzorgen voor uw gasten.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Kunnen we eigen leveranciers meenemen?
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>De catering wordt exclusief verzorgd door Cookaholics. Voor entertainment, decoratie en techniek bent u vrij om eigen leveranciers in te schakelen, of te kiezen uit onze vaste partners.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Wat zijn de annuleringsvoorwaarden?
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Tot 60 dagen voor het event kunt u kosteloos annuleren. Tussen 30-60 dagen geldt 50% van de locatiekosten, binnen 30 dagen wordt het volledige bedrag in rekening gebracht.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CTA SECTION
+         ============================================ -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Klaar om indruk te maken?</h2>
+                <p>Neem contact op voor een vrijblijvende bezichtiging en ontdek de mogelijkheden voor uw zakelijke event.</p>
+                <div class="cta-buttons">
+                    <a href="/cdn-cgi/l/email-protection#bbc1dad0ded7d2d1d0fbcdd2d7d7da8a838e8e95d5d7" class="btn btn-secondary">Offerte aanvragen</a>
+                    <a href="tel:+310852736709" class="btn btn-outline">Bel 085 273 6709</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/villa1855-logo.png" alt="Villa 1855" class="footer-logo">
+                    <p>Een monumentale stadsvilla in het hart van Tilburg. De perfecte setting voor zakelijke events, verzorgd door Cookaholics.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Navigatie</h4>
+                    <ul>
+                        <li><a href="/bruiloften">Bruiloften</a></li>
+                        <li><a href="/zakelijk">Zakelijk</a></li>
+                        <li><a href="/locatie">De Locatie</a></li>
+                        <li><a href="/cases">Cases</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Openingstijden</h4>
+                    <ul>
+                        <li><a href="#">Ma t/m vr op afspraak</a></li>
+                        <li><a href="#">Aangepast op events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column footer-contact">
+                    <h4>Contact</h4>
+                    <p>Noordstraat 36</p>
+                    <p>5038 EJ Tilburg</p>
+                    <p style="margin-top: 1rem;"><a href="tel:+310852736709">085 273 6709</a></p>
+                    <p><a href="/cdn-cgi/l/email-protection#e09a818b858c898a8ba096898c8c81d1d8d5d5ce8e8c"><span class="__cf_email__" data-cfemail="b2c8d3d9d7dedbd8d9f2c4dbdeded3838a87879cdcde">[email&#160;protected]</span></a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Villa 1855 · <a href="https://www.cookaholics.nl" target="_blank">Een Cookaholics locatie</a></p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/villa_1855/" target="_blank" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 4H8a4 4 0 00-4 4v8a4 4 0 004 4h8a4 4 0 004-4V8a4 4 0 00-4-4z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16.5 7.5h.01" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/company/villa-1855" target="_blank" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         JAVASCRIPT
+         ============================================ -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Arrangement data
+        const arrangements = {
+            1: {
+                name: 'Netwerkborrel',
+                description: 'Een informele setting om relaties te versterken. Ideaal voor netwerkevents, productlanceringen of seizoensborrels. De monumentale sfeer van Villa 1855 zorgt voor gespreksstof en een onvergetelijke indruk.',
+                program: [
+                    { time: '17:00', activity: 'Ontvangst met welkomstdrankje' },
+                    { time: '17:30', activity: 'Korte speech of presentatie' },
+                    { time: '18:00', activity: 'Netwerken met borrelhapjes' },
+                    { time: '20:00', activity: 'Afsluiting' }
+                ],
+                pricing: [
+                    { name: 'Basis', description: 'Locatie, basisborrel, standaard hapjes', price: 50 },
+                    { name: 'Comfort', description: '+ Premium drankenpakket, uitgebreide hapjes', price: 60 },
+                    { name: 'Premium', description: '+ Luxe borrelbuffet, champagne ontvangst', price: 70 }
+                ]
+            },
+            2: {
+                name: 'Vergaderdag',
+                description: 'Een productieve dag in een inspirerende omgeving. Perfect voor strategiesessies, trainingen of workshops. De verschillende ruimtes bieden mogelijkheden voor plenaire sessies en break-outs.',
+                program: [
+                    { time: '09:00', activity: 'Ontvangst met koffie en gebak' },
+                    { time: '09:30', activity: 'Ochtendsessie' },
+                    { time: '12:30', activity: 'Lunch' },
+                    { time: '13:30', activity: 'Middagsessie' },
+                    { time: '17:00', activity: 'Afsluitende borrel' }
+                ],
+                pricing: [
+                    { name: 'Basis', description: 'Zaal, koffie/thee, lunch, AV', price: 65 },
+                    { name: 'Comfort', description: '+ Uitgebreide lunch, afternoon tea', price: 80 },
+                    { name: 'Premium', description: '+ Walking dinner, open bar afsluiting', price: 110 }
+                ]
+            },
+            3: {
+                name: 'Relatiedag',
+                description: 'Versterk uw zakelijke relaties met een onvergetelijke dag. Combineer een programma met excellent eten in een unieke setting. Maak van uw klanten ambassadeurs.',
+                program: [
+                    { time: '14:00', activity: 'Ontvangst met champagne' },
+                    { time: '14:30', activity: 'Programma / activiteit' },
+                    { time: '17:00', activity: 'Borrel met live cooking' },
+                    { time: '19:00', activity: '4-gangen diner' },
+                    { time: '22:00', activity: 'Digestief en afsluiting' }
+                ],
+                pricing: [
+                    { name: 'Basis', description: 'Locatie, borrel, 3-gangen diner', price: 95 },
+                    { name: 'Comfort', description: '+ Champagne, 4-gangen, tafelarrangement', price: 125 },
+                    { name: 'Premium', description: '+ Chef\'s table, wijnpakket, entertainment', price: 165 }
+                ]
+            },
+            4: {
+                name: 'Bedrijfsfeest',
+                description: 'Vier successen in stijl. Van jubileumfeest tot eindejaarsborrel – onze monumentale villa transformeert naar het perfecte feestdecor. Laat uw team genieten van een onvergetelijke avond.',
+                program: [
+                    { time: '18:00', activity: 'Ontvangst met bubbles' },
+                    { time: '18:30', activity: 'Speech directie' },
+                    { time: '19:00', activity: 'Walking dinner of buffet' },
+                    { time: '21:00', activity: 'DJ en dansen' },
+                    { time: '01:00', activity: 'Einde' }
+                ],
+                pricing: [
+                    { name: 'Basis', description: 'Locatie, DJ, buffet, open bar (bier/wijn)', price: 85 },
+                    { name: 'Comfort', description: '+ Walking dinner, premium bar, styling', price: 110 },
+                    { name: 'Premium', description: '+ Live entertainment, all-in dranken, fotobooth', price: 145 }
+                ]
+            }
+        };
+
+        let currentArrangement = 1;
+        let selectedPriceIndex = 0;
+        let guestCount = 0;
+
+        // Tab switching
+        document.querySelectorAll('.arrangement-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.arrangement-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                currentArrangement = parseInt(tab.dataset.arrangement);
+                selectedPriceIndex = 0;
+                updateArrangementDisplay();
+            });
+        });
+
+        // Update arrangement display
+        function updateArrangementDisplay() {
+            const arr = arrangements[currentArrangement];
+            
+            // Update details
+            const detailsHTML = `
+                <h3>${arr.name}</h3>
+                <p class="arrangement-description">${arr.description}</p>
+                <div class="sample-program">
+                    <h4>Voorbeeldprogramma</h4>
+                    <ul class="program-timeline">
+                        ${arr.program.map(item => `
+                            <li>
+                                <span class="program-time">${item.time}</span>
+                                <span class="program-activity">${item.activity}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            `;
+            document.getElementById('arrangement-info').innerHTML = detailsHTML;
+
+            // Update pricing cards
+            const pricingHTML = arr.pricing.map((p, i) => `
+                <div class="pricing-card ${i === selectedPriceIndex ? 'selected' : ''}" data-price="${p.price}" data-index="${i}">
+                    <div class="pricing-card-info">
+                        <h4>${p.name}</h4>
+                        <p>${p.description}</p>
+                    </div>
+                    <div class="pricing-card-price">
+                        <span class="price">€${p.price}</span>
+                        <span class="unit">p.p.</span>
+                    </div>
+                </div>
+            `).join('');
+            document.getElementById('pricing-cards').innerHTML = pricingHTML;
+
+            // Re-attach pricing card listeners
+            document.querySelectorAll('.pricing-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    document.querySelectorAll('.pricing-card').forEach(c => c.classList.remove('selected'));
+                    card.classList.add('selected');
+                    selectedPriceIndex = parseInt(card.dataset.index);
+                    updateEstimate();
+                });
+            });
+
+            updateEstimate();
+        }
+
+        // Update estimate
+        function updateEstimate() {
+            const arr = arrangements[currentArrangement];
+            const price = arr.pricing[selectedPriceIndex].price;
+            const count = parseInt(document.getElementById('guest-count').value) || 0;
+            
+            if (count > 0) {
+                const total = price * count;
+                document.getElementById('total-estimate').textContent = `€${total.toLocaleString('nl-NL')} (${count} × €${price})`;
+            } else {
+                document.getElementById('total-estimate').textContent = 'Vul aantal personen in';
+            }
+        }
+
+        // Guest count change
+        document.getElementById('guest-count').addEventListener('input', updateEstimate);
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Set default date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('event-date').value = today;
+
+        // YouTube video error detection and fallback
+        const videoIframe = document.getElementById('youtube-video');
+        const videoFallback = document.getElementById('video-fallback');
+        
+        if (videoIframe && videoFallback) {
+            // Check if video loads successfully
+            let videoLoaded = false;
+            
+            // Try to detect if video loads (using postMessage API)
+            const checkVideoLoad = () => {
+                try {
+                    // If iframe is accessible, try to send a message
+                    videoIframe.contentWindow.postMessage('{"event":"command","func":"getVideoData","args":""}', '*');
+                } catch (e) {
+                    // Cross-origin error is expected, but means iframe is loaded
+                    videoLoaded = true;
+                }
+            };
+            
+            // Check after a delay to see if video loaded
+            setTimeout(() => {
+                if (!videoLoaded) {
+                    // Check if iframe has content (indirect check)
+                    try {
+                        const iframeDoc = videoIframe.contentDocument || videoIframe.contentWindow.document;
+                        if (iframeDoc) {
+                            videoLoaded = true;
+                        }
+                    } catch (e) {
+                        // Cross-origin - this is normal for YouTube embeds
+                        // If we get here, the iframe is likely working
+                        videoLoaded = true;
+                    }
+                }
+                
+                // If still not loaded after timeout, show fallback
+                // We'll use a more reliable method: check for error in URL
+                const iframeSrc = videoIframe.src;
+                if (iframeSrc.includes('error') || iframeSrc.includes('unavailable')) {
+                    videoIframe.style.display = 'none';
+                    videoFallback.classList.add('active');
+                }
+            }, 3000);
+            
+            // Listen for error events on iframe
+            videoIframe.addEventListener('error', () => {
+                videoIframe.style.display = 'none';
+                videoFallback.classList.add('active');
+            });
+            
+            // Also check on load - if iframe loads but shows error, fallback will handle it
+            videoIframe.addEventListener('load', () => {
+                // Give YouTu
