@@ -252,7 +252,7 @@ Dit is een automatisch gegenereerd bericht van de Villa 1855 website.
     if (error) {
       console.error('Resend error:', error)
       return NextResponse.json(
-        { success: false, message: 'Er ging iets mis bij het versturen. Probeer het opnieuw.' },
+        { success: false, message: `Resend error: ${error.message}` },
         { status: 500 }
       )
     }
