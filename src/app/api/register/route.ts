@@ -240,7 +240,7 @@ Dit is een automatisch gegenereerd bericht van de Villa 1855 website.
     // After verifying villa1855.nl in Resend, change to: 'Villa 1855 <noreply@villa1855.nl>'
     const fromEmail = process.env.RESEND_FROM_EMAIL || 'Villa 1855 <onboarding@resend.dev>'
 
-    const { error } = await resendClient.emails.send({
+    const { data: emailData, error } = await resendClient.emails.send({
       from: fromEmail,
       to: ['info@villa1855.nl'],
       replyTo: data.email,
@@ -252,7 +252,7 @@ Dit is een automatisch gegenereerd bericht van de Villa 1855 website.
     if (error) {
       console.error('Resend error:', error)
       return NextResponse.json(
-        { success: false, message: 'Er ging iets mis bij het versturen. Probeer het opnieuw.' },
+        { success: false, message: `Email error: ${error.message}` },
         { status: 500 }
       )
     }
@@ -260,6 +260,7 @@ Dit is een automatisch gegenereerd bericht van de Villa 1855 website.
     return NextResponse.json({
       success: true,
       message: 'Bedankt voor je aanmelding! We nemen binnen 24 uur contact met je op.',
+      emailId: emailData?.id,
     })
 
   } catch (error) {
