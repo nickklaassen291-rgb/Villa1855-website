@@ -5,24 +5,24 @@ import { Star } from 'lucide-react'
 const stats = [
   { number: '25+', label: 'Bruidsparen Hebben Al Toegezegd' },
   { number: '100%', label: 'Ceremonie, Diner & Feest\nOnder Één Dak' },
-  { number: '1', label: 'Vaste Contactpersoon\nvan A tot Z' },
+  { number: '1', label: 'Vast Contactpersoon' },
 ]
 
 const testimonials = [
-  {
-    quote: 'Op de dag zelf ging het personeel above and beyond. Het eten was GEWELDIG - dat in hoofdletters doet nog niet voor de helft recht aan hoe lekker het was. Villa 1855 heeft aan onze dag het gouden randje toegevoegd.',
-    author: 'Wessel & Partner',
-    date: 'Getrouwd juli 2025',
-  },
   {
     quote: 'Wat een top team op een geweldige locatie. Mooi wijn arrangement en een heerlijk menu vol met verrassingen. Werd goed meegedacht met dieetwensen. Een avond om niet snel te vergeten. Wij hebben genoten!',
     author: 'Angelique & Partner',
     date: 'Getrouwd april 2025',
   },
   {
+    quote: 'Op de dag zelf ging het personeel above and beyond. Het eten was GEWELDIG - dat in hoofdletters doet nog niet voor de helft recht aan hoe lekker het was. Villa 1855 heeft aan onze dag het gouden randje toegevoegd.',
+    author: 'Wessel & Partner',
+    date: 'Getrouwd juli 2025',
+  },
+  {
     quote: 'Vanaf het eerste moment voelden we ons thuis. Het team dacht in mogelijkheden en ontzorgde ons volledig.',
     author: 'Emma & Thomas',
-    date: 'Getrouwd juli 2025',
+    date: 'Getrouwd september 2025',
   },
 ]
 
@@ -35,6 +35,7 @@ export default function TrustSection() {
           <div className="label justify-center mb-4">
             <span className="w-10 h-px bg-accent" />
             <span>Waarom Villa 1855</span>
+            <span className="w-10 h-px bg-accent" />
           </div>
           <h2 className="font-heading text-3xl md:text-4xl text-primary-darkest">
             Waar historie en elegantie samenkomen

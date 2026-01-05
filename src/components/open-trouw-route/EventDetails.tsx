@@ -46,7 +46,7 @@ export default function EventDetails() {
             Wat kun je verwachten?
           </h2>
           <p className="text-primary-light max-w-xl mx-auto">
-            Een middag vol inspiratie, culinaire hoogstandjes en persoonlijke aandacht voor jullie onvergetelijke dag.
+            Een dag vol inspiratie, culinaire hoogstandjes en persoonlijke aandacht voor jullie onvergetelijke dag.
           </p>
         </div>
 

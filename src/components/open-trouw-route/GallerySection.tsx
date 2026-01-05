@@ -20,6 +20,7 @@ export default function GallerySection() {
           <div className="label justify-center mb-4">
             <span className="w-10 h-px bg-accent" />
             <span>Sfeerimpressie</span>
+            <span className="w-10 h-px bg-accent" />
           </div>
           <h2 className="font-heading text-3xl md:text-4xl text-primary-darkest mb-4">
             Impressie Villa 1855
