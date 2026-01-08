@@ -30,15 +30,25 @@ export default function HeroSection() {
         }}
       />
 
+      {/* Logo top left */}
+      <div className="absolute top-6 left-6 z-20">
+        <Image
+          src="/images/logo-light.png"
+          alt="Villa 1855"
+          width={120}
+          height={60}
+          className="h-12 w-auto"
+        />
+      </div>
+
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         {/* Badge */}
-        <div className="inline-flex items-center gap-3 mb-6">
-          <span className="w-10 h-px bg-accent" />
+        <div className="flex items-center gap-4 mb-6">
+          <span className="flex-1 h-px bg-accent" />
           <span className="text-accent text-xs font-medium tracking-[0.25em] uppercase">
             Monumentale stadsvilla Tilburg
           </span>
-          <span className="w-10 h-px bg-accent" />
         </div>
 
         {/* Title */}
@@ -47,8 +57,10 @@ export default function HeroSection() {
         </h1>
 
         {/* Date */}
-        <div className="text-accent text-xl md:text-2xl font-heading mb-6">
-          Zaterdag 31 januari 2026
+        <div className="inline-block bg-accent/20 border border-accent/40 rounded-lg px-6 py-3 mb-6">
+          <span className="text-accent text-2xl md:text-3xl font-heading font-semibold">
+            Zaterdag 31 januari 2026
+          </span>
         </div>
 
         {/* Subtitle */}
@@ -79,7 +91,7 @@ export default function HeroSection() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-primary-light/60 hover:text-primary-light transition-colors cursor-pointer"
         aria-label="Scroll naar beneden"
       >
-        <span className="text-xs tracking-[0.1em] uppercase">Ontdek meer</span>
+        <span className="text-xs tracking-[0.1em] uppercase">Meld je nu aan</span>
         <ChevronDown className="w-6 h-6 animate-bounce" />
       </button>
     </section>
