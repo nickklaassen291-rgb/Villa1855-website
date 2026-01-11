@@ -22,7 +22,7 @@ export const contactInfo = {
 }
 
 export const socialLinks = {
-  instagram: 'https://www.instagram.com/villa1855/',
+  instagram: 'https://www.instagram.com/villa_1855/',
   facebook: 'https://www.facebook.com/villa1855/',
   linkedin: 'https://www.linkedin.com/company/villa1855/',
   tiktok: 'https://www.tiktok.com/@villa1855',

@@ -14,7 +14,7 @@ const events = [
     price: '€109 p.p.',
     capacity: 'Max. 70 gasten per avond',
     image: '/images/tafel-elegant.jpg',
-    href: '/beer-pairing-diner',
+    href: 'https://view.peggypay.com/2a9ce0e2',
     status: 'beschikbaar',
   },
   // Voeg hier meer evenementen toe
@@ -152,10 +152,15 @@ export default function PopupRestaurantPage() {
                             <span className="text-sm text-primary">Vanaf</span>
                             <p className="font-heading text-2xl text-primary-darkest">{event.price}</p>
                           </div>
-                          <Link href={event.href} className="btn btn-primary">
-                            Bekijk & Reserveer
+                          <a
+                            href={event.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn btn-primary"
+                          >
+                            Reserveer nu
                             <ArrowRight className="w-5 h-5" />
-                          </Link>
+                          </a>
                         </div>
                       </div>
                     </div>
