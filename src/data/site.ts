@@ -34,7 +34,7 @@ export const navigation = {
     { name: 'Trouwen', href: '/trouwen' },
     { name: 'Zakelijk', href: '/zakelijk' },
     { name: 'Pop-up Restaurant', href: '/popup-restaurant' },
-    { name: 'Open Dagen', href: '/open-dagen' },
+    { name: 'Open Dagen', href: '/open-trouw-route' },
     { name: 'De Locatie', href: '/locatie' },
     { name: 'Portfolio', href: '/portfolio' },
     { name: 'Contact', href: '/contact' },
@@ -48,7 +48,7 @@ export const navigation = {
     info: [
       { name: 'De Locatie', href: '/locatie' },
       { name: 'Portfolio', href: '/portfolio' },
-      { name: 'Open Dagen', href: '/open-dagen' },
+      { name: 'Open Dagen', href: '/open-trouw-route' },
       { name: 'Contact', href: '/contact' },
     ],
   },
