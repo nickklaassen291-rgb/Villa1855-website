@@ -13,7 +13,7 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/hero-home.jpg"
+          src="/images/otr-hero.png"
           alt="Villa 1855"
           fill
           className="object-cover"
@@ -44,8 +44,7 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         {/* Badge */}
-        <div className="flex items-center gap-4 mb-6">
-          <span className="flex-1 h-px bg-accent" />
+        <div className="mb-6">
           <span className="text-accent text-xs font-medium tracking-[0.25em] uppercase">
             Monumentale stadsvilla Tilburg
           </span>

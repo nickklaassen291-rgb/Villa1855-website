@@ -41,11 +41,9 @@ export default function PartnersSection() {
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <div className="label justify-center mb-4">
-            <span className="w-10 h-px bg-accent" />
-            <span>Ontmoet ze op 31 januari</span>
-            <span className="w-10 h-px bg-accent" />
-          </div>
+          <span className="text-accent text-xs font-medium tracking-[0.25em] uppercase mb-4 block">
+            Ontmoet ze op 31 januari
+          </span>
           <h2 className="font-heading text-3xl md:text-4xl text-primary-darkest mb-4">
             Onze partners
           </h2>

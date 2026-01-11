@@ -177,7 +177,6 @@ export default function RegistrationForm() {
               <span className="text-accent text-xs font-medium tracking-[0.25em] uppercase">
                 Zaterdag 31 januari 2026
               </span>
-              <span className="w-10 h-px bg-accent" />
             </div>
             <h2 className="font-heading text-3xl md:text-4xl text-white mb-6">
               Reserveer je plek

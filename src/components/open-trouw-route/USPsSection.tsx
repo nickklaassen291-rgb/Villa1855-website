@@ -23,7 +23,7 @@ export default function USPsSection() {
           <div className="relative order-2 lg:order-1">
             <div className="relative aspect-[4/5] overflow-hidden">
               <Image
-                src="/images/usp-image.jpg"
+                src="/images/otr-ceremonie.jpg"
                 alt="Villa 1855 interieur"
                 fill
                 className="object-cover"
@@ -38,7 +38,6 @@ export default function USPsSection() {
             <div className="label mb-4">
               <span className="w-10 h-px bg-accent" />
               <span>Voordelen</span>
-              <span className="w-10 h-px bg-accent" />
             </div>
             <h2 className="font-heading text-3xl md:text-4xl text-primary-darkest mb-8">
               Waarom Villa 1855?

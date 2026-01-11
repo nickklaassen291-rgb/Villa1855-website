@@ -32,11 +32,9 @@ export default function TrustSection() {
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <div className="label justify-center mb-4">
-            <span className="w-10 h-px bg-accent" />
-            <span>Waarom Villa 1855</span>
-            <span className="w-10 h-px bg-accent" />
-          </div>
+          <span className="text-accent text-xs font-medium tracking-[0.25em] uppercase mb-4 block">
+            Waarom Villa 1855
+          </span>
           <h2 className="font-heading text-3xl md:text-4xl text-primary-darkest">
             Waar historie en elegantie samenkomen
           </h2>

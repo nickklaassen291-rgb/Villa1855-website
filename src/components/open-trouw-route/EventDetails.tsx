@@ -35,13 +35,9 @@ export default function EventDetails() {
       <div className="container-custom relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <span className="w-10 h-px bg-accent" />
-            <span className="text-accent text-xs font-medium tracking-[0.25em] uppercase">
-              31 januari 2026
-            </span>
-            <span className="w-10 h-px bg-accent" />
-          </div>
+          <span className="text-accent text-xs font-medium tracking-[0.25em] uppercase mb-4 block">
+            31 januari 2026
+          </span>
           <h2 className="font-heading text-3xl md:text-4xl text-white mb-4">
             Wat kun je verwachten?
           </h2>

@@ -3,12 +3,12 @@
 import Image from 'next/image'
 
 const images = [
-  { src: '/images/hero-home.jpg', alt: 'Villa 1855 - Monumentale stadsvilla' },
-  { src: '/images/service-trouwen.jpg', alt: 'Sfeervolle feestzaal' },
-  { src: '/images/service-popup.jpg', alt: 'Culinaire excellentie door Cookaholics' },
-  { src: '/images/usp-image.jpg', alt: 'Stijlvol decor vol elegantie' },
-  { src: '/images/service-zakelijk.jpg', alt: 'Lichte serre' },
-  { src: '/images/cta-bg.jpg', alt: 'Charmante binnentuin' },
+  { src: '/images/otr-serre.jpg', alt: 'Ceremonie in de lichte serre' },
+  { src: '/images/otr-diner.jpg', alt: 'Elegante tafelsetting voor het diner' },
+  { src: '/images/otr-feestzaal.jpg', alt: 'Sfeervolle feestzaal' },
+  { src: '/images/otr-tuin.jpg', alt: 'Charmante binnentuin met fontein' },
+  { src: '/images/otr-entree.jpg', alt: 'Monumentale entree Villa 1855' },
+  { src: '/images/otr-romantisch.jpg', alt: 'Romantische setting in de tuin' },
 ]
 
 export default function GallerySection() {
@@ -17,11 +17,9 @@ export default function GallerySection() {
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <div className="label justify-center mb-4">
-            <span className="w-10 h-px bg-accent" />
-            <span>Sfeerimpressie</span>
-            <span className="w-10 h-px bg-accent" />
-          </div>
+          <span className="text-accent text-xs font-medium tracking-[0.25em] uppercase mb-4 block">
+            Sfeerimpressie
+          </span>
           <h2 className="font-heading text-3xl md:text-4xl text-primary-darkest mb-4">
             Impressie Villa 1855
           </h2>
