@@ -187,7 +187,7 @@ Dit is een automatisch gegenereerd bericht van de Villa 1855 website.
 
     return NextResponse.json({
       success: true,
-      message: 'Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op.',
+      message: 'Bedankt voor je bericht! We nemen zo snel mogelijk contact met je op.',
     })
 
   } catch (error) {

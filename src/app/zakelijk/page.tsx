@@ -57,7 +57,7 @@ const arrangements = {
   },
   3: {
     name: 'Zakelijk diner',
-    description: 'Versterk uw zakelijke relaties met een onvergetelijk diner. Combineer netwerken met excellent eten in een unieke setting. Maak van uw klanten en relaties ambassadeurs.',
+    description: 'Versterk je zakelijke relaties met een onvergetelijk diner. Combineer netwerken met excellent eten in een unieke setting. Maak van je klanten en relaties ambassadeurs.',
     included: [
       'Tafelgarnituur',
       '3-gangen diner',
@@ -155,15 +155,15 @@ export default function ZakelijkPage() {
     },
     {
       question: 'Zijn er parkeervoorzieningen?',
-      answer: 'Er is betaald parkeren in de directe omgeving en meerdere parkeergarages binnen 5 minuten lopen. Op aanvraag kunnen wij parkeerkaarten verzorgen voor uw gasten.'
+      answer: 'Er is betaald parkeren in de directe omgeving en meerdere parkeergarages binnen 5 minuten lopen. Op aanvraag kunnen wij parkeerkaarten verzorgen voor je gasten.'
     },
     {
       question: 'Kunnen we eigen leveranciers meenemen?',
-      answer: 'De catering wordt exclusief verzorgd door Cookaholics. Voor entertainment, decoratie en techniek bent u vrij om eigen leveranciers in te schakelen, of te kiezen uit onze vaste partners.'
+      answer: 'De catering wordt exclusief verzorgd door Cookaholics. Voor entertainment, decoratie en techniek ben je vrij om eigen leveranciers in te schakelen, of te kiezen uit onze vaste partners.'
     },
     {
       question: 'Wat zijn de annuleringsvoorwaarden?',
-      answer: 'Tot 60 dagen voor het event kunt u kosteloos annuleren. Tussen 30-60 dagen geldt 50% van de locatiekosten, binnen 30 dagen wordt het volledige bedrag in rekening gebracht.'
+      answer: 'Tot 60 dagen voor het event kun je kosteloos annuleren. Tussen 30-60 dagen geldt 50% van de locatiekosten, binnen 30 dagen wordt het volledige bedrag in rekening gebracht.'
     }
   ]
 
@@ -205,9 +205,9 @@ export default function ZakelijkPage() {
           <div className="page-hero-content">
             <div className="label" style={{ justifyContent: 'center' }}>Zakelijke Events</div>
             <h1>Maak indruk met <em>karakter</em></h1>
-            <p>Organiseer uw zakelijke event in een monumentale setting. Van netwerkborrels tot bedrijfsfeesten – Villa 1855 biedt de perfecte backdrop voor succes.</p>
+            <p>Organiseer je zakelijke event in een monumentale setting. Van netwerkborrels tot bedrijfsfeesten – Villa 1855 biedt de perfecte backdrop voor succes.</p>
             <Link href="#configurator" className="btn btn-primary">
-              Stel uw event samen
+              Stel je event samen
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -226,7 +226,7 @@ export default function ZakelijkPage() {
           <div className="video-wrapper-large">
             <div className="video-header-dark">
               <h2>Bekijk Villa 1855 in actie</h2>
-              <p>Een impressie van onze monumentale locatie en de mogelijkheden voor uw zakelijke event.</p>
+              <p>Een impressie van onze monumentale locatie en de mogelijkheden voor je zakelijke event.</p>
             </div>
             <div className="video-container-large">
               <iframe
@@ -243,8 +243,8 @@ export default function ZakelijkPage() {
         <section className="intro">
           <div className="container">
             <div className="intro-content-centered">
-              <h2>Een locatie die voor u werkt</h2>
-              <p>Villa 1855 combineert historische grandeur met professionele faciliteiten. Of het nu gaat om een belangrijke presentatie, een relatiedag of een bedrijfsfeest – onze monumentale villa biedt de setting die uw event verdient. Met exclusieve beschikbaarheid en persoonlijke begeleiding staat uw boodschap centraal.</p>
+              <h2>Een locatie die voor je werkt</h2>
+              <p>Villa 1855 combineert historische grandeur met professionele faciliteiten. Of het nu gaat om een belangrijke presentatie, een relatiedag of een bedrijfsfeest – onze monumentale villa biedt de setting die je event verdient. Met exclusieve beschikbaarheid en persoonlijke begeleiding staat jouw boodschap centraal.</p>
 
               <div className="intro-stats">
                 <div className="stat">
@@ -272,7 +272,7 @@ export default function ZakelijkPage() {
         <section className="event-types">
           <div className="container">
             <div className="section-header">
-              <h2>Welk event organiseert u?</h2>
+              <h2>Welk event organiseer je?</h2>
               <p>Villa 1855 is geschikt voor diverse zakelijke gelegenheden</p>
             </div>
             <div className="event-types-grid">
@@ -305,7 +305,7 @@ export default function ZakelijkPage() {
               <div className="feature-text">
                 <div className="label">Faciliteiten</div>
                 <h2>Professioneel tot in detail</h2>
-                <p>Onze monumentale zalen zijn uitgerust met moderne AV-apparatuur en bieden de flexibiliteit die uw event vraagt. Van intieme vergaderingen tot grote presentaties – wij faciliteren uw succes.</p>
+                <p>Onze monumentale zalen zijn uitgerust met moderne AV-apparatuur en bieden de flexibiliteit die je event vraagt. Van intieme vergaderingen tot grote presentaties – wij faciliteren jouw succes.</p>
                 <ul className="feature-list">
                   <li>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
@@ -364,8 +364,8 @@ export default function ZakelijkPage() {
         <section className="configurator" id="configurator">
           <div className="container">
             <div className="configurator-header">
-              <h2>Stel uw arrangement samen</h2>
-              <p>Kies een eventtype, bepaal uw datum en aantal gasten, en ontdek direct de mogelijkheden en richtprijzen.</p>
+              <h2>Stel je arrangement samen</h2>
+              <p>Kies een eventtype, bepaal je datum en aantal gasten, en ontdek direct de mogelijkheden en richtprijzen.</p>
             </div>
 
             <div className="configurator-box">
@@ -373,7 +373,7 @@ export default function ZakelijkPage() {
               <div className="configurator-controls">
                 <div className="controls-grid">
                   <div className="control-group">
-                    <label>Kies uw eventtype</label>
+                    <label>Kies je eventtype</label>
                     <div className="arrangement-tabs">
                       {([1, 2, 3] as ArrangementKey[]).map((num) => (
                         <button
@@ -449,7 +449,7 @@ export default function ZakelijkPage() {
 
                 {/* Pricing Options */}
                 <div className="pricing-options">
-                  <h3>Uw investering</h3>
+                  <h3>Je investering</h3>
                   <p className="pricing-subtitle">Prijzen 2026, exclusief BTW</p>
 
                   <div className="pricing-cards">
@@ -571,7 +571,7 @@ export default function ZakelijkPage() {
           <div className="container">
             <div className="cta-content">
               <h2>Klaar om indruk te maken?</h2>
-              <p>Neem contact op voor een vrijblijvende bezichtiging en ontdek de mogelijkheden voor uw zakelijke event.</p>
+              <p>Neem contact op voor een vrijblijvende bezichtiging en ontdek de mogelijkheden voor je zakelijke event.</p>
               <div className="cta-buttons">
                 <a href="mailto:zakelijk@villa1855.nl" className="btn btn-secondary">
                   Offerte aanvragen

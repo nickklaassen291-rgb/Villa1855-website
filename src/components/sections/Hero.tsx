@@ -36,7 +36,7 @@ export default function Hero() {
           </h1>
           <p className="hero-subtitle">
             Ontdek Villa 1855, een monumentale stadsvilla in het hart van Tilburg.
-            De perfecte setting voor uw bruiloft, zakelijk evenement of bijzondere viering.
+            De perfecte setting voor jouw bruiloft, zakelijk evenement of bijzondere viering.
           </p>
           <Link href="#contact" className="btn btn-primary">
             Plan een bezichtiging

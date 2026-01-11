@@ -132,7 +132,7 @@ export default function LocatiePage() {
                 In het bruisende centrum van Tilburg, verscholen achter een statige gevel aan de Noordstraat,
                 ligt Villa 1855. Deze monumentale stadsvilla uit 1855 is meer dan een locatie – het is een
                 ervaring. Hoge plafonds met originele ornamenten, sfeervolle zalen met authentieke details
-                en een verborgen binnentuin vormen het decor voor uw bijzondere momenten.
+                en een verborgen binnentuin vormen het decor voor jouw bijzondere momenten.
               </p>
             </div>
           </div>
@@ -304,7 +304,7 @@ export default function LocatiePage() {
           <div className="container">
             <div className="cta-content">
               <h2>Kom de sfeer zelf ervaren</h2>
-              <p>Plan een vrijblijvende bezichtiging en ontdek wat Villa 1855 voor uw evenement kan betekenen.</p>
+              <p>Plan een vrijblijvende bezichtiging en ontdek wat Villa 1855 voor jouw evenement kan betekenen.</p>
               <div className="cta-buttons">
                 <a href="mailto:info@villa1855.nl" className="btn btn-secondary">
                   Bezichtiging aanvragen

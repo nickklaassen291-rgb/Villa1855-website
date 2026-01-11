@@ -102,7 +102,7 @@ export default function ContactPage() {
           <div className="page-hero-content">
             <div className="label" style={{ justifyContent: 'center' }}>Contact</div>
             <h1>Neem <em>contact</em> op</h1>
-            <p>Heeft u vragen of wilt u een bezichtiging plannen? Wij helpen u graag verder.</p>
+            <p>Heb je vragen of wil je een bezichtiging plannen? Wij helpen je graag verder.</p>
           </div>
         </section>
 
@@ -116,10 +116,10 @@ export default function ContactPage() {
                   Contactgegevens
                 </div>
                 <h2 className="font-heading text-3xl md:text-4xl text-primary-darkest mb-6">
-                  We horen graag van u
+                  We horen graag van je
                 </h2>
                 <p className="text-primary mb-8 leading-relaxed">
-                  Of u nu een bruiloft plant, een zakelijk event organiseert of gewoon nieuwsgierig bent naar onze locatie – we staan klaar om al uw vragen te beantwoorden.
+                  Of je nu een bruiloft plant, een zakelijk event organiseert of gewoon nieuwsgierig bent naar onze locatie – we staan klaar om al je vragen te beantwoorden.
                 </p>
 
                 {/* Contact Details */}
@@ -187,7 +187,7 @@ export default function ContactPage() {
                       Bericht verzonden!
                     </h3>
                     <p className="text-primary mb-6">
-                      Bedankt voor uw bericht. We nemen zo snel mogelijk contact met u op.
+                      Bedankt voor je bericht. We nemen zo snel mogelijk contact met je op.
                     </p>
                     <button
                       onClick={() => setFormState('idle')}
@@ -217,7 +217,7 @@ export default function ContactPage() {
                           className={`w-full px-4 py-3 border bg-white text-primary-darkest placeholder:text-primary transition-colors focus:outline-none focus:border-accent ${
                             errors.name ? 'border-red-500' : 'border-primary-lighter'
                           }`}
-                          placeholder="Uw naam"
+                          placeholder="Je naam"
                         />
                         {errors.name && (
                           <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
@@ -241,7 +241,7 @@ export default function ContactPage() {
                           className={`w-full px-4 py-3 border bg-white text-primary-darkest placeholder:text-primary transition-colors focus:outline-none focus:border-accent ${
                             errors.email ? 'border-red-500' : 'border-primary-lighter'
                           }`}
-                          placeholder="uw@email.nl"
+                          placeholder="je@email.nl"
                         />
                         {errors.email && (
                           <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
@@ -301,7 +301,7 @@ export default function ContactPage() {
                           className={`w-full px-4 py-3 border bg-white text-primary-darkest placeholder:text-primary transition-colors focus:outline-none focus:border-accent resize-none ${
                             errors.message ? 'border-red-500' : 'border-primary-lighter'
                           }`}
-                          placeholder="Uw bericht..."
+                          placeholder="Je bericht..."
                         />
                         {errors.message && (
                           <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
