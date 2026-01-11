@@ -8,10 +8,10 @@ export default function Footer() {
         <div className="footer-content">
           <div className="footer-brand">
             <Image
-              src="/images/villa1855-logo.png"
+              src="/images/logo-light.png"
               alt="Villa 1855"
-              width={180}
-              height={60}
+              width={160}
+              height={64}
               className="footer-logo"
             />
             <p>Een monumentale stadsvilla in het hart van Tilburg. De perfecte setting voor bijzondere momenten, verzorgd door Cookaholics.</p>
