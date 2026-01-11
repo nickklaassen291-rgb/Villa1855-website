@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { Lora, Public_Sans, Great_Vibes } from 'next/font/google'
+import Script from 'next/script'
 import '@/styles/globals.css'
+
+const GA_MEASUREMENT_ID = 'G-TBBKG39G8K'
 
 const lora = Lora({
   subsets: ['latin'],
@@ -47,6 +50,18 @@ export default function RootLayout({
   return (
     <html lang="nl" className={`${lora.variable} ${publicSans.variable} ${greatVibes.variable}`} suppressHydrationWarning>
       <body>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
         {children}
       </body>
     </html>
