@@ -195,7 +195,7 @@ export default function PopupRestaurantPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="https://www.instagram.com/villa1855/"
+                  href="https://www.instagram.com/villa_1855/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary"
