@@ -36,7 +36,7 @@ export const navigation = {
     { name: 'Pop-up Restaurant', href: '/popup-restaurant' },
     { name: 'Open Dagen', href: '/open-trouw-route' },
     { name: 'De Locatie', href: '/locatie' },
-    { name: 'Portfolio', href: '/portfolio' },
+    { name: 'Beschikbaarheid', href: 'https://villa1855-calendar.vercel.app/', external: true },
     { name: 'Contact', href: '/contact' },
   ],
   footer: {
