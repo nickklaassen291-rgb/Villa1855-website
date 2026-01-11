@@ -242,7 +242,7 @@ Dit is een automatisch gegenereerd bericht van de Villa 1855 website.
 
     const { data: emailData, error } = await resendClient.emails.send({
       from: fromEmail,
-      to: ['nick@cookaholics.nl'],
+      to: ['info@villa1855.nl'],
       replyTo: data.email,
       subject: `Open Trouw Route Aanmelding: ${data.names} - ${timeSlotLabel}`,
       html: emailHtml,
