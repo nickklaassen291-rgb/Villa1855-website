@@ -36,7 +36,7 @@ export default function EventDetails() {
         {/* Section Header */}
         <div className="text-center mb-12">
           <span className="text-accent text-xs font-medium tracking-[0.25em] uppercase mb-4 block">
-            31 januari 2026
+            Zaterdag 31 januari 2026
           </span>
           <h2 className="font-heading text-3xl md:text-4xl text-white mb-4">
             Wat kun je verwachten?

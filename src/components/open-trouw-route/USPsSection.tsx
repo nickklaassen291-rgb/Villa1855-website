@@ -36,8 +36,7 @@ export default function USPsSection() {
           {/* Content */}
           <div className="order-1 lg:order-2">
             <div className="label mb-4">
-              <span className="w-10 h-px bg-accent" />
-              <span>Voordelen</span>
+              Voordelen
             </div>
             <h2 className="font-heading text-3xl md:text-4xl text-primary-darkest mb-8">
               Waarom Villa 1855?
