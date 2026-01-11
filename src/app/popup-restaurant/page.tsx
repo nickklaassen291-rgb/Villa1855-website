@@ -182,6 +182,34 @@ export default function PopupRestaurantPage() {
           </div>
         </section>
 
+        {/* Terugblik vorige editie */}
+        <section className="py-16 md:py-20 bg-white">
+          <div className="container-custom">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-10">
+                <span className="text-accent text-xs font-medium tracking-[0.25em] uppercase mb-4 block">
+                  Terugblik
+                </span>
+                <h2 className="font-heading text-3xl md:text-4xl text-primary-darkest mb-4">
+                  Vorige editie
+                </h2>
+                <p className="text-primary text-lg">
+                  Bekijk de sfeerimpressie van een eerdere pop-up editie bij Villa 1855.
+                </p>
+              </div>
+              <div className="aspect-video">
+                <iframe
+                  src="https://www.youtube.com/embed/OdhRk-f7m3c?rel=0&modestbranding=1"
+                  title="Terugblik Pop-up Restaurant Villa 1855"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Newsletter / Stay Updated */}
         <section className="py-16 md:py-20 bg-primary-darkest text-white">
           <div className="container-custom">
