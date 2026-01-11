@@ -30,14 +30,14 @@ export const socialLinks = {
 
 export const navigation = {
   main: [
-    { name: 'Home', href: '/' },
-    { name: 'Trouwen', href: '/trouwen' },
-    { name: 'Zakelijk', href: '/zakelijk' },
-    { name: 'Pop-up Restaurant', href: '/popup-restaurant' },
-    { name: 'Open Dagen', href: '/open-trouw-route' },
-    { name: 'De Locatie', href: '/locatie' },
-    { name: 'Beschikbaarheid', href: 'https://villa1855-calendar.vercel.app/', external: true },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Home', href: '/', external: false },
+    { name: 'Trouwen', href: '/trouwen', external: false },
+    { name: 'Zakelijk', href: '/zakelijk', external: false },
+    { name: 'Pop-up Restaurant', href: '/popup-restaurant', external: false },
+    { name: 'Open Dagen', href: '/open-trouw-route', external: false },
+    { name: 'De Locatie', href: '/locatie', external: false },
+    { name: 'Beschikbaarheid', href: '/beschikbaarheid', external: false },
+    { name: 'Contact', href: '/contact', external: false },
   ],
   footer: {
     events: [

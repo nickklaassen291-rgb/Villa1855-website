@@ -25,6 +25,27 @@ const config: Config = {
         },
         // Neutrals
         offwhite: '#F5F7F8',
+        // Availability Status Colors
+        available: {
+          DEFAULT: '#4A7C59',
+          light: '#E8F5E9',
+        },
+        option: {
+          DEFAULT: '#D4A574',
+          light: '#FFF3E0',
+        },
+        booked: {
+          DEFAULT: '#8B4B4B',
+          light: '#FFEBEE',
+        },
+        limited: {
+          DEFAULT: '#5B7B9A',
+          light: '#E3EDF5',
+        },
+        closed: {
+          DEFAULT: '#9E9E9E',
+          light: '#F5F5F5',
+        },
       },
       fontFamily: {
         heading: ['var(--font-heading)', 'Lora', 'Georgia', 'serif'],
