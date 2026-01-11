@@ -78,8 +78,8 @@ export default function TrouwenPage() {
         {/* Page Hero */}
         <section className="page-hero">
           <Image
-            src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&q=80"
-            alt="Bruiloft Villa 1855"
+            src="/images/villa-hoofdfoto.png"
+            alt="Villa 1855 trouwlocatie"
             fill
             className="page-hero-image"
             priority
@@ -157,8 +157,8 @@ export default function TrouwenPage() {
             <div className="feature-content">
               <div className="feature-image">
                 <Image
-                  src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80"
-                  alt="Exclusieve trouwlocatie"
+                  src="/images/ceremonie-stoelen.jpg"
+                  alt="Ceremonie opstelling in de serre"
                   width={600}
                   height={450}
                 />
@@ -227,8 +227,8 @@ export default function TrouwenPage() {
             <div className="feature-content">
               <div className="feature-image">
                 <Image
-                  src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80"
-                  alt="Culinaire catering"
+                  src="/images/tafel-setting.jpg"
+                  alt="Elegant gedekte tafel"
                   width={600}
                   height={450}
                 />
@@ -364,7 +364,7 @@ export default function TrouwenPage() {
               </div>
               <div className="gallery-item">
                 <Image
-                  src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80"
+                  src="/images/tafel-elegant.jpg"
                   alt="Tafel decoratie"
                   fill
                   sizes="(max-width: 768px) 100vw, 25vw"
@@ -372,8 +372,8 @@ export default function TrouwenPage() {
               </div>
               <div className="gallery-item">
                 <Image
-                  src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80"
-                  alt="Bruidspaar"
+                  src="/images/tuin-love.jpg"
+                  alt="Romantische tuin"
                   fill
                   sizes="(max-width: 768px) 100vw, 25vw"
                 />

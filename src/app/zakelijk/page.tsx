@@ -195,7 +195,7 @@ export default function ZakelijkPage() {
         {/* Page Hero */}
         <section className="page-hero">
           <Image
-            src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80"
+            src="/images/feestzaal.jpg"
             alt="Zakelijk event Villa 1855"
             fill
             className="page-hero-image"
@@ -296,8 +296,8 @@ export default function ZakelijkPage() {
             <div className="feature-content">
               <div className="feature-image">
                 <Image
-                  src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&q=80"
-                  alt="Vergaderruimte Villa 1855"
+                  src="/images/event-gasten.jpg"
+                  alt="Zakelijk event met gasten"
                   width={600}
                   height={450}
                 />
@@ -331,8 +331,8 @@ export default function ZakelijkPage() {
             <div className="feature-content reverse">
               <div className="feature-image">
                 <Image
-                  src="https://images.unsplash.com/photo-1555244162-803834f70033?w=800&q=80"
-                  alt="Zakelijke catering"
+                  src="/images/bar-sfeer.jpg"
+                  alt="Bar en catering"
                   width={600}
                   height={450}
                 />

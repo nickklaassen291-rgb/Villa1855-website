@@ -92,7 +92,7 @@ export default function ContactPage() {
         {/* Page Hero */}
         <section className="page-hero">
           <Image
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80"
+            src="/images/villa-hoofdfoto.png"
             alt="Villa 1855"
             fill
             className="page-hero-image"

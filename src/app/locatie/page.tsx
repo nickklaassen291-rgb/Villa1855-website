@@ -10,25 +10,25 @@ const spaces = [
     name: 'De Grote Zaal',
     description: 'Onze grootste ruimte met originele plafondschilderingen en kroonluchters. Perfect voor diners tot 120 personen of recepties tot 150 gasten.',
     capacity: '120 zitplaatsen',
-    image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=80'
+    image: '/images/feestzaal.jpg'
   },
   {
     name: 'De Serre',
     description: 'Lichte, glazen aanbouw met uitzicht op de binnentuin. Ideaal voor ceremonies, recepties of als extra ruimte bij grotere events.',
     capacity: '60 zitplaatsen',
-    image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80'
+    image: '/images/ceremonie-stoelen.jpg'
   },
   {
     name: 'De Binnentuin',
     description: 'Besloten groene oase in het hart van de villa. Populair voor huwelijksceremonies en zomerse borrels.',
     capacity: '80 staand',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80'
+    image: '/images/tuin-fontein.jpg'
   },
   {
     name: 'Het Salon',
     description: 'Intieme ruimte met authentieke schouw en sfeervolle inrichting. Geschikt voor kleine vergaderingen of als bruidskamer.',
     capacity: '20 zitplaatsen',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80'
+    image: '/images/bar-sfeer.jpg'
   }
 ]
 
@@ -97,7 +97,7 @@ export default function LocatiePage() {
         {/* Page Hero */}
         <section className="page-hero">
           <Image
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80"
+            src="/images/villa-voorkant.jpg"
             alt="Villa 1855 exterieur"
             fill
             className="page-hero-image"
@@ -144,8 +144,8 @@ export default function LocatiePage() {
             <div className="feature-content">
               <div className="feature-image">
                 <Image
-                  src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80"
-                  alt="Historisch interieur Villa 1855"
+                  src="/images/tafel-buiten.jpg"
+                  alt="Sfeervolle tafel setting"
                   width={600}
                   height={450}
                 />
