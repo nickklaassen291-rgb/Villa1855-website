@@ -78,8 +78,8 @@ export default function TrouwenPage() {
         {/* Page Hero */}
         <section className="page-hero">
           <Image
-            src="/images/villa-hoofdfoto.png"
-            alt="Villa 1855 trouwlocatie"
+            src="/images/bruidspaar-villa.jpg"
+            alt="Bruidspaar voor Villa 1855 trouwlocatie Tilburg"
             fill
             className="page-hero-image"
             priority
@@ -356,24 +356,24 @@ export default function TrouwenPage() {
             <div className="gallery-grid">
               <div className="gallery-item large">
                 <Image
-                  src="/images/Styledshootnov2025-1351.jpg"
-                  alt="Bruiloft ceremonie"
+                  src="/images/ceremonie-fontein.jpg"
+                  alt="Huwelijksceremonie bij de fontein met gasten"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
               <div className="gallery-item">
                 <Image
-                  src="/images/tafel-elegant.jpg"
-                  alt="Tafel decoratie"
+                  src="/images/bruidspaar-toast.jpg"
+                  alt="Bruidspaar toost met champagne"
                   fill
                   sizes="(max-width: 768px) 100vw, 25vw"
                 />
               </div>
               <div className="gallery-item">
                 <Image
-                  src="/images/tuin-love.jpg"
-                  alt="Romantische tuin"
+                  src="/images/bruidspaar-voordeur.jpg"
+                  alt="Bruidspaar bij monumentale voordeur Villa 1855"
                   fill
                   sizes="(max-width: 768px) 100vw, 25vw"
                 />
