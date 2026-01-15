@@ -573,11 +573,11 @@ export default function ZakelijkPage() {
               <h2>Klaar om indruk te maken?</h2>
               <p>Neem contact op voor een vrijblijvende bezichtiging en ontdek de mogelijkheden voor je zakelijke event.</p>
               <div className="cta-buttons">
-                <a href="mailto:zakelijk@villa1855.nl" className="btn btn-secondary">
+                <Link href="/beschikbaarheid" className="btn btn-secondary">
+                  Check beschikbaarheid
+                </Link>
+                <a href="mailto:info@villa1855.nl" className="btn btn-outline">
                   Offerte aanvragen
-                </a>
-                <a href="tel:+310852736709" className="btn btn-outline">
-                  Bel 085 273 6709
                 </a>
               </div>
             </div>

@@ -15,8 +15,8 @@ declare global {
   }
 }
 
-// Replace with your actual Meta Pixel ID
-const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || '123456789'
+// Meta Pixel ID for Villa 1855
+const META_PIXEL_ID = '1915733935817328'
 
 export default function MetaPixel() {
   const scrollTracked = useRef({

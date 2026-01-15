@@ -43,11 +43,12 @@ export const navigation = {
     events: [
       { name: 'Trouwen', href: '/trouwen' },
       { name: 'Zakelijk', href: '/zakelijk' },
+      { name: 'Vieringen', href: '/vieringen' },
       { name: 'Pop-up Restaurant', href: '/popup-restaurant' },
     ],
     info: [
       { name: 'De Locatie', href: '/locatie' },
-      { name: 'Portfolio', href: '/portfolio' },
+      { name: 'Beschikbaarheid', href: '/beschikbaarheid' },
       { name: 'Open Dagen', href: '/open-trouw-route' },
       { name: 'Contact', href: '/contact' },
     ],

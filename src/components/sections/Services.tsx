@@ -17,7 +17,7 @@ export default function Services() {
             </svg>
             <h3>Bruiloften</h3>
             <p>Vier jullie liefde in een stijlvol decor vol karakter en elegantie. Van ceremonie tot feest, alles onder één dak met exclusieve aandacht voor jullie dag.</p>
-            <Link href="#" className="card-link">
+            <Link href="/trouwen" className="card-link">
               Meer ontdekken
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -32,7 +32,7 @@ export default function Services() {
             </svg>
             <h3>Zakelijke Events</h3>
             <p>Maak indruk op relaties en medewerkers. Van netwerkborrels tot bedrijfsfeesten en presentaties in een unieke, karaktervolle setting.</p>
-            <Link href="#" className="card-link">
+            <Link href="/zakelijk" className="card-link">
               Meer ontdekken
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -47,7 +47,7 @@ export default function Services() {
             </svg>
             <h3>Bijzondere Vieringen</h3>
             <p>Jubilea, verjaardagen of thema-avonden. Wij maken van elk moment een onvergetelijke ervaring met persoonlijke aandacht voor detail.</p>
-            <Link href="#" className="card-link">
+            <Link href="/vieringen" className="card-link">
               Meer ontdekken
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

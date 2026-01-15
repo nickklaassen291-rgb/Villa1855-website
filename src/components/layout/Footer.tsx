@@ -30,8 +30,9 @@ export default function Footer() {
           <div className="footer-column">
             <h4>Openingstijden</h4>
             <ul>
-              <li><span>Do t/m zo geopend</span></li>
-              <li><span>Aangepast op events</span></li>
+              <li><span style={{ color: 'rgba(255,255,255,0.8)' }}>Ma t/m wo: Gesloten</span></li>
+              <li><span style={{ color: 'rgba(255,255,255,0.8)' }}>Donderdag: 18:00 - 01:00</span></li>
+              <li><span style={{ color: 'rgba(255,255,255,0.8)' }}>Vrij t/m zo: 09:00 - 01:00</span></li>
             </ul>
           </div>
 

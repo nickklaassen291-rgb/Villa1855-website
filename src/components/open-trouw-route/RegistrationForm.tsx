@@ -179,7 +179,7 @@ export default function RegistrationForm() {
               </span>
             </div>
             <h2 className="font-heading text-3xl md:text-4xl text-white mb-6">
-              Reserveer je plek
+              Meld je aan
             </h2>
             <p className="text-primary-light text-lg mb-8 leading-relaxed">
               Meld je aan voor de Open Trouw Route en ontdek waarom Villa 1855 de perfecte setting is voor jullie onvergetelijke dag. Het aantal plekken per tijdslot is beperkt.

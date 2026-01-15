@@ -20,9 +20,9 @@ const testimonials = [
     date: 'Getrouwd juli 2025',
   },
   {
-    quote: 'Vanaf het eerste moment voelden we ons thuis. Het team dacht in mogelijkheden en ontzorgde ons volledig.',
-    author: 'Emma & Thomas',
-    date: 'Getrouwd september 2025',
+    quote: 'Vanaf het eerste moment waren wij enthousiast. Het personeel ziet je, hoort je en is supergastvrij. Zowel de locatie als het team zorgden voor een topdag waaraan niets ontbrak. Zeker aanbevolen!',
+    author: 'Nikki & Partner',
+    date: 'Getrouwd augustus 2025',
   },
 ]
 

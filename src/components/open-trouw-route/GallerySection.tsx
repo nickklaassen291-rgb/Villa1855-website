@@ -3,12 +3,12 @@
 import Image from 'next/image'
 
 const images = [
-  { src: '/images/otr-serre.jpg', alt: 'Ceremonie in de lichte serre' },
-  { src: '/images/otr-diner.jpg', alt: 'Elegante tafelsetting voor het diner' },
-  { src: '/images/otr-feestzaal.jpg', alt: 'Sfeervolle feestzaal' },
-  { src: '/images/otr-tuin.jpg', alt: 'Charmante binnentuin met fontein' },
-  { src: '/images/otr-entree.jpg', alt: 'Monumentale entree Villa 1855' },
-  { src: '/images/otr-romantisch.jpg', alt: 'Romantische setting in de tuin' },
+  { src: '/images/otr-serre.jpg', alt: 'Trouwceremonie in de lichte serre van trouwlocatie Villa 1855 Tilburg' },
+  { src: '/images/otr-diner.jpg', alt: 'Elegant bruiloftsdiner in monumentale feestzaal Tilburg' },
+  { src: '/images/otr-feestzaal.jpg', alt: 'Sfeervolle trouwzaal Villa 1855 - exclusieve bruiloft locatie Brabant' },
+  { src: '/images/otr-tuin.jpg', alt: 'Romantische binnentuin met fontein - trouwlocatie Tilburg centrum' },
+  { src: '/images/otr-entree.jpg', alt: 'Monumentale entree Villa 1855 - trouwen in monumentaal pand Tilburg' },
+  { src: '/images/otr-romantisch.jpg', alt: 'Romantische trouwsetting in de binnentuin Villa 1855' },
 ]
 
 export default function GallerySection() {

@@ -14,7 +14,7 @@ export default function HeroSection() {
       <div className="absolute inset-0">
         <Image
           src="/images/otr-hero.png"
-          alt="Villa 1855"
+          alt="Villa 1855 - Exclusieve trouwlocatie in centrum Tilburg met monumentale feestzaal"
           fill
           className="object-cover"
           priority
@@ -34,7 +34,7 @@ export default function HeroSection() {
       <div className="absolute top-6 left-6 z-20">
         <Image
           src="/images/logo-light.png"
-          alt="Villa 1855"
+          alt="Villa 1855 trouwlocatie Tilburg logo"
           width={120}
           height={60}
           className="h-12 w-auto"
@@ -52,7 +52,7 @@ export default function HeroSection() {
 
         {/* Title */}
         <h1 className="font-heading text-white text-4xl md:text-5xl lg:text-6xl mb-4 leading-tight">
-          Open Trouw Route
+          Open Trouw Route Villa 1855
         </h1>
 
         {/* Date */}

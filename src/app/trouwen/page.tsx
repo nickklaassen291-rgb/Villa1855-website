@@ -301,12 +301,12 @@ export default function TrouwenPage() {
                     <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                   ))}
                 </div>
-                <p className="review-text">&ldquo;Vanaf het eerste moment voelden we ons welkom. Het team heeft werkelijk aan alles gedacht. Onze gasten spreken nog steeds over het eten en de prachtige locatie.&rdquo;</p>
+                <p className="review-text">&ldquo;Wat een top team op een geweldige locatie. Mooi wijn arrangement en een heerlijk menu vol met verrassingen. Werd goed meegedacht met dieetwensen. Een avond om niet snel te vergeten!&rdquo;</p>
                 <div className="review-author">
-                  <div className="review-avatar">E&M</div>
+                  <div className="review-avatar">A</div>
                   <div className="review-info">
-                    <h4>Eline & Michiel</h4>
-                    <span>Getrouwd september 2024</span>
+                    <h4>Angelique & Partner</h4>
+                    <span>Getrouwd april 2025</span>
                   </div>
                 </div>
               </div>
@@ -317,12 +317,12 @@ export default function TrouwenPage() {
                     <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                   ))}
                 </div>
-                <p className="review-text">&ldquo;De binnentuin was perfect voor onze ceremonie. En wat een eten! Het walking dinner was een schot in de roos. Villa 1855 is echt een verborgen parel.&rdquo;</p>
+                <p className="review-text">&ldquo;Op de dag zelf ging het personeel above and beyond. Het eten was GEWELDIG - dat doet nog niet voor de helft recht aan hoe lekker het was. Villa 1855 heeft aan onze dag het gouden randje toegevoegd.&rdquo;</p>
                 <div className="review-author">
-                  <div className="review-avatar">S&T</div>
+                  <div className="review-avatar">W</div>
                   <div className="review-info">
-                    <h4>Sophie & Thomas</h4>
-                    <span>Getrouwd juni 2024</span>
+                    <h4>Wessel & Partner</h4>
+                    <span>Getrouwd juli 2025</span>
                   </div>
                 </div>
               </div>
@@ -333,12 +333,12 @@ export default function TrouwenPage() {
                     <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                   ))}
                 </div>
-                <p className="review-text">&ldquo;We wilden iets bijzonders, geen standaard feestzaal. Villa 1855 gaf ons precies dat: een intieme, stijlvolle dag met persoonlijke aandacht. Perfect geregeld!&rdquo;</p>
+                <p className="review-text">&ldquo;Vanaf het eerste moment waren wij enthousiast. Het personeel ziet je, hoort je en is supergastvrij. Zowel de locatie als het team zorgden voor een topdag waaraan niets ontbrak. Zeker aanbevolen!&rdquo;</p>
                 <div className="review-author">
-                  <div className="review-avatar">L&B</div>
+                  <div className="review-avatar">N</div>
                   <div className="review-info">
-                    <h4>Lisa & Bram</h4>
-                    <span>Getrouwd mei 2024</span>
+                    <h4>Nikki & Partner</h4>
+                    <span>Getrouwd augustus 2025</span>
                   </div>
                 </div>
               </div>
@@ -563,11 +563,11 @@ export default function TrouwenPage() {
               <h2>Liever direct contact?</h2>
               <p>Neem gerust contact met ons op voor een vrijblijvend gesprek of om een bezichtiging te plannen.</p>
               <div className="cta-buttons">
-                <a href="mailto:bruiloften@villa1855.nl" className="btn btn-secondary">
+                <Link href="/beschikbaarheid" className="btn btn-secondary">
+                  Check beschikbaarheid
+                </Link>
+                <a href="mailto:info@villa1855.nl" className="btn btn-outline">
                   E-mail ons
-                </a>
-                <a href="tel:+310852736709" className="btn btn-outline">
-                  Bel 085 273 6709
                 </a>
               </div>
             </div>
