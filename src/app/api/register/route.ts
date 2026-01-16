@@ -17,16 +17,16 @@ interface RegistrationData {
 }
 
 async function getGoogleSheetsClient() {
-  const credentials = process.env.GOOGLE_SERVICE_ACCOUNT_KEY
-  if (!credentials) {
+  const credentialsBase64 = process.env.GOOGLE_SERVICE_ACCOUNT_KEY
+  if (!credentialsBase64) {
     throw new Error('Google Service Account credentials not configured')
   }
 
-  // Fix for Vercel: replace actual newlines with escaped newlines
-  const fixedCredentials = credentials.replace(/\n/g, '\\n')
+  // Decode base64 credentials
+  const credentials = JSON.parse(Buffer.from(credentialsBase64, 'base64').toString('utf-8'))
 
   const auth = new google.auth.GoogleAuth({
-    credentials: JSON.parse(fixedCredentials),
+    credentials,
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   })
 
