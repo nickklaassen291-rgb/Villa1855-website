@@ -22,8 +22,11 @@ async function getGoogleSheetsClient() {
     throw new Error('Google Service Account credentials not configured')
   }
 
+  // Fix for Vercel: replace actual newlines with escaped newlines
+  const fixedCredentials = credentials.replace(/\n/g, '\\n')
+
   const auth = new google.auth.GoogleAuth({
-    credentials: JSON.parse(credentials),
+    credentials: JSON.parse(fixedCredentials),
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   })
 
