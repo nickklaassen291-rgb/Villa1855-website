@@ -42,7 +42,7 @@ export default function PartnersSection() {
         {/* Section Header */}
         <div className="text-center mb-12">
           <span className="text-accent text-xs font-medium tracking-[0.25em] uppercase mb-4 block">
-            Ontmoet ze op 31 januari
+            Ontmoet ze op 12 april
           </span>
           <h2 className="font-heading text-3xl md:text-4xl text-primary-darkest mb-4">
             Onze partners

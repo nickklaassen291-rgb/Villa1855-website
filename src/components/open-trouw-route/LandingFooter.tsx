@@ -74,10 +74,10 @@ export default function LandingFooter() {
             <h4 className="font-heading text-white text-lg mb-4">Open Trouw Route</h4>
             <ul className="space-y-2 text-sm">
               <li className="text-primary-light">
-                <span className="text-accent">Datum:</span> 31 januari 2026
+                <span className="text-accent">Datum:</span> 12 april 2026
               </li>
               <li className="text-primary-light">
-                <span className="text-accent">Tijd:</span> 10:00 - 17:30
+                <span className="text-accent">Tijd:</span> 10:00 - 16:00
               </li>
               <li className="text-primary-light">
                 <span className="text-accent">Locatie:</span> Villa 1855, Tilburg

@@ -11,7 +11,6 @@ const timeSlots = [
   { value: '13:00', label: '13:00 - 14:00' },
   { value: '14:00', label: '14:00 - 15:00' },
   { value: '15:00', label: '15:00 - 16:00' },
-  { value: '16:00', label: '16:00 - 17:00' },
 ]
 
 type FormState = 'idle' | 'loading' | 'success' | 'error'
@@ -181,7 +180,7 @@ export default function RegistrationForm() {
             <div className="flex items-center gap-4 mb-4">
               <span className="w-10 h-px bg-accent" />
               <span className="text-accent text-xs font-medium tracking-[0.25em] uppercase">
-                Zaterdag 31 januari 2026
+                Zondag 12 april 2026
               </span>
             </div>
             <h2 className="font-heading text-3xl md:text-4xl text-white mb-6">
@@ -294,7 +293,7 @@ export default function RegistrationForm() {
               {/* Time Slot */}
               <div className="mb-4">
                 <label htmlFor="timeSlot" className="block text-sm font-medium text-primary-darkest mb-2">
-                  Voorkeur tijdslot 31 januari *
+                  Voorkeur tijdslot 12 april *
                 </label>
                 <select
                   id="timeSlot"

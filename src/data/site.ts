@@ -57,7 +57,6 @@ export const navigation = {
 
 // Open Dagen 2026
 export const openDays = [
-  { date: '2026-01-31', label: '31 januari 2026' },
   { date: '2026-04-12', label: '12 april 2026' },
   { date: '2026-06-28', label: '28 juni 2026' },
   { date: '2026-09-27', label: '27 september 2026' },

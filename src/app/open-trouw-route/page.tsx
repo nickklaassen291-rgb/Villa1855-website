@@ -11,16 +11,16 @@ import StickyCTA from '@/components/open-trouw-route/StickyCtA'
 import MetaPixel from '@/components/open-trouw-route/MetaPixel'
 
 export const metadata: Metadata = {
-  title: 'Open Trouw Route Villa 1855 | 31 januari 2026 Tilburg',
-  description: 'Bezoek Villa 1855 op 31 januari. Exclusieve trouwlocatie in centrum Tilburg. Rondleiding, culinaire proeverij & vrijblijvende offerte. Gratis toegang.',
+  title: 'Open Trouw Route Villa 1855 | 12 april 2026 Tilburg',
+  description: 'Bezoek Villa 1855 op 12 april. Exclusieve trouwlocatie in centrum Tilburg. Rondleiding, culinaire proeverij & vrijblijvende offerte. Gratis toegang.',
   keywords: ['trouwlocatie tilburg', 'trouwen tilburg', 'bruiloft locatie tilburg', 'trouwlocatie brabant', 'open dag trouwlocatie', 'trouwlocatie centrum', 'exclusieve trouwlocatie', 'trouwlocatie tilburg met binnentuin', 'trouwen monumentaal pand tilburg', 'Villa 1855'],
   openGraph: {
     type: 'website',
     locale: 'nl_NL',
     url: 'https://www.villa1855.nl/open-trouw-route',
     siteName: 'Villa 1855',
-    title: 'Open Trouw Route Villa 1855 | 31 januari 2026 Tilburg',
-    description: 'Bezoek Villa 1855 op 31 januari. Exclusieve trouwlocatie in centrum Tilburg. Rondleiding, culinaire proeverij & vrijblijvende offerte.',
+    title: 'Open Trouw Route Villa 1855 | 12 april 2026 Tilburg',
+    description: 'Bezoek Villa 1855 op 12 april. Exclusieve trouwlocatie in centrum Tilburg. Rondleiding, culinaire proeverij & vrijblijvende offerte.',
     images: [
       {
         url: '/images/og-open-trouw-route.jpg',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Open Trouw Route Villa 1855 | 31 januari 2026 Tilburg',
+    title: 'Open Trouw Route Villa 1855 | 12 april 2026 Tilburg',
     description: 'Bezoek exclusieve trouwlocatie Villa 1855 in Tilburg. Gratis rondleiding & proeverij.',
     images: ['/images/og-open-trouw-route.jpg'],
   },
@@ -50,8 +50,8 @@ const eventJsonLd = {
   '@type': 'Event',
   name: 'Open Trouw Route Villa 1855',
   description: 'Bezoek Villa 1855 tijdens de Open Trouw Route. Exclusieve trouwlocatie in centrum Tilburg. Rondleiding, culinaire proeverij & vrijblijvende offerte.',
-  startDate: '2026-01-31T10:00:00+01:00',
-  endDate: '2026-01-31T17:00:00+01:00',
+  startDate: '2026-04-12T10:00:00+02:00',
+  endDate: '2026-04-12T16:00:00+02:00',
   eventStatus: 'https://schema.org/EventScheduled',
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   location: {

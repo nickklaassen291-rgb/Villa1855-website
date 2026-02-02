@@ -58,7 +58,7 @@ export default function HeroSection() {
         {/* Date */}
         <div className="inline-block bg-accent/20 border border-accent/40 rounded-lg px-6 py-3 mb-6">
           <span className="text-accent text-2xl md:text-3xl font-heading font-semibold">
-            Zaterdag 31 januari 2026
+            Zondag 12 april 2026
           </span>
         </div>
 

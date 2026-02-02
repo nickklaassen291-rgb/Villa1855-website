@@ -30,12 +30,12 @@ export default function StickyCTA() {
         <div className="flex items-center justify-between gap-4">
           <div className="hidden sm:block">
             <p className="text-white font-heading text-lg">Open Trouw Route</p>
-            <p className="text-primary-light text-sm">31 januari 2026 · Beperkte plekken</p>
+            <p className="text-primary-light text-sm">12 april 2026 · Beperkte plekken</p>
           </div>
           <div className="flex items-center gap-3 sm:gap-4 w-full sm:w-auto">
             <div className="flex items-center gap-2 text-accent sm:hidden">
               <Calendar className="w-5 h-5" />
-              <span className="text-sm font-medium">31 jan 2026</span>
+              <span className="text-sm font-medium">12 apr 2026</span>
             </div>
             <button
               onClick={scrollToForm}
