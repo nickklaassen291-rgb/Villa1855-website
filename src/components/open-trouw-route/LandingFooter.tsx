@@ -24,7 +24,7 @@ export default function LandingFooter() {
             {/* Social Links */}
             <div className="flex gap-3 mt-6">
               <a
-                href="https://www.instagram.com/villa_1855/"
+                href="https://www.instagram.com/villa.1855/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 border border-primary-dark flex items-center justify-center text-primary-light hover:border-accent hover:text-accent transition-colors"

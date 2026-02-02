@@ -52,7 +52,7 @@ export default function Footer() {
         <div className="footer-bottom">
           <p>&copy; 2025 Villa 1855 · <a href="https://www.cookaholics.nl" target="_blank" rel="noopener noreferrer">Een Cookaholics locatie</a></p>
           <div className="social-links">
-            <a href="https://www.instagram.com/villa_1855/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <a href="https://www.instagram.com/villa.1855/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 4H8a4 4 0 00-4 4v8a4 4 0 004 4h8a4 4 0 004-4V8a4 4 0 00-4-4z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
