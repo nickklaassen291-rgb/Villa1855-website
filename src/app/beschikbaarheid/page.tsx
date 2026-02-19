@@ -7,11 +7,24 @@ import { Shield, Clock, CalendarCheck } from 'lucide-react'
 export const metadata: Metadata = {
   title: 'Beschikbaarheid | Villa 1855',
   description: 'Bekijk direct wanneer Villa 1855 beschikbaar is voor jouw evenement. Real-time beschikbaarheidskalender.',
+  alternates: {
+    canonical: 'https://www.villa1855.nl/beschikbaarheid',
+  },
   openGraph: {
     title: 'Beschikbaarheid | Villa 1855',
     description: 'Bekijk direct wanneer Villa 1855 beschikbaar is voor jouw evenement.',
+    url: 'https://www.villa1855.nl/beschikbaarheid',
     type: 'website',
     locale: 'nl_NL',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Beschikbaarheid | Villa 1855',
+    description: 'Bekijk direct wanneer Villa 1855 beschikbaar is voor jouw evenement.',
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 }
 

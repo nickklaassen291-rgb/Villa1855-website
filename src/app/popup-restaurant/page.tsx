@@ -1,8 +1,33 @@
+import type { Metadata } from 'next'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, MapPin, Users, ArrowRight } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Pop-up Restaurant',
+  description: 'Exclusieve culinaire evenementen bij Villa 1855 in Tilburg. Van wine pairings tot gastchef-diners – ontdek onze aankomende pop-up restaurant evenementen.',
+  alternates: {
+    canonical: 'https://www.villa1855.nl/popup-restaurant',
+  },
+  openGraph: {
+    title: 'Pop-up Restaurant | Villa 1855',
+    description: 'Exclusieve culinaire evenementen bij Villa 1855 in Tilburg. Ontdek onze aankomende pop-up restaurant evenementen.',
+    url: 'https://www.villa1855.nl/popup-restaurant',
+    type: 'website',
+    locale: 'nl_NL',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Pop-up Restaurant | Villa 1855',
+    description: 'Exclusieve culinaire evenementen bij Villa 1855 in Tilburg.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+}
 
 const events = [
   {
