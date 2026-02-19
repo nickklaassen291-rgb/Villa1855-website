@@ -41,7 +41,7 @@ export default function BeschikbaarheidPage() {
           <div className="page-hero-content">
             <span className="label justify-center">Real-time beschikbaarheid</span>
             <h1>
-              Plan je <em>bijzondere</em> dag
+              Plan je <em style={{ color: 'white' }}>bijzondere</em> dag
             </h1>
             <p>
               Bekijk direct wanneer Villa 1855 beschikbaar is voor jouw evenement.

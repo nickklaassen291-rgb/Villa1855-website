@@ -21,7 +21,7 @@ export default function GallerySection() {
             Sfeerimpressie
           </span>
           <h2 className="font-heading text-3xl md:text-4xl text-primary-darkest mb-4">
-            Impressie Villa 1855
+            Villa 1855
           </h2>
           <p className="text-primary max-w-xl mx-auto">
             Ontdek de unieke sfeer en mogelijkheden van onze monumentale stadsvilla.

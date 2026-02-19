@@ -46,7 +46,7 @@ export default function Services() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
             </svg>
             <h3>Bijzondere Vieringen</h3>
-            <p>Jubilea, verjaardagen of thema-avonden. Wij maken van elk moment een onvergetelijke ervaring met persoonlijke aandacht voor detail.</p>
+            <p>Jubilea, verjaardagen of thema-avonden. Wij maken van elk moment een onvergetelijke ervaring met persoonlijke aandacht voor elk detail.</p>
             <Link href="/vieringen" className="card-link">
               Meer ontdekken
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

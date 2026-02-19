@@ -31,8 +31,8 @@ export default function USPs() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
                 <div>
-                  <strong>Culinaire excellentie</strong>
-                  High-end catering door Cookaholics. Verse, lokale producten en creatieve gerechten die indruk maken.
+                  <strong>Culinaire beleving</strong>
+                  De culinaire invulling wordt verzorgd door Cookaholics. Verse, lokale producten en creatieve gerechten die indruk maken.
                 </div>
               </li>
               <li>

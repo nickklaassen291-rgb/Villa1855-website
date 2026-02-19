@@ -7,11 +7,11 @@ const usps = [
   'Monumentale stadsvilla uit 1855',
   'Sfeervolle feestzaal, serre én binnentuin',
   'Ceremonie, diner & feest onder één dak',
-  'Culinaire excellentie door Cookaholics',
+  'Culinaire invulling door Cookaholics',
   'Centrale ligging in het hart van Tilburg',
   'Exclusief voor jullie - geen gedeelde ruimtes',
   'Persoonlijke aandacht van A tot Z',
-  'Stijlvol decor vol karakter en elegantie',
+  'Stijlvol decor vol karakter en warmte',
 ]
 
 export default function USPsSection() {

@@ -7,13 +7,13 @@ import { Calendar, MapPin, Users, ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Pop-up Restaurant',
-  description: 'Exclusieve culinaire evenementen bij Villa 1855 in Tilburg. Van wine pairings tot gastchef-diners – ontdek onze aankomende pop-up restaurant evenementen.',
+  description: 'Unieke culinaire evenementen bij Villa 1855 in Tilburg. Van meergangendiners tot bierspijsavonden – ontdek onze aankomende pop-up restaurant evenementen.',
   alternates: {
     canonical: 'https://www.villa1855.nl/popup-restaurant',
   },
   openGraph: {
     title: 'Pop-up Restaurant | Villa 1855',
-    description: 'Exclusieve culinaire evenementen bij Villa 1855 in Tilburg. Ontdek onze aankomende pop-up restaurant evenementen.',
+    description: 'Unieke culinaire evenementen bij Villa 1855 in Tilburg. Ontdek onze aankomende pop-up restaurant evenementen.',
     url: 'https://www.villa1855.nl/popup-restaurant',
     type: 'website',
     locale: 'nl_NL',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 const events = [
   {
-    title: 'Beer Pairing Diner',
+    title: 'BierSpijs Diner',
     subtitle: 'Cookaholics x Beer Dudes',
     description: '7 gangen. 7 zeldzame craft beers. Eén onvergetelijke avond met biersommelier.',
     dates: ['20 februari 2026', '21 februari 2026'],
@@ -62,8 +62,8 @@ export default function PopupRestaurantPage() {
           <div className="page-hero-bg" />
           <div className="page-hero-content">
             <div className="label" style={{ justifyContent: 'center' }}>Culinaire Ervaringen</div>
-            <h1>Pop-up <em>Restaurant</em></h1>
-            <p>Exclusieve culinaire evenementen in de sfeervolle setting van Villa 1855. Ontdek onze aankomende pop-up diners.</p>
+            <h1>Pop-up <em style={{ color: 'white' }}>Restaurant</em></h1>
+            <p>Unieke culinaire evenementen in de sfeervolle setting van Villa 1855. Ontdek onze aankomende pop-up diners.</p>
           </div>
           <div className="scroll-indicator">
             <span>Scroll</span>
@@ -82,8 +82,8 @@ export default function PopupRestaurantPage() {
               </h2>
               <p className="text-primary text-lg leading-relaxed">
                 Regelmatig opent Villa 1855 haar deuren voor bijzondere culinaire evenementen.
-                Van exclusieve wine pairings tot gastchef-diners – elke avond is een unieke ervaring.
-                Bekijk hieronder onze aankomende evenementen en reserveer je plek.
+                Van een meergangendiner tot unieke bierspijsavonden – elke pop-up is een unieke ervaring
+                die je niet wilt missen. Bekijk hieronder onze aankomende pop-ups en reserveer je plek.
               </p>
             </div>
           </div>
@@ -224,7 +224,7 @@ export default function PopupRestaurantPage() {
               </div>
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/OdhRk-f7m3c?rel=0&modestbranding=1"
+                  src="https://www.youtube.com/embed/ko5JAY5v7-E?rel=0&modestbranding=1"
                   title="Terugblik Pop-up Restaurant Villa 1855"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen

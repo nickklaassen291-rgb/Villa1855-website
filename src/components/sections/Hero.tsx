@@ -32,7 +32,7 @@ export default function Hero() {
         <div className="hero-text">
           <div className="label">Evenementenlocatie Tilburg</div>
           <h1 className="hero-title">
-            Waar <em>historie</em> en elegantie samenkomen
+            Waar <em>historie</em> en beleving samenkomen
           </h1>
           <p className="hero-subtitle">
             Ontdek Villa 1855, een monumentale stadsvilla in het hart van Tilburg.

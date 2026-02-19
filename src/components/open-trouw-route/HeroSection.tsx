@@ -58,13 +58,13 @@ export default function HeroSection() {
         {/* Date */}
         <div className="inline-block bg-accent/20 border border-accent/40 rounded-lg px-6 py-3 mb-6">
           <span className="text-accent text-2xl md:text-3xl font-heading font-semibold">
-            Zondag 12 april 2026
+            <span style={{ color: 'white' }}>Zondag</span> 12 april 2026
           </span>
         </div>
 
         {/* Subtitle */}
         <p className="text-primary-light text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
-          Ontdek onze monumentale stadsvilla, proef de culinaire hoogstandjes van Cookaholics en ontvang direct een vrijblijvende offerte
+          Ontdek onze monumentale stadsvilla, proef de sfeer en wat lekkers van Cookaholics en ontvang direct een vrijblijvende offerte
         </p>
 
         {/* CTA Button */}

@@ -7,7 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 // Video ID
-const YOUTUBE_VIDEO_ID = 'FYhpMGblwMo'
+const YOUTUBE_VIDEO_ID = 'ko5JAY5v7-E'
 
 // Arrangement data - Prijzen 2026 (excl. BTW)
 const arrangements = {
@@ -111,39 +111,6 @@ export default function ZakelijkPageContent() {
     return 'Vul aantal personen in'
   }
 
-  const eventTypes = [
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-        </svg>
-      ),
-      title: 'Netwerkborrel',
-      description: 'Informeel netwerken in een inspirerende omgeving',
-      price: '€52,50 p.p.'
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      ),
-      title: 'Zakelijke bijeenkomst',
-      description: 'Presentaties, trainingen en workshops',
-      price: '€65 p.p.'
-    },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-        </svg>
-      ),
-      title: 'Zakelijk diner',
-      description: 'Versterk relaties met een culinaire ervaring',
-      price: '€92,50 p.p.'
-    }
-  ]
-
   const faqItems = [
     {
       question: 'Wat is de capaciteit voor zakelijke events?',
@@ -204,8 +171,8 @@ export default function ZakelijkPageContent() {
           <div className="page-hero-bg" />
           <div className="page-hero-content">
             <div className="label" style={{ justifyContent: 'center' }}>Zakelijke Events</div>
-            <h1>Maak indruk met <em>karakter</em></h1>
-            <p>Organiseer je zakelijke event in een monumentale setting. Van netwerkborrels tot bedrijfsfeesten – Villa 1855 biedt de perfecte backdrop voor succes.</p>
+            <h1>Maak indruk met <em>beleving</em></h1>
+            <p>Organiseer je zakelijke event in een monumentale setting. Van netwerkborrels tot bedrijfsfeesten – Villa 1855 biedt ruimtes en een sfeer die uitnodigen tot ontmoeten, gesprek en aandacht.</p>
             <Link href="#configurator" className="btn btn-primary">
               Stel je event samen
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
@@ -244,7 +211,7 @@ export default function ZakelijkPageContent() {
           <div className="container">
             <div className="intro-content-centered">
               <h2>Een locatie die voor je werkt</h2>
-              <p>Villa 1855 combineert historische grandeur met professionele faciliteiten. Of het nu gaat om een belangrijke presentatie, een relatiedag of een bedrijfsfeest – onze monumentale villa biedt de setting die je event verdient. Met exclusieve beschikbaarheid en persoonlijke begeleiding staat jouw boodschap centraal.</p>
+              <p>Villa 1855 is gemaakt voor zakelijke events die persoonlijk mogen voelen. Je schakelt makkelijk tussen ontvangst, presentatie, borrel en diner, allemaal op één locatie. Met begeleiding op de achtergrond loopt het programma zoals jij in gedachten hebt.</p>
 
               <div className="intro-stats">
                 <div className="stat">
@@ -264,28 +231,6 @@ export default function ZakelijkPageContent() {
                   <div className="stat-label">Beoordeling</div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Event Types */}
-        <section className="event-types">
-          <div className="container">
-            <div className="section-header">
-              <h2>Welk event organiseer je?</h2>
-              <p>Villa 1855 is geschikt voor diverse zakelijke gelegenheden</p>
-            </div>
-            <div className="event-types-grid">
-              {eventTypes.map((type, index) => (
-                <div key={index} className="event-type-card">
-                  <div className="event-type-icon">
-                    {type.icon}
-                  </div>
-                  <h3>{type.title}</h3>
-                  <p>{type.description}</p>
-                  <div className="event-price">{type.price}</div>
-                </div>
-              ))}
             </div>
           </div>
         </section>
@@ -313,11 +258,7 @@ export default function ZakelijkPageContent() {
                   </li>
                   <li>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                    Flexibele opstellingen (theater, U-vorm, cabaret)
-                  </li>
-                  <li>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                    Snel WiFi en technische ondersteuning
+                    Flexibele opstellingen (theater, U-vorm, boardroom)
                   </li>
                 </ul>
               </div>
@@ -344,7 +285,7 @@ export default function ZakelijkPageContent() {
                 <ul className="feature-list">
                   <li>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                    Luxe koffiemomenten en working lunches
+                    Koffiemomenten en working lunches
                   </li>
                   <li>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>

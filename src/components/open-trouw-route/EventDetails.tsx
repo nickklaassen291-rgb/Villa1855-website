@@ -10,12 +10,12 @@ const details = [
   },
   {
     icon: UtensilsCrossed,
-    title: 'Culinaire proeverij',
-    description: 'Proef de culinaire excellentie van Cookaholics. Verse, lokale producten en creatieve gerechten die indruk maken.',
+    title: 'Culinaire invulling',
+    description: 'Proef de culinaire invulling van Cookaholics. Verse, lokale producten en creatieve gerechten die indruk maken.',
   },
   {
     icon: Handshake,
-    title: 'Ontmoet toppartners',
+    title: 'Ontmoet onze partners',
     description: 'Maak kennis met onze geselecteerde partners: fotografen, DJ\'s, bloemisten en meer.',
   },
   {
