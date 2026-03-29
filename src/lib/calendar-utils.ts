@@ -61,9 +61,10 @@ export function isThursday(dateStr: string): boolean {
 export function mapCatermonkeyStatus(status: CatermonkeyOrderStatus): BookingStatus | null {
   switch (status) {
     case "concept":
-    case "estimate":
     case "cancelled":
       return null; // Don't show on calendar
+    case "estimate":
+      return "option";
     case "option":
     case "awaiting-confirmation":
     case "new":
@@ -104,12 +105,7 @@ export function getEffectiveDayStatus(
   dateStr: string,
   bookingStatus: BookingStatus
 ): BookingStatus {
-  // Past dates
-  if (isPastDate(dateStr)) {
-    return bookingStatus;
-  }
-
-  // Closed days (ma, di, wo)
+  // Closed days (ma, di, wo) — always closed, past or future
   if (isClosedDay(dateStr)) {
     return "closed";
   }
