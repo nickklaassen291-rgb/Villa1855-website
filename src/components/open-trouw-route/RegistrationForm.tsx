@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Script from 'next/script'
+import { useRouter } from 'next/navigation'
 import { Lock, Check, AlertCircle, Loader2 } from 'lucide-react'
 
 const timeSlots = [
@@ -26,6 +26,7 @@ interface FormData {
 }
 
 export default function RegistrationForm() {
+  const router = useRouter()
   const [formState, setFormState] = useState<FormState>('idle')
   const [formData, setFormData] = useState<FormData>({
     names: '',
@@ -110,7 +111,8 @@ export default function RegistrationForm() {
         throw new Error(result.message || 'Registration failed')
       }
 
-      setFormState('success')
+      router.push('/open-trouw-route/bedankt')
+      return
     } catch (err) {
       console.error('Registration error:', err)
       setFormState('error')
@@ -133,38 +135,6 @@ export default function RegistrationForm() {
     if (typeof window !== 'undefined' && (window as Window & { fbq?: (...args: unknown[]) => void }).fbq) {
       (window as Window & { fbq?: (...args: unknown[]) => void }).fbq?.('track', 'InitiateCheckout')
     }
-  }
-
-  if (formState === 'success') {
-    return (
-      <>
-        <Script id="meta-lead" strategy="afterInteractive">
-          {`fbq('track', 'Lead');`}
-        </Script>
-        <section id="registratie" className="py-20 md:py-24 bg-primary-darkest relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
-          <div className="container-custom relative z-10">
-            <div className="max-w-xl mx-auto text-center">
-              <div className="w-20 h-20 bg-accent flex items-center justify-center mx-auto mb-6">
-                <Check className="w-10 h-10 text-white" />
-              </div>
-              <h2 className="font-heading text-3xl text-white mb-4">
-                Bedankt voor je aanmelding!
-              </h2>
-              <p className="text-primary-light mb-6">
-                We hebben je registratie ontvangen en sturen je binnen 24 uur een bevestiging per e-mail met alle details over de Open Trouw Route.
-              </p>
-              <p className="text-primary-light/80 text-sm">
-                Heb je vragen? Neem contact op via{' '}
-                <a href="mailto:info@villa1855.nl" className="text-accent hover:underline">
-                  info@villa1855.nl
-                </a>
-              </p>
-            </div>
-          </div>
-        </section>
-      </>
-    )
   }
 
   return (
