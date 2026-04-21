@@ -1280,7 +1280,7 @@
   }
 
   .faq-item.active .faq-answer {
-    max-height: 300px;
+    max-height: 800px;
   }
 
   .faq-answer p {

@@ -78,24 +78,36 @@ export default function VieringenPageContent() {
 
   const faqItems = [
     {
-      question: 'Hoeveel gasten kunnen er bij een feest terecht?',
-      answer: 'Bij een diner kunnen maximaal 120 gasten plaatsnemen. Voor een borrel of staande receptie is er ruimte voor maximaal 150 gasten. Voor kleinere, intieme feesten vanaf 20 personen zijn wij ook de perfecte locatie.'
+      question: 'Voor hoeveel gasten is Villa 1855 geschikt bij een feest?',
+      answer: 'Voor een borrel of walking dinner met beide zalen in gebruik is er plek voor maximaal 150 personen. Voor een zittend diner is het maximum 80 personen. Bij een feestavond met muziek en dansvloer is 100 personen het maximum. Voor events waarbij ook de buitenruimte in gebruik is, bespreken we de aantallen in overleg.'
     },
     {
-      question: 'Kunnen we eigen muziek of een DJ meenemen?',
-      answer: 'Ja, je bent vrij om je eigen DJ, band of muziek mee te nemen. Wij hebben een professioneel geluidssysteem aanwezig. We vragen wel rekening te houden met onze buren - standaard is het feest tot 01:00 uur, in overleg is verlenging tot 02:00 uur mogelijk.'
+      question: 'Is Villa 1855 exclusief voor ons gezelschap?',
+      answer: 'Ja. Op jullie feestdag is Villa 1855 helemaal van jullie. We plannen nooit meerdere events tegelijk — de hele villa, de hele dag, voor jullie gezelschap.'
     },
     {
-      question: 'Verzorgen jullie de catering?',
-      answer: 'De catering wordt exclusief verzorgd door Cookaholics. Van walking dinner tot sit-down diner, van buffet tot foodstations - alles is mogelijk. Samen stellen we een menu samen dat past bij jouw feest en wensen.'
+      question: 'Verzorgen jullie de catering en denken jullie mee over de invulling van het feest?',
+      answer: 'Cookaholics verzorgt altijd de catering — dat is onderdeel van wat we doen. En ja, we denken van begin tot eind met je mee. Van het eerste gesprek over de sfeer die je wilt, via het menu en de styling, tot het draaiboek voor de avond zelf. Jij vertelt wat je voor je ziet. Wij vertalen dat naar een avond die klopt.'
     },
     {
-      question: 'Kunnen we de ruimte zelf decoreren?',
-      answer: 'Absoluut! Je bent vrij om de ruimtes naar eigen smaak te decoreren. Wel vragen we om geen confetti of glitters te gebruiken en voorzichtig te zijn met de monumentale elementen. We helpen graag mee met ideeën.'
+      question: 'Kunnen we een eigen DJ, band of ander entertainment meenemen?',
+      answer: 'Ja. We werken met een vast netwerk van leveranciers — handig als je zelf nog geen keuze hebt gemaakt. Heb je al iemand in gedachten, of wil je een vaste DJ van een eerder feest meenemen? Laat het weten, dan bespreken we de mogelijkheden.'
     },
     {
-      question: 'Is er parkeergelegenheid voor gasten?',
-      answer: 'Er is betaald parkeren in de directe omgeving en diverse parkeergarages binnen 5 minuten lopen. Het centrum van Tilburg is ook uitstekend bereikbaar met OV – het station ligt op 10 minuten loopafstand.'
+      question: 'Kunnen we de ruimte naar wens aankleden of decoreren?',
+      answer: 'Ja, daarin is veel mogelijk. Thema\'s, bloemen, specifieke kleuren, een bepaalde sfeer — we bespreken de wensen vooraf en zorgen dat het op de dag zelf staat zoals afgesproken. Zo weet je precies wat je krijgt en hoef je op de dag zelf alleen maar binnen te lopen.'
+    },
+    {
+      question: 'Wat gebeurt er bij slecht weer als we de tuin willen gebruiken?',
+      answer: 'Een paar dagen voor het feest bellen we om de weersvoorspelling door te nemen. Zijn er aanpassingen nodig, dan bespreken we op dat moment wat de beste oplossing is. Je staat er niet alleen voor: wij komen met opties, jullie beslissen.'
+    },
+    {
+      question: 'Waar kunnen onze gasten parkeren in Tilburg?',
+      answer: 'Met de auto parkeren jullie gasten het beste bij Parkeergarage De Knegtel, op vijf minuten lopen van de villa. Direct voor de deur zijn 10 tot 12 parkeerplaatsen beschikbaar. Fietsen kunnen onbewaakt direct voor de deur gestald worden. Voor de uitnodigingen leveren we kant-en-klare parkeer- en route-informatie aan die jullie met de gasten kunnen delen.'
+    },
+    {
+      question: 'Tot hoe laat mag het feest doorgaan?',
+      answer: 'Het feest mag doorgaan tot 00:45 uur. Om 01:00 uur moet de villa leeg zijn.'
     }
   ]
 

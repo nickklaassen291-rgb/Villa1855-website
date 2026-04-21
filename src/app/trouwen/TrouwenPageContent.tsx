@@ -50,76 +50,52 @@ export default function TrouwenPageContent() {
 
   const faqItems = [
     {
-      question: 'Hoeveel gasten kunnen er bij Villa 1855 terecht?',
-      answer: 'Bij een diner kunnen maximaal 120 gasten plaatsnemen. Voor een borrel of receptie is er ruimte voor maximaal 150 gasten. Voor intieme ceremonies vanaf 30 personen zijn wij ook de perfecte locatie.'
+      question: 'Voor hoeveel gasten is Villa 1855 geschikt als trouwlocatie?',
+      answer: 'Tijdens de ceremonie en het diner is er plek voor maximaal 80 gasten. Voor de feestavond kunnen er tot 100 gasten aanwezig zijn. De hele villa en de binnentuin zijn op jullie trouwdag beschikbaar — beide zalen en de buitenruimte gebruiken we in één doorlopende flow van ceremonie naar diner naar feest.'
     },
     {
-      question: 'Kunnen we ook de ceremonie bij jullie houden?',
-      answer: 'Ja, Villa 1855 is een officiële trouwlocatie. Jullie kunnen hier zowel het burgerlijk huwelijk als een vrije ceremonie houden. De binnentuin en de grote zaal zijn populaire ceremonieplekken.'
+      question: 'Kunnen we trouwen, dineren én feesten op één locatie?',
+      answer: 'Ja. Ceremonie in de tuin of in één van de zalen, diner in de andere zaal, borrel en feest zonder dat iemand hoeft te verplaatsen. Geen taxi\'s tussen locaties, geen omkleedmomenten — één dag, één huis, één verhaal.'
     },
     {
-      question: 'Mogen we onze eigen leveranciers meenemen?',
-      answer: 'De catering wordt exclusief verzorgd door Cookaholics. Voor andere leveranciers zoals fotograaf, DJ, bloemist en decoratie zijn jullie vrij om eigen keuzes te maken. We werken ook graag samen met onze vaste partners.'
+      question: 'Kunnen we officieel trouwen bij Villa 1855?',
+      answer: 'Ja. Villa 1855 is een door de gemeente Tilburg erkende trouwlocatie. Jullie kunnen bij ons trouwen én vieren, allemaal onder hetzelfde dak.'
     },
     {
-      question: 'Tot hoe laat mag het feest duren?',
-      answer: 'Het feest is standaard tot maximaal 01:00 uur. In overleg is verlenging tot 02:00 uur mogelijk. We vragen wel rekening te houden met onze buren in het centrum van Tilburg.'
+      question: 'Kunnen we Villa 1855 exclusief afhuren voor onze trouwdag?',
+      answer: 'Ja. Villa 1855 is op jullie trouwdag helemaal van jullie. We plannen nooit meerdere events tegelijk — geen andere bruiloft in de zaal ernaast, geen bedrijfsborrel in de tuin. De hele villa, de hele dag, voor jullie en jullie gasten.'
     },
     {
-      question: 'Is er parkeergelegenheid voor onze gasten?',
-      answer: 'Er is betaald parkeren in de directe omgeving en diverse parkeergarages binnen 5 minuten lopen. Het centrum van Tilburg is ook uitstekend bereikbaar met OV – het station ligt op 10 minuten loopafstand.'
+      question: 'Zijn er slaapplaatsen aanwezig bij Villa 1855?',
+      answer: 'In de villa zelf zijn geen slaapplaatsen. Op loop- of korte rijafstand liggen een aantal hotels die goed passen bij een bruiloft in het centrum van Tilburg: Mercure Hotel Tilburg Centrum (in het centrum, op loopafstand van de villa), Van der Valk Hotel Tilburg (net buiten het centrum, ruime kamers, eigen parkeergelegenheid) en Estella Suites in Goirle (kleinschalig en sfeervol, op korte rijafstand van Tilburg). We denken graag mee over de beste optie voor jullie gasten en regelen desgewenst een groepsarrangement met een van onze hotelpartners.'
     },
     {
-      question: 'Hoe lang is een offerte geldig?',
-      answer: 'Een offerte van Villa 1855 is 14 dagen geldig. Binnen die periode kunnen jullie de datum vrijblijvend vasthouden. Na het verlopen van de optie komt de datum weer beschikbaar voor andere stellen.'
+      question: 'Kunnen jullie ons volledig ontzorgen bij de organisatie van onze bruiloft?',
+      answer: 'Ja. Ons team regelt de volledige dag — van de eerste planning tot de laatste gast die naar huis gaat. Eén aanspreekpunt, één team, één aansturing. Jullie vertellen wat voor bruiloft jullie voor ogen hebben. Wij vertalen dat naar een draaiboek en voeren het uit.'
     },
     {
-      question: 'Hoe werkt de aanbetaling?',
-      answer: 'Na bevestiging van de boeking vragen wij een aanbetaling van 25% van het totaalbedrag. Het resterende bedrag wordt in overleg gefactureerd richting de trouwdatum.'
+      question: 'Mogen we onze eigen leveranciers (DJ, fotograaf, bloemist) meenemen?',
+      answer: 'De catering verzorgt Cookaholics altijd zelf — dat is onderdeel van het concept. Voor de rest werken we met een vast netwerk van leveranciers dat we goed kennen: van DJ\'s en fotografen tot bloemisten en ceremoniemeesters. Hebben jullie zelf al iemand in gedachten? Laat het weten, dan bespreken we de mogelijkheden.'
     },
     {
-      question: 'Wanneer moeten we definitieve aantallen doorgeven?',
-      answer: 'De definitieve aantallen dienen uiterlijk 2 weken voor de trouwdag doorgegeven te worden. Tot die tijd werken we met de geschatte aantallen uit de offerte.'
+      question: 'Wat gebeurt er bij slecht weer als we de tuin willen gebruiken?',
+      answer: 'Een paar dagen voor jullie trouwdag bellen we om de weersvoorspelling door te nemen. Zijn er aanpassingen nodig, dan bespreken we op dat moment wat de beste oplossing is. Omdat we twee volledige zalen binnen hebben, zit plan B al in het pand — jullie staan er dus niet alleen voor en er is altijd een volwaardig alternatief.'
     },
     {
-      question: 'Hoe werkt het inschakelen van externe partijen naast Cookaholics?',
-      answer: 'De catering wordt exclusief verzorgd door Cookaholics. Voor overige leveranciers zoals DJ, fotograaf, bloemist en decoratie zijn jullie vrij om eigen partijen in te schakelen. Wij stemmen graag af om alles soepel te laten verlopen.'
+      question: 'Waar kunnen onze bruiloftsgasten parkeren in Tilburg?',
+      answer: 'Met de auto parkeren jullie gasten het beste in Parkeergarage De Knegtel (Gasthuisring 60, 5041 DT Tilburg), op vijf minuten lopen van de villa. Direct voor de deur van Villa 1855 zijn 10 tot 12 parkeerplaatsen beschikbaar. Fietsen kunnen onbewaakt voor de deur gestald worden. Voor de uitnodigingen leveren we een kant-en-klare parkeer- en route-instructie aan die jullie met de gasten kunnen delen.'
     },
     {
-      question: 'Welke soorten versiering zijn toegestaan in Villa 1855?',
-      answer: 'Jullie mogen de villa naar eigen smaak aankleden. We vragen alleen om geen confetti, glitters of items die schade kunnen veroorzaken aan het monumentale interieur te gebruiken. Kaarsen zijn welkom in houders.'
+      question: 'Tot hoe laat mag onze bruiloft doorgaan?',
+      answer: 'Het feest mag doorgaan tot 00:45 uur. Om 01:00 uur moet de villa leeg zijn.'
     },
     {
-      question: 'Waar kunnen mijn gasten parkeren?',
-      answer: 'Er zijn meerdere parkeergarages en betaalde parkeerplaatsen op loopafstand van Villa 1855. Het centrum van Tilburg is ook goed bereikbaar met het openbaar vervoer – het station ligt op circa 10 minuten lopen.'
+      question: 'Hoe lang is een offerte voor onze bruiloft geldig?',
+      answer: 'Een offerte is drie weken geldig vanaf de datum van uitgifte.'
     },
     {
-      question: 'Hebben jullie partners die jullie aanbevelen?',
-      answer: 'Ja, wij werken samen met een netwerk van ervaren trouwleveranciers, van fotografen en DJ\'s tot bloemisten en stylisten. Tijdens een kennismaking delen we graag onze aanbevelingen.'
-    },
-    {
-      question: 'Kunnen we een trouwverzekering afsluiten?',
-      answer: 'Wij raden aan om een trouwverzekering af te sluiten bij een gespecialiseerde verzekeraar. Dit biedt dekking bij onvoorziene omstandigheden zoals ziekte of extreme weersomstandigheden.'
-    },
-    {
-      question: 'Voor hoeveel mensen is er plek tijdens de ceremonie, het diner & de feestavond?',
-      answer: 'Bij een ceremonie is er plaats voor maximaal 150 gasten. Voor een diner bieden wij ruimte aan maximaal 120 gasten. Tijdens de feestavond kunnen tot 150 gasten aanwezig zijn.'
-    },
-    {
-      question: 'Wat valt er te regelen qua entertainment voor de kinderen?',
-      answer: 'In overleg kunnen wij een aparte ruimte beschikbaar stellen voor de kinderen. Denk aan een kinderhoek met activiteiten. Ook kunnen wij een kindermenu verzorgen. Externe kinderanimatie is welkom.'
-    },
-    {
-      question: 'Hoe worden de speeches/stukjes geregeld?',
-      answer: 'Speeches en stukjes kunnen op elk gewenst moment in het programma worden ingepland. Wij beschikken over een microfoon en geluidsinstallatie. In het draaiboek stemmen we samen het ideale moment af.'
-    },
-    {
-      question: 'Mogen we het eten van tevoren proeven?',
-      answer: 'Ja, wij bieden een proefavond aan waarbij jullie het menu kunnen proeven en samen met de chef de laatste details bespreken. Dit wordt doorgaans enkele maanden voor de trouwdag ingepland.'
-    },
-    {
-      question: 'Is een externe ceremonie ook mogelijk?',
-      answer: 'Ja, het is mogelijk om de ceremonie op een externe locatie te houden en vervolgens naar Villa 1855 te komen voor de receptie, het diner en het feest. Wij passen het programma hierop aan.'
+      question: 'Hoe werkt de aanbetaling voor onze bruiloft?',
+      answer: 'We werken met een drie-fasen betaalschema: 25% na ondertekening van de offerte — waarmee jullie datum definitief vastligt; 55% twee weken voor de trouwdag — op basis van het definitieve aantal gasten en de definitieve keuzes; en 20% na afloop — op basis van de nacalculatie (extra consumpties, eventuele meeruren).'
     }
   ]
 

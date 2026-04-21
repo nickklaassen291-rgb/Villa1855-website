@@ -5,132 +5,46 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import Image from 'next/image'
 import Link from 'next/link'
+import ZakelijkCalculator from './ZakelijkCalculator'
 
 // Video ID
 const YOUTUBE_VIDEO_ID = 'ko5JAY5v7-E'
 
-// Arrangement data - Prijzen 2026 (excl. BTW)
-const arrangements = {
-  1: {
-    name: 'Netwerkborrel',
-    description: 'Een informele setting om relaties te versterken. Ideaal voor netwerkevents, productlanceringen of seizoensborrels. De monumentale sfeer van Villa 1855 zorgt voor gespreksstof en een onvergetelijke indruk.',
-    included: [
-      'Macaron bij ontvangst',
-      'Tafelgarnituur',
-      '2 luxe hapjes per persoon',
-      '2 bites per persoon',
-      'Bier, fris, wijn en warme dranken',
-      'Meubilair',
-      'Locatiehuur',
-      'Schoonmaak'
-    ],
-    program: [
-      { time: '16:00', activity: 'Ontvangst gasten | borrel' },
-      { time: '19:00', activity: 'Einde bijeenkomst' }
-    ],
-    pricing: [
-      { name: 'Basis', description: 'All-inclusive netwerkborrel pakket', price: 52.50 }
-    ]
-  },
-  2: {
-    name: 'Zakelijke bijeenkomst',
-    description: 'Een productieve dag in een inspirerende omgeving. Perfect voor strategiesessies, trainingen, presentaties of workshops. De verschillende ruimtes bieden mogelijkheden voor plenaire sessies en break-outs.',
-    included: [
-      'Macaron bij ontvangst',
-      'Tafelgarnituur',
-      '2 luxe hapjes per persoon',
-      'Bier, fris, wijn en warme dranken',
-      'Meubilair',
-      'Beeldscherm 55 inch',
-      'Locatiehuur',
-      'Schoonmaak'
-    ],
-    program: [
-      { time: '14:00', activity: 'Ontvangst gasten' },
-      { time: '14:30', activity: 'Start plenaire sessie' },
-      { time: '15:30', activity: 'Einde plenaire sessie | borrel' },
-      { time: '18:30', activity: 'Einde bijeenkomst' }
-    ],
-    pricing: [
-      { name: 'Basis', description: 'All-inclusive bijeenkomst pakket', price: 65 }
-    ]
-  },
-  3: {
-    name: 'Zakelijk diner',
-    description: 'Versterk je zakelijke relaties met een onvergetelijk diner. Combineer netwerken met excellent eten in een unieke setting. Maak van je klanten en relaties ambassadeurs.',
-    included: [
-      'Tafelgarnituur',
-      '3-gangen diner',
-      'Bier, fris, wijn en warme dranken',
-      'Meubilair',
-      'Linnen',
-      'Locatiehuur',
-      'Schoonmaak'
-    ],
-    program: [
-      { time: '17:30', activity: 'Ontvangst gasten' },
-      { time: '18:00', activity: 'Borrel' },
-      { time: '19:00', activity: 'Start diner' },
-      { time: '22:00', activity: 'Einde diner | naborrel' },
-      { time: '23:00', activity: 'Einde bijeenkomst' }
-    ],
-    pricing: [
-      { name: 'Basis', description: 'All-inclusive diner pakket', price: 92.50 }
-    ],
-    extras: [
-      { name: 'Extra borrel vooraf', description: 'Bier, fris, wijn, warme dranken + 2 luxe hapjes p.p.', price: 15 },
-      { name: 'Extra borrel achteraf', description: 'Bier, fris, wijn, warme dranken + 2 bites p.p.', price: 15 }
-    ]
-  }
-}
-
-type ArrangementKey = keyof typeof arrangements
-
 export default function ZakelijkPageContent() {
   const [activeQuestion, setActiveQuestion] = useState<number | null>(null)
-  const [currentArrangement, setCurrentArrangement] = useState<ArrangementKey>(1)
-  const [selectedPriceIndex, setSelectedPriceIndex] = useState(0)
-  const [guestCount, setGuestCount] = useState('')
-  const [eventDate, setEventDate] = useState('')
 
   const toggleQuestion = (index: number) => {
     setActiveQuestion(activeQuestion === index ? null : index)
   }
 
-  const handleArrangementChange = (arrangement: ArrangementKey) => {
-    setCurrentArrangement(arrangement)
-    setSelectedPriceIndex(0)
-  }
-
-  const calculateTotal = () => {
-    const count = parseInt(guestCount) || 0
-    if (count > 0) {
-      const price = arrangements[currentArrangement].pricing[selectedPriceIndex].price
-      return `€${(price * count).toLocaleString('nl-NL')} (${count} × €${price})`
-    }
-    return 'Vul aantal personen in'
-  }
-
   const faqItems = [
     {
-      question: 'Wat is de capaciteit voor zakelijke events?',
-      answer: 'Villa 1855 biedt ruimte voor maximaal 120 gasten bij een dinersetting en 150 gasten bij een staande receptie of borrel. Voor vergaderingen en presentaties zijn opstellingen mogelijk tot 80 personen theateropstelling.'
+      question: 'Wat is de capaciteit voor zakelijke events bij Villa 1855?',
+      answer: 'Voor een borrel of walking dinner waarbij we beide zalen gebruiken, is er plek voor maximaal 150 personen. Voor een zittend diner is het maximum 80 personen. Voor events in de buitenruimte bespreken we de aantallen in overleg — dat hangt af van de opstelling en het programma.'
     },
     {
-      question: 'Welke AV-faciliteiten zijn beschikbaar?',
-      answer: 'Wij beschikken over een beamer met groot scherm, professionele geluidsinstallatie, draadloze microfoons, en snel WiFi. Technische ondersteuning is op aanvraag beschikbaar.'
+      question: 'Kunnen we Villa 1855 exclusief afhuren voor ons event?',
+      answer: 'Ja. Op jullie eventdag is Villa 1855 helemaal van jullie. We plannen nooit meerdere events tegelijk — de hele villa, de hele dag, één gezelschap. Geen andere groepen in de zaal ernaast, geen overlap in de tuin.'
     },
     {
-      question: 'Zijn er parkeervoorzieningen?',
-      answer: 'Er is betaald parkeren in de directe omgeving en meerdere parkeergarages binnen 5 minuten lopen. Op aanvraag kunnen wij parkeerkaarten verzorgen voor je gasten.'
+      question: 'Is Villa 1855 geschikt voor zowel formele als informele bijeenkomsten?',
+      answer: 'Ja. Van directiediners en klantenevents tot informele borrels en personeelsfeesten — de villa past zich aan aan jullie event. De styling, de setting en het tempo stemmen we samen af op de sfeer die jullie voor ogen hebben.'
     },
     {
-      question: 'Kunnen we eigen leveranciers meenemen?',
-      answer: 'De catering wordt exclusief verzorgd door Cookaholics. Voor entertainment, decoratie en techniek ben je vrij om eigen leveranciers in te schakelen, of te kiezen uit onze vaste partners.'
+      question: 'Kunnen jullie ons volledig ontzorgen in de organisatie en catering?',
+      answer: 'Ja. Cookaholics verzorgt de catering — dat staat vast en is onderdeel van het concept. Voor de rest van het event werken we met een vast netwerk van leveranciers dat we goed kennen. Eén team, één aanspreekpunt, één aansturing. Van eerste planning en draaiboek tot de service op de dag zelf. Hebben jullie specifieke wensen of vaste partners vanuit jullie organisatie? Laat het weten — we bespreken in overleg wat past.'
     },
     {
-      question: 'Wat zijn de annuleringsvoorwaarden?',
-      answer: 'Tot 60 dagen voor het event kun je kosteloos annuleren. Tussen 30-60 dagen geldt 50% van de locatiekosten, binnen 30 dagen wordt het volledige bedrag in rekening gebracht.'
+      question: 'Kunnen we onze eigen leveranciers meenemen?',
+      answer: 'De catering verzorgen we altijd zelf — daar is geen uitzondering op. Voor andere onderdelen van het event, zoals AV, entertainment of fotografie, kunnen jullie een eigen leverancier meebrengen. We stemmen vooraf af hoe we samenwerken met jullie leverancier, zodat de dag soepel verloopt en iedereen weet wat er van hen verwacht wordt.'
+    },
+    {
+      question: 'Welke AV-faciliteiten zijn beschikbaar voor presentaties en meetings?',
+      answer: 'Villa 1855 beschikt over professionele geluidsapparatuur. Aanvullende AV-middelen — zoals beamers, schermen of specifieke presentatie-apparatuur — huren we in via onze vaste partners en berekenen we door aan de opdrachtgever. Vertel ons vooraf wat jullie nodig hebben voor het programma, dan regelen wij de rest.'
+    },
+    {
+      question: 'Zijn er parkeervoorzieningen in de buurt voor onze gasten?',
+      answer: 'Met de auto parkeren jullie gasten het beste in Parkeergarage De Knegtel (Gasthuisring 60, 5041 DT Tilburg), op vijf minuten lopen van Villa 1855. Direct voor de deur zijn 10 tot 12 parkeerplaatsen beschikbaar. Fietsen kunnen onbewaakt voor de deur gestald worden. Vanaf Station Tilburg is het ongeveer vijf minuten lopen naar de villa. We leveren vooraf kant-en-klare parkeer- en route-informatie aan die jullie met de gasten kunnen delen.'
     }
   ]
 
@@ -301,153 +215,8 @@ export default function ZakelijkPageContent() {
           </div>
         </section>
 
-        {/* Arrangement Configurator */}
-        <section className="configurator" id="configurator">
-          <div className="container">
-            <div className="configurator-header">
-              <h2>Stel je arrangement samen</h2>
-              <p>Kies een eventtype, bepaal je datum en aantal gasten, en ontdek direct de mogelijkheden en richtprijzen.</p>
-            </div>
-
-            <div className="configurator-box">
-              {/* Controls */}
-              <div className="configurator-controls">
-                <div className="controls-grid">
-                  <div className="control-group">
-                    <label>Kies je eventtype</label>
-                    <div className="arrangement-tabs">
-                      {([1, 2, 3] as ArrangementKey[]).map((num) => (
-                        <button
-                          key={num}
-                          className={`arrangement-tab ${currentArrangement === num ? 'active' : ''}`}
-                          onClick={() => handleArrangementChange(num)}
-                        >
-                          <span className="tab-name">{arrangements[num].name}</span>
-                          <span className="tab-type">
-                            €{arrangements[num].pricing[0].price.toFixed(2).replace('.', ',')} p.p.
-                          </span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="control-group">
-                    <label>Datum event</label>
-                    <input
-                      type="date"
-                      className="control-input"
-                      value={eventDate}
-                      onChange={(e) => setEventDate(e.target.value)}
-                    />
-                  </div>
-                  <div className="control-group">
-                    <label>Aantal personen</label>
-                    <input
-                      type="number"
-                      className="control-input"
-                      placeholder="Bijv. 50"
-                      min="20"
-                      max="150"
-                      value={guestCount}
-                      onChange={(e) => setGuestCount(e.target.value)}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="configurator-content">
-                {/* Arrangement Details */}
-                <div className="arrangement-details">
-                  <h3>{arrangements[currentArrangement].name}</h3>
-                  <p className="arrangement-description">{arrangements[currentArrangement].description}</p>
-
-                  <div className="included-list">
-                    <h4>Inbegrepen</h4>
-                    <ul>
-                      {arrangements[currentArrangement].included.map((item, index) => (
-                        <li key={index}>
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="sample-program">
-                    <h4>Voorbeeldprogramma</h4>
-                    <ul className="program-timeline">
-                      {arrangements[currentArrangement].program.map((item, index) => (
-                        <li key={index}>
-                          <span className="program-time">{item.time}</span>
-                          <span className="program-activity">{item.activity}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Pricing Options */}
-                <div className="pricing-options">
-                  <h3>Je investering</h3>
-                  <p className="pricing-subtitle">Prijzen 2026, exclusief BTW</p>
-
-                  <div className="pricing-cards">
-                    {arrangements[currentArrangement].pricing.map((pricing, index) => (
-                      <button
-                        key={index}
-                        className={`pricing-card ${selectedPriceIndex === index ? 'selected' : ''}`}
-                        onClick={() => setSelectedPriceIndex(index)}
-                      >
-                        <div className="pricing-card-info">
-                          <h4>{pricing.name}</h4>
-                          <p>{pricing.description}</p>
-                        </div>
-                        <div className="pricing-card-price">
-                          <span className="price">€{pricing.price.toFixed(2).replace('.', ',')}</span>
-                          <span className="unit">p.p.</span>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-
-                  {/* Extra opties voor Zakelijk diner */}
-                  {currentArrangement === 3 && arrangements[3].extras && (
-                    <div className="extras-section">
-                      <h4>Optionele uitbreidingen</h4>
-                      <div className="extras-list">
-                        {arrangements[3].extras.map((extra, index) => (
-                          <div key={index} className="extra-item">
-                            <div className="extra-info">
-                              <span className="extra-name">{extra.name}</span>
-                              <span className="extra-desc">{extra.description}</span>
-                            </div>
-                            <span className="extra-price">+€{extra.price} p.p.</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* CTA */}
-              <div className="configurator-cta">
-                <div className="price-estimate">
-                  Geschatte investering
-                  <strong>{calculateTotal()}</strong>
-                </div>
-                <Link href="#contact" className="btn btn-primary">
-                  Vrijblijvende offerte aanvragen
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Arrangement Calculator */}
+        <ZakelijkCalculator />
 
         {/* Reviews */}
         <section className="reviews">
