@@ -154,12 +154,12 @@ export function CalculatorPdf({ data }: { data: CalculatorPdfData }) {
 
         <Text style={styles.sectionTitle}>Dagprogramma</Text>
         <View style={styles.row}>
-          <Text style={styles.label}>{receptionLabel(receptionType)}</Text>
-          <Text style={styles.value}>{euro(costs.reception)}</Text>
-        </View>
-        <View style={styles.row}>
           <Text style={styles.label}>Dranken dagprogramma</Text>
           <Text style={styles.value}>{euro(costs.drinksDay)}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.label}>{receptionLabel(receptionType)}</Text>
+          <Text style={styles.value}>{euro(costs.reception)}</Text>
         </View>
         <View style={styles.row}>
           <Text style={styles.label}>{dinnerLabel(dinnerType)}</Text>
@@ -168,12 +168,12 @@ export function CalculatorPdf({ data }: { data: CalculatorPdfData }) {
 
         <Text style={styles.sectionTitle}>Feestavond</Text>
         <View style={styles.row}>
-          <Text style={styles.label}>{partyFoodLabel(partyFoodType)}</Text>
-          <Text style={styles.value}>{euro(costs.partyFood)}</Text>
-        </View>
-        <View style={styles.row}>
           <Text style={styles.label}>Dranken avondprogramma</Text>
           <Text style={styles.value}>{euro(costs.drinksEvening)}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.label}>{partyFoodLabel(partyFoodType)}</Text>
+          <Text style={styles.value}>{euro(costs.partyFood)}</Text>
         </View>
         {lateNightType !== 'none' && (
           <View style={styles.row}>
