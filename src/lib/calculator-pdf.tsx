@@ -2,20 +2,27 @@ import { Document, Page, Text, View, StyleSheet, renderToBuffer } from '@react-p
 import React from 'react'
 
 export type DinnerType = 'three-course' | 'four-course' | 'shared'
+export type ReceptionType = 'a' | 'b' | 'c'
+export type PartyFoodType = 'a' | 'b'
+export type LateNightType = 'none' | 'a' | 'b'
 
 export interface CalculatorPdfData {
   customerName: string
   weddingDate?: string
   dayGuests: number
   eveningGuests: number
+  receptionType: ReceptionType
   dinnerType: DinnerType
+  partyFoodType: PartyFoodType
+  lateNightType: LateNightType
   discounts: string[]
   costs: {
-    borrelplank: number
+    reception: number
     drinksDay: number
     dinner: number
     partyFood: number
     drinksEvening: number
+    lateNight: number
     subtotal: number
     houseRental: number
     houseRentalOriginal: number
@@ -36,6 +43,22 @@ function dinnerLabel(type: DinnerType): string {
   if (type === 'four-course') return '4-gangen diner'
   if (type === 'shared') return 'Shared diner'
   return '3-gangen diner'
+}
+
+function receptionLabel(type: ReceptionType): string {
+  if (type === 'b') return 'Receptie hapjes B'
+  if (type === 'c') return 'Receptie hapjes C'
+  return 'Receptie hapjes A'
+}
+
+function partyFoodLabel(type: PartyFoodType): string {
+  return type === 'b' ? 'Feestavond hapjes B' : 'Feestavond hapjes A'
+}
+
+function lateNightLabel(type: LateNightType): string {
+  if (type === 'a') return 'Late night snack A'
+  if (type === 'b') return 'Late night snack B'
+  return ''
 }
 
 function euro(n: number): string {
@@ -72,7 +95,7 @@ const styles = StyleSheet.create({
 })
 
 export function CalculatorPdf({ data }: { data: CalculatorPdfData }) {
-  const { customerName, weddingDate, dayGuests, eveningGuests, dinnerType, discounts, costs } = data
+  const { customerName, weddingDate, dayGuests, eveningGuests, receptionType, dinnerType, partyFoodType, lateNightType, discounts, costs } = data
   const today = new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })
 
   return (
@@ -104,9 +127,23 @@ export function CalculatorPdf({ data }: { data: CalculatorPdfData }) {
             <Text style={styles.metaValue}>{eveningGuests}</Text>
           </View>
           <View style={styles.metaRow}>
+            <Text style={styles.metaLabel}>Receptie hapjes:</Text>
+            <Text style={styles.metaValue}>{receptionLabel(receptionType)}</Text>
+          </View>
+          <View style={styles.metaRow}>
             <Text style={styles.metaLabel}>Dinerkeuze:</Text>
             <Text style={styles.metaValue}>{dinnerLabel(dinnerType)}</Text>
           </View>
+          <View style={styles.metaRow}>
+            <Text style={styles.metaLabel}>Feestavond hapjes:</Text>
+            <Text style={styles.metaValue}>{partyFoodLabel(partyFoodType)}</Text>
+          </View>
+          {lateNightType !== 'none' && (
+            <View style={styles.metaRow}>
+              <Text style={styles.metaLabel}>Late night snack:</Text>
+              <Text style={styles.metaValue}>{lateNightLabel(lateNightType)}</Text>
+            </View>
+          )}
           {discounts.length > 0 && (
             <View style={styles.metaRow}>
               <Text style={styles.metaLabel}>Kortingen:</Text>
@@ -117,8 +154,8 @@ export function CalculatorPdf({ data }: { data: CalculatorPdfData }) {
 
         <Text style={styles.sectionTitle}>Dagprogramma</Text>
         <View style={styles.row}>
-          <Text style={styles.label}>Borrelplank</Text>
-          <Text style={styles.value}>{euro(costs.borrelplank)}</Text>
+          <Text style={styles.label}>{receptionLabel(receptionType)}</Text>
+          <Text style={styles.value}>{euro(costs.reception)}</Text>
         </View>
         <View style={styles.row}>
           <Text style={styles.label}>Dranken dagprogramma</Text>
@@ -131,13 +168,19 @@ export function CalculatorPdf({ data }: { data: CalculatorPdfData }) {
 
         <Text style={styles.sectionTitle}>Feestavond</Text>
         <View style={styles.row}>
-          <Text style={styles.label}>Hapjesarrangement</Text>
+          <Text style={styles.label}>{partyFoodLabel(partyFoodType)}</Text>
           <Text style={styles.value}>{euro(costs.partyFood)}</Text>
         </View>
         <View style={styles.row}>
           <Text style={styles.label}>Dranken avondprogramma</Text>
           <Text style={styles.value}>{euro(costs.drinksEvening)}</Text>
         </View>
+        {lateNightType !== 'none' && (
+          <View style={styles.row}>
+            <Text style={styles.label}>{lateNightLabel(lateNightType)}</Text>
+            <Text style={styles.value}>{euro(costs.lateNight)}</Text>
+          </View>
+        )}
 
         <View style={styles.subtotalRow}>
           <Text style={styles.subtotalLabel}>Subtotaal arrangementen</Text>
