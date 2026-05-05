@@ -1,7 +1,96 @@
 'use client'
 
-import { useState } from 'react'
-import { Check, Users, CalendarDays, Sparkles, ChevronDown } from 'lucide-react'
+import { useState, useEffect, useCallback } from 'react'
+import { Check, Users, CalendarDays, Sparkles, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react'
+
+type BookingStatus = 'available' | 'option' | 'booked' | 'limited' | 'closed'
+interface DayStatus {
+  date: string
+  status: BookingStatus
+}
+
+const WEEKDAYS_SHORT = ['Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za', 'Zo']
+
+function formatDateString(year: number, month: number, day: number): string {
+  return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`
+}
+function getMonthDays(year: number, month: number): number {
+  return new Date(year, month + 1, 0).getDate()
+}
+function getFirstDayOfMonth(year: number, month: number): number {
+  const firstDay = new Date(year, month, 1).getDay()
+  return firstDay === 0 ? 6 : firstDay - 1
+}
+function parseDate(dateStr: string): Date {
+  const [y, m, d] = dateStr.split('-').map(Number)
+  return new Date(y, m - 1, d)
+}
+function isPastDate(dateStr: string): boolean {
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+  return parseDate(dateStr) < today
+}
+function isTodayDate(dateStr: string): boolean {
+  const t = new Date()
+  return formatDateString(t.getFullYear(), t.getMonth(), t.getDate()) === dateStr
+}
+function isThursdayDate(dateStr: string): boolean {
+  return parseDate(dateStr).getDay() === 4
+}
+function formatMonthYear(year: number, month: number): string {
+  return new Intl.DateTimeFormat('nl-NL', { month: 'long', year: 'numeric' }).format(new Date(year, month, 1))
+}
+function formatDisplayDate(dateStr: string): string {
+  return new Intl.DateTimeFormat('nl-NL', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(parseDate(dateStr))
+}
+
+const STATUS_STYLE: Record<BookingStatus, { bg: string; border: string; text: string; dot: string; tooltip: string }> = {
+  available: { bg: 'bg-available-light', border: 'border-available', text: 'text-available', dot: 'bg-available', tooltip: 'Beschikbaar — klik om te selecteren' },
+  option: { bg: 'bg-option-light', border: 'border-option', text: 'text-option', dot: 'bg-option', tooltip: 'In optie — vraag naar mogelijkheden' },
+  booked: { bg: 'bg-booked-light', border: 'border-booked', text: 'text-booked', dot: 'bg-booked', tooltip: 'Geboekt' },
+  limited: { bg: 'bg-limited-light', border: 'border-limited', text: 'text-limited', dot: 'bg-limited', tooltip: 'Beschikbaar vanaf 18:00' },
+  closed: { bg: 'bg-closed-light', border: 'border-closed', text: 'text-closed', dot: 'bg-closed', tooltip: 'Gesloten — ma, di, wo' },
+}
+
+function MiniCalendarDay({
+  day,
+  status,
+  isToday,
+  isPast,
+  isThursday,
+  isSelected,
+  onClick,
+}: {
+  day: number
+  status: BookingStatus
+  isToday: boolean
+  isPast: boolean
+  isThursday: boolean
+  isSelected: boolean
+  onClick?: () => void
+}) {
+  const cfg = STATUS_STYLE[status]
+  const clickable = !isPast && status !== 'closed' && status !== 'booked'
+  const classes = [
+    'aspect-square flex flex-col items-center justify-center border relative transition-all duration-200 group',
+    isPast ? 'opacity-40 bg-gray-50 border-gray-100' : `${cfg.bg} ${cfg.border}`,
+    clickable ? 'cursor-pointer hover:scale-105 hover:shadow-md hover:z-10' : !isPast ? 'cursor-not-allowed' : '',
+    isSelected ? 'ring-2 ring-accent ring-offset-1 z-10' : '',
+  ].join(' ')
+
+  return (
+    <div className={classes} onClick={clickable ? onClick : undefined}>
+      <span className={`font-heading text-base ${isPast ? 'text-primary' : cfg.text}`}>{day}</span>
+      {!isPast && isThursday && (status === 'limited' || status === 'option') && (
+        <span className={`text-[9px] font-medium ${cfg.text}`}>18:00</span>
+      )}
+      {!isPast && status !== 'closed' && !isThursday && (
+        <span className={`w-1 h-1 rounded-full mt-0.5 ${cfg.dot}`} />
+      )}
+      {isToday && <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-accent" />}
+    </div>
+  )
+}
 
 // ============================================================
 // PAKKETTEN - Villa 1855 Zakelijk (excl. BTW, Prijzen 2026)
@@ -94,6 +183,148 @@ function formatDateNL(date: string): string {
 }
 
 // ============================================================
+// AVAILABILITY DATE PICKER (inline calendar)
+// ============================================================
+function AvailabilityPicker({
+  value,
+  onSelect,
+}: {
+  value: string
+  onSelect: (date: string, status: BookingStatus) => void
+}) {
+  const now = new Date()
+  const [month, setMonth] = useState(now.getMonth())
+  const [year, setYear] = useState(now.getFullYear())
+  const [days, setDays] = useState<DayStatus[]>([])
+  const [loading, setLoading] = useState(true)
+
+  const fetchAvailability = useCallback(async () => {
+    setLoading(true)
+    try {
+      const res = await fetch(`/api/availability?month=${month + 1}&year=${year}`)
+      if (res.ok) {
+        const data = await res.json()
+        setDays(data.days || [])
+      }
+    } catch {
+      // ignore — picker still works, statuses default to available
+    } finally {
+      setLoading(false)
+    }
+  }, [month, year])
+
+  useEffect(() => {
+    fetchAvailability()
+  }, [fetchAvailability])
+
+  const goPrev = () => {
+    if (month === 0) {
+      setMonth(11)
+      setYear(year - 1)
+    } else {
+      setMonth(month - 1)
+    }
+  }
+  const goNext = () => {
+    if (month === 11) {
+      setMonth(0)
+      setYear(year + 1)
+    } else {
+      setMonth(month + 1)
+    }
+  }
+
+  const firstDay = getFirstDayOfMonth(year, month)
+  const totalDays = getMonthDays(year, month)
+  const dayStatusMap = days.reduce((acc, d) => {
+    acc[d.date] = d.status
+    return acc
+  }, {} as Record<string, BookingStatus>)
+
+  const legendItems: { status: BookingStatus; label: string; bg: string; border: string; dot: string }[] = [
+    { status: 'available', label: 'Beschikbaar', bg: 'bg-available-light', border: 'border-available', dot: 'bg-available' },
+    { status: 'limited', label: 'Vanaf 18:00', bg: 'bg-limited-light', border: 'border-limited', dot: 'bg-limited' },
+    { status: 'option', label: 'In optie', bg: 'bg-option-light', border: 'border-option', dot: 'bg-option' },
+    { status: 'booked', label: 'Geboekt', bg: 'bg-booked-light', border: 'border-booked', dot: 'bg-booked' },
+    { status: 'closed', label: 'Gesloten', bg: 'bg-closed-light', border: 'border-closed', dot: 'bg-closed' },
+  ]
+
+  return (
+    <div className="bg-white border border-primary-lighter">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-primary-lighter">
+        <button
+          type="button"
+          onClick={goPrev}
+          className="w-9 h-9 flex items-center justify-center border border-primary-lighter hover:bg-primary-darkest hover:border-primary-darkest hover:text-white transition-colors"
+          aria-label="Vorige maand"
+        >
+          <ChevronLeft size={16} />
+        </button>
+        <span className="font-heading text-base text-primary-darkest capitalize">
+          {formatMonthYear(year, month)}
+        </span>
+        <button
+          type="button"
+          onClick={goNext}
+          className="w-9 h-9 flex items-center justify-center border border-primary-lighter hover:bg-primary-darkest hover:border-primary-darkest hover:text-white transition-colors"
+          aria-label="Volgende maand"
+        >
+          <ChevronRight size={16} />
+        </button>
+      </div>
+
+      <div className="p-3">
+        <div className="grid grid-cols-7 gap-1 mb-1">
+          {WEEKDAYS_SHORT.map((d) => (
+            <div key={d} className="text-center text-[10px] font-medium tracking-wider uppercase text-primary py-1">
+              {d}
+            </div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-7 gap-1">
+          {Array.from({ length: firstDay }).map((_, i) => (
+            <div key={`empty-${i}`} className="aspect-square" />
+          ))}
+          {loading
+            ? Array.from({ length: totalDays }).map((_, i) => (
+                <div key={`s-${i}`} className="aspect-square bg-gray-100 animate-pulse" />
+              ))
+            : Array.from({ length: totalDays }).map((_, i) => {
+                const day = i + 1
+                const dateStr = formatDateString(year, month, day)
+                const status: BookingStatus = dayStatusMap[dateStr] || 'available'
+                return (
+                  <MiniCalendarDay
+                    key={dateStr}
+                    day={day}
+                    status={status}
+                    isToday={isTodayDate(dateStr)}
+                    isPast={isPastDate(dateStr)}
+                    isThursday={isThursdayDate(dateStr)}
+                    isSelected={dateStr === value}
+                    onClick={() => onSelect(dateStr, status)}
+                  />
+                )
+              })}
+        </div>
+      </div>
+
+      <div className="border-t border-primary-lighter px-3 py-2 flex flex-wrap gap-x-4 gap-y-1.5">
+        {legendItems.map((item) => (
+          <div key={item.status} className="flex items-center gap-1.5 text-[11px] text-primary">
+            <span className={`w-3 h-3 border ${item.bg} ${item.border} flex items-center justify-center`}>
+              <span className={`w-1 h-1 rounded-full ${item.dot}`} />
+            </span>
+            {item.label}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ============================================================
 // OPTION FORM (left column when expanded)
 // ============================================================
 type AvailabilityState = 'idle' | 'checking' | 'available' | 'unavailable' | 'error'
@@ -124,34 +355,11 @@ function OptionForm({ pkg }: { pkg: typeof PACKAGES[PackageKey] }) {
   const [submitting, setSubmitting] = useState(false)
   const [submitResult, setSubmitResult] = useState<{ success: boolean; message: string } | null>(null)
 
-  const checkAvailability = async (date: string) => {
-    if (!date) {
-      setAvailability('idle')
-      return
-    }
-    setAvailability('checking')
-    try {
-      const d = new Date(date)
-      const month = d.getMonth() + 1
-      const year = d.getFullYear()
-      const res = await fetch(`/api/availability?month=${month}&year=${year}`)
-      if (!res.ok) throw new Error('availability fetch failed')
-      const data: { days: { date: string; status: string }[] } = await res.json()
-      const day = data.days.find((x) => x.date === date)
-      if (!day) {
-        setAvailability('available')
-        return
-      }
-      const free = day.status === 'available' || day.status === 'limited'
-      setAvailability(free ? 'available' : 'unavailable')
-    } catch {
-      setAvailability('error')
-    }
-  }
-
-  const handleDateChange = (date: string) => {
+  const handleDateSelect = (date: string, status: BookingStatus) => {
     setForm((f) => ({ ...f, date }))
-    checkAvailability(date)
+    if (status === 'available' || status === 'limited') setAvailability('available')
+    else if (status === 'option') setAvailability('available')
+    else setAvailability('unavailable')
   }
 
   const toggleExtra = (label: string, checked: boolean) => {
@@ -227,49 +435,43 @@ function OptionForm({ pkg }: { pkg: typeof PACKAGES[PackageKey] }) {
         <h4 className="font-heading text-xl font-medium text-primary-darkest">Plaats een optie</h4>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="space-y-2">
-          <label htmlFor={`${pkg.id}-date`} className="text-sm font-medium text-primary-darkest flex items-center gap-2">
-            <CalendarDays className="h-4 w-4" />
-            Datum
-          </label>
-          <input
-            id={`${pkg.id}-date`}
-            type="date"
-            required
-            value={form.date}
-            onChange={(e) => handleDateChange(e.target.value)}
-            className="w-full h-12 px-4 border border-primary-light rounded-none bg-white text-primary-darkest focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent"
-          />
-          {availability === 'checking' && <p className="text-xs text-primary">Beschikbaarheid checken…</p>}
-          {availability === 'available' && (
-            <p className="text-xs text-green-700 font-medium">Datum lijkt beschikbaar — we bevestigen na aanvraag.</p>
-          )}
-          {availability === 'unavailable' && (
-            <p className="text-xs text-red-700 font-medium">Deze datum is niet beschikbaar. Kies een andere datum.</p>
-          )}
-          {availability === 'error' && (
-            <p className="text-xs text-primary">Beschikbaarheid niet te checken — verstuur gerust, wij nemen contact op.</p>
-          )}
-        </div>
+      <div className="space-y-3">
+        <label className="text-sm font-medium text-primary-darkest flex items-center gap-2">
+          <CalendarDays className="h-4 w-4" />
+          Kies een datum
+        </label>
+        <AvailabilityPicker value={form.date} onSelect={handleDateSelect} />
+        {form.date && availability === 'available' && (
+          <p className="text-xs text-green-700 font-medium">
+            Geselecteerd: {formatDisplayDate(form.date)} — we bevestigen je optie na aanvraag.
+          </p>
+        )}
+        {form.date && availability === 'unavailable' && (
+          <p className="text-xs text-red-700 font-medium">
+            {formatDisplayDate(form.date)} is niet beschikbaar. Kies een andere datum.
+          </p>
+        )}
+        {!form.date && (
+          <p className="text-xs text-primary">Klik op een beschikbare dag in de kalender hierboven.</p>
+        )}
+      </div>
 
-        <div className="space-y-2">
-          <label htmlFor={`${pkg.id}-guests`} className="text-sm font-medium text-primary-darkest flex items-center gap-2">
-            <Users className="h-4 w-4" />
-            Aantal personen
-          </label>
-          <input
-            id={`${pkg.id}-guests`}
-            type="number"
-            required
-            min="1"
-            max="150"
-            value={form.guests || ''}
-            onChange={(e) => setForm((f) => ({ ...f, guests: Math.max(0, parseInt(e.target.value) || 0) }))}
-            placeholder="Bijv. 50"
-            className="w-full h-12 px-4 border border-primary-light rounded-none bg-white text-primary-darkest focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent"
-          />
-        </div>
+      <div className="space-y-2">
+        <label htmlFor={`${pkg.id}-guests`} className="text-sm font-medium text-primary-darkest flex items-center gap-2">
+          <Users className="h-4 w-4" />
+          Aantal personen
+        </label>
+        <input
+          id={`${pkg.id}-guests`}
+          type="number"
+          required
+          min="1"
+          max="150"
+          value={form.guests || ''}
+          onChange={(e) => setForm((f) => ({ ...f, guests: Math.max(0, parseInt(e.target.value) || 0) }))}
+          placeholder="Bijv. 50"
+          className="w-full h-12 px-4 border border-primary-light rounded-none bg-white text-primary-darkest focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent"
+        />
       </div>
 
       {pkg.extras.length > 0 && (

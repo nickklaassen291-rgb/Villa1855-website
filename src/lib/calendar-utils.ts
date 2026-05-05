@@ -1,6 +1,28 @@
-import { format, parseISO, isBefore, isToday, startOfDay, getDay } from "date-fns";
-import { nl } from "date-fns/locale";
 import type { BookingStatus, CatermonkeyOrderStatus, DayStatus } from "@/types/calendar";
+
+function parseISO(dateStr: string): Date {
+  const [y, m, d] = dateStr.split("-").map(Number);
+  return new Date(y, (m || 1) - 1, d || 1);
+}
+function startOfDay(date: Date): Date {
+  const d = new Date(date);
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+function isBefore(a: Date, b: Date): boolean {
+  return a.getTime() < b.getTime();
+}
+function isToday(date: Date): boolean {
+  const t = new Date();
+  return (
+    date.getFullYear() === t.getFullYear() &&
+    date.getMonth() === t.getMonth() &&
+    date.getDate() === t.getDate()
+  );
+}
+function getDay(date: Date): number {
+  return date.getDay();
+}
 
 // ===========================================
 // DATE FORMATTING
@@ -12,12 +34,19 @@ export function formatDateString(year: number, month: number, day: number): stri
 
 export function formatDisplayDate(dateStr: string): string {
   const date = parseISO(dateStr);
-  return format(date, "EEEE d MMMM yyyy", { locale: nl });
+  return new Intl.DateTimeFormat("nl-NL", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(date);
 }
 
 export function formatMonthYear(year: number, month: number): string {
-  const date = new Date(year, month, 1);
-  return format(date, "MMMM yyyy", { locale: nl });
+  return new Intl.DateTimeFormat("nl-NL", {
+    month: "long",
+    year: "numeric",
+  }).format(new Date(year, month, 1));
 }
 
 // ===========================================
