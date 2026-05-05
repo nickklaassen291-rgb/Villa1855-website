@@ -212,9 +212,7 @@ function GuestForm({ data, onChange }: { data: FormData; onChange: (data: FormDa
         />
         <div className="text-xs text-primary space-y-1">
           <p className="font-medium mb-2">Inclusief:</p>
-          <p>&bull; Receptie hapjes: keuze (&euro;{getReceptionPriceFormatted(data.receptionType)} p.p.)</p>
           <p>&bull; Dranken dagprogramma: ontvangst, ceremonie, receptie &amp; diner (&euro;42,50 p.p.)</p>
-          <p>&bull; Diner: keuze menu (&euro;{getDinnerPriceFormatted(data.dinnerType)} p.p.)</p>
         </div>
       </div>
 
@@ -320,11 +318,7 @@ function GuestForm({ data, onChange }: { data: FormData; onChange: (data: FormDa
         />
         <div className="text-xs text-primary space-y-1">
           <p className="font-medium mb-2">Inclusief:</p>
-          <p>&bull; Feestavond hapjes: keuze (&euro;{getPartyFoodPriceFormatted(data.partyFoodType)} p.p.)</p>
           <p>&bull; Dranken avondprogramma (&euro;38,25 p.p.)</p>
-          {data.lateNightType !== 'none' && (
-            <p>&bull; {getLateNightLabel(data.lateNightType)} (&euro;{data.lateNightType === 'a' ? '8,00' : '10,00'} p.p.)</p>
-          )}
         </div>
       </div>
 
