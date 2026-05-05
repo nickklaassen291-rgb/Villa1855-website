@@ -223,11 +223,10 @@ export default function PopupRestaurantPage() {
                   Bekijk de sfeerimpressie van een eerdere pop-up editie bij Villa 1855.
                 </p>
               </div>
-              <div className="aspect-video">
+              <div className="aspect-video relative">
                 <AutoplayYouTube
                   videoId="ko5JAY5v7-E"
                   title="Terugblik Pop-up Restaurant Villa 1855"
-                  className="w-full h-full"
                 />
               </div>
             </div>

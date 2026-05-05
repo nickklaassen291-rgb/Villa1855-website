@@ -36,14 +36,18 @@ export default function AutoplayYouTube({ videoId, title, className }: Props) {
   const src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1&controls=1`
 
   return (
-    <div ref={wrapperRef} className={className} style={{ width: '100%', height: '100%', backgroundColor: '#000' }}>
+    <div
+      ref={wrapperRef}
+      className={className}
+      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', backgroundColor: '#000' }}
+    >
       {shouldLoad && (
         <iframe
           src={src}
           title={title}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-          style={{ width: '100%', height: '100%', border: 0 }}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0 }}
         />
       )}
     </div>
