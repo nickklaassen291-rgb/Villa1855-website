@@ -5,6 +5,7 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import Image from 'next/image'
 import Link from 'next/link'
+import AutoplayYouTube from '@/components/AutoplayYouTube'
 
 // Video ID
 const YOUTUBE_VIDEO_ID = 'ko5JAY5v7-E'
@@ -169,12 +170,7 @@ export default function TrouwenPageContent() {
               <p>Bekijk hoe jullie droomdag eruit kan zien bij Villa 1855</p>
             </div>
             <div className="video-wrapper">
-              <iframe
-                src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?rel=0&modestbranding=1`}
-                title="Villa 1855 Bruiloften"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              <AutoplayYouTube videoId={YOUTUBE_VIDEO_ID} title="Villa 1855 Bruiloften" />
             </div>
           </div>
         </section>

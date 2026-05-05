@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer'
 import Image from 'next/image'
 import Link from 'next/link'
 import ZakelijkCalculator from './ZakelijkCalculator'
+import AutoplayYouTube from '@/components/AutoplayYouTube'
 
 // Video ID
 const YOUTUBE_VIDEO_ID = 'ko5JAY5v7-E'
@@ -88,7 +89,7 @@ export default function ZakelijkPageContent() {
             <h1>Maak indruk met <em>beleving</em></h1>
             <p>Organiseer je zakelijke event in een monumentale setting. Van netwerkborrels tot bedrijfsfeesten – Villa 1855 biedt ruimtes en een sfeer die uitnodigen tot ontmoeten, gesprek en aandacht.</p>
             <Link href="#configurator" className="btn btn-primary">
-              Stel je event samen
+              Bekijk de pakketten
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -110,12 +111,7 @@ export default function ZakelijkPageContent() {
               <p>Een impressie van onze monumentale locatie en de mogelijkheden voor je zakelijke event.</p>
             </div>
             <div className="video-container-large">
-              <iframe
-                src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?rel=0&modestbranding=1`}
-                title="Villa 1855 Zakelijke Events"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              <AutoplayYouTube videoId={YOUTUBE_VIDEO_ID} title="Villa 1855 Zakelijke Events" />
             </div>
           </div>
         </section>

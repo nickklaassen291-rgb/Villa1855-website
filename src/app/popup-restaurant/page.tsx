@@ -4,6 +4,7 @@ import Footer from '@/components/layout/Footer'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, MapPin, Users, ArrowRight } from 'lucide-react'
+import AutoplayYouTube from '@/components/AutoplayYouTube'
 
 export const metadata: Metadata = {
   title: 'Pop-up Restaurant',
@@ -223,11 +224,9 @@ export default function PopupRestaurantPage() {
                 </p>
               </div>
               <div className="aspect-video">
-                <iframe
-                  src="https://www.youtube.com/embed/ko5JAY5v7-E?rel=0&modestbranding=1"
+                <AutoplayYouTube
+                  videoId="ko5JAY5v7-E"
                   title="Terugblik Pop-up Restaurant Villa 1855"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
                   className="w-full h-full"
                 />
               </div>
