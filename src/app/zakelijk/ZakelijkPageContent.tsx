@@ -187,16 +187,20 @@ export default function ZakelijkPageContent() {
             <div className="intro-content-centered">
               <div className="label" style={{ justifyContent: 'center' }}>Toepassingen</div>
               <h2 id="use-cases-heading">Voor welk type bedrijfsevent is Villa 1855 geschikt?</h2>
-              <p>Villa 1855 wordt door Tilburgse en regionale bedrijven gekozen voor uiteenlopende zakelijke events. Een paar voorbeelden van wat we organiseren:</p>
+              <p>Villa 1855 wordt door Tilburgse en regionale bedrijven gekozen voor uiteenlopende zakelijke events. Swipe door een paar voorbeelden van wat we organiseren:</p>
             </div>
-            <div className="use-case-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', marginTop: '3rem', maxWidth: '1100px', marginLeft: 'auto', marginRight: 'auto' }}>
-              {useCases.map((uc) => (
-                <article key={uc.title} style={{ borderTop: '2px solid var(--color-accent)', paddingTop: '1rem' }}>
-                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', marginBottom: '0.75rem', color: 'var(--color-primary-darkest)' }}>{uc.title}</h3>
-                  <p style={{ fontSize: '0.95rem', color: 'var(--color-primary)', lineHeight: '1.6' }}>{uc.body}</p>
-                </article>
-              ))}
-            </div>
+          </div>
+          <div
+            className="use-case-strip"
+            role="region"
+            aria-label="Type bedrijfsevents"
+          >
+            {useCases.map((uc) => (
+              <article key={uc.title} className="use-case-card">
+                <h3>{uc.title}</h3>
+                <p>{uc.body}</p>
+              </article>
+            ))}
           </div>
         </section>
 

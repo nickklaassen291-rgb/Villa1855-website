@@ -689,12 +689,12 @@ export default function ZakelijkCalculator() {
   return (
     <section className="section-padding bg-offwhite" id="configurator">
       <div className="container">
-        <div className="section-header">
+        <div className="section-header" style={{ marginTop: '4rem' }}>
           <h2>Kies je pakket</h2>
           <p>Drie kant-en-klare arrangementen voor jullie zakelijke event. Selecteer een pakket en plaats vrijblijvend een optie voor je gewenste datum.</p>
         </div>
 
-        <div className="space-y-4 max-w-5xl mx-auto mt-12 mb-16">
+        <div className="space-y-4 max-w-5xl mx-auto mt-12">
           {(Object.keys(PACKAGES) as PackageKey[]).map((key) => (
             <PackageRow
               key={key}
@@ -703,6 +703,21 @@ export default function ZakelijkCalculator() {
               onToggle={() => setExpanded((prev) => (prev === key ? null : key))}
             />
           ))}
+        </div>
+
+        <div className="max-w-5xl mx-auto mt-12 mb-16 p-6 lg:p-8 border border-primary-lighter bg-white text-center">
+          <h3 className="font-heading text-xl font-medium text-primary-darkest mb-2">
+            Geen passend pakket gevonden?
+          </h3>
+          <p className="text-sm text-primary mb-5 max-w-xl mx-auto">
+            Heb je iets specifieks in gedachten — een ander programma, andere catering, of een combinatie van elementen? We maken graag een arrangement op maat.
+          </p>
+          <a href="mailto:info@villa1855.nl?subject=Maatwerk-offerte%20zakelijk%20event" className="btn btn-primary">
+            Vraag een maatwerk-offerte aan
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>
