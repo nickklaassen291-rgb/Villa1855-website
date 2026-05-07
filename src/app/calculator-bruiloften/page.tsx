@@ -2,15 +2,15 @@ import type { Metadata } from 'next'
 import WeddingCalculator from './WeddingCalculator'
 
 export const metadata: Metadata = {
-  title: 'Kosten Bruiloft Berekenen - Trouwlocatie Tilburg',
+  title: 'Calculator Bruiloften - Bereken Kosten | Trouwlocatie Tilburg',
   description: 'Bereken de kosten van jullie bruiloft bij Villa 1855 in Tilburg. Pas het aantal gasten en wensen aan en bekijk meteen de bijbehorende kosten.',
   alternates: {
-    canonical: 'https://www.villa1855.nl/kosten-bruiloft',
+    canonical: 'https://www.villa1855.nl/calculator-bruiloften',
   },
   openGraph: {
-    title: 'Kosten Bruiloft Berekenen | Villa 1855',
+    title: 'Calculator Bruiloften | Villa 1855',
     description: 'Bereken de kosten van jullie bruiloft bij Villa 1855 in Tilburg. Pas het aantal gasten en wensen aan en bekijk meteen de bijbehorende kosten.',
-    url: 'https://www.villa1855.nl/kosten-bruiloft',
+    url: 'https://www.villa1855.nl/calculator-bruiloften',
     type: 'website',
     locale: 'nl_NL',
   },
@@ -20,6 +20,6 @@ export const metadata: Metadata = {
   },
 }
 
-export default function KostenBruiloftPage() {
+export default function CalculatorBruiloftenPage() {
   return <WeddingCalculator />
 }

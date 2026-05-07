@@ -16,6 +16,15 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/kosten-bruiloft',
+        destination: '/calculator-bruiloften',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig
