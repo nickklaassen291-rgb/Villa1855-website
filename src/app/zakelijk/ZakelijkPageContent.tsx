@@ -7,6 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import ZakelijkCalculator from './ZakelijkCalculator'
 import AutoplayYouTube from '@/components/AutoplayYouTube'
+import { faqItems, useCases } from './data'
 
 // Video ID
 const YOUTUBE_VIDEO_ID = 'ko5JAY5v7-E'
@@ -17,37 +18,6 @@ export default function ZakelijkPageContent() {
   const toggleQuestion = (index: number) => {
     setActiveQuestion(activeQuestion === index ? null : index)
   }
-
-  const faqItems = [
-    {
-      question: 'Wat is de capaciteit voor zakelijke events bij Villa 1855?',
-      answer: 'Voor een borrel of walking dinner waarbij we beide zalen gebruiken, is er plek voor maximaal 150 personen. Voor een zittend diner is het maximum 80 personen. Voor events in de buitenruimte bespreken we de aantallen in overleg — dat hangt af van de opstelling en het programma.'
-    },
-    {
-      question: 'Kunnen we Villa 1855 exclusief afhuren voor ons event?',
-      answer: 'Ja. Op jullie eventdag is Villa 1855 helemaal van jullie. We plannen nooit meerdere events tegelijk — de hele villa, de hele dag, één gezelschap. Geen andere groepen in de zaal ernaast, geen overlap in de tuin.'
-    },
-    {
-      question: 'Is Villa 1855 geschikt voor zowel formele als informele bijeenkomsten?',
-      answer: 'Ja. Van directiediners en klantenevents tot informele borrels en personeelsfeesten — de villa past zich aan aan jullie event. De styling, de setting en het tempo stemmen we samen af op de sfeer die jullie voor ogen hebben.'
-    },
-    {
-      question: 'Kunnen jullie ons volledig ontzorgen in de organisatie en catering?',
-      answer: 'Ja. Cookaholics verzorgt de catering — dat staat vast en is onderdeel van het concept. Voor de rest van het event werken we met een vast netwerk van leveranciers dat we goed kennen. Eén team, één aanspreekpunt, één aansturing. Van eerste planning en draaiboek tot de service op de dag zelf. Hebben jullie specifieke wensen of vaste partners vanuit jullie organisatie? Laat het weten — we bespreken in overleg wat past.'
-    },
-    {
-      question: 'Kunnen we onze eigen leveranciers meenemen?',
-      answer: 'De catering verzorgen we altijd zelf — daar is geen uitzondering op. Voor andere onderdelen van het event, zoals AV, entertainment of fotografie, kunnen jullie een eigen leverancier meebrengen. We stemmen vooraf af hoe we samenwerken met jullie leverancier, zodat de dag soepel verloopt en iedereen weet wat er van hen verwacht wordt.'
-    },
-    {
-      question: 'Welke AV-faciliteiten zijn beschikbaar voor presentaties en meetings?',
-      answer: 'Villa 1855 beschikt over professionele geluidsapparatuur. Aanvullende AV-middelen — zoals beamers, schermen of specifieke presentatie-apparatuur — huren we in via onze vaste partners en berekenen we door aan de opdrachtgever. Vertel ons vooraf wat jullie nodig hebben voor het programma, dan regelen wij de rest.'
-    },
-    {
-      question: 'Zijn er parkeervoorzieningen in de buurt voor onze gasten?',
-      answer: 'Met de auto parkeren jullie gasten het beste in Parkeergarage De Knegtel (Gasthuisring 60, 5041 DT Tilburg), op vijf minuten lopen van Villa 1855. Direct voor de deur zijn 10 tot 12 parkeerplaatsen beschikbaar. Fietsen kunnen onbewaakt voor de deur gestald worden. Vanaf Station Tilburg is het ongeveer vijf minuten lopen naar de villa. We leveren vooraf kant-en-klare parkeer- en route-informatie aan die jullie met de gasten kunnen delen.'
-    }
-  ]
 
   const reviews = [
     {
@@ -78,16 +48,16 @@ export default function ZakelijkPageContent() {
         <section className="page-hero">
           <Image
             src="/images/feestzaal.jpg"
-            alt="Zakelijk event Villa 1855"
+            alt="Zakelijke evenementenlocatie Villa 1855 Tilburg — feestzaal met monumentale haard"
             fill
             className="page-hero-image"
             priority
           />
           <div className="page-hero-bg" />
           <div className="page-hero-content">
-            <div className="label" style={{ justifyContent: 'center' }}>Zakelijke Events</div>
-            <h1>Maak indruk met <em>beleving</em></h1>
-            <p>Organiseer je zakelijke event in een monumentale setting. Van netwerkborrels tot bedrijfsfeesten – Villa 1855 biedt ruimtes en een sfeer die uitnodigen tot ontmoeten, gesprek en aandacht.</p>
+            <div className="label" style={{ justifyContent: 'center' }}>Zakelijke evenementenlocatie · Tilburg</div>
+            <h1>Zakelijke evenementen met <em>beleving</em> in Tilburg</h1>
+            <p>Vergaderlocatie, netwerkborrel of bedrijfsfeest in Tilburg? Villa 1855 is een monumentale stadsvilla in het centrum, exclusief voor jouw event. Eén locatie waar ontvangst, presentatie, borrel en diner soepel in elkaar overlopen — met catering van Cookaholics en begeleiding op de achtergrond.</p>
             <Link href="#configurator" className="btn btn-primary">
               Bekijk de pakketten
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
@@ -121,7 +91,7 @@ export default function ZakelijkPageContent() {
           <div className="container">
             <div className="intro-content-centered">
               <h2>Een locatie die voor je werkt</h2>
-              <p>Villa 1855 is gemaakt voor zakelijke events die persoonlijk mogen voelen. Je schakelt makkelijk tussen ontvangst, presentatie, borrel en diner, allemaal op één locatie. Met begeleiding op de achtergrond loopt het programma zoals jij in gedachten hebt.</p>
+              <p>Villa 1855 is een evenementenlocatie en vergaderlocatie in hartje Tilburg, gemaakt voor zakelijke events die persoonlijk mogen voelen. Je schakelt makkelijk tussen ontvangst, presentatie, borrel en diner — allemaal op één locatie, exclusief voor jullie groep. Met begeleiding op de achtergrond loopt het programma zoals jij in gedachten hebt.</p>
 
               <div className="intro-stats">
                 <div className="stat">
@@ -152,7 +122,7 @@ export default function ZakelijkPageContent() {
               <div className="feature-image">
                 <Image
                   src="/images/event-gasten.jpg"
-                  alt="Zakelijk event met gasten"
+                  alt="Zakelijk event in de feestzaal van Villa 1855 Tilburg met gasten in gesprek"
                   width={600}
                   height={450}
                 />
@@ -183,7 +153,7 @@ export default function ZakelijkPageContent() {
               <div className="feature-image">
                 <Image
                   src="/images/bar-sfeer.jpg"
-                  alt="Bar en catering"
+                  alt="Catering en bar tijdens een bedrijfsborrel bij Villa 1855 Tilburg"
                   width={600}
                   height={450}
                 />
@@ -207,6 +177,25 @@ export default function ZakelijkPageContent() {
                   </li>
                 </ul>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Use cases — SEO content */}
+        <section className="intro" aria-labelledby="use-cases-heading">
+          <div className="container">
+            <div className="intro-content-centered">
+              <div className="label" style={{ justifyContent: 'center' }}>Toepassingen</div>
+              <h2 id="use-cases-heading">Voor welk type bedrijfsevent is Villa 1855 geschikt?</h2>
+              <p>Villa 1855 wordt door Tilburgse en regionale bedrijven gekozen voor uiteenlopende zakelijke events. Een paar voorbeelden van wat we organiseren:</p>
+            </div>
+            <div className="use-case-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', marginTop: '3rem', maxWidth: '1100px', marginLeft: 'auto', marginRight: 'auto' }}>
+              {useCases.map((uc) => (
+                <article key={uc.title} style={{ borderTop: '2px solid var(--color-accent)', paddingTop: '1rem' }}>
+                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', marginBottom: '0.75rem', color: 'var(--color-primary-darkest)' }}>{uc.title}</h3>
+                  <p style={{ fontSize: '0.95rem', color: 'var(--color-primary)', lineHeight: '1.6' }}>{uc.body}</p>
+                </article>
+              ))}
             </div>
           </div>
         </section>
