@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { Calendar } from '@/components/calendar'
+import { ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 
 // ============================================================
@@ -674,11 +675,15 @@ function CostOverview({ costs }: { costs: Costs }) {
 function SendCalculationForm({
   formData,
   costs,
+  defaultOpen = false,
+  hideClosedState = false,
 }: {
   formData: FormData
   costs: Costs
+  defaultOpen?: boolean
+  hideClosedState?: boolean
 }) {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(defaultOpen)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
@@ -765,7 +770,7 @@ function SendCalculationForm({
     )
   }
 
-  if (!open) {
+  if (!open && !hideClosedState) {
     return (
       <div className="card p-8 lg:p-12 bg-primary-darkest text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none" style={{
@@ -800,9 +805,9 @@ function SendCalculationForm({
   }
 
   return (
-    <div className="card p-8 lg:p-12 border-2 border-accent/30 bg-white">
-      <span className="label justify-start mb-3">Berekening ontvangen</span>
-      <h3 className="font-heading text-2xl md:text-3xl font-medium text-primary-darkest mb-3">
+    <div className={hideClosedState ? '' : 'card p-8 lg:p-12 border-2 border-accent/30 bg-white'}>
+      {!hideClosedState && <span className="label justify-start mb-3">Berekening ontvangen</span>}
+      <h3 className="font-heading text-xl md:text-2xl font-medium text-primary-darkest mb-3">
         Stuur de berekening naar mijn e-mail
       </h3>
       <p className="text-sm md:text-base text-primary mb-8 max-w-2xl">
@@ -907,6 +912,55 @@ function SendCalculationForm({
           We gebruiken je gegevens uitsluitend om je de berekening te sturen en eventueel persoonlijk contact op te nemen.
         </p>
       </form>
+    </div>
+  )
+}
+
+// ============================================================
+// AVAILABILITY + CONTACT (collapsible)
+// ============================================================
+function AvailabilityContactBlock({ formData, costs }: { formData: FormData; costs: Costs }) {
+  const [expanded, setExpanded] = useState(false)
+  const canSubmit = costs.total > 0
+
+  return (
+    <div className={`bg-white overflow-hidden transition-shadow border ${expanded ? 'border-accent shadow-lg' : 'border-primary-lighter'}`}>
+      <button
+        type="button"
+        onClick={() => setExpanded((v) => !v)}
+        aria-expanded={expanded}
+        className="w-full text-left p-6 lg:p-8 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 hover:bg-primary-lightest/40 transition-colors cursor-pointer"
+      >
+        <div className="flex-1 min-w-0">
+          <span className="label justify-start mb-2">Volgende stap</span>
+          <h3 className="font-heading text-2xl md:text-3xl font-medium text-primary-darkest">
+            Check beschikbaarheid &amp; ontvang je berekening
+          </h3>
+          <p className="text-sm text-primary mt-2">
+            Bekijk vrije data in onze kalender en laat je gegevens achter &mdash; je ontvangt de berekening direct als PDF.
+          </p>
+        </div>
+        <div className={`w-12 h-12 flex items-center justify-center border border-primary-lighter transition-transform flex-shrink-0 ${expanded ? 'rotate-180 bg-accent text-white border-accent' : 'text-primary-darkest'}`}>
+          <ChevronDown className="h-5 w-5" />
+        </div>
+      </button>
+
+      {expanded && (
+        <div className="border-t border-primary-lighter p-6 lg:p-8 bg-offwhite">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            <div>
+              <h4 className="font-heading text-lg font-medium text-primary-darkest mb-4">Beschikbaarheid</h4>
+              <Calendar />
+            </div>
+            <div className="lg:border-l lg:border-primary-lighter lg:pl-12">
+              <SendCalculationForm formData={formData} costs={costs} defaultOpen hideClosedState />
+              {!canSubmit && (
+                <p className="text-xs text-primary mt-3 italic">Vul eerst het aantal gasten in om de berekening te kunnen versturen.</p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
@@ -1048,29 +1102,11 @@ export default function WeddingCalculator() {
           </div>
         </section>
 
-        {/* Beschikbaarheid */}
-        <section className="section-padding bg-white">
-          <div className="container">
-            <div className="max-w-7xl mx-auto">
-              <div className="text-center mb-10">
-                <span className="label justify-center">Real-time beschikbaarheid</span>
-                <h2 className="font-heading text-3xl md:text-4xl font-medium text-primary-darkest mt-3 mb-3">
-                  Check direct of jullie datum vrij is
-                </h2>
-                <p className="text-primary max-w-2xl mx-auto">
-                  Kies een datum hieronder om vrijblijvend een optie te plaatsen of meer informatie aan te vragen.
-                </p>
-              </div>
-              <Calendar />
-            </div>
-          </div>
-        </section>
-
-        {/* Stuur berekening */}
+        {/* Beschikbaarheid + Stuur berekening (collapsible) */}
         <section className="section-padding bg-offwhite">
           <div className="container">
-            <div className="max-w-4xl mx-auto">
-              <SendCalculationForm formData={formData} costs={costs} />
+            <div className="max-w-5xl mx-auto">
+              <AvailabilityContactBlock formData={formData} costs={costs} />
             </div>
           </div>
         </section>
