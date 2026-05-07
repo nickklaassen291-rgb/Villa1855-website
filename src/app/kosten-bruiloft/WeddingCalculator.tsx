@@ -506,6 +506,238 @@ function CostOverview({ costs }: { costs: Costs }) {
 }
 
 // ============================================================
+// SEND CALCULATION FORM
+// ============================================================
+function SendCalculationForm({
+  formData,
+  costs,
+}: {
+  formData: FormData
+  costs: Costs
+}) {
+  const [open, setOpen] = useState(false)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [weddingDate, setWeddingDate] = useState('')
+  const [message, setMessage] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+  const [status, setStatus] = useState<{ type: 'idle' | 'success' | 'error'; message: string }>({
+    type: 'idle',
+    message: '',
+  })
+
+  const canSubmit = costs.total > 0
+  const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    if (!name.trim() || !validEmail || !canSubmit) return
+
+    setSubmitting(true)
+    setStatus({ type: 'idle', message: '' })
+
+    try {
+      const res = await fetch('/api/calculator/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          phone: phone.trim() || undefined,
+          weddingDate: weddingDate || undefined,
+          message: message.trim() || undefined,
+          dayGuests: formData.dayGuests,
+          eveningGuests: formData.eveningGuests,
+          dinnerType: formData.dinnerType,
+          discounts: formData.discounts,
+          costs: {
+            borrelplank: costs.borrelplank,
+            drinksDay: costs.drinksDay,
+            dinner: costs.dinner,
+            partyFood: costs.partyFood,
+            drinksEvening: costs.drinksEvening,
+            subtotal: costs.subtotal,
+            houseRental: costs.houseRental,
+            houseRentalOriginal: costs.houseRentalOriginal,
+            discount: costs.discount,
+            total: costs.total,
+            costPerDayGuest: costs.costPerDayGuest,
+            costPerEveningGuest: costs.costPerEveningGuest,
+          },
+        }),
+      })
+      const json = await res.json()
+      if (json.success) {
+        setStatus({ type: 'success', message: json.message })
+      } else {
+        setStatus({ type: 'error', message: json.message || 'Er ging iets mis.' })
+      }
+    } catch {
+      setStatus({ type: 'error', message: 'Er ging iets mis. Probeer het later opnieuw.' })
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
+  if (status.type === 'success') {
+    return (
+      <div className="card p-6 lg:p-8 mt-6 bg-accent/5 border-2 border-accent/30">
+        <div className="flex items-start gap-3">
+          <svg className="h-6 w-6 text-accent flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+            <polyline points="22 4 12 14.01 9 11.01" />
+          </svg>
+          <div>
+            <h3 className="font-heading text-xl font-medium text-primary-darkest mb-2">Verstuurd!</h3>
+            <p className="text-sm text-primary">{status.message}</p>
+            <p className="text-sm text-primary mt-2">Check ook even de spam-map. We nemen binnenkort contact met je op.</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (!open) {
+    return (
+      <div className="card p-6 lg:p-8 mt-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <h3 className="font-heading text-xl font-medium text-primary-darkest mb-1">
+              Tevreden met deze berekening?
+            </h3>
+            <p className="text-sm text-primary">
+              Ontvang de complete berekening per e-mail (PDF) zodat je alles rustig kunt nalezen.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            disabled={!canSubmit}
+            className="btn btn-primary whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Stuur naar mijn e-mail
+          </button>
+        </div>
+        {!canSubmit && (
+          <p className="text-xs text-primary mt-3 italic">Vul eerst het aantal gasten in.</p>
+        )}
+      </div>
+    )
+  }
+
+  return (
+    <div className="card p-6 lg:p-8 mt-6">
+      <h3 className="font-heading text-xl font-medium text-primary-darkest mb-2">
+        Stuur de berekening naar mijn e-mail
+      </h3>
+      <p className="text-sm text-primary mb-6">
+        Je ontvangt de berekening als PDF. Wij krijgen ook een melding zodat we je persoonlijk verder kunnen helpen.
+      </p>
+
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="calc-name" className="text-sm font-medium text-primary-darkest block mb-2">
+              Naam *
+            </label>
+            <input
+              id="calc-name"
+              type="text"
+              required
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full h-12 px-4 border border-primary-light rounded-none bg-white text-primary-darkest focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent"
+            />
+          </div>
+          <div>
+            <label htmlFor="calc-email" className="text-sm font-medium text-primary-darkest block mb-2">
+              E-mailadres *
+            </label>
+            <input
+              id="calc-email"
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full h-12 px-4 border border-primary-light rounded-none bg-white text-primary-darkest focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent"
+            />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="calc-phone" className="text-sm font-medium text-primary-darkest block mb-2">
+              Telefoon
+            </label>
+            <input
+              id="calc-phone"
+              type="tel"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="w-full h-12 px-4 border border-primary-light rounded-none bg-white text-primary-darkest focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent"
+            />
+          </div>
+          <div>
+            <label htmlFor="calc-date" className="text-sm font-medium text-primary-darkest block mb-2">
+              Trouwdatum (indien bekend)
+            </label>
+            <input
+              id="calc-date"
+              type="date"
+              value={weddingDate}
+              onChange={(e) => setWeddingDate(e.target.value)}
+              className="w-full h-12 px-4 border border-primary-light rounded-none bg-white text-primary-darkest focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label htmlFor="calc-message" className="text-sm font-medium text-primary-darkest block mb-2">
+            Bericht (optioneel)
+          </label>
+          <textarea
+            id="calc-message"
+            rows={3}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="Vragen of bijzondere wensen?"
+            className="w-full px-4 py-3 border border-primary-light rounded-none bg-white text-primary-darkest focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent"
+          />
+        </div>
+
+        {status.type === 'error' && (
+          <div className="p-3 bg-red-50 border border-red-200 text-sm text-red-700">
+            {status.message}
+          </div>
+        )}
+
+        <div className="flex flex-col sm:flex-row gap-3 pt-2">
+          <button
+            type="submit"
+            disabled={submitting || !name.trim() || !validEmail}
+            className="btn btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {submitting ? 'Versturen...' : 'Verstuur berekening'}
+          </button>
+          <button
+            type="button"
+            onClick={() => setOpen(false)}
+            disabled={submitting}
+            className="btn btn-outline"
+          >
+            Annuleren
+          </button>
+        </div>
+        <p className="text-xs text-primary italic">
+          We gebruiken je gegevens uitsluitend om je de berekening te sturen en eventueel persoonlijk contact op te nemen.
+        </p>
+      </form>
+    </div>
+  )
+}
+
+// ============================================================
 // MAIN CALCULATOR COMPONENT
 // ============================================================
 export default function WeddingCalculator() {
@@ -623,8 +855,9 @@ export default function WeddingCalculator() {
 
               {/* Right: Cost Overview */}
               <div>
-                <div className="lg:sticky lg:top-8">
+                <div className="lg:sticky lg:top-8 space-y-6">
                   <CostOverview costs={costs} />
+                  <SendCalculationForm formData={formData} costs={costs} />
                 </div>
               </div>
             </div>
