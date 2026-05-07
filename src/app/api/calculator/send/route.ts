@@ -1,7 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { google } from 'googleapis'
 import { Resend } from 'resend'
-import { generateCalculatorPdf, type CalculatorPdfData, type DinnerType } from '@/lib/calculator-pdf'
+import {
+  generateCalculatorPdf,
+  type CalculatorPdfData,
+  type DinnerType,
+  type ReceptionType,
+  type PartyFoodType,
+  type LateNightType,
+} from '@/lib/calculator-pdf'
 
 export const runtime = 'nodejs'
 export const maxDuration = 30
@@ -14,7 +21,10 @@ interface CalculatorSendData {
   message?: string
   dayGuests: number
   eveningGuests: number
+  receptionType: ReceptionType
   dinnerType: DinnerType
+  partyFoodType: PartyFoodType
+  lateNightType: LateNightType
   discounts: string[]
   costs: CalculatorPdfData['costs']
   utm_source?: string
@@ -32,6 +42,22 @@ function dinnerLabel(type: DinnerType): string {
   if (type === 'four-course') return '4-gangen diner'
   if (type === 'shared') return 'Shared diner'
   return '3-gangen diner'
+}
+
+function receptionLabel(type: ReceptionType): string {
+  if (type === 'b') return 'Receptie hapjes B'
+  if (type === 'c') return 'Receptie hapjes C'
+  return 'Receptie hapjes A'
+}
+
+function partyFoodLabel(type: PartyFoodType): string {
+  return type === 'b' ? 'Feestavond hapjes B' : 'Feestavond hapjes A'
+}
+
+function lateNightLabel(type: LateNightType): string {
+  if (type === 'a') return 'Late night snack A'
+  if (type === 'b') return 'Late night snack B'
+  return 'Geen'
 }
 
 function euro(n: number): string {
@@ -66,7 +92,10 @@ async function logToSheet(data: CalculatorSendData) {
     formattedDate,
     String(data.dayGuests),
     String(data.eveningGuests),
+    receptionLabel(data.receptionType),
     dinnerLabel(data.dinnerType),
+    partyFoodLabel(data.partyFoodType),
+    lateNightLabel(data.lateNightType),
     data.discounts.map((d) => DEAL_LABELS[d] || d).join(', '),
     euro(data.costs.subtotal),
     euro(data.costs.houseRental),
@@ -81,7 +110,7 @@ async function logToSheet(data: CalculatorSendData) {
   const sheets = await getGoogleSheetsClient()
   await sheets.spreadsheets.values.append({
     spreadsheetId,
-    range: 'Calculator!A:Q',
+    range: 'Calculator!A:T',
     valueInputOption: 'USER_ENTERED',
     requestBody: { values: [rowData] },
   })
@@ -103,7 +132,8 @@ function customerEmailHtml(data: CalculatorSendData): string {
   <div style="background: #f5f1e8; padding: 16px; margin: 20px 0;">
     <p style="margin: 0 0 8px;"><strong>Korte samenvatting:</strong></p>
     <p style="margin: 0;">Daggasten: ${data.dayGuests} &nbsp;•&nbsp; Avondgasten: ${data.eveningGuests}</p>
-    <p style="margin: 4px 0;">${dinnerLabel(data.dinnerType)}</p>
+    <p style="margin: 4px 0;">${receptionLabel(data.receptionType)} &nbsp;•&nbsp; ${dinnerLabel(data.dinnerType)}</p>
+    <p style="margin: 4px 0;">${partyFoodLabel(data.partyFoodType)}${data.lateNightType !== 'none' ? ` &nbsp;•&nbsp; ${lateNightLabel(data.lateNightType)}` : ''}</p>
     <p style="margin: 8px 0 0; font-size: 18px;"><strong>Totaal: ${euro(data.costs.total)}</strong></p>
   </div>
 
@@ -136,7 +166,10 @@ function notificationEmailHtml(data: CalculatorSendData): string {
     <tr><td style="padding: 6px 0; color: #5a6864;">Trouwdatum</td><td style="padding: 6px 0;">${formattedDate}</td></tr>
     <tr><td style="padding: 6px 0; color: #5a6864;">Daggasten</td><td style="padding: 6px 0;">${data.dayGuests}</td></tr>
     <tr><td style="padding: 6px 0; color: #5a6864;">Avondgasten</td><td style="padding: 6px 0;">${data.eveningGuests}</td></tr>
+    <tr><td style="padding: 6px 0; color: #5a6864;">Receptie hapjes</td><td style="padding: 6px 0;">${receptionLabel(data.receptionType)}</td></tr>
     <tr><td style="padding: 6px 0; color: #5a6864;">Diner</td><td style="padding: 6px 0;">${dinnerLabel(data.dinnerType)}</td></tr>
+    <tr><td style="padding: 6px 0; color: #5a6864;">Feestavond hapjes</td><td style="padding: 6px 0;">${partyFoodLabel(data.partyFoodType)}</td></tr>
+    <tr><td style="padding: 6px 0; color: #5a6864;">Late night snack</td><td style="padding: 6px 0;">${lateNightLabel(data.lateNightType)}</td></tr>
     <tr><td style="padding: 6px 0; color: #5a6864;">Kortingen</td><td style="padding: 6px 0;">${data.discounts.map((d) => DEAL_LABELS[d] || d).join(', ') || '-'}</td></tr>
     <tr><td style="padding: 6px 0; color: #5a6864;">Totaal</td><td style="padding: 6px 0;"><strong>${euro(data.costs.total)}</strong></td></tr>
     ${data.message ? `<tr><td style="padding: 6px 0; color: #5a6864; vertical-align: top;">Bericht</td><td style="padding: 6px 0;">${data.message.replace(/\n/g, '<br/>')}</td></tr>` : ''}
@@ -177,7 +210,10 @@ export async function POST(request: NextRequest) {
       weddingDate: formattedDate,
       dayGuests: data.dayGuests,
       eveningGuests: data.eveningGuests,
+      receptionType: data.receptionType,
       dinnerType: data.dinnerType,
+      partyFoodType: data.partyFoodType,
+      lateNightType: data.lateNightType,
       discounts: data.discounts,
       costs: data.costs,
     })

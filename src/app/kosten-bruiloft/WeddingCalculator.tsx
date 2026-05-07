@@ -9,17 +9,22 @@ import Link from 'next/link'
 // PRIJZEN - Villa 1855
 // ============================================================
 const PRICES = {
-  // Daggasten
-  borrelplank: 8.00,              // Borrelplank per persoon
-  drinksDay: 42.50,               // Dranken dagprogramma (ontvangst, ceremonie, receptie, diner)
-  dinnerThreeCourse: 49.50,       // 3-gangen diner per persoon
-  dinnerFourCourse: 54.50,        // 4-gangen diner per persoon
-  dinnerShared: 59.50,            // Shared diner per persoon
-  // Avondgasten
-  partyFood: 14.50,               // Hapjesarrangement per persoon
-  drinksEvening: 38.25,           // Dranken avondprogramma per persoon
+  // Dagprogramma
+  receptionA: 6.00,
+  receptionB: 9.00,
+  receptionC: 11.00,
+  drinksDay: 42.50,
+  dinnerThreeCourse: 49.50,
+  dinnerFourCourse: 54.50,
+  dinnerShared: 59.50,
+  // Avondprogramma
+  partyFoodA: 12.50,
+  partyFoodB: 15.00,
+  drinksEvening: 38.25,
+  lateNightA: 8.00,
+  lateNightB: 10.00,
   // Vast
-  houseRental: 2950,              // Huur villa incl. btw
+  houseRental: 2950,
 }
 
 // ============================================================
@@ -50,20 +55,27 @@ const DEALS = [
 // TYPES
 // ============================================================
 type DinnerType = 'three-course' | 'four-course' | 'shared'
+type ReceptionType = 'a' | 'b' | 'c'
+type PartyFoodType = 'a' | 'b'
+type LateNightType = 'none' | 'a' | 'b'
 
 interface FormData {
   dayGuests: number
   eveningGuests: number
+  receptionType: ReceptionType
   dinnerType: DinnerType
+  partyFoodType: PartyFoodType
+  lateNightType: LateNightType
   discounts: string[]
 }
 
 interface Costs {
-  borrelplank: number
+  reception: number
   drinksDay: number
   dinner: number
   partyFood: number
   drinksEvening: number
+  lateNight: number
   subtotal: number
   houseRental: number
   houseRentalOriginal: number
@@ -71,7 +83,10 @@ interface Costs {
   total: number
   costPerDayGuest: number
   costPerEveningGuest: number
+  receptionType: ReceptionType
   dinnerType: DinnerType
+  partyFoodType: PartyFoodType
+  lateNightType: LateNightType
 }
 
 // ============================================================
@@ -115,6 +130,54 @@ function getDinnerPriceFormatted(type: DinnerType): string {
   }
 }
 
+function getReceptionLabel(type: ReceptionType): string {
+  switch (type) {
+    case 'b': return 'Receptie hapjes B'
+    case 'c': return 'Receptie hapjes C'
+    default: return 'Receptie hapjes A'
+  }
+}
+
+function getReceptionPrice(type: ReceptionType): number {
+  switch (type) {
+    case 'b': return PRICES.receptionB
+    case 'c': return PRICES.receptionC
+    default: return PRICES.receptionA
+  }
+}
+
+function getReceptionPriceFormatted(type: ReceptionType): string {
+  switch (type) {
+    case 'b': return '9,00'
+    case 'c': return '11,00'
+    default: return '6,00'
+  }
+}
+
+function getPartyFoodLabel(type: PartyFoodType): string {
+  return type === 'b' ? 'Feestavond hapjes B' : 'Feestavond hapjes A'
+}
+
+function getPartyFoodPrice(type: PartyFoodType): number {
+  return type === 'b' ? PRICES.partyFoodB : PRICES.partyFoodA
+}
+
+function getPartyFoodPriceFormatted(type: PartyFoodType): string {
+  return type === 'b' ? '15,00' : '12,50'
+}
+
+function getLateNightLabel(type: LateNightType): string {
+  if (type === 'a') return 'Late night snack A'
+  if (type === 'b') return 'Late night snack B'
+  return 'Geen late night snack'
+}
+
+function getLateNightPrice(type: LateNightType): number {
+  if (type === 'a') return PRICES.lateNightA
+  if (type === 'b') return PRICES.lateNightB
+  return 0
+}
+
 // ============================================================
 // GUEST FORM COMPONENT
 // ============================================================
@@ -149,9 +212,46 @@ function GuestForm({ data, onChange }: { data: FormData; onChange: (data: FormDa
         />
         <div className="text-xs text-primary space-y-1">
           <p className="font-medium mb-2">Inclusief:</p>
-          <p>&bull; Borrelplank (&euro;8,00 p.p.)</p>
+          <p>&bull; Receptie hapjes: keuze (&euro;{getReceptionPriceFormatted(data.receptionType)} p.p.)</p>
           <p>&bull; Dranken dagprogramma: ontvangst, ceremonie, receptie &amp; diner (&euro;42,50 p.p.)</p>
           <p>&bull; Diner: keuze menu (&euro;{getDinnerPriceFormatted(data.dinnerType)} p.p.)</p>
+        </div>
+      </div>
+
+      {/* Keuze receptie hapjes */}
+      <div className="space-y-3 pt-4 border-t border-primary-lighter">
+        <label className="text-sm font-medium text-primary-darkest">Keuze receptie hapjes</label>
+        <div className="space-y-3">
+          {([
+            { value: 'a' as ReceptionType, label: 'Hapjes A (€6,00)' },
+            { value: 'b' as ReceptionType, label: 'Hapjes B (€9,00)' },
+            { value: 'c' as ReceptionType, label: 'Hapjes C (€11,00)' },
+          ]).map((option) => (
+            <label key={option.value} className="flex items-center space-x-3 cursor-pointer group">
+              <div className="relative flex items-center justify-center">
+                <input
+                  type="radio"
+                  name="receptionType"
+                  value={option.value}
+                  checked={data.receptionType === option.value}
+                  onChange={() => onChange({ ...data, receptionType: option.value })}
+                  className="sr-only"
+                />
+                <div className={`w-5 h-5 rounded-full border-2 transition-colors ${
+                  data.receptionType === option.value
+                    ? 'border-accent bg-accent'
+                    : 'border-primary-light group-hover:border-accent'
+                }`}>
+                  {data.receptionType === option.value && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-2 h-2 rounded-full bg-white" />
+                    </div>
+                  )}
+                </div>
+              </div>
+              <span className="text-sm text-primary-dark">{option.label}</span>
+            </label>
+          ))}
         </div>
       </div>
 
@@ -220,8 +320,84 @@ function GuestForm({ data, onChange }: { data: FormData; onChange: (data: FormDa
         />
         <div className="text-xs text-primary space-y-1">
           <p className="font-medium mb-2">Inclusief:</p>
-          <p>&bull; Hapjesarrangement (&euro;14,50 p.p.)</p>
+          <p>&bull; Feestavond hapjes: keuze (&euro;{getPartyFoodPriceFormatted(data.partyFoodType)} p.p.)</p>
           <p>&bull; Dranken avondprogramma (&euro;38,25 p.p.)</p>
+          {data.lateNightType !== 'none' && (
+            <p>&bull; {getLateNightLabel(data.lateNightType)} (&euro;{data.lateNightType === 'a' ? '8,00' : '10,00'} p.p.)</p>
+          )}
+        </div>
+      </div>
+
+      {/* Keuze feestavond hapjes */}
+      <div className="space-y-3 pt-4 border-t border-primary-lighter">
+        <label className="text-sm font-medium text-primary-darkest">Keuze feestavond hapjes</label>
+        <div className="space-y-3">
+          {([
+            { value: 'a' as PartyFoodType, label: 'Hapjes A (€12,50)' },
+            { value: 'b' as PartyFoodType, label: 'Hapjes B (€15,00)' },
+          ]).map((option) => (
+            <label key={option.value} className="flex items-center space-x-3 cursor-pointer group">
+              <div className="relative flex items-center justify-center">
+                <input
+                  type="radio"
+                  name="partyFoodType"
+                  value={option.value}
+                  checked={data.partyFoodType === option.value}
+                  onChange={() => onChange({ ...data, partyFoodType: option.value })}
+                  className="sr-only"
+                />
+                <div className={`w-5 h-5 rounded-full border-2 transition-colors ${
+                  data.partyFoodType === option.value
+                    ? 'border-accent bg-accent'
+                    : 'border-primary-light group-hover:border-accent'
+                }`}>
+                  {data.partyFoodType === option.value && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-2 h-2 rounded-full bg-white" />
+                    </div>
+                  )}
+                </div>
+              </div>
+              <span className="text-sm text-primary-dark">{option.label}</span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      {/* Late night snack */}
+      <div className="space-y-3 pt-4 border-t border-primary-lighter">
+        <label className="text-sm font-medium text-primary-darkest">Late night snack (optioneel)</label>
+        <div className="space-y-3">
+          {([
+            { value: 'none' as LateNightType, label: 'Geen late night snack' },
+            { value: 'a' as LateNightType, label: 'Snack A (€8,00)' },
+            { value: 'b' as LateNightType, label: 'Snack B (€10,00)' },
+          ]).map((option) => (
+            <label key={option.value} className="flex items-center space-x-3 cursor-pointer group">
+              <div className="relative flex items-center justify-center">
+                <input
+                  type="radio"
+                  name="lateNightType"
+                  value={option.value}
+                  checked={data.lateNightType === option.value}
+                  onChange={() => onChange({ ...data, lateNightType: option.value })}
+                  className="sr-only"
+                />
+                <div className={`w-5 h-5 rounded-full border-2 transition-colors ${
+                  data.lateNightType === option.value
+                    ? 'border-accent bg-accent'
+                    : 'border-primary-light group-hover:border-accent'
+                }`}>
+                  {data.lateNightType === option.value && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-2 h-2 rounded-full bg-white" />
+                    </div>
+                  )}
+                </div>
+              </div>
+              <span className="text-sm text-primary-dark">{option.label}</span>
+            </label>
+          ))}
         </div>
       </div>
 
@@ -323,14 +499,17 @@ function DealsSection({ selectedDiscounts, onChange }: { selectedDiscounts: stri
 // ============================================================
 function CostOverview({ costs }: { costs: Costs }) {
   const dayItems = [
-    { label: 'Borrelplank', amount: costs.borrelplank },
+    { label: getReceptionLabel(costs.receptionType), amount: costs.reception },
     { label: 'Dranken dagprogramma', amount: costs.drinksDay },
     { label: getDinnerLabel(costs.dinnerType), amount: costs.dinner },
   ]
 
   const eveningItems = [
-    { label: 'Hapjesarrangement', amount: costs.partyFood },
+    { label: getPartyFoodLabel(costs.partyFoodType), amount: costs.partyFood },
     { label: 'Dranken avondprogramma', amount: costs.drinksEvening },
+    ...(costs.lateNightType !== 'none'
+      ? [{ label: getLateNightLabel(costs.lateNightType), amount: costs.lateNight }]
+      : []),
   ]
 
   return (
@@ -549,14 +728,18 @@ function SendCalculationForm({
           message: message.trim() || undefined,
           dayGuests: formData.dayGuests,
           eveningGuests: formData.eveningGuests,
+          receptionType: formData.receptionType,
           dinnerType: formData.dinnerType,
+          partyFoodType: formData.partyFoodType,
+          lateNightType: formData.lateNightType,
           discounts: formData.discounts,
           costs: {
-            borrelplank: costs.borrelplank,
+            reception: costs.reception,
             drinksDay: costs.drinksDay,
             dinner: costs.dinner,
             partyFood: costs.partyFood,
             drinksEvening: costs.drinksEvening,
+            lateNight: costs.lateNight,
             subtotal: costs.subtotal,
             houseRental: costs.houseRental,
             houseRentalOriginal: costs.houseRentalOriginal,
@@ -744,16 +927,20 @@ export default function WeddingCalculator() {
   const [formData, setFormData] = useState<FormData>({
     dayGuests: 0,
     eveningGuests: 0,
+    receptionType: 'a',
     dinnerType: 'three-course',
+    partyFoodType: 'a',
+    lateNightType: 'none',
     discounts: [],
   })
 
   const [costs, setCosts] = useState<Costs>({
-    borrelplank: 0,
+    reception: 0,
     drinksDay: 0,
     dinner: 0,
     partyFood: 0,
     drinksEvening: 0,
+    lateNight: 0,
     subtotal: 0,
     houseRental: PRICES.houseRental,
     houseRentalOriginal: PRICES.houseRental,
@@ -761,44 +948,48 @@ export default function WeddingCalculator() {
     total: 0,
     costPerDayGuest: 0,
     costPerEveningGuest: 0,
+    receptionType: 'a',
     dinnerType: 'three-course',
+    partyFoodType: 'a',
+    lateNightType: 'none',
   })
 
   useEffect(() => {
-    const { dayGuests, eveningGuests, dinnerType, discounts } = formData
+    const { dayGuests, eveningGuests, receptionType, dinnerType, partyFoodType, lateNightType, discounts } = formData
 
+    const receptionPrice = getReceptionPrice(receptionType)
     const dinnerPrice = getDinnerPrice(dinnerType)
+    const partyFoodPrice = getPartyFoodPrice(partyFoodType)
+    const lateNightPrice = getLateNightPrice(lateNightType)
 
-    // Daggasten kosten
-    const borrelplank = dayGuests * PRICES.borrelplank
+    const reception = dayGuests * receptionPrice
     const drinksDay = dayGuests * PRICES.drinksDay
     const dinner = dayGuests * dinnerPrice
 
-    // Avondgasten kosten
-    const partyFood = eveningGuests * PRICES.partyFood
+    const partyFood = eveningGuests * partyFoodPrice
     const drinksEvening = eveningGuests * PRICES.drinksEvening
+    const lateNight = eveningGuests * lateNightPrice
 
-    const subtotal = borrelplank + drinksDay + dinner + partyFood + drinksEvening
+    const subtotal = reception + drinksDay + dinner + partyFood + drinksEvening + lateNight
 
-    // Huur + korting
     const discountPercent = getDiscountPercentage(discounts)
     const discountAmount = PRICES.houseRental * discountPercent / 100
     const houseRental = PRICES.houseRental - discountAmount
 
     const total = subtotal + houseRental
 
-    // Per gast
     const costPerDayGuest = dayGuests > 0
-      ? (borrelplank + drinksDay + dinner) / dayGuests
+      ? (reception + drinksDay + dinner) / dayGuests
       : 0
-    const costPerEveningGuest = PRICES.partyFood + PRICES.drinksEvening
+    const costPerEveningGuest = partyFoodPrice + PRICES.drinksEvening + lateNightPrice
 
     setCosts({
-      borrelplank,
+      reception,
       drinksDay,
       dinner,
       partyFood,
       drinksEvening,
+      lateNight,
       subtotal,
       houseRental,
       houseRentalOriginal: PRICES.houseRental,
@@ -806,7 +997,10 @@ export default function WeddingCalculator() {
       total,
       costPerDayGuest,
       costPerEveningGuest,
+      receptionType,
       dinnerType,
+      partyFoodType,
+      lateNightType,
     })
   }, [formData])
 
