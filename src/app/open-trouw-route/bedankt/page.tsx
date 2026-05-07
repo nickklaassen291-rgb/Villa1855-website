@@ -5,7 +5,7 @@ import MetaPixel from '@/components/open-trouw-route/MetaPixel'
 
 export const metadata: Metadata = {
   title: 'Bedankt voor je aanmelding | Open Trouw Route Villa 1855',
-  description: 'Je aanmelding voor de Open Trouw Route op 12 april is ontvangen. We sturen je binnen 24 uur een bevestiging.',
+  description: 'Je aanmelding voor de Open Trouw Route op 28 juni is ontvangen. We sturen je binnen 24 uur een bevestiging.',
   robots: {
     index: false,
     follow: false,
@@ -29,7 +29,7 @@ export default function BedanktPage() {
               Bedankt voor je aanmelding!
             </h1>
             <p className="text-primary-light text-lg mb-6">
-              We hebben je registratie voor de Open Trouw Route op 12 april ontvangen en sturen je binnen 24 uur een bevestiging per e-mail met alle details.
+              We hebben je registratie voor de Open Trouw Route op 28 juni ontvangen en sturen je binnen 24 uur een bevestiging per e-mail met alle details.
             </p>
             <p className="text-primary-light/80 text-sm mb-10">
               Heb je vragen? Neem contact op via{' '}

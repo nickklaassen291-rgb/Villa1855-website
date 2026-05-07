@@ -58,47 +58,68 @@ export default function TrustSection() {
         </div>
 
         {/* Testimonials */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Desktop: equal-height grid, author pinned to bottom */}
+        <div className="hidden md:grid grid-cols-3 gap-6 items-stretch">
           {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="bg-offwhite p-8 relative"
-            >
-              {/* Quote mark */}
-              <div className="absolute top-4 left-6 font-heading text-6xl text-accent/20 leading-none">
-                &ldquo;
-              </div>
-
-              {/* Stars */}
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-accent text-accent" />
-                ))}
-              </div>
-
-              {/* Quote */}
-              <p className="text-primary italic mb-6 relative z-10 leading-relaxed">
-                {testimonial.quote}
-              </p>
-
-              {/* Author */}
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-primary-lighter flex items-center justify-center font-heading text-lg text-primary-dark">
-                  {testimonial.author.split(' ')[0][0]}
-                </div>
-                <div>
-                  <div className="font-script text-xl text-primary-darkest">
-                    {testimonial.author}
-                  </div>
-                  <div className="text-sm text-primary">
-                    {testimonial.date}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <TestimonialCard key={index} testimonial={testimonial} />
           ))}
+        </div>
+
+        {/* Mobile: auto-scrolling marquee, single row */}
+        <div className="md:hidden overflow-hidden -mx-6">
+          <div className="marquee-track flex gap-6 w-max px-6">
+            {[...testimonials, ...testimonials].map((testimonial, index) => (
+              <div key={index} className="w-[80vw] max-w-[340px] flex-shrink-0">
+                <TestimonialCard testimonial={testimonial} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
+  )
+}
+
+type Testimonial = {
+  quote: string
+  author: string
+  date: string
+}
+
+function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
+  return (
+    <div className="bg-offwhite p-8 relative h-full flex flex-col">
+      {/* Quote mark */}
+      <div className="absolute top-4 left-6 font-heading text-6xl text-accent/20 leading-none">
+        &ldquo;
+      </div>
+
+      {/* Stars */}
+      <div className="flex gap-1 mb-4">
+        {[...Array(5)].map((_, i) => (
+          <Star key={i} className="w-4 h-4 fill-accent text-accent" />
+        ))}
+      </div>
+
+      {/* Quote */}
+      <p className="text-primary italic mb-6 relative z-10 leading-relaxed">
+        {testimonial.quote}
+      </p>
+
+      {/* Author — pinned to bottom so names line up across cards */}
+      <div className="flex items-center gap-3 mt-auto">
+        <div className="w-12 h-12 bg-primary-lighter flex items-center justify-center font-heading text-lg text-primary-dark flex-shrink-0">
+          {testimonial.author.split(' ')[0][0]}
+        </div>
+        <div>
+          <div className="font-script text-xl text-primary-darkest">
+            {testimonial.author}
+          </div>
+          <div className="text-sm text-primary">
+            {testimonial.date}
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }

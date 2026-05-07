@@ -46,26 +46,35 @@ export default function HeroSection() {
         {/* Badge */}
         <div className="mb-6">
           <span className="text-accent text-xs font-medium tracking-[0.25em] uppercase">
-            Monumentale stadsvilla Tilburg
+            Dé trouwlocatie in het hart van Tilburg
           </span>
         </div>
 
         {/* Title */}
         <h1 className="font-heading text-white text-4xl md:text-5xl lg:text-6xl mb-4 leading-tight">
-          Open Trouw Route Villa 1855
+          Ontdek alles voor jullie trouwdag
         </h1>
 
         {/* Date */}
         <div className="inline-block bg-accent/20 border border-accent/40 rounded-lg px-6 py-3 mb-6">
           <span className="text-accent text-2xl md:text-3xl font-heading font-semibold">
-            <span style={{ color: 'white' }}>Zondag</span> 12 april 2026
+            <span style={{ color: 'white' }}>Zondag</span> 28 juni 2026
           </span>
         </div>
 
         {/* Subtitle */}
-        <p className="text-primary-light text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
-          Ontdek onze monumentale stadsvilla, proef de sfeer en wat lekkers van Cookaholics en ontvang direct een vrijblijvende offerte
+        <p className="text-primary-light text-lg md:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
+          Villa 1855 opent op 28 juni haar deuren. Kom gratis langs en ontdek in één bezoek alles wat jullie nodig hebben voor jullie perfecte trouwdag.
         </p>
+
+        {/* Practical info */}
+        <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-primary-light/80 text-sm mb-8">
+          <span>Noordstraat 36, Tilburg centrum</span>
+          <span className="hidden sm:inline">|</span>
+          <span>10:00 – 16:00 uur</span>
+          <span className="hidden sm:inline">|</span>
+          <span className="text-accent font-medium">Gratis toegang op reservering</span>
+        </div>
 
         {/* CTA Button */}
         <button

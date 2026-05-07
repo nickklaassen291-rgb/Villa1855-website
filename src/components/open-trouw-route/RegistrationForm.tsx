@@ -150,14 +150,17 @@ export default function RegistrationForm() {
             <div className="flex items-center gap-4 mb-4">
               <span className="w-10 h-px bg-accent" />
               <span className="text-accent text-xs font-medium tracking-[0.25em] uppercase">
-                Zondag 12 april 2026
+                Zondag 28 juni 2026
               </span>
             </div>
             <h2 className="font-heading text-3xl md:text-4xl text-white mb-6">
               Meld je aan
             </h2>
-            <p className="text-primary-light text-lg mb-8 leading-relaxed">
-              Meld je aan voor de Open Trouw Route en ontdek waarom Villa 1855 de perfecte setting is voor jullie onvergetelijke dag. Het aantal plekken per tijdslot is beperkt.
+            <p className="text-primary-light text-lg mb-4 leading-relaxed">
+              Reserveer jullie tijdslot en ontdek in circa 1 tot 1,5 uur waarom Villa 1855 de perfecte setting is voor jullie trouwdag.
+            </p>
+            <p className="text-accent font-medium text-sm mb-8">
+              Zondag 28 juni, 10:00 – 16:00 uur — Gratis toegang, beperkt aantal plekken per tijdslot
             </p>
 
             {/* What's included */}
@@ -168,11 +171,11 @@ export default function RegistrationForm() {
               </div>
               <div className="flex items-center gap-3 text-primary-light">
                 <Check className="w-5 h-5 text-accent flex-shrink-0" />
-                <span>Culinaire proeverij van Cookaholics</span>
+                <span>Gratis hapjes & drankjes van Cookaholics</span>
               </div>
               <div className="flex items-center gap-3 text-primary-light">
                 <Check className="w-5 h-5 text-accent flex-shrink-0" />
-                <span>Kennismaking met toppartners</span>
+                <span>Persoonlijke kennismaking met alle trouwpartners</span>
               </div>
               <div className="flex items-center gap-3 text-primary-light">
                 <Check className="w-5 h-5 text-accent flex-shrink-0" />
@@ -263,7 +266,7 @@ export default function RegistrationForm() {
               {/* Time Slot */}
               <div className="mb-4">
                 <label htmlFor="timeSlot" className="block text-sm font-medium text-primary-darkest mb-2">
-                  Voorkeur tijdslot 12 april *
+                  Voorkeur tijdslot 28 juni *
                 </label>
                 <select
                   id="timeSlot"

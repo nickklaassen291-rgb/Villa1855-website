@@ -1,27 +1,27 @@
 'use client'
 
-import { Building2, UtensilsCrossed, Handshake, Receipt } from 'lucide-react'
+import { Building2, UtensilsCrossed, Handshake, Receipt, Check } from 'lucide-react'
 
 const details = [
   {
     icon: Building2,
-    title: 'Rondleiding door de villa',
-    description: 'Ontdek onze sfeervolle feestzaal, lichte serre en charmante binnentuin. Exclusief voor jullie op de grote dag.',
+    title: 'De locatie',
+    description: 'Rondleiding door de monumentale feestzaal, serre en romantische binnentuin. Exclusief voor jullie op de grote dag.',
   },
   {
     icon: UtensilsCrossed,
-    title: 'Culinaire invulling',
-    description: 'Proef de culinaire invulling van Cookaholics. Verse, lokale producten en creatieve gerechten die indruk maken.',
+    title: 'Culinaire proeverij',
+    description: 'Proef de signatuurhapjes van Cookaholics, de high-end cateraar die jullie trouw van A tot Z culinair verzorgt.',
   },
   {
     icon: Handshake,
-    title: 'Ontmoet onze partners',
-    description: 'Maak kennis met onze geselecteerde partners: fotografen, DJ\'s, bloemisten en meer.',
+    title: 'Alle trouwpartners persoonlijk',
+    description: 'Maak kennis met fotograaf, DJ, bloemist, stylist en meer. Stel direct jullie vragen.',
   },
   {
     icon: Receipt,
     title: 'Vrijblijvende offerte',
-    description: 'Ontvang na afloop een offerte op maat, volledig afgestemd op jullie wensen en droomdag.',
+    description: 'Volledig afgestemd op jullie trouwdag. Ontvang na afloop een offerte op maat.',
   },
 ]
 
@@ -36,18 +36,18 @@ export default function EventDetails() {
         {/* Section Header */}
         <div className="text-center mb-12">
           <span className="text-accent text-xs font-medium tracking-[0.25em] uppercase mb-4 block">
-            Zondag 12 april 2026
+            Zondag 28 juni 2026
           </span>
           <h2 className="font-heading text-3xl md:text-4xl text-white mb-4">
-            Wat kun je verwachten?
+            Wat jullie ontdekken
           </h2>
-          <p className="text-primary-light max-w-xl mx-auto">
-            Een dag vol inspiratie, culinaire hoogstandjes en persoonlijke aandacht voor jullie onvergetelijke dag.
+          <p className="text-primary-light max-w-2xl mx-auto">
+            In één bezoek van circa 1 tot 1,5 uur ontdekken jullie alles over Villa 1855. Alles is gratis en vrijblijvend.
           </p>
         </div>
 
         {/* Details Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {details.map((detail) => {
             const Icon = detail.icon
             return (
@@ -71,6 +71,26 @@ export default function EventDetails() {
               </div>
             )
           })}
+        </div>
+
+        {/* Gratis inbegrepen */}
+        <div className="border border-accent/30 bg-accent/5 p-8 md:p-10 max-w-2xl mx-auto text-center">
+          <h3 className="font-heading text-2xl text-white mb-6">
+            Alles gratis inbegrepen
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+            {[
+              'Rondleiding door de monumentale villa',
+              'Hapjes & drankjes van Cookaholics',
+              'Persoonlijke kennismaking met alle trouwpartners',
+              'Offerte op maat — volledig afgestemd op jullie trouwdag',
+            ].map((item) => (
+              <div key={item} className="flex items-start gap-3 text-primary-light">
+                <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
