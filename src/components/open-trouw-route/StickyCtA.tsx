@@ -22,7 +22,7 @@ export default function StickyCTA() {
 
   return (
     <div
-      className={`fixed bottom-0 left-0 right-0 bg-primary-darkest/98 backdrop-blur-md border-t border-primary-dark z-50 transition-transform duration-300 ${
+      className={`fixed bottom-0 left-0 right-0 bg-primary-darkest border-t border-accent/30 z-50 transition-transform duration-300 ${
         isVisible ? 'translate-y-0' : 'translate-y-full'
       }`}
     >
@@ -30,7 +30,7 @@ export default function StickyCTA() {
         <div className="flex items-center justify-between gap-4">
           <div className="hidden sm:block">
             <p className="text-white font-heading text-lg">Open Trouw Route</p>
-            <p className="text-primary-light text-sm">28 juni 2026 · Beperkte plekken</p>
+            <p className="text-primary-lighter text-sm">28 juni 2026 · Beperkte plekken</p>
           </div>
           <div className="flex items-center gap-3 sm:gap-4 w-full sm:w-auto">
             <div className="flex items-center gap-2 text-accent sm:hidden">
