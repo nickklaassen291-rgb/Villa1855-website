@@ -493,14 +493,14 @@ function DealsSection({ selectedDiscounts, onChange }: { selectedDiscounts: stri
 // ============================================================
 function CostOverview({ costs }: { costs: Costs }) {
   const dayItems = [
-    { label: getReceptionLabel(costs.receptionType), amount: costs.reception },
     { label: 'Dranken dagprogramma', amount: costs.drinksDay },
+    { label: getReceptionLabel(costs.receptionType), amount: costs.reception },
     { label: getDinnerLabel(costs.dinnerType), amount: costs.dinner },
   ]
 
   const eveningItems = [
-    { label: getPartyFoodLabel(costs.partyFoodType), amount: costs.partyFood },
     { label: 'Dranken avondprogramma', amount: costs.drinksEvening },
+    { label: getPartyFoodLabel(costs.partyFoodType), amount: costs.partyFood },
     ...(costs.lateNightType !== 'none'
       ? [{ label: getLateNightLabel(costs.lateNightType), amount: costs.lateNight }]
       : []),
