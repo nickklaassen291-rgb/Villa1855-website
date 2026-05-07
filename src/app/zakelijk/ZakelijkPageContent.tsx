@@ -21,22 +21,28 @@ export default function ZakelijkPageContent() {
 
   const reviews = [
     {
-      text: '"De locatie maakte direct indruk op onze internationale klanten. Professionele begeleiding, uitstekende catering en een sfeer die perfect bij ons merk past."',
-      author: 'Jan Vermeer',
-      role: 'Marketing Director, TechCorp',
-      initials: 'JV'
+      text: '"Wij hebben genoten van een heerlijk kerstdiner bij Villa 1855. De aanloop naar het event wordt professioneel en vriendelijk begeleid. Op de avond zelf een vast contactpersoon voor eventuele vragen en een fantastisch team die het horeca vak verstaan. Heerlijke gerechtjes gegeten, gezellige ambiance en top bediening. Absoluut een aanrader!"',
+      author: 'Marloes Verbeek',
+      role: 'Google review · 11 maanden geleden',
+      initials: 'MV'
     },
     {
-      text: '"Onze strategiedag was een groot succes. De ruimtes zijn perfect voor afwisseling tussen plenaire sessies en break-outs. Aanrader voor elk bedrijf."',
-      author: 'Marieke Koster',
-      role: 'HR Manager, De Groep',
-      initials: 'MK'
+      text: '"Wat een top locatie, alles tot in de puntjes geregeld. Bediening is de juiste style, de gangen van Cookaholics waren subliem en de sfeer overtrof mijn verwachting. Mocht je een locatie zoeken met het beste eten voor je gasten — die heb je dus nu gevonden."',
+      author: 'Tibor Vermeer',
+      role: 'Google review · 9 maanden geleden',
+      initials: 'TV'
     },
     {
-      text: '"Ons eindejaarsfeest bij Villa 1855 was memorabel. De combinatie van historie en moderne service overtrof alle verwachtingen. Team was enthousiast!"',
-      author: 'Pieter Bakker',
-      role: 'Directeur, Bakker & Co',
-      initials: 'PB'
+      text: '"Genoten van de prachtige locatie in het centrum van Tilburg. Welkomstdrankje in de mooie, ruime stadstuin, daarna heerlijk gegeten met bijpassende dranken. De gerechten zagen er uitnodigend en uniek uit, de bediening was beleefd en toegankelijk. Een zeer geslaagde avond — zeker een aanrader."',
+      author: 'Remo Hendriks',
+      role: 'Google review · 6 maanden geleden',
+      initials: 'RH'
+    },
+    {
+      text: '"Ben je te gast op een event, privé of zakelijk, waar Cookaholics de catering verzorgt? Dan weet je zeker dat het tot in de puntjes verzorgd is!"',
+      author: 'Marieke van Os',
+      role: 'Google review',
+      initials: 'MO'
     }
   ]
 
