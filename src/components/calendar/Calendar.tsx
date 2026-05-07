@@ -21,9 +21,18 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 interface CalendarProps {
   initialMonth?: number;
   initialYear?: number;
+  compact?: boolean;
 }
 
-export function Calendar({ initialMonth, initialYear }: CalendarProps) {
+const COMPACT_LEGEND = [
+  { label: 'Beschikbaar', bg: 'bg-available-light', border: 'border-available', dot: 'bg-available' },
+  { label: 'Vanaf 18:00', bg: 'bg-limited-light', border: 'border-limited', dot: 'bg-limited' },
+  { label: 'In optie', bg: 'bg-option-light', border: 'border-option', dot: 'bg-option' },
+  { label: 'Geboekt', bg: 'bg-booked-light', border: 'border-booked', dot: 'bg-booked' },
+  { label: 'Gesloten', bg: 'bg-closed-light', border: 'border-closed', dot: 'bg-closed' },
+];
+
+export function Calendar({ initialMonth, initialYear, compact = false }: CalendarProps) {
   const now = new Date();
   const [currentMonth, setCurrentMonth] = useState(initialMonth ?? now.getMonth());
   const [currentYear, setCurrentYear] = useState(initialYear ?? now.getFullYear());
@@ -107,38 +116,45 @@ export function Calendar({ initialMonth, initialYear }: CalendarProps) {
 
   return (
     <>
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8 lg:gap-16">
+      <div className={compact ? '' : 'grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8 lg:gap-16'}>
         {/* Main Calendar */}
-        <div className="bg-white shadow-strong p-6 md:p-10">
+        <div className={compact ? 'bg-white border border-primary-lighter' : 'bg-white shadow-strong p-6 md:p-10'}>
           {/* Navigation */}
-          <div className="flex justify-between items-center mb-8 pb-6 border-b border-primary-lighter">
-            <h2 className="font-heading text-2xl md:text-3xl text-primary-darkest capitalize">
+          <div className={compact
+            ? 'flex justify-between items-center px-4 py-3 border-b border-primary-lighter'
+            : 'flex justify-between items-center mb-8 pb-6 border-b border-primary-lighter'}>
+            <h2 className={compact
+              ? 'font-heading text-base text-primary-darkest capitalize'
+              : 'font-heading text-2xl md:text-3xl text-primary-darkest capitalize'}>
               {formatMonthYear(currentYear, currentMonth)}
             </h2>
             <div className="flex gap-2">
               <button
                 onClick={goToPreviousMonth}
-                className="w-11 h-11 flex items-center justify-center border border-primary-lighter hover:bg-primary-darkest hover:border-primary-darkest hover:text-white transition-all"
+                className={`${compact ? 'w-9 h-9' : 'w-11 h-11'} flex items-center justify-center border border-primary-lighter hover:bg-primary-darkest hover:border-primary-darkest hover:text-white transition-all`}
                 aria-label="Vorige maand"
               >
-                <ChevronLeft size={20} />
+                <ChevronLeft size={compact ? 16 : 20} />
               </button>
               <button
                 onClick={goToNextMonth}
-                className="w-11 h-11 flex items-center justify-center border border-primary-lighter hover:bg-primary-darkest hover:border-primary-darkest hover:text-white transition-all"
+                className={`${compact ? 'w-9 h-9' : 'w-11 h-11'} flex items-center justify-center border border-primary-lighter hover:bg-primary-darkest hover:border-primary-darkest hover:text-white transition-all`}
                 aria-label="Volgende maand"
               >
-                <ChevronRight size={20} />
+                <ChevronRight size={compact ? 16 : 20} />
               </button>
             </div>
           </div>
 
+          <div className={compact ? 'p-3' : ''}>
           {/* Weekday headers */}
           <div className="grid grid-cols-7 gap-1 mb-2">
             {WEEKDAYS_SHORT.map((day) => (
               <div
                 key={day}
-                className="text-center text-xs font-medium tracking-wider uppercase text-primary py-3"
+                className={compact
+                  ? 'text-center text-[10px] font-medium tracking-wider uppercase text-primary py-1'
+                  : 'text-center text-xs font-medium tracking-wider uppercase text-primary py-3'}
               >
                 {day}
               </div>
@@ -183,13 +199,29 @@ export function Calendar({ initialMonth, initialYear }: CalendarProps) {
                   );
                 })}
           </div>
+          </div>
+
+          {compact && (
+            <div className="border-t border-primary-lighter px-3 py-2 flex flex-wrap gap-x-4 gap-y-1.5">
+              {COMPACT_LEGEND.map((item) => (
+                <div key={item.label} className="flex items-center gap-1.5 text-[11px] text-primary">
+                  <span className={`w-3 h-3 border ${item.bg} ${item.border} flex items-center justify-center`}>
+                    <span className={`w-1 h-1 rounded-full ${item.dot}`} />
+                  </span>
+                  {item.label}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
-        {/* Sidebar */}
-        <div className="lg:sticky lg:top-32 space-y-6">
-          <CalendarLegend />
-          <QuickActions />
-        </div>
+        {/* Sidebar (full mode only) */}
+        {!compact && (
+          <div className="lg:sticky lg:top-32 space-y-6">
+            <CalendarLegend />
+            <QuickActions />
+          </div>
+        )}
       </div>
 
       {/* Modal */}

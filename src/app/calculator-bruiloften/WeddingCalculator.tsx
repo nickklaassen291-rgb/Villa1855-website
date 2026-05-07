@@ -950,7 +950,7 @@ function AvailabilityContactBlock({ formData, costs }: { formData: FormData; cos
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             <div>
               <h4 className="font-heading text-lg font-medium text-primary-darkest mb-4">Beschikbaarheid</h4>
-              <Calendar />
+              <Calendar compact />
             </div>
             <div className="lg:border-l lg:border-primary-lighter lg:pl-12">
               <SendCalculationForm formData={formData} costs={costs} defaultOpen hideClosedState />
