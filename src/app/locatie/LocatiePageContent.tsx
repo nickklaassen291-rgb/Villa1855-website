@@ -4,37 +4,73 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Users, Armchair, Presentation, Heart, Sparkles } from 'lucide-react'
 
-const spaces = [
+type Capacity = {
+  number: number
+  label: string
+  description: string
+  icon: 'users' | 'armchair' | 'presentation' | 'heart'
+}
+
+type Space = {
+  name: string
+  description: string
+  image: string
+  capacities: Capacity[]
+  features: string[]
+}
+
+const spaces: Space[] = [
   {
-    name: 'Feestzaal',
-    description: 'Onze meest indrukwekkende ruimte met originele plafondschilderingen, kristallen kroonluchters en elegante schouwen. De perfecte setting voor een stijlvol diner of groots feest.',
-    capacity: '120 zitplaatsen',
-    features: ['Originele ornamenten', 'Natuurlijk daglicht', 'Eigen bar'],
-    image: '/images/feestzaal.jpg'
+    name: 'Orangerie',
+    description: 'Onze meest indrukwekkende ruimte met originele plafondschilderingen, kristallen kroonluchters en elegante schouwen. De perfecte setting voor een stijlvol diner, ceremonie of receptie.',
+    image: '/images/feestzaal.jpg',
+    capacities: [
+      { number: 80, label: 'ZITPLAATSEN', description: 'Ideaal voor diner en ceremonie.', icon: 'armchair' },
+      { number: 100, label: 'STAANPLAATSEN', description: 'Geschikt voor recepties en borrels.', icon: 'users' },
+    ],
+    features: ['Diner', 'Ceremonie', 'Receptie'],
   },
   {
-    name: 'De Kas',
-    description: 'De Kas is een sfeervolle ruimte met heel erg veel daglicht. Ideaal voor elk type evenement.',
-    capacity: '60 zitplaatsen',
-    features: ['Glazen wanden', 'Tuinuitzicht', 'Intieme sfeer'],
-    image: '/images/otr-serre.jpg'
+    name: 'Coure',
+    description: 'De Coure is een karaktervolle ruimte voor presentaties, recepties en sfeervolle bijeenkomsten. Door de open opzet en stijlvolle uitstraling is deze ruimte perfect voor events waarbij ontmoeting, beleving en uitstraling samenkomen.',
+    image: '/images/otr-serre.jpg',
+    capacities: [
+      { number: 120, label: 'STAAND', description: 'Ideaal voor recepties, borrels en netwerkevents.', icon: 'users' },
+      { number: 60, label: 'THEATER OPSTELLING', description: 'Geschikt voor presentaties, lezingen en bijeenkomsten.', icon: 'presentation' },
+    ],
+    features: ['Presentaties', 'Recepties & borrels', 'Theateropstelling 60 gasten'],
   },
   {
     name: 'De Binnentuin',
-    description: 'Een verborgen groene oase in het hart van de villa. Met zijn sfeervolle uitstraling de ultieme plek voor buitenceremonies en zomerse borrels.',
-    capacity: '80 staand',
-    features: ['Besloten tuin', 'Romantisch', 'Fotogeniek'],
-    image: '/images/tuin-fontein.jpg'
+    description: 'Een verborgen groene oase in het hart van de villa. Met zijn sfeervolle uitstraling de ultieme plek voor buitenceremonies, zomerse recepties en sfeervolle diners onder de open hemel.',
+    image: '/images/tuin-fontein.jpg',
+    capacities: [
+      { number: 250, label: 'STAANPLAATSEN', description: 'Voor zomerse borrels en recepties.', icon: 'users' },
+      { number: 100, label: 'CEREMONIE', description: 'Voor een buitenceremonie in groene setting.', icon: 'heart' },
+      { number: 80, label: 'ZITTEND', description: 'Voor diners onder de open hemel.', icon: 'armchair' },
+    ],
+    features: ['Ceremonie', 'Buiten', 'Receptie'],
   },
   {
-    name: 'Het Salon',
-    description: 'Intieme ruimte met authentieke schouw en warme, huiselijke sfeer. Perfect voor kleine gezelschappen, vergaderingen of als aparte ruimte voor het bruidspaar.',
-    capacity: '20 zitplaatsen',
-    features: ['Authentieke schouw', 'Privé ruimte', 'Gezellig'],
-    image: '/images/bar-sfeer.jpg'
-  }
+    name: 'Coure + Orangerie',
+    description: 'De Coure en Orangerie gecombineerd vormen één grootse evenementenruimte. De moderne uitstraling van de Coure ontmoet de monumentale grandeur van de Orangerie — perfect voor uitgebreide bedrijfsevents, feesten en netwerkmomenten.',
+    image: '/images/feestzaal.jpg',
+    capacities: [
+      { number: 220, label: 'STAAND', description: 'Voor grootse feesten en netwerkevents.', icon: 'users' },
+      { number: 140, label: 'ZITTEND', description: 'Voor diners en meetings op formaat.', icon: 'armchair' },
+    ],
+    features: ['Feest', 'Netwerkevent', 'Meeting'],
+  },
 ]
+
+const capacityIcons = {
+  users: Users,
+  armchair: Armchair,
+  presentation: Presentation,
+  heart: Heart,
+}
 
 export default function LocatiePageContent() {
   return (
@@ -176,34 +212,78 @@ export default function LocatiePageContent() {
         </section>
 
         {/* Ruimtes */}
-        <section className="spaces-section" id="ruimtes">
-          <div className="container">
-            <div className="section-header">
-              <h2>Onze Ruimtes</h2>
-              <p>Vier unieke ruimtes, elk met een eigen karakter en sfeer</p>
+        <section className="py-20 md:py-24 bg-white" id="ruimtes">
+          <div className="container-custom">
+            <div className="text-center mb-12 md:mb-16">
+              <span className="text-accent text-xs font-medium tracking-[0.25em] uppercase mb-4 block">
+                Ontdek de ruimtes
+              </span>
+              <h2 className="font-heading text-3xl md:text-4xl text-primary-darkest">Onze Ruimtes</h2>
+              <p className="text-primary mt-3">Vier unieke ruimtes, elk met een eigen karakter en sfeer</p>
             </div>
-            <div className="spaces-grid">
+            <div className="space-y-12 md:space-y-16">
               {spaces.map((space, index) => (
-                <div key={index} className="space-card">
-                  <div className="space-image">
+                <article
+                  key={index}
+                  className="bg-offwhite shadow-soft overflow-hidden"
+                >
+                  <div className="relative aspect-[16/9] md:aspect-[21/9]">
                     <Image
                       src={space.image}
                       alt={space.name}
                       fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 1100px"
                     />
-                    <div className="space-capacity-badge">{space.capacity}</div>
                   </div>
-                  <div className="space-content">
-                    <h3>{space.name}</h3>
-                    <p>{space.description}</p>
-                    <div className="space-features">
-                      {space.features.map((feature, i) => (
-                        <span key={i} className="space-feature">{feature}</span>
-                      ))}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 p-8 md:p-12">
+                    <div>
+                      <h3 className="font-heading text-3xl md:text-5xl text-primary-darkest mb-6 leading-tight">
+                        {space.name}
+                      </h3>
+                      <p className="text-primary leading-relaxed">{space.description}</p>
+                    </div>
+                    <div className="space-y-8">
+                      <div
+                        className={`grid gap-6 border-b border-primary-lighter pb-8 ${
+                          space.capacities.length === 1
+                            ? 'grid-cols-1'
+                            : space.capacities.length === 2
+                              ? 'grid-cols-1 sm:grid-cols-2'
+                              : 'grid-cols-1'
+                        }`}
+                      >
+                        {space.capacities.map((cap, i) => {
+                          const Icon = capacityIcons[cap.icon]
+                          return (
+                            <div key={i} className="flex gap-3">
+                              <Icon className="w-6 h-6 text-primary-darkest flex-shrink-0 mt-1" strokeWidth={1.5} />
+                              <div>
+                                <div className="font-heading text-lg text-primary-darkest mb-1">
+                                  {cap.number} {cap.label}
+                                </div>
+                                <p className="text-sm text-primary leading-snug">{cap.description}</p>
+                              </div>
+                            </div>
+                          )
+                        })}
+                      </div>
+                      <div>
+                        <h4 className="text-xs tracking-[0.25em] text-primary-darkest mb-4 font-medium">
+                          KENMERKEN
+                        </h4>
+                        <div className="space-y-3">
+                          {space.features.map((feat, i) => (
+                            <div key={i} className="flex items-center gap-3">
+                              <Sparkles className="w-4 h-4 text-accent flex-shrink-0" strokeWidth={1.5} />
+                              <span className="text-primary-darkest">{feat}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           </div>
