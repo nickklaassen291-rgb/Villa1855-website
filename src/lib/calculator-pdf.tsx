@@ -34,9 +34,9 @@ export interface CalculatorPdfData {
 }
 
 const DEAL_LABELS: Record<string, string> = {
-  'bruiloft-2026': 'Trouwen in 2026 (30%)',
-  winterdeal: 'Winterdeal okt-apr (50%)',
-  zondag: 'Zondag trouwen (50%)',
+  'bruiloft-2026': 'Trouwen in 2026 (50%)',
+  winterdeal: 'Winterdeal okt-apr (25%)',
+  zondag: 'Zondag trouwen (25%)',
 }
 
 function dinnerLabel(type: DinnerType): string {

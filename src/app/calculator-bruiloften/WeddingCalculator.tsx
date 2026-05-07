@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import { Calendar } from '@/components/calendar'
 import Link from 'next/link'
 
 // ============================================================
@@ -34,20 +35,20 @@ const DEALS = [
   {
     id: 'bruiloft-2026',
     label: 'Trouwen in 2026',
-    discount: '30%',
-    description: '30% korting op de locatiehuur voor bruiloften die plaatsvinden in 2026.',
+    discount: '50%',
+    description: '50% korting op de locatiehuur voor bruiloften die plaatsvinden in 2026.',
   },
   {
     id: 'winterdeal',
     label: 'Oktober t/m april',
-    discount: '50%',
-    description: '50% korting op de locatiehuur voor bruiloften tussen oktober en april.',
+    discount: '25%',
+    description: '25% korting op de locatiehuur voor bruiloften tussen oktober en april.',
   },
   {
     id: 'zondag',
     label: 'Zondag trouwen',
-    discount: '50%',
-    description: '50% korting op de locatiehuur voor bruiloften op zondag.',
+    discount: '25%',
+    description: '25% korting op de locatiehuur voor bruiloften op zondag.',
   },
 ]
 
@@ -100,9 +101,8 @@ function formatCurrency(amount: number): string {
 }
 
 function getDiscountPercentage(discounts: string[]): number {
-  // Hoogste korting wordt toegepast
-  if (discounts.includes('winterdeal') || discounts.includes('zondag')) return 50
-  if (discounts.includes('bruiloft-2026')) return 30
+  if (discounts.includes('bruiloft-2026')) return 50
+  if (discounts.includes('winterdeal') || discounts.includes('zondag')) return 25
   return 0
 }
 
@@ -427,10 +427,10 @@ function DealsSection({ selectedDiscounts, onChange }: { selectedDiscounts: stri
     }
   }
 
-  const highestDiscount = selectedDiscounts.some((d) => d === 'winterdeal' || d === 'zondag')
+  const highestDiscount = selectedDiscounts.includes('bruiloft-2026')
     ? 50
-    : selectedDiscounts.includes('bruiloft-2026')
-    ? 30
+    : selectedDiscounts.some((d) => d === 'winterdeal' || d === 'zondag')
+    ? 25
     : 0
 
   return (
@@ -509,11 +509,7 @@ function CostOverview({ costs }: { costs: Costs }) {
   return (
     <div className="card p-6 lg:p-8">
       {/* Header */}
-      <div className="flex items-center gap-2 mb-6">
-        <svg className="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <line x1="12" y1="1" x2="12" y2="23" />
-          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-        </svg>
+      <div className="mb-6">
         <h2 className="font-heading text-2xl font-medium text-primary-darkest">Kostenoverzicht</h2>
       </div>
 
@@ -615,13 +611,7 @@ function CostOverview({ costs }: { costs: Costs }) {
       {/* Totaal */}
       <div className="space-y-4">
         <div className="flex items-center justify-between p-4 bg-accent/10 border-2 border-accent/30">
-          <div className="flex items-center gap-2">
-            <svg className="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <line x1="12" y1="1" x2="12" y2="23" />
-              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-            </svg>
-            <span className="font-heading text-xl font-medium text-primary-darkest">Totale kosten</span>
-          </div>
+          <span className="font-heading text-xl font-medium text-primary-darkest">Totale kosten</span>
           <span className="font-heading text-2xl font-semibold text-primary-darkest">{formatCurrency(costs.total)}</span>
         </div>
 
@@ -759,16 +749,16 @@ function SendCalculationForm({
 
   if (status.type === 'success') {
     return (
-      <div className="card p-6 lg:p-8 mt-6 bg-accent/5 border-2 border-accent/30">
-        <div className="flex items-start gap-3">
-          <svg className="h-6 w-6 text-accent flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <div className="card p-8 lg:p-12 bg-accent/5 border-2 border-accent/30">
+        <div className="flex items-start gap-4">
+          <svg className="h-8 w-8 text-accent flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
             <polyline points="22 4 12 14.01 9 11.01" />
           </svg>
           <div>
-            <h3 className="font-heading text-xl font-medium text-primary-darkest mb-2">Verstuurd!</h3>
-            <p className="text-sm text-primary">{status.message}</p>
-            <p className="text-sm text-primary mt-2">Check ook even de spam-map. We nemen binnenkort contact met je op.</p>
+            <h3 className="font-heading text-2xl font-medium text-primary-darkest mb-2">Verstuurd!</h3>
+            <p className="text-base text-primary">{status.message}</p>
+            <p className="text-sm text-primary mt-3 italic">Check ook even de spam-map. We nemen binnenkort contact met je op.</p>
           </div>
         </div>
       </div>
@@ -777,39 +767,46 @@ function SendCalculationForm({
 
   if (!open) {
     return (
-      <div className="card p-6 lg:p-8 mt-6">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div>
-            <h3 className="font-heading text-xl font-medium text-primary-darkest mb-1">
+      <div className="card p-8 lg:p-12 bg-primary-darkest text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 pointer-events-none" style={{
+          backgroundImage: 'radial-gradient(circle at 20% 20%, rgba(184,153,104,0.6), transparent 50%), radial-gradient(circle at 80% 80%, rgba(184,153,104,0.4), transparent 50%)'
+        }} />
+        <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="flex-1">
+            <span className="label justify-start mb-3" style={{ color: '#b89968' }}>Berekening ontvangen</span>
+            <h3 className="font-heading text-2xl md:text-3xl font-medium mb-3">
               Tevreden met deze berekening?
             </h3>
-            <p className="text-sm text-primary">
-              Ontvang de complete berekening per e-mail (PDF) zodat je alles rustig kunt nalezen.
+            <p className="text-sm md:text-base opacity-90 max-w-2xl">
+              Ontvang de complete berekening als PDF in je inbox &mdash; inclusief alle gekozen
+              arrangementen, kortingen en totaalbedragen. Wij krijgen tegelijkertijd een melding
+              zodat we je persoonlijk verder kunnen helpen.
             </p>
           </div>
           <button
             type="button"
             onClick={() => setOpen(true)}
             disabled={!canSubmit}
-            className="btn btn-primary whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+            className="btn btn-secondary whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed text-base px-6 py-3"
           >
             Stuur naar mijn e-mail
           </button>
         </div>
         {!canSubmit && (
-          <p className="text-xs text-primary mt-3 italic">Vul eerst het aantal gasten in.</p>
+          <p className="text-xs opacity-75 mt-4 italic relative">Vul eerst het aantal gasten in om de berekening te kunnen versturen.</p>
         )}
       </div>
     )
   }
 
   return (
-    <div className="card p-6 lg:p-8 mt-6">
-      <h3 className="font-heading text-xl font-medium text-primary-darkest mb-2">
+    <div className="card p-8 lg:p-12 border-2 border-accent/30 bg-white">
+      <span className="label justify-start mb-3">Berekening ontvangen</span>
+      <h3 className="font-heading text-2xl md:text-3xl font-medium text-primary-darkest mb-3">
         Stuur de berekening naar mijn e-mail
       </h3>
-      <p className="text-sm text-primary mb-6">
-        Je ontvangt de berekening als PDF. Wij krijgen ook een melding zodat we je persoonlijk verder kunnen helpen.
+      <p className="text-sm md:text-base text-primary mb-8 max-w-2xl">
+        Je ontvangt de berekening als PDF in je inbox. Wij krijgen ook een melding zodat we je persoonlijk verder kunnen helpen.
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -1043,11 +1040,37 @@ export default function WeddingCalculator() {
 
               {/* Right: Cost Overview */}
               <div>
-                <div className="lg:sticky lg:top-8 space-y-6">
+                <div className="lg:sticky lg:top-8">
                   <CostOverview costs={costs} />
-                  <SendCalculationForm formData={formData} costs={costs} />
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Beschikbaarheid */}
+        <section className="section-padding bg-white">
+          <div className="container">
+            <div className="max-w-7xl mx-auto">
+              <div className="text-center mb-10">
+                <span className="label justify-center">Real-time beschikbaarheid</span>
+                <h2 className="font-heading text-3xl md:text-4xl font-medium text-primary-darkest mt-3 mb-3">
+                  Check direct of jullie datum vrij is
+                </h2>
+                <p className="text-primary max-w-2xl mx-auto">
+                  Kies een datum hieronder om vrijblijvend een optie te plaatsen of meer informatie aan te vragen.
+                </p>
+              </div>
+              <Calendar />
+            </div>
+          </div>
+        </section>
+
+        {/* Stuur berekening */}
+        <section className="section-padding bg-offwhite">
+          <div className="container">
+            <div className="max-w-4xl mx-auto">
+              <SendCalculationForm formData={formData} costs={costs} />
             </div>
           </div>
         </section>
