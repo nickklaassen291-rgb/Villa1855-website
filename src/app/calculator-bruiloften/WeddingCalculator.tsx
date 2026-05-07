@@ -1103,7 +1103,7 @@ export default function WeddingCalculator() {
         </section>
 
         {/* Beschikbaarheid + Stuur berekening (collapsible) */}
-        <section className="section-padding bg-offwhite">
+        <section className="py-20 md:py-28 bg-white">
           <div className="container">
             <div className="max-w-5xl mx-auto">
               <AvailabilityContactBlock formData={formData} costs={costs} />
