@@ -98,7 +98,7 @@ function MiniCalendarDay({
 const PACKAGES = {
   'zakelijke-borrel': {
     id: 'zakelijke-borrel',
-    name: 'Zakelijke borrel',
+    name: 'Netwerkborrel',
     pricePerPerson: 52.50,
     tagline: 'Een informele setting om relaties te versterken. Ideaal voor netwerkevents, productlanceringen of seizoensborrels.',
     included: [
@@ -119,7 +119,7 @@ const PACKAGES = {
   },
   'zakelijke-bijeenkomst': {
     id: 'zakelijke-bijeenkomst',
-    name: 'Zakelijke bijeenkomst',
+    name: 'Werksessie & borrel',
     pricePerPerson: 65,
     tagline: 'Een productieve dag in een inspirerende omgeving. Perfect voor strategiesessies, trainingen, presentaties of workshops.',
     included: [
@@ -142,7 +142,7 @@ const PACKAGES = {
   },
   'zakelijk-diner': {
     id: 'zakelijk-diner',
-    name: 'Zakelijk diner',
+    name: 'Relatiediner',
     pricePerPerson: 92.50,
     tagline: 'Versterk zakelijke relaties met een onvergetelijk diner. Combineer netwerken met excellent eten in een unieke setting.',
     included: [
