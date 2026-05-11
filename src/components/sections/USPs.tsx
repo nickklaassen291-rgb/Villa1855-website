@@ -32,7 +32,7 @@ export default function USPs() {
                 </svg>
                 <div>
                   <strong>Culinaire beleving</strong>
-                  De culinaire invulling wordt verzorgd door Cookaholics. Verse, lokale producten en creatieve gerechten die indruk maken.
+                  De culinaire invulling wordt verzorgd door Cookaholics &mdash; een betrouwbare partij met 16 jaar ervaring en meerdere evenementlocaties in Noord-Brabant. Onze chefs stellen per seizoen zorgvuldig nieuwe menu&apos;s samen met verse, lokale producten en doordachte gerechten die indruk maken.
                 </div>
               </li>
               <li>
