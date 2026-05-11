@@ -52,7 +52,7 @@ export default function TrouwenPageContent() {
   const faqItems = [
     {
       question: 'Voor hoeveel gasten is Villa 1855 geschikt als trouwlocatie?',
-      answer: 'Tijdens de ceremonie en het diner is er plek voor maximaal 80 gasten. Voor de feestavond kunnen er tot 100 gasten aanwezig zijn. De hele villa en de binnentuin zijn op jullie trouwdag beschikbaar — beide zalen en de buitenruimte gebruiken we in één doorlopende flow van ceremonie naar diner naar feest.'
+      answer: 'Een bruiloft bij Villa 1855 organiseren we vanaf 20 gasten. Tijdens de ceremonie en het diner is er plek voor maximaal 80 gasten; voor de feestavond kunnen er tot 120 gasten aanwezig zijn. De hele villa en de binnentuin zijn op jullie trouwdag beschikbaar — elke ruimte heeft zijn eigen setting (ceremonie, diner, feest), dus we gebruiken ze niet gecombineerd maar als doorlopende flow door de dag heen.'
     },
     {
       question: 'Kunnen we trouwen, dineren én feesten op één locatie?',
@@ -237,7 +237,7 @@ export default function TrouwenPageContent() {
                   </li>
                   <li>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                    Capaciteit tot 80 gasten (diner) of 120 (feestavond)
+                    Capaciteit vanaf 20 tot 80 gasten (diner) of 120 (feestavond)
                   </li>
                 </ul>
               </div>
