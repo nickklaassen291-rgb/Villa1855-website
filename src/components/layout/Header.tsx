@@ -12,8 +12,9 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
+      setScrolled(window.scrollY > 10)
     }
+    handleScroll()
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -21,7 +22,7 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-primary-darkest/98 backdrop-blur-md py-2' : 'bg-transparent py-4'
+        scrolled ? 'bg-primary-darkest shadow-md py-2' : 'bg-transparent py-4'
       }`}
     >
       <nav className="container-custom">
