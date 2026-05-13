@@ -14,9 +14,29 @@ const YOUTUBE_VIDEO_ID = 'ko5JAY5v7-E'
 
 export default function ZakelijkPageContent() {
   const [activeQuestion, setActiveQuestion] = useState<number | null>(null)
+  const [brochureData, setBrochureData] = useState({ naam: '', telefoon: '' })
+  const [brochureStatus, setBrochureStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
 
   const toggleQuestion = (index: number) => {
     setActiveQuestion(activeQuestion === index ? null : index)
+  }
+
+  const handleBrochureInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setBrochureData((prev) => ({ ...prev, [name]: value }))
+  }
+
+  const handleBrochureSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setBrochureStatus('submitting')
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 800))
+      console.log('Zakelijke brochure-aanvraag:', brochureData)
+      setBrochureStatus('success')
+      setBrochureData({ naam: '', telefoon: '' })
+    } catch {
+      setBrochureStatus('error')
+    }
   }
 
   const reviews = [
@@ -266,6 +286,113 @@ export default function ZakelijkPageContent() {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Zakelijke brochure */}
+        <section className="brochure-section" id="brochure">
+          <div className="container">
+            <div className="brochure-content">
+              <div className="brochure-text">
+                <div className="label">Gratis brochure</div>
+                <h2>Ontvang onze zakelijke brochure</h2>
+                <p>
+                  Bekijk de mogelijkheden van Villa 1855 voor je bedrijfsevent — van netwerkborrel tot relatiediner, vergadering of bedrijfsfeest in een monumentale stadsvilla in Tilburg.
+                </p>
+                <ul className="brochure-list">
+                  <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    Indrukwekkende foto&apos;s van alle ruimtes
+                  </li>
+                  <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    Inhoud en prijzen van de zakelijke arrangementen
+                  </li>
+                  <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    Capaciteiten, AV-faciliteiten en praktische info
+                  </li>
+                  <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    Voorbeeld-programma&apos;s en menukeuzes
+                  </li>
+                </ul>
+              </div>
+
+              <div className="brochure-form-wrapper">
+                {brochureStatus === 'success' ? (
+                  <div className="form-success">
+                    <div className="success-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <h3>Bedankt!</h3>
+                    <p>We bellen je binnen 1 werkdag terug met de brochure en bespreken graag je vraag.</p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleBrochureSubmit} className="brochure-form">
+                    <h3>Vraag de brochure aan</h3>
+                    <div className="form-group">
+                      <label htmlFor="zakelijk-naam">Naam *</label>
+                      <input
+                        type="text"
+                        id="zakelijk-naam"
+                        name="naam"
+                        value={brochureData.naam}
+                        onChange={handleBrochureInput}
+                        required
+                        placeholder="Je naam"
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="zakelijk-telefoon">Telefoonnummer *</label>
+                      <input
+                        type="tel"
+                        id="zakelijk-telefoon"
+                        name="telefoon"
+                        value={brochureData.telefoon}
+                        onChange={handleBrochureInput}
+                        required
+                        placeholder="06 - 12345678"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="btn btn-primary btn-full"
+                      disabled={brochureStatus === 'submitting'}
+                    >
+                      {brochureStatus === 'submitting' ? (
+                        'Verzenden...'
+                      ) : (
+                        <>
+                          Vraag brochure aan
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                          </svg>
+                        </>
+                      )}
+                    </button>
+                    {brochureStatus === 'error' && (
+                      <p className="form-privacy" style={{ color: '#b91c1c' }}>
+                        Er ging iets mis. Probeer het opnieuw of bel ons direct.
+                      </p>
+                    )}
+                    <p className="form-privacy">
+                      We bellen je binnen 1 werkdag terug. Je gegevens gebruiken we alleen voor dit contact.
+                    </p>
+                  </form>
+                )}
               </div>
             </div>
           </div>
