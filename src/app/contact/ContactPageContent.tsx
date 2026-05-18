@@ -106,6 +106,45 @@ export default function ContactPageContent() {
           </div>
         </section>
 
+        {/* Aanspreekpunt — Lotte */}
+        <section className="py-16 md:py-20 bg-offwhite">
+          <div className="container-custom">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 max-w-5xl mx-auto items-center">
+              <div className="relative aspect-square max-w-md w-full mx-auto md:mx-0">
+                <Image
+                  src="/images/lotte.png"
+                  alt="Lotte Willems, jullie aanspreekpunt bij Villa 1855"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              <div>
+                <div className="label mb-4">Jullie aanspreekpunt</div>
+                <h2 className="font-heading text-3xl md:text-4xl text-primary-darkest mb-4">
+                  Hi, ik ben Lotte!
+                </h2>
+                <p className="text-primary text-lg leading-relaxed mb-6 italic">
+                  &ldquo;Of het nu om een bruiloft, bedrijfsfeest of bezichtiging gaat — ik denk graag met je mee. Plan een vrijblijvende kennismaking en ik laat je de villa zelf zien.&rdquo;
+                </p>
+                <p className="text-primary mb-6">
+                  Stel je vraag rechtstreeks via telefoon of e-mail. Reactie binnen één werkdag.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a href="tel:+310852736709" className="btn btn-primary">
+                    <Phone className="w-4 h-4" />
+                    085 273 6709
+                  </a>
+                  <a href="mailto:info@villa1855.nl" className="btn bg-transparent text-primary-darkest border border-primary-lighter hover:bg-white">
+                    <Mail className="w-4 h-4" />
+                    Stuur een e-mail
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Contact Section */}
         <section className="py-20 md:py-24 bg-white">
           <div className="container-custom">
@@ -168,8 +207,8 @@ export default function ContactPageContent() {
                     <div>
                       <h3 className="font-heading text-lg text-primary-darkest mb-1">Bereikbaarheid</h3>
                       <p className="text-primary">
-                        Maandag - Vrijdag: 09:00 - 18:00<br />
-                        Weekend: Op afspraak
+                        Bereikbaar maandag t/m vrijdag, 09:00 - 17:00<br />
+                        Bezichtiging op afspraak (vrijdag) of tijdens een open dag op zondag
                       </p>
                     </div>
                   </div>
