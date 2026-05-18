@@ -24,7 +24,7 @@ type Space = {
 const spaces: Space[] = [
   {
     name: 'Orangerie',
-    description: 'Onze meest indrukwekkende ruimte met originele plafondschilderingen, kristallen kroonluchters en elegante schouwen. De perfecte setting voor een stijlvol diner, ceremonie of receptie.',
+    description: 'Onze monumentale hoofdzaal met hoge plafonds, ruime proporties en een sfeervolle uitstraling. De perfecte setting voor een stijlvol diner, ceremonie of receptie.',
     image: '/images/feestzaal.jpg',
     capacities: [
       { number: 80, label: 'ZITPLAATSEN', description: 'Ideaal voor diner en ceremonie.', icon: 'armchair' },
@@ -35,7 +35,7 @@ const spaces: Space[] = [
   {
     name: 'Coure',
     description: 'De Coure is een karaktervolle ruimte voor presentaties, recepties en sfeervolle bijeenkomsten. Door de open opzet en stijlvolle uitstraling is deze ruimte perfect voor events waarbij ontmoeting, beleving en uitstraling samenkomen.',
-    image: '/images/otr-serre.jpg',
+    image: '/images/coure.jpg',
     capacities: [
       { number: 120, label: 'STAAND', description: 'Ideaal voor recepties, borrels en netwerkevents.', icon: 'users' },
       { number: 60, label: 'THEATER OPSTELLING', description: 'Geschikt voor presentaties, lezingen en bijeenkomsten.', icon: 'presentation' },
@@ -55,7 +55,7 @@ const spaces: Space[] = [
   },
   {
     name: 'Coure + Orangerie',
-    description: 'De Coure en Orangerie gecombineerd vormen één grootse evenementenruimte. De moderne uitstraling van de Coure ontmoet de monumentale grandeur van de Orangerie — perfect voor uitgebreide bedrijfsevents, feesten en netwerkmomenten.',
+    description: 'De Coure en Orangerie gecombineerd vormen één grootse evenementenruimte. De moderne uitstraling van de Orangerie ontmoet de monumentale grandeur van de Coure — perfect voor uitgebreide bedrijfsevents, feesten en netwerkmomenten.',
     image: '/images/feestzaal.jpg',
     capacities: [
       { number: 220, label: 'STAAND', description: 'Voor grootse feesten en netwerkevents.', icon: 'users' },
@@ -156,8 +156,8 @@ export default function LocatiePageContent() {
                 <h2>Een rijke geschiedenis sinds 1855</h2>
                 <p>
                   Villa 1855 werd gebouwd als woonhuis voor een vooraanstaande Tilburgse textielfamilie.
-                  De villa getuigt van de welvaart en het vakmanschap van die tijd: rijk gedecoreerde
-                  plafonds, marmeren schouwen en elegante proporties die je nog altijd betoveren.
+                  De villa getuigt van de welvaart en het vakmanschap van die tijd: hoge plafonds, ruime
+                  proporties en een verborgen Franse binnentuin die je nog altijd betoveren.
                 </p>
                 <p>
                   Na een zorgvuldige restauratie opende de villa haar deuren als unieke
@@ -183,27 +183,27 @@ export default function LocatiePageContent() {
               </div>
               <div className="feature-text">
                 <div className="label">Authentiek</div>
-                <h2>Monumentale details, moderne luxe</h2>
+                <h2>Monumentale ruimtes, moderne luxe</h2>
                 <p>
-                  Elke ruimte van Villa 1855 toont geschiedenis. Van de originele plafondschilderingen
-                  tot de antieke kroonluchters.
+                  Elke ruimte van Villa 1855 ademt karakter. Na een zorgvuldige restauratie zijn
+                  de monumentale proporties bewaard gebleven en aangevuld met hedendaags comfort.
                 </p>
                 <ul className="feature-list">
                   <li>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                    Originele 19e-eeuwse plafondschilderingen
+                    Hoge plafonds en ruime proporties in de Orangerie
                   </li>
                   <li>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                    Authentieke marmeren schouwen
+                    Karaktervolle Coure met stijlvolle uitstraling
                   </li>
                   <li>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                    Kristallen kroonluchters en sfeerverlichting
+                    Verborgen Franse binnentuin met romantisch karakter
                   </li>
                   <li>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                    Verborgen binnentuin met romantisch karakter
+                    Sfeervolle ambiance die zonder extra aankleding al impact heeft
                   </li>
                 </ul>
               </div>

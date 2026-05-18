@@ -11,7 +11,7 @@ const details = [
   {
     icon: UtensilsCrossed,
     title: 'Culinaire proeverij',
-    description: 'Proef de signatuurhapjes van Cookaholics, de high-end cateraar die jullie trouw van A tot Z culinair verzorgt.',
+    description: 'Proef de signatuurhapjes van Cookaholics, de high-end cateraar die jullie bruiloft van A tot Z culinair verzorgt.',
   },
   {
     icon: Handshake,
