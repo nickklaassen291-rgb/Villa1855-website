@@ -14,7 +14,7 @@ export default function USPs() {
                 </svg>
                 <div>
                   <strong>Exclusief voor jullie</strong>
-                  Op de dag van jullie evenement is Villa 1855 volledig van jullie. Geen gedeelde ruimtes, volledige privacy en persoonlijke aandacht.
+                  Op de dag van jullie evenement zijn de ruimtes van Villa 1855 &mdash; tuin, orangerie en feestzaal &mdash; volledig van jullie. Volledige privacy en persoonlijke aandacht.
                 </div>
               </li>
               <li>
@@ -32,7 +32,7 @@ export default function USPs() {
                 </svg>
                 <div>
                   <strong>Culinaire beleving</strong>
-                  De culinaire invulling wordt verzorgd door Cookaholics &mdash; een betrouwbare partij met 16 jaar ervaring en meerdere evenementlocaties in Noord-Brabant. Onze chefs stellen per seizoen zorgvuldig nieuwe menu&apos;s samen met verse, lokale producten en doordachte gerechten die indruk maken.
+                  De culinaire invulling wordt verzorgd door Cookaholics &mdash; een betrouwbare partij met 16 jaar ervaring en meerdere evenementlocaties in Noord-Brabant. De chefs stellen per seizoen zorgvuldig nieuwe menu&apos;s samen met verse, lokale, producten en doordachte gerechten die indruk maken.
                 </div>
               </li>
               <li>

@@ -52,11 +52,11 @@ export default function TrouwenPageContent() {
   const faqItems = [
     {
       question: 'Voor hoeveel gasten is Villa 1855 geschikt als trouwlocatie?',
-      answer: 'Een bruiloft bij Villa 1855 organiseren we vanaf 20 gasten. Tijdens de ceremonie en het diner is er plek voor maximaal 80 gasten; voor de feestavond kunnen er tot 120 gasten aanwezig zijn. De hele villa en de binnentuin zijn op jullie trouwdag beschikbaar — elke ruimte heeft zijn eigen setting (ceremonie, diner, feest), dus we gebruiken ze niet gecombineerd maar als doorlopende flow door de dag heen.'
+      answer: 'Een bruiloft bij Villa 1855 organiseren we vanaf 20 gasten. Tijdens de ceremonie en het diner is er plek voor maximaal 80 gasten; voor de feestavond kunnen er tot 120 gasten aanwezig zijn. De zalen en de tuin zijn op jullie trouwdag beschikbaar — hoe we de ruimtes inzetten voor ceremonie, diner en feest, hangt af van jullie dagindeling en wensen.'
     },
     {
       question: 'Kunnen we trouwen, dineren én feesten op één locatie?',
-      answer: 'Ja. Ceremonie in de tuin of in één van de zalen, diner in de andere zaal, borrel en feest zonder dat iemand hoeft te verplaatsen. Geen taxi\'s tussen locaties, geen omkleedmomenten — één dag, één huis, één verhaal.'
+      answer: 'Ja. Ceremonie, diner, borrel en feest vinden allemaal plaats op één locatie, zonder dat jullie of jullie gasten hoeven te reizen tussen verschillende plekken. Hoe jullie de dag indelen, bepalen jullie helemaal zelf. Eén dag, één huis, één verhaal.'
     },
     {
       question: 'Kunnen we officieel trouwen bij Villa 1855?',
@@ -64,11 +64,11 @@ export default function TrouwenPageContent() {
     },
     {
       question: 'Kunnen we Villa 1855 exclusief afhuren voor onze trouwdag?',
-      answer: 'Ja. Villa 1855 is op jullie trouwdag helemaal van jullie. We plannen nooit meerdere events tegelijk — geen andere bruiloft in de zaal ernaast, geen bedrijfsborrel in de tuin. De hele villa, de hele dag, voor jullie en jullie gasten.'
+      answer: 'Ja. De zalen en de tuin van Villa 1855 zijn op jullie trouwdag helemaal van jullie. We plannen nooit meerdere events tegelijk — geen andere bruiloft in de zaal ernaast, geen bedrijfsborrel in de tuin. Alle ruimtes van Villa 1855, de hele dag, voor jullie en jullie gasten.'
     },
     {
       question: 'Zijn er slaapplaatsen aanwezig bij Villa 1855?',
-      answer: 'In de villa zelf zijn geen slaapplaatsen. Op loop- of korte rijafstand liggen een aantal hotels die goed passen bij een bruiloft in het centrum van Tilburg: Mercure Hotel Tilburg Centrum (in het centrum, op loopafstand van de villa), Van der Valk Hotel Tilburg (net buiten het centrum, ruime kamers, eigen parkeergelegenheid) en Estella Suites in Goirle (kleinschalig en sfeervol, op korte rijafstand van Tilburg). We denken graag mee over de beste optie voor jullie gasten en regelen desgewenst een groepsarrangement met een van onze hotelpartners.'
+      answer: 'In de villa zelf zijn geen slaapplaatsen. Op loop- of korte rijafstand liggen een aantal hotels die goed passen bij een bruiloft in het centrum van Tilburg: Mercure Hotel Tilburg Centrum (in het centrum, op loopafstand van de villa), Van der Valk Hotel Tilburg (net buiten het centrum, ruime kamers, eigen parkeergelegenheid) en Stella Suites Boutique Hotel in Goirle (kleinschalig en sfeervol, op korte rijafstand van Tilburg). Voor een groepsboeking kunnen jullie zelf rechtstreeks contact opnemen met een van deze hotels.'
     },
     {
       question: 'Kunnen jullie ons volledig ontzorgen bij de organisatie van onze bruiloft?',
@@ -76,7 +76,7 @@ export default function TrouwenPageContent() {
     },
     {
       question: 'Mogen we onze eigen leveranciers (DJ, fotograaf, bloemist) meenemen?',
-      answer: 'De catering verzorgt Cookaholics altijd zelf — dat is onderdeel van het concept. Voor de rest werken we met een vast netwerk van leveranciers dat we goed kennen: van DJ\'s en fotografen tot bloemisten en ceremoniemeesters. Hebben jullie zelf al iemand in gedachten? Laat het weten, dan bespreken we de mogelijkheden.'
+      answer: 'De catering wordt altijd verzorgd door Cookaholics — dat is onderdeel van het concept. Voor de rest werken we met een vast netwerk van leveranciers dat we goed kennen: van DJ\'s en fotografen tot bloemisten en ceremoniemeesters. Hebben jullie zelf al iemand in gedachten? Laat het weten, dan bespreken we de mogelijkheden.'
     },
     {
       question: 'Wat gebeurt er bij slecht weer als we de tuin willen gebruiken?',
@@ -84,19 +84,19 @@ export default function TrouwenPageContent() {
     },
     {
       question: 'Waar kunnen onze bruiloftsgasten parkeren in Tilburg?',
-      answer: 'Met de auto parkeren jullie gasten het beste in Parkeergarage De Knegtel (Gasthuisring 60, 5041 DT Tilburg), op vijf minuten lopen van de villa. Direct voor de deur van Villa 1855 zijn 10 tot 12 parkeerplaatsen beschikbaar. Fietsen kunnen onbewaakt voor de deur gestald worden. Voor de uitnodigingen leveren we een kant-en-klare parkeer- en route-instructie aan die jullie met de gasten kunnen delen.'
+      answer: 'Met de auto parkeren jullie gasten het beste in Parkeergarage De Knegtel (Gasthuisring 60, 5041 DT Tilburg), op vijf minuten lopen van de villa. Direct voor de deur van Villa 1855 zijn 10 tot 12 parkeerplaatsen beschikbaar. Fietsen kunnen onbewaakt voor de deur gestald worden.'
     },
     {
       question: 'Tot hoe laat mag onze bruiloft doorgaan?',
-      answer: 'Het feest mag doorgaan tot 00:45 uur. Om 01:00 uur moet de villa leeg zijn.'
+      answer: 'Het feest mag doorgaan tot uiterlijk 01:00 uur. Onze partymanager zorgt er op de avond zelf voor dat dit goed verloopt.'
     },
     {
       question: 'Hoe lang is een offerte voor onze bruiloft geldig?',
-      answer: 'Een offerte is drie weken geldig vanaf de datum van uitgifte.'
+      answer: 'Een bruiloft-offerte is twee weken geldig vanaf de datum van uitgifte.'
     },
     {
       question: 'Hoe werkt de aanbetaling voor onze bruiloft?',
-      answer: 'We werken met een drie-fasen betaalschema: 25% na ondertekening van de offerte — waarmee jullie datum definitief vastligt; 55% twee weken voor de trouwdag — op basis van het definitieve aantal gasten en de definitieve keuzes; en 20% na afloop — op basis van de nacalculatie (extra consumpties, eventuele meeruren).'
+      answer: 'We werken met een drie-fasen betaalschema: 25% na ondertekening van de offerte — waarmee jullie datum definitief vastligt; 65% twee weken voor de trouwdag — op basis van het definitieve aantal gasten en de definitieve keuzes; en 10% na afloop — op basis van de nacalculatie (extra consumpties, eventuele meeruren).'
     }
   ]
 
@@ -116,8 +116,8 @@ export default function TrouwenPageContent() {
           <div className="page-hero-bg" />
           <div className="page-hero-content">
             <div className="label" style={{ justifyContent: 'center' }}>Trouwen bij Villa 1855</div>
-            <h1>Jullie <em style={{ color: 'white' }}>droombruiloft</em> begint hier</h1>
-            <p>Een monumentale stadsvilla, exclusief voor jullie. Waar historie en romantiek samenkomen voor de mooiste dag van jullie leven.</p>
+            <h1>Jullie <em style={{ color: 'white' }}>droombruiloft</em> begint hier &mdash; in een monumentale stadsvilla uit 1855</h1>
+            <p>Waar historie en romantiek samenkomen voor de mooiste dag van jullie leven.</p>
             <Link href="#brochure" className="btn btn-primary">
               Download onze brochure
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
@@ -138,7 +138,7 @@ export default function TrouwenPageContent() {
           <div className="container">
             <div className="intro-content-centered">
               <h2>Een onvergetelijke dag verdient een onvergetelijke locatie</h2>
-              <p>Villa 1855 is meer dan een trouwlocatie. Het is een plek waar jullie verhaal een nieuw hoofdstuk begint. Een monumentale villa uit 1855 met aandacht voor sfeer, detail en jullie wensen.</p>
+              <p>Villa 1855 is meer dan een trouwlocatie. Het is een plek waar een nieuw hoofdstuk begint in jullie verhaal. Een monumentale villa uit 1855 met aandacht voor sfeer, detail en jullie wensen.</p>
 
               <div className="intro-stats">
                 <div className="stat">
@@ -146,8 +146,8 @@ export default function TrouwenPageContent() {
                   <div className="stat-label">Bruiloften</div>
                 </div>
                 <div className="stat">
-                  <div className="stat-number">100%</div>
-                  <div className="stat-label">Exclusiviteit</div>
+                  <div className="stat-number">1</div>
+                  <div className="stat-label">Event per dag</div>
                 </div>
                 <div className="stat">
                   <div className="stat-number">1855</div>
@@ -189,8 +189,8 @@ export default function TrouwenPageContent() {
               </div>
               <div className="feature-text">
                 <div className="label">Exclusiviteit</div>
-                <h2>De hele villa, alleen voor jullie</h2>
-                <p>Bij Villa 1855 vindt er per dag één evenement plaats, in dit geval één bruiloft. De villa en de tuin staan volledig tot jullie beschikking, zodat de dag zich naar jullie wensen verloopt.</p>
+                <h2>Eén bruiloft per dag &mdash; de ruimtes en tuin zijn van jullie</h2>
+                <p>Bij Villa 1855 vindt er per dag één evenement plaats, in dit geval één bruiloft. De ruimtes en de tuin van Villa 1855 staan volledig tot jullie beschikking, zodat de dag zich naar jullie wensen verloopt.</p>
                 <ul className="feature-list">
                   <li>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
@@ -225,7 +225,7 @@ export default function TrouwenPageContent() {
               <div className="feature-text">
                 <div className="label">De Locatie</div>
                 <h2>Historische charme, modern comfort</h2>
-                <p>Villa 1855 ademt de charme van de 19e eeuw en is ingericht met het comfort van nu. De sfeervolle zalen, lichte serre en groene binnentuin bieden de perfecte setting voor elk moment van jullie dag.</p>
+                <p>Villa 1855 ademt de charme van de 19e eeuw en is ingericht met het comfort van nu. De sfeervolle zaal, lichte serre en groene binnentuin bieden de perfecte setting voor elk moment van jullie dag.</p>
                 <ul className="feature-list">
                   <li>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
@@ -237,7 +237,7 @@ export default function TrouwenPageContent() {
                   </li>
                   <li>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                    Capaciteit vanaf 20 tot 80 gasten (diner) of 120 (feestavond)
+                    Diner voor 20 tot 80 gasten, oplopend naar 120 tijdens de feestavond
                   </li>
                 </ul>
               </div>
