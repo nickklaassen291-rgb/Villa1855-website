@@ -191,7 +191,7 @@ export async function POST(request: NextRequest) {
 
     const resendKey = process.env.RESEND_API_KEY
     // TEMP: 'onboarding@resend.dev' werkt zonder domain-verificatie.
-    // Wissel terug naar 'Villa 1855 <noreply@villa1855.nl>' zodra villa1855.nl
+    // Wissel terug naar 'Villa 1855 <info@villa1855.nl>' zodra villa1855.nl
     // verified is in Resend.
     const fromAddress = process.env.RESEND_FROM_EMAIL || 'Villa 1855 <onboarding@resend.dev>'
     const notifyTo = process.env.NOTIFY_EMAIL || 'info@villa1855.nl'
