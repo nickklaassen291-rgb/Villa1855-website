@@ -24,7 +24,7 @@ type Space = {
 const spaces: Space[] = [
   {
     name: 'Orangerie',
-    description: 'Onze monumentale hoofdzaal met hoge plafonds, ruime proporties en een sfeervolle uitstraling. De perfecte setting voor een stijlvol diner, ceremonie of receptie.',
+    description: 'Een volledig glazen ruimte die naadloos overgaat in de Franse binnentuin. Ramen en deuren kunnen open voor een buiten-binnen beleving — daglicht, groen en lucht stromen door de hele zaal. De perfecte setting voor een stijlvol diner, ceremonie of receptie.',
     image: '/images/feestzaal.jpg',
     capacities: [
       { number: 80, label: 'ZITPLAATSEN', description: 'Ideaal voor diner en ceremonie.', icon: 'armchair' },
@@ -34,18 +34,18 @@ const spaces: Space[] = [
   },
   {
     name: 'Coure',
-    description: 'De Coure is een karaktervolle ruimte voor presentaties, recepties en sfeervolle bijeenkomsten. Door de open opzet en stijlvolle uitstraling is deze ruimte perfect voor events waarbij ontmoeting, beleving en uitstraling samenkomen.',
+    description: 'Een karaktervolle ruimte met hoge plafonds, sfeervolle kroonluchters en monumentale grandeur. Geschikt voor presentaties, recepties en sfeervolle bijeenkomsten — én voor een onvergetelijk feest.',
     image: '/images/coure.jpg',
     capacities: [
       { number: 120, label: 'STAAND', description: 'Ideaal voor recepties, borrels en netwerkevents.', icon: 'users' },
       { number: 60, label: 'THEATER OPSTELLING', description: 'Geschikt voor presentaties, lezingen en bijeenkomsten.', icon: 'presentation' },
     ],
-    features: ['Presentaties', 'Recepties & borrels', 'Theateropstelling 60 gasten'],
+    features: ['Feest', 'Presentaties', 'Recepties & borrels'],
   },
   {
     name: 'De Binnentuin',
     description: 'Een verborgen groene oase in het hart van de villa. Met zijn sfeervolle uitstraling de ultieme plek voor buitenceremonies, zomerse recepties en sfeervolle diners onder de open hemel.',
-    image: '/images/tuin-fontein.jpg',
+    image: '/images/villa-hoofdfoto.png',
     capacities: [
       { number: 250, label: 'STAANPLAATSEN', description: 'Voor zomerse borrels en recepties.', icon: 'users' },
       { number: 100, label: 'CEREMONIE', description: 'Voor een buitenceremonie in groene setting.', icon: 'heart' },
@@ -191,11 +191,11 @@ export default function LocatiePageContent() {
                 <ul className="feature-list">
                   <li>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                    Hoge plafonds en ruime proporties in de Orangerie
+                    Hoge plafonds en sfeervolle kroonluchters in de Coure
                   </li>
                   <li>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                    Karaktervolle Coure met stijlvolle uitstraling
+                    Volledig glazen Orangerie verbonden met de binnentuin
                   </li>
                   <li>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
