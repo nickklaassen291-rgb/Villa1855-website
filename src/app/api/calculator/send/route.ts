@@ -235,7 +235,15 @@ export async function POST(request: NextRequest) {
     if (customerResult.error) {
       console.error('Customer email failed:', customerResult.error)
       return NextResponse.json(
-        { success: false, message: 'Kon e-mail niet versturen. Probeer het later opnieuw.' },
+        {
+          success: false,
+          message: 'Kon e-mail niet versturen. Probeer het later opnieuw.',
+          debug: {
+            error: customerResult.error,
+            fromAddress,
+            toAddress: data.email,
+          },
+        },
         { status: 500 }
       )
     }
