@@ -229,7 +229,7 @@ export default function PopupRestaurantPage() {
               </div>
               <div className="aspect-video relative">
                 <AutoplayYouTube
-                  videoId="ko5JAY5v7-E"
+                  videoId="OdhRk-f7m3c"
                   title="Terugblik Pop-up Restaurant Villa 1855"
                 />
               </div>
