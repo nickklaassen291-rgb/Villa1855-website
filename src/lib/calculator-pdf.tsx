@@ -126,30 +126,6 @@ export function CalculatorPdf({ data }: { data: CalculatorPdfData }) {
             <Text style={styles.metaLabel}>Avondgasten:</Text>
             <Text style={styles.metaValue}>{eveningGuests}</Text>
           </View>
-          <View style={styles.metaRow}>
-            <Text style={styles.metaLabel}>Receptie hapjes:</Text>
-            <Text style={styles.metaValue}>{receptionLabel(receptionType)}</Text>
-          </View>
-          <View style={styles.metaRow}>
-            <Text style={styles.metaLabel}>Dinerkeuze:</Text>
-            <Text style={styles.metaValue}>{dinnerLabel(dinnerType)}</Text>
-          </View>
-          <View style={styles.metaRow}>
-            <Text style={styles.metaLabel}>Feestavond hapjes:</Text>
-            <Text style={styles.metaValue}>{partyFoodLabel(partyFoodType)}</Text>
-          </View>
-          {lateNightType !== 'none' && (
-            <View style={styles.metaRow}>
-              <Text style={styles.metaLabel}>Late night snack:</Text>
-              <Text style={styles.metaValue}>{lateNightLabel(lateNightType)}</Text>
-            </View>
-          )}
-          {discounts.length > 0 && (
-            <View style={styles.metaRow}>
-              <Text style={styles.metaLabel}>Kortingen:</Text>
-              <Text style={styles.metaValue}>{discounts.map((d) => DEAL_LABELS[d] || d).join(', ')}</Text>
-            </View>
-          )}
         </View>
 
         <Text style={styles.sectionTitle}>Dagprogramma</Text>
