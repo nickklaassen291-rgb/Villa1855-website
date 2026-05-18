@@ -35,13 +35,13 @@ const events = [
     title: 'BierSpijs Diner',
     subtitle: 'Cookaholics x Beer Dudes',
     description: '7 gangen. 7 zeldzame craft beers. Eén onvergetelijke avond met biersommelier.',
-    dates: ['20 februari 2026', '21 februari 2026'],
+    dates: ['9 oktober 2026', '10 oktober 2026', '16 oktober 2026', '17 oktober 2026'],
     time: 'Ontvangst 18:00 • Diner 18:30 • Einde 22:30',
     price: '€109 p.p.',
     capacity: 'Max. 70 gasten per avond',
     image: '/images/tafel-elegant.jpg',
-    href: 'https://view.peggypay.com/2a9ce0e2',
-    status: 'beschikbaar',
+    href: 'mailto:info@villa1855.nl?subject=Interesse%20BierSpijs%20Diner%202026&body=Hallo%2C%0A%0AIk%20wil%20graag%20een%20uitnodiging%20ontvangen%20zodra%20de%20aanmeldingen%20voor%20het%20BierSpijs%20Diner%20openen.%0A%0AVoorkeursdatum%20%28optioneel%29%3A%20%0AAantal%20gasten%3A%20%0A%0AMet%20vriendelijke%20groet%2C',
+    status: 'binnenkort',
   },
   // Voeg hier meer evenementen toe
 ]
@@ -119,6 +119,11 @@ export default function PopupRestaurantPage() {
                           Beschikbaar
                         </span>
                       )}
+                      {event.status === 'binnenkort' && (
+                        <span className="absolute top-4 left-4 bg-primary-darkest text-white text-xs font-medium px-3 py-1 uppercase tracking-wider">
+                          More info soon
+                        </span>
+                      )}
                       {event.status === 'bijna-vol' && (
                         <span className="absolute top-4 left-4 bg-orange-500 text-white text-xs font-medium px-3 py-1 uppercase tracking-wider">
                           Bijna vol
@@ -180,11 +185,10 @@ export default function PopupRestaurantPage() {
                           </div>
                           <a
                             href={event.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            {...(event.status !== 'binnenkort' && { target: '_blank', rel: 'noopener noreferrer' })}
                             className="btn btn-primary"
                           >
-                            Reserveer nu
+                            {event.status === 'binnenkort' ? 'Hou mij op de hoogte' : 'Reserveer nu'}
                             <ArrowRight className="w-5 h-5" />
                           </a>
                         </div>
