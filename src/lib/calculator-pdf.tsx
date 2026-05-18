@@ -1,5 +1,97 @@
-import { Document, Page, Text, View, StyleSheet, renderToBuffer } from '@react-pdf/renderer'
-import React from 'react'
+// ============================================================================
+// Villa 1855 — Kostenindicatie bruiloft (PDF)
+//
+// Wordt aangeroepen vanuit src/app/api/calculator/send/route.ts via
+// generateCalculatorPdf(legacyData) — die converteert naar de nieuwe
+// OfferteData en rendert via CalculatorPDF.
+// ============================================================================
+
+import {
+  Document,
+  Font,
+  Image,
+  Page,
+  StyleSheet,
+  Text,
+  View,
+  renderToBuffer,
+} from "@react-pdf/renderer"
+import React from "react"
+import fs from "node:fs"
+import path from "node:path"
+
+// ============================================================================
+// FONTS — Lora (serif) + Public Sans (sans), 2 fonts max per brand guide
+// Fontsource CDN levert betrouwbare TTF-files voor react-pdf.
+// ============================================================================
+
+Font.register({
+  family: "Lora",
+  fonts: [
+    { src: "https://cdn.jsdelivr.net/fontsource/fonts/lora@latest/latin-400-normal.ttf", fontWeight: 400 },
+    { src: "https://cdn.jsdelivr.net/fontsource/fonts/lora@latest/latin-500-normal.ttf", fontWeight: 500 },
+    { src: "https://cdn.jsdelivr.net/fontsource/fonts/lora@latest/latin-400-italic.ttf", fontWeight: 400, fontStyle: "italic" },
+    { src: "https://cdn.jsdelivr.net/fontsource/fonts/lora@latest/latin-500-italic.ttf", fontWeight: 500, fontStyle: "italic" },
+  ],
+})
+
+Font.register({
+  family: "Public Sans",
+  fonts: [
+    { src: "https://cdn.jsdelivr.net/fontsource/fonts/public-sans@latest/latin-400-normal.ttf", fontWeight: 400 },
+    { src: "https://cdn.jsdelivr.net/fontsource/fonts/public-sans@latest/latin-500-normal.ttf", fontWeight: 500 },
+    { src: "https://cdn.jsdelivr.net/fontsource/fonts/public-sans@latest/latin-700-normal.ttf", fontWeight: 700 },
+  ],
+})
+
+// Voorkomt dat react-pdf woorden afbreekt met hyphens
+Font.registerHyphenationCallback((word) => [word])
+
+// ============================================================================
+// BRAND TOKENS
+// ============================================================================
+
+const COLOR = {
+  donkerGroen: "#102B2A",
+  koper: "#B58C67",
+  koperDeep: "#8E6A48",
+  zand: "#F5F1E8",
+  zandDeep: "#EBE5D4",
+  grijs: "#5A6864",
+  grijsSoft: "#8C9794",
+  rule: "#D8D2C0",
+  wit: "#FFFFFF",
+} as const
+
+// ============================================================================
+// TYPES — nieuwe OfferteData (gebruikt door CalculatorPDF)
+// ============================================================================
+
+export interface OfferteRegel {
+  label: string
+  amount: number
+}
+
+export interface OfferteData {
+  customerName: string
+  weddingDate: string
+  dayGuests: number
+  eveningGuests: number
+  generatedDate: string
+  dayProgram: OfferteRegel[]
+  eveningProgram: OfferteRegel[]
+  rentalStandard: number
+  discount?: {
+    name: string
+    amount: number
+  } | null
+  /** Optioneel — als niet opgegeven wordt logo-pdf.png van disk gelezen */
+  logoSrc?: string
+}
+
+// ============================================================================
+// TYPES — legacy CalculatorPdfData (gebruikt door /api/calculator/send/route.ts)
+// ============================================================================
 
 export type DinnerType = 'three-course' | 'four-course' | 'shared'
 export type ReceptionType = 'a' | 'b' | 'c'
@@ -61,161 +153,600 @@ function lateNightLabel(type: LateNightType): string {
   return ''
 }
 
-function euro(n: number): string {
-  return new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(n)
-}
+// ============================================================================
+// HELPERS
+// ============================================================================
 
-const styles = StyleSheet.create({
-  page: { padding: 48, fontSize: 10, fontFamily: 'Helvetica', color: '#2c3a36' },
-  header: { borderBottom: '2pt solid #b89968', paddingBottom: 16, marginBottom: 24 },
-  brand: { fontSize: 9, letterSpacing: 2, color: '#b89968', marginBottom: 6 },
-  title: { fontSize: 22, marginBottom: 4, color: '#1a2724' },
-  subtitle: { fontSize: 10, color: '#5a6864' },
-  meta: { marginBottom: 20, fontSize: 10 },
-  metaRow: { flexDirection: 'row', marginBottom: 3 },
-  metaLabel: { width: 110, color: '#5a6864' },
-  metaValue: { color: '#1a2724', fontFamily: 'Helvetica-Bold' },
-  sectionTitle: { fontSize: 12, fontFamily: 'Helvetica-Bold', color: '#1a2724', marginTop: 14, marginBottom: 8 },
-  row: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 4, borderBottom: '0.5pt solid #e6e2d8' },
-  label: { color: '#5a6864' },
-  value: { color: '#1a2724' },
-  subtotalRow: { flexDirection: 'row', justifyContent: 'space-between', backgroundColor: '#f5f1e8', paddingVertical: 8, paddingHorizontal: 10, marginTop: 8 },
-  subtotalLabel: { fontFamily: 'Helvetica-Bold', color: '#1a2724' },
-  totalBox: { marginTop: 18, padding: 14, backgroundColor: '#1a2724', flexDirection: 'row', justifyContent: 'space-between' },
-  totalLabel: { fontFamily: 'Helvetica-Bold', fontSize: 13, color: '#fff' },
-  totalValue: { fontFamily: 'Helvetica-Bold', fontSize: 16, color: '#b89968' },
-  perGuest: { flexDirection: 'row', marginTop: 12, gap: 10 },
-  perGuestBox: { flex: 1, padding: 10, backgroundColor: '#f5f1e8' },
-  perGuestLabel: { fontSize: 9, color: '#5a6864', marginBottom: 3 },
-  perGuestValue: { fontFamily: 'Helvetica-Bold', fontSize: 12, color: '#1a2724' },
-  discount: { color: '#a04040' },
-  strike: { textDecoration: 'line-through', color: '#8a8a8a' },
-  footer: { position: 'absolute', bottom: 32, left: 48, right: 48, fontSize: 8, color: '#8a8a8a', textAlign: 'center', borderTop: '0.5pt solid #e6e2d8', paddingTop: 8 },
-  disclaimer: { marginTop: 18, fontSize: 9, color: '#5a6864', fontStyle: 'italic' },
+const euroFormatter = new Intl.NumberFormat("nl-NL", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
 })
 
-export function CalculatorPdf({ data }: { data: CalculatorPdfData }) {
-  const { customerName, weddingDate, dayGuests, eveningGuests, receptionType, dinnerType, partyFoodType, lateNightType, discounts, costs } = data
-  const today = new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })
+const fmtEuro = (n: number) => `€ ${euroFormatter.format(n)}`
+const fmtEuroBig = (n: number) => euroFormatter.format(n)
+
+// Logo wordt vanuit disk gelezen; WebP-bestanden in public werken niet
+// met react-pdf, dus public/images/logo-pdf.png is een echte PNG.
+let logoBufferCache: Buffer | null = null
+function getLogoBuffer(): Buffer | null {
+  if (logoBufferCache) return logoBufferCache
+  try {
+    const logoPath = path.join(process.cwd(), 'public', 'images', 'logo-pdf.png')
+    logoBufferCache = fs.readFileSync(logoPath)
+    return logoBufferCache
+  } catch {
+    return null
+  }
+}
+
+// ============================================================================
+// STYLES
+// ============================================================================
+
+const styles = StyleSheet.create({
+  page: {
+    backgroundColor: COLOR.wit,
+    paddingTop: 44,
+    paddingBottom: 56,
+    paddingLeft: 40,
+    paddingRight: 40,
+    fontFamily: "Public Sans",
+    fontSize: 10,
+    color: COLOR.donkerGroen,
+    lineHeight: 1.5,
+  },
+
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingBottom: 14,
+    borderBottomWidth: 0.5,
+    borderBottomColor: COLOR.rule,
+    borderBottomStyle: "solid",
+    marginBottom: 22,
+  },
+  logo: {
+    width: 60,
+    height: 60,
+  },
+  headerMeta: {
+    textAlign: "right",
+  },
+  headerKicker: {
+    fontFamily: "Public Sans",
+    fontWeight: 700,
+    fontSize: 9,
+    letterSpacing: 2,
+    textTransform: "uppercase",
+    color: COLOR.donkerGroen,
+    marginBottom: 4,
+  },
+  headerDate: {
+    fontFamily: "Public Sans",
+    fontWeight: 400,
+    fontSize: 9,
+    color: COLOR.grijs,
+    letterSpacing: 0.5,
+  },
+
+  titleBlock: {
+    marginBottom: 22,
+  },
+  title: {
+    fontFamily: "Lora",
+    fontWeight: 400,
+    fontSize: 26,
+    color: COLOR.donkerGroen,
+    lineHeight: 1.15,
+    marginBottom: 6,
+  },
+  titleItalic: {
+    fontFamily: "Lora",
+    fontWeight: 500,
+    fontStyle: "italic",
+    color: COLOR.koper,
+  },
+  lead: {
+    fontFamily: "Lora",
+    fontStyle: "italic",
+    fontSize: 11,
+    color: COLOR.grijs,
+  },
+
+  klant: {
+    flexDirection: "row",
+    backgroundColor: COLOR.zand,
+    padding: 14,
+    paddingLeft: 18,
+    marginBottom: 22,
+    borderLeftWidth: 2,
+    borderLeftColor: COLOR.koper,
+    borderLeftStyle: "solid",
+  },
+  klantCol: {
+    flex: 1,
+    paddingRight: 10,
+  },
+  klantLabel: {
+    fontFamily: "Public Sans",
+    fontWeight: 700,
+    fontSize: 7.5,
+    letterSpacing: 2,
+    textTransform: "uppercase",
+    color: COLOR.grijs,
+    marginBottom: 4,
+  },
+  klantValue: {
+    fontFamily: "Lora",
+    fontWeight: 400,
+    fontSize: 13,
+    color: COLOR.donkerGroen,
+    lineHeight: 1.2,
+  },
+
+  sectionHead: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 18,
+    marginBottom: 4,
+  },
+  sectionLabel: {
+    fontFamily: "Public Sans",
+    fontWeight: 700,
+    fontSize: 9,
+    letterSpacing: 2,
+    textTransform: "uppercase",
+    color: COLOR.donkerGroen,
+    marginRight: 10,
+  },
+  sectionLine: {
+    flex: 1,
+    height: 0.5,
+    backgroundColor: COLOR.koper,
+  },
+
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingTop: 8,
+    paddingBottom: 8,
+    borderBottomWidth: 0.4,
+    borderBottomColor: COLOR.rule,
+    borderBottomStyle: "dotted",
+  },
+  rowDesc: {
+    fontFamily: "Public Sans",
+    fontWeight: 400,
+    fontSize: 10,
+    color: COLOR.donkerGroen,
+    flex: 1,
+    paddingRight: 12,
+  },
+  rowAmount: {
+    fontFamily: "Public Sans",
+    fontWeight: 500,
+    fontSize: 10,
+    color: COLOR.donkerGroen,
+  },
+
+  rowStrikeDesc: {
+    fontFamily: "Public Sans",
+    fontWeight: 400,
+    fontSize: 10,
+    color: COLOR.grijsSoft,
+    textDecoration: "line-through",
+    flex: 1,
+    paddingRight: 12,
+  },
+  rowStrikeAmount: {
+    fontFamily: "Public Sans",
+    fontWeight: 500,
+    fontSize: 10,
+    color: COLOR.grijsSoft,
+    textDecoration: "line-through",
+  },
+
+  rowDiscountDesc: {
+    fontFamily: "Public Sans",
+    fontWeight: 500,
+    fontSize: 10,
+    color: COLOR.koper,
+    flex: 1,
+    paddingRight: 12,
+  },
+  rowDiscountAmount: {
+    fontFamily: "Public Sans",
+    fontWeight: 500,
+    fontSize: 10,
+    color: COLOR.koper,
+  },
+
+  subtotal: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 14,
+    paddingRight: 14,
+    backgroundColor: COLOR.zand,
+    marginTop: 6,
+  },
+  subtotalDesc: {
+    fontFamily: "Public Sans",
+    fontWeight: 700,
+    fontSize: 9.5,
+    letterSpacing: 1.4,
+    textTransform: "uppercase",
+    color: COLOR.donkerGroen,
+  },
+  subtotalAmount: {
+    fontFamily: "Lora",
+    fontWeight: 500,
+    fontSize: 13,
+    color: COLOR.donkerGroen,
+  },
+
+  totalBand: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingTop: 14,
+    paddingBottom: 14,
+    paddingLeft: 18,
+    paddingRight: 18,
+    backgroundColor: COLOR.donkerGroen,
+    marginTop: 10,
+  },
+  totalBandDesc: {
+    fontFamily: "Public Sans",
+    fontWeight: 700,
+    fontSize: 10,
+    letterSpacing: 2.2,
+    textTransform: "uppercase",
+    color: COLOR.koper,
+  },
+  totalBandAmount: {
+    fontFamily: "Lora",
+    fontWeight: 500,
+    fontSize: 18,
+    color: COLOR.koper,
+  },
+  totalBandCurrency: {
+    fontFamily: "Lora",
+    fontSize: 13,
+    color: "rgba(255,255,255,0.5)",
+    marginRight: 2,
+  },
+
+  perGast: {
+    flexDirection: "row",
+    marginTop: 6,
+  },
+  perGastTile: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingTop: 14,
+    paddingBottom: 14,
+    paddingLeft: 18,
+    paddingRight: 18,
+    backgroundColor: COLOR.zand,
+  },
+  perGastTileLeft: {
+    marginRight: 6,
+  },
+  perGastLabel: {
+    fontFamily: "Public Sans",
+    fontWeight: 700,
+    fontSize: 9,
+    letterSpacing: 2.2,
+    textTransform: "uppercase",
+    color: COLOR.grijs,
+  },
+  perGastValue: {
+    fontFamily: "Lora",
+    fontWeight: 500,
+    fontSize: 14,
+    color: COLOR.donkerGroen,
+  },
+  perGastCurrency: {
+    fontFamily: "Lora",
+    fontSize: 11,
+    color: COLOR.grijsSoft,
+    marginRight: 2,
+  },
+
+  disclaimer: {
+    marginTop: 22,
+    fontFamily: "Lora",
+    fontStyle: "italic",
+    fontSize: 8.5,
+    lineHeight: 1.55,
+    color: COLOR.grijs,
+    maxWidth: "90%",
+  },
+
+  footer: {
+    position: "absolute",
+    bottom: 24,
+    left: 40,
+    right: 40,
+    paddingTop: 8,
+    borderTopWidth: 0.5,
+    borderTopColor: COLOR.rule,
+    borderTopStyle: "solid",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  footerLeft: {
+    fontFamily: "Public Sans",
+    fontWeight: 500,
+    fontSize: 8,
+    letterSpacing: 1.4,
+    textTransform: "uppercase",
+    color: COLOR.grijs,
+  },
+  footerRight: {
+    fontFamily: "Public Sans",
+    fontWeight: 500,
+    fontSize: 8,
+    letterSpacing: 1.4,
+    textTransform: "uppercase",
+    color: COLOR.koper,
+  },
+})
+
+// ============================================================================
+// COMPONENT
+// ============================================================================
+
+interface Props {
+  data: OfferteData
+}
+
+export function CalculatorPDF({ data }: Props) {
+  const subtotalArrangementen =
+    data.dayProgram.reduce((sum, r) => sum + r.amount, 0) +
+    data.eveningProgram.reduce((sum, r) => sum + r.amount, 0)
+
+  const huurNaKorting = data.discount
+    ? data.rentalStandard - data.discount.amount
+    : data.rentalStandard
+
+  const totaal = subtotalArrangementen + huurNaKorting
+
+  const perDaggast = data.dayGuests > 0 ? totaal / data.dayGuests : 0
+  const perAvondgast = data.eveningGuests > 0 ? totaal / data.eveningGuests : 0
 
   return (
-    <Document>
-      <Page size="A4" style={styles.page}>
-        <View style={styles.header}>
-          <Text style={styles.brand}>VILLA 1855</Text>
-          <Text style={styles.title}>Kostenindicatie bruiloft</Text>
-          <Text style={styles.subtitle}>Een eerste schatting op maat — opgesteld op {today}</Text>
-        </View>
+    <Document
+      title={`Kostenindicatie bruiloft — ${data.customerName}`}
+      author="Villa 1855"
+      subject="Eerste kostenindicatie voor uw dag bij Villa 1855"
+    >
+      <Page size="A4" style={styles.page} wrap={false}>
 
-        <View style={styles.meta}>
-          <View style={styles.metaRow}>
-            <Text style={styles.metaLabel}>Voor:</Text>
-            <Text style={styles.metaValue}>{customerName}</Text>
-          </View>
-          {weddingDate && (
-            <View style={styles.metaRow}>
-              <Text style={styles.metaLabel}>Trouwdatum:</Text>
-              <Text style={styles.metaValue}>{weddingDate}</Text>
-            </View>
-          )}
-          <View style={styles.metaRow}>
-            <Text style={styles.metaLabel}>Daggasten:</Text>
-            <Text style={styles.metaValue}>{dayGuests}</Text>
-          </View>
-          <View style={styles.metaRow}>
-            <Text style={styles.metaLabel}>Avondgasten:</Text>
-            <Text style={styles.metaValue}>{eveningGuests}</Text>
+        <View style={styles.header} fixed>
+          {(() => {
+            const logoSrc = data.logoSrc || getLogoBuffer()
+            return logoSrc ? <Image src={logoSrc as any} style={styles.logo} /> : null
+          })()}
+          <View style={styles.headerMeta}>
+            <Text style={styles.headerKicker}>Kostenindicatie bruiloft bij Villa 1855</Text>
+            <Text style={styles.headerDate}>Opgesteld op {data.generatedDate}</Text>
           </View>
         </View>
 
-        <Text style={styles.sectionTitle}>Dagprogramma</Text>
-        <View style={styles.row}>
-          <Text style={styles.label}>Dranken dagprogramma</Text>
-          <Text style={styles.value}>{euro(costs.drinksDay)}</Text>
-        </View>
-        <View style={styles.row}>
-          <Text style={styles.label}>{receptionLabel(receptionType)}</Text>
-          <Text style={styles.value}>{euro(costs.reception)}</Text>
-        </View>
-        <View style={styles.row}>
-          <Text style={styles.label}>{dinnerLabel(dinnerType)}</Text>
-          <Text style={styles.value}>{euro(costs.dinner)}</Text>
+        <View style={styles.titleBlock}>
+          <Text style={styles.title}>
+            Een eerste <Text style={styles.titleItalic}>schatting</Text> op maat.
+          </Text>
+          <Text style={styles.lead}>
+            Een vrijblijvende indicatie van de kosten voor jullie dag bij Villa 1855.
+          </Text>
         </View>
 
-        <Text style={styles.sectionTitle}>Feestavond</Text>
-        <View style={styles.row}>
-          <Text style={styles.label}>Dranken avondprogramma</Text>
-          <Text style={styles.value}>{euro(costs.drinksEvening)}</Text>
-        </View>
-        <View style={styles.row}>
-          <Text style={styles.label}>{partyFoodLabel(partyFoodType)}</Text>
-          <Text style={styles.value}>{euro(costs.partyFood)}</Text>
-        </View>
-        {lateNightType !== 'none' && (
-          <View style={styles.row}>
-            <Text style={styles.label}>{lateNightLabel(lateNightType)}</Text>
-            <Text style={styles.value}>{euro(costs.lateNight)}</Text>
+        <View style={styles.klant}>
+          <View style={styles.klantCol}>
+            <Text style={styles.klantLabel}>Voor</Text>
+            <Text style={styles.klantValue}>{data.customerName}</Text>
           </View>
-        )}
-
-        <View style={styles.subtotalRow}>
-          <Text style={styles.subtotalLabel}>Subtotaal arrangementen</Text>
-          <Text style={styles.subtotalLabel}>{euro(costs.subtotal)}</Text>
+          <View style={styles.klantCol}>
+            <Text style={styles.klantLabel}>Trouwdatum</Text>
+            <Text style={styles.klantValue}>{data.weddingDate}</Text>
+          </View>
+          <View style={styles.klantCol}>
+            <Text style={styles.klantLabel}>Daggasten</Text>
+            <Text style={styles.klantValue}>{data.dayGuests} personen</Text>
+          </View>
+          <View style={styles.klantCol}>
+            <Text style={styles.klantLabel}>Avondgasten</Text>
+            <Text style={styles.klantValue}>{data.eveningGuests} personen</Text>
+          </View>
         </View>
 
-        <Text style={styles.sectionTitle}>Huur villa</Text>
-        <View style={styles.row}>
-          <Text style={styles.label}>Standaard huur (incl. btw)</Text>
-          <Text style={costs.discount > 0 ? styles.strike : styles.value}>{euro(costs.houseRentalOriginal)}</Text>
+        <View style={styles.sectionHead}>
+          <Text style={styles.sectionLabel}>Dagprogramma</Text>
+          <View style={styles.sectionLine} />
         </View>
-        {costs.discount > 0 && (
+
+        {data.dayProgram.map((regel, i) => (
+          <View key={`day-${i}`} style={styles.row}>
+            <Text style={styles.rowDesc}>{regel.label}</Text>
+            <Text style={styles.rowAmount}>{fmtEuro(regel.amount)}</Text>
+          </View>
+        ))}
+
+        <View style={styles.sectionHead}>
+          <Text style={styles.sectionLabel}>Feestavond</Text>
+          <View style={styles.sectionLine} />
+        </View>
+
+        {data.eveningProgram.map((regel, i) => (
+          <View key={`eve-${i}`} style={styles.row}>
+            <Text style={styles.rowDesc}>{regel.label}</Text>
+            <Text style={styles.rowAmount}>{fmtEuro(regel.amount)}</Text>
+          </View>
+        ))}
+
+        <View style={styles.subtotal}>
+          <Text style={styles.subtotalDesc}>Subtotaal arrangementen</Text>
+          <Text style={styles.subtotalAmount}>{fmtEuro(subtotalArrangementen)}</Text>
+        </View>
+
+        <View style={styles.sectionHead}>
+          <Text style={styles.sectionLabel}>Huur villa</Text>
+          <View style={styles.sectionLine} />
+        </View>
+
+        {data.discount ? (
           <>
             <View style={styles.row}>
-              <Text style={styles.label}>Korting</Text>
-              <Text style={styles.discount}>-{euro(costs.discount)}</Text>
+              <Text style={styles.rowStrikeDesc}>Standaard huur (incl. btw)</Text>
+              <Text style={styles.rowStrikeAmount}>{fmtEuro(data.rentalStandard)}</Text>
             </View>
-            <View style={styles.subtotalRow}>
-              <Text style={styles.subtotalLabel}>Huur na korting</Text>
-              <Text style={styles.subtotalLabel}>{euro(costs.houseRental)}</Text>
+            <View style={styles.row}>
+              <Text style={styles.rowDiscountDesc}>Korting: {data.discount.name}</Text>
+              <Text style={styles.rowDiscountAmount}>− {fmtEuro(data.discount.amount)}</Text>
+            </View>
+            <View style={styles.subtotal}>
+              <Text style={styles.subtotalDesc}>Huur na korting</Text>
+              <Text style={styles.subtotalAmount}>{fmtEuro(huurNaKorting)}</Text>
             </View>
           </>
-        )}
-
-        <View style={styles.totalBox}>
-          <Text style={styles.totalLabel}>Totale kosten</Text>
-          <Text style={styles.totalValue}>{euro(costs.total)}</Text>
-        </View>
-
-        {(costs.costPerDayGuest > 0 || costs.costPerEveningGuest > 0) && (
-          <View style={styles.perGuest}>
-            {costs.costPerDayGuest > 0 && (
-              <View style={styles.perGuestBox}>
-                <Text style={styles.perGuestLabel}>Per daggast</Text>
-                <Text style={styles.perGuestValue}>{euro(costs.costPerDayGuest)}</Text>
-              </View>
-            )}
-            {costs.costPerEveningGuest > 0 && (
-              <View style={styles.perGuestBox}>
-                <Text style={styles.perGuestLabel}>Per avondgast</Text>
-                <Text style={styles.perGuestValue}>{euro(costs.costPerEveningGuest)}</Text>
-              </View>
-            )}
+        ) : (
+          <View style={styles.row}>
+            <Text style={styles.rowDesc}>Standaard huur (incl. btw)</Text>
+            <Text style={styles.rowAmount}>{fmtEuro(data.rentalStandard)}</Text>
           </View>
         )}
 
+        <View style={styles.totalBand}>
+          <Text style={styles.totalBandDesc}>Totale kosten</Text>
+          <Text style={styles.totalBandAmount}>
+            <Text style={styles.totalBandCurrency}>€ </Text>
+            {fmtEuroBig(totaal)}
+          </Text>
+        </View>
+
+        <View style={styles.perGast}>
+          <View style={[styles.perGastTile, styles.perGastTileLeft]}>
+            <Text style={styles.perGastLabel}>Per daggast</Text>
+            <Text style={styles.perGastValue}>
+              <Text style={styles.perGastCurrency}>€ </Text>
+              {fmtEuroBig(perDaggast)}
+            </Text>
+          </View>
+          <View style={styles.perGastTile}>
+            <Text style={styles.perGastLabel}>Per avondgast</Text>
+            <Text style={styles.perGastValue}>
+              <Text style={styles.perGastCurrency}>€ </Text>
+              {fmtEuroBig(perAvondgast)}
+            </Text>
+          </View>
+        </View>
+
         <Text style={styles.disclaimer}>
-          Deze berekening is een eerste indicatie. De definitieve offerte stellen wij persoonlijk met jullie op,
-          afgestemd op jullie wensen en de specifieke datum. Aan deze indicatie kunnen geen rechten worden ontleend.
+          Deze berekening is een eerste indicatie, gebaseerd op de keuzes uit onze
+          online kostencalculator. De definitieve offerte stellen we persoonlijk
+          met jullie op, afgestemd op jullie wensen en de specifieke datum. Aan
+          deze indicatie kunnen geen rechten worden ontleend.
         </Text>
 
-        <Text style={styles.footer}>
-          Villa 1855  •  info@villa1855.nl  •  villa1855.nl
-        </Text>
+        <View style={styles.footer} fixed>
+          <Text style={styles.footerLeft}>Villa 1855 — Noordstraat 36, Tilburg</Text>
+          <Text style={styles.footerRight}>info@villa1855.nl · villa1855.nl</Text>
+        </View>
+
       </Page>
     </Document>
   )
 }
 
-export async function generateCalculatorPdf(data: CalculatorPdfData): Promise<Buffer> {
-  return await renderToBuffer(<CalculatorPdf data={data} />)
+// Backwards-compat alias zodat oude imports blijven werken
+export const CalculatorPdf = CalculatorPDF
+
+// ============================================================================
+// LEGACY ADAPTER — converteert CalculatorPdfData → OfferteData
+// ============================================================================
+
+function convertLegacyData(data: CalculatorPdfData): OfferteData {
+  const dayProgram: OfferteRegel[] = [
+    { label: 'Dranken dagprogramma', amount: data.costs.drinksDay },
+    { label: receptionLabel(data.receptionType), amount: data.costs.reception },
+    { label: dinnerLabel(data.dinnerType), amount: data.costs.dinner },
+  ]
+
+  const eveningProgram: OfferteRegel[] = [
+    { label: 'Dranken avondprogramma', amount: data.costs.drinksEvening },
+    { label: partyFoodLabel(data.partyFoodType), amount: data.costs.partyFood },
+  ]
+  if (data.lateNightType !== 'none') {
+    eveningProgram.push({ label: lateNightLabel(data.lateNightType), amount: data.costs.lateNight })
+  }
+
+  const discountName = data.discounts.length > 0
+    ? data.discounts.map((d) => DEAL_LABELS[d] || d).join(' + ')
+    : null
+
+  const discount = data.costs.discount > 0 && discountName
+    ? { name: discountName, amount: data.costs.discount }
+    : null
+
+  const today = new Date().toLocaleDateString('nl-NL', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  })
+
+  return {
+    customerName: data.customerName,
+    weddingDate: data.weddingDate || '—',
+    dayGuests: data.dayGuests,
+    eveningGuests: data.eveningGuests,
+    generatedDate: today,
+    dayProgram,
+    eveningProgram,
+    rentalStandard: data.costs.houseRentalOriginal,
+    discount,
+  }
 }
+
+export async function generateCalculatorPdf(data: CalculatorPdfData): Promise<Buffer> {
+  const offerteData = convertLegacyData(data)
+  return await renderToBuffer(<CalculatorPDF data={offerteData} />)
+}
+
+// ============================================================================
+// SAMPLE DATA — voor lokale tests
+// ============================================================================
+
+export const sampleOfferteData: OfferteData = {
+  customerName: 'Familie Jansen',
+  weddingDate: '15 augustus 2027',
+  dayGuests: 60,
+  eveningGuests: 100,
+  generatedDate: '18 mei 2026',
+  dayProgram: [
+    { label: 'Dranken dagprogramma', amount: 900 },
+    { label: 'Receptie hapjes A', amount: 720 },
+    { label: '3-gangen diner', amount: 4200 },
+  ],
+  eveningProgram: [
+    { label: 'Dranken avondprogramma', amount: 1250 },
+    { label: 'Feestavond hapjes B', amount: 840 },
+    { label: 'Late night snack A', amount: 480 },
+  ],
+  rentalStandard: 5000,
+  discount: {
+    name: 'Trouwen in 2026 (50%)',
+    amount: 2500,
+  },
+}
+
+export default CalculatorPDF
