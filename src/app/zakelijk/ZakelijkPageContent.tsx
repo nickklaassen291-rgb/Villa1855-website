@@ -136,15 +136,19 @@ export default function ZakelijkPageContent() {
               <div className="feature-text">
                 <div className="label">Faciliteiten</div>
                 <h2>Professioneel tot in detail</h2>
-                <p>Onze monumentale zalen zijn uitgerust met moderne AV-apparatuur en bieden de flexibiliteit die je event vraagt. Van intieme vergaderingen tot grote presentaties – wij faciliteren jouw succes.</p>
+                <p>Onze monumentale zalen bieden de juiste sfeer voor een zakelijk event. Vertel ons wat je nodig hebt — van presentatie-apparatuur tot extra meubilair — en wij regelen het via onze vaste partners.</p>
                 <ul className="feature-list">
                   <li>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                    Beamer, groot scherm en geluidsinstallatie
+                    Professionele geluidsinstallatie standaard aanwezig
                   </li>
                   <li>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                    Flexibele opstellingen (theater, U-vorm, boardroom)
+                    Beamer, scherm en AV op aanvraag in te huren via partners
+                  </li>
+                  <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                    Ronde tafels — natuurlijke setting voor gesprek en diner
                   </li>
                 </ul>
               </div>
