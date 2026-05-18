@@ -9,8 +9,8 @@ export const faqItems: FaqItem[] = [
     answer: 'Voor een borrel of walking dinner waarbij we beide zalen gebruiken, is er plek voor maximaal 150 personen. Voor een zittend diner is het maximum 80 personen. Voor events in de buitenruimte bespreken we de aantallen in overleg — dat hangt af van de opstelling en het programma.',
   },
   {
-    question: 'Kunnen we Villa 1855 exclusief afhuren voor ons event?',
-    answer: 'Ja. Op jullie eventdag is Villa 1855 helemaal van jullie. We plannen nooit meerdere events tegelijk — de hele villa, de hele dag, één gezelschap. Geen andere groepen in de zaal ernaast, geen overlap in de tuin.',
+    question: 'Hebben we Villa 1855 voor onszelf op onze eventdag?',
+    answer: 'Ja. We plannen nooit meerdere events tegelijk — maximaal één event per dag. De zalen en de tuin zijn op jullie eventdag voor jullie groep: geen andere gezelschappen in de zaal ernaast, geen overlap in de tuin.',
   },
   {
     question: 'Is Villa 1855 geschikt voor zowel formele als informele bijeenkomsten?',
@@ -19,10 +19,6 @@ export const faqItems: FaqItem[] = [
   {
     question: 'Kunnen jullie ons volledig ontzorgen in de organisatie en catering?',
     answer: 'Ja. Cookaholics verzorgt de catering — dat staat vast en is onderdeel van het concept. Voor de rest van het event werken we met een vast netwerk van leveranciers dat we goed kennen. Eén team, één aanspreekpunt, één aansturing. Van eerste planning en draaiboek tot de service op de dag zelf. Hebben jullie specifieke wensen of vaste partners vanuit jullie organisatie? Laat het weten — we bespreken in overleg wat past.',
-  },
-  {
-    question: 'Kunnen we onze eigen leveranciers meenemen?',
-    answer: 'De catering verzorgen we altijd zelf — daar is geen uitzondering op. Voor andere onderdelen van het event, zoals AV, entertainment of fotografie, kunnen jullie een eigen leverancier meebrengen. We stemmen vooraf af hoe we samenwerken met jullie leverancier, zodat de dag soepel verloopt en iedereen weet wat er van hen verwacht wordt.',
   },
   {
     question: 'Welke AV-faciliteiten zijn beschikbaar voor presentaties en meetings?',
