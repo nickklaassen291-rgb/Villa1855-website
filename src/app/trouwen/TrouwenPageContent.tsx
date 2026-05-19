@@ -116,7 +116,7 @@ export default function TrouwenPageContent() {
           <div className="page-hero-bg" />
           <div className="page-hero-content">
             <div className="label" style={{ justifyContent: 'center' }}>Trouwen bij Villa 1855</div>
-            <h1>Jullie <em style={{ color: 'white' }}>droombruiloft</em> begint hier &mdash; in een monumentale stadsvilla uit 1855</h1>
+            <h1>Jullie <em style={{ color: 'white' }}>droombruiloft</em> begint hier</h1>
             <p>Waar historie en romantiek samenkomen voor de mooiste dag van jullie leven.</p>
             <Link href="#brochure" className="btn btn-primary">
               Download onze brochure
@@ -447,6 +447,46 @@ export default function TrouwenPageContent() {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Aanspreekpunt — Lotte */}
+        <section className="py-16 md:py-20 bg-offwhite">
+          <div className="container-custom">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 max-w-5xl mx-auto items-center">
+              <div className="relative aspect-square max-w-md w-full mx-auto md:mx-0">
+                <Image
+                  src="/images/lotte.png"
+                  alt="Lotte Willems, jullie aanspreekpunt bij Villa 1855"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              <div>
+                <div className="label mb-4">Jullie aanspreekpunt</div>
+                <h2 className="font-heading text-3xl md:text-4xl text-primary-darkest mb-4">
+                  Hi, ik ben Lotte!
+                </h2>
+                <p className="text-primary text-lg leading-relaxed mb-6 italic">
+                  &ldquo;Een bruiloft bij Villa 1855 begint bij een goed gesprek. Vraag de brochure aan, dan stuur ik jullie persoonlijk de eerste informatie toe — en plan ik graag een vrijblijvende kennismaking in.&rdquo;
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a href="tel:+310852736709" className="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    Bel mij direct
+                  </a>
+                  <a href="mailto:info@villa1855.nl" className="btn bg-transparent text-primary-darkest border border-primary-lighter hover:bg-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    Stuur een e-mail
+                  </a>
+                </div>
               </div>
             </div>
           </div>
