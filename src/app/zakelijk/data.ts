@@ -26,7 +26,7 @@ export const faqItems: FaqItem[] = [
   },
   {
     question: 'Zijn er parkeervoorzieningen in de buurt voor onze gasten?',
-    answer: 'Met de auto parkeren jullie gasten het beste in Parkeergarage De Knegtel (Gasthuisring 60, 5041 DT Tilburg), op vijf minuten lopen van Villa 1855. Direct voor de deur zijn 10 tot 12 parkeerplaatsen beschikbaar. Fietsen kunnen onbewaakt voor de deur gestald worden. Vanaf Station Tilburg is het ongeveer vijf minuten lopen naar de villa. We leveren vooraf kant-en-klare parkeer- en route-informatie aan die jullie met de gasten kunnen delen.',
+    answer: 'Met de auto parkeren jullie gasten het beste in Parkeergarage De Knegtel (Gasthuisring 60, 5041 DT Tilburg), op vijf minuten lopen van Villa 1855. Direct voor de deur zijn 10 tot 12 parkeerplaatsen beschikbaar. Fietsen kunnen onbewaakt voor de deur gestald worden. Vanaf Station Tilburg is het ongeveer vijf minuten lopen naar de villa.',
   },
 ]
 

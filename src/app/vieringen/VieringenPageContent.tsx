@@ -79,11 +79,11 @@ export default function VieringenPageContent() {
   const faqItems = [
     {
       question: 'Voor hoeveel gasten is Villa 1855 geschikt bij een feest?',
-      answer: 'Voor een borrel of walking dinner met beide zalen in gebruik is er plek voor maximaal 150 personen. Voor een zittend diner is het maximum 80 personen. Bij een feestavond met muziek en dansvloer is 100 personen het maximum. Voor events waarbij ook de buitenruimte in gebruik is, bespreken we de aantallen in overleg.'
+      answer: 'Voor een borrel of walking dinner met beide zalen in gebruik is er plek voor maximaal 140 personen. Voor een zittend diner is het maximum 80 personen. Bij een feestavond met muziek en dansvloer is 100 personen het maximum. Voor events waarbij ook de buitenruimte in gebruik is, bespreken we de aantallen in overleg.'
     },
     {
-      question: 'Is Villa 1855 exclusief voor ons gezelschap?',
-      answer: 'Ja. Op jullie feestdag is Villa 1855 helemaal van jullie. We plannen nooit meerdere events tegelijk — de hele villa, de hele dag, voor jullie gezelschap.'
+      question: 'Hebben we Villa 1855 voor onszelf op onze feestdag?',
+      answer: 'Ja. We plannen nooit meerdere events tegelijk — maximaal één event per dag. De zalen en de tuin zijn op jullie feestdag voor jullie gezelschap: geen andere groepen in de zaal ernaast, geen overlap in de tuin.'
     },
     {
       question: 'Verzorgen jullie de catering en denken jullie mee over de invulling van het feest?',
@@ -103,7 +103,7 @@ export default function VieringenPageContent() {
     },
     {
       question: 'Waar kunnen onze gasten parkeren in Tilburg?',
-      answer: 'Met de auto parkeren jullie gasten het beste bij Parkeergarage De Knegtel, op vijf minuten lopen van de villa. Direct voor de deur zijn 10 tot 12 parkeerplaatsen beschikbaar. Fietsen kunnen onbewaakt direct voor de deur gestald worden. Voor de uitnodigingen leveren we kant-en-klare parkeer- en route-informatie aan die jullie met de gasten kunnen delen.'
+      answer: 'Met de auto parkeren jullie gasten het beste in Parkeergarage De Knegtel (Gasthuisring 60, 5041 DT Tilburg), op vijf minuten lopen van Villa 1855. Direct voor de deur zijn 10 tot 12 parkeerplaatsen beschikbaar. Fietsen kunnen onbewaakt voor de deur gestald worden. Vanaf Station Tilburg is het ongeveer vijf minuten lopen naar de villa.'
     },
     {
       question: 'Tot hoe laat mag het feest doorgaan?',
