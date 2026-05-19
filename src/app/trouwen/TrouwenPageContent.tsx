@@ -55,6 +55,8 @@ export default function TrouwenPageContent() {
           phone: formData.telefoon,
           subject: 'brochure',
           message,
+          // Structured veld voor Attio:
+          weddingDate: formData.trouwdatum || undefined,
         }),
       })
       const data = await res.json()

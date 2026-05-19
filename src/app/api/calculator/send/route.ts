@@ -9,6 +9,7 @@ import {
   type PartyFoodType,
   type LateNightType,
 } from '@/lib/calculator-pdf'
+import { upsertLead } from '@/lib/attio'
 
 export const runtime = 'nodejs'
 export const maxDuration = 30
@@ -253,6 +254,35 @@ export async function POST(request: NextRequest) {
       await logToSheet(data)
     } catch (sheetError) {
       console.error('Sheet logging failed (non-fatal):', sheetError)
+    }
+
+    // Push to Attio CRM as Trouwbrochure-kanaal (calculator is een offerte-pad)
+    try {
+      const opmerkingenParts: string[] = []
+      opmerkingenParts.push(`Calculator-aanvraag bruiloft`)
+      opmerkingenParts.push(`Daggasten: ${data.dayGuests}  ·  Avondgasten: ${data.eveningGuests}`)
+      opmerkingenParts.push(`${receptionLabel(data.receptionType)}, ${dinnerLabel(data.dinnerType)}, ${partyFoodLabel(data.partyFoodType)}${data.lateNightType !== 'none' ? ', ' + lateNightLabel(data.lateNightType) : ''}`)
+      if (data.discounts.length > 0) {
+        opmerkingenParts.push(`Kortingen: ${data.discounts.map((d) => DEAL_LABELS[d] || d).join(', ')}`)
+      }
+      opmerkingenParts.push(`Subtotaal arrangementen: ${euro(data.costs.subtotal)}`)
+      opmerkingenParts.push(`Huur villa: ${euro(data.costs.houseRental)}${data.costs.discount > 0 ? ` (na korting ${euro(data.costs.discount)})` : ''}`)
+      opmerkingenParts.push(`Totaal: ${euro(data.costs.total)}`)
+      if (data.message) opmerkingenParts.push(`\nBericht: ${data.message}`)
+
+      await upsertLead({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        kanaal: 'brochure', // Calculator komt binnen via /calculator-bruiloften — top-of-funnel bruiloft
+        klantgroep: 'b2c-villa-bruiloften',
+        eventdatum: data.weddingDate || undefined,
+        aantalPersonen: Math.max(data.dayGuests, data.eveningGuests),
+        geschatteWaarde: data.costs.total,
+        opmerkingen: opmerkingenParts.join('\n'),
+      })
+    } catch (attioError) {
+      console.error('Attio upsert failed (non-fatal):', attioError)
     }
 
     return NextResponse.json({

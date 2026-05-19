@@ -3,6 +3,7 @@ import { google } from 'googleapis'
 import { Resend } from 'resend'
 import fs from 'node:fs'
 import path from 'node:path'
+import { upsertLead, type LeadKanaal } from '@/lib/attio'
 
 interface ContactData {
   name: string
@@ -10,6 +11,13 @@ interface ContactData {
   phone?: string
   subject?: string
   message: string
+  // Optional structured fields (used for Attio mapping)
+  weddingDate?: string  // ISO date YYYY-MM-DD — voor brochure form
+  eventDate?: string    // ISO date — voor zakelijk pakket-form
+  guests?: number       // voor zakelijk
+  company?: string      // voor zakelijk
+  packageName?: string  // voor zakelijk
+  totalPrice?: number   // voor zakelijk (in euros)
 }
 
 const subjectLabels: Record<string, string> = {
@@ -218,6 +226,49 @@ export async function POST(request: NextRequest) {
       } catch (mailError) {
         console.error('Notification email failed (non-fatal):', mailError)
       }
+    }
+
+    // 3. Push to Attio CRM (non-fatal)
+    try {
+      let kanaal: LeadKanaal = 'contact'
+      let klantgroep: 'b2c-villa-bruiloften' | 'b2b-villa' | undefined
+      let opmerkingenParts: string[] = []
+      let eventdatum: string | undefined
+      let aantalPersonen: number | undefined
+      let geschatteWaarde: number | undefined
+
+      if (data.subject === 'brochure') {
+        kanaal = 'brochure'
+        klantgroep = 'b2c-villa-bruiloften'
+        if (data.weddingDate) eventdatum = data.weddingDate
+        opmerkingenParts.push(data.message)
+      } else if (data.subject === 'zakelijk') {
+        kanaal = 'zakelijk'
+        klantgroep = 'b2b-villa'
+        if (data.eventDate) eventdatum = data.eventDate
+        if (data.guests) aantalPersonen = data.guests
+        if (data.totalPrice) geschatteWaarde = data.totalPrice
+        if (data.company) opmerkingenParts.push(`Bedrijf: ${data.company}`)
+        if (data.packageName) opmerkingenParts.push(`Pakket: ${data.packageName}`)
+        opmerkingenParts.push(data.message)
+      } else {
+        kanaal = 'contact'
+        opmerkingenParts.push(data.message)
+      }
+
+      await upsertLead({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        kanaal,
+        klantgroep,
+        eventdatum,
+        aantalPersonen,
+        geschatteWaarde,
+        opmerkingen: opmerkingenParts.join('\n\n'),
+      })
+    } catch (attioError) {
+      console.error('Attio upsert failed (non-fatal):', attioError)
     }
 
     return NextResponse.json({

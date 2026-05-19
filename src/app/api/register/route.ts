@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { google } from 'googleapis'
 import { Resend } from 'resend'
+import { upsertLead } from '@/lib/attio'
 
 interface RegistrationData {
   names: string
@@ -229,6 +230,34 @@ export async function POST(request: NextRequest) {
       } catch (mailError) {
         console.error('Notification email failed (non-fatal):', mailError)
       }
+    }
+
+    // Push to Attio CRM (non-fatal)
+    try {
+      // Split "Anna & Bram" of "Anna en Bram" naar primary + partner
+      const splitMatch = data.names.split(/\s+(?:&|en)\s+/i)
+      const primaryName = splitMatch[0]
+      const partnerName = splitMatch[1]
+
+      const opmerkingenParts: string[] = []
+      if (data.guestCount) opmerkingenParts.push(`Aantal gasten: ${data.guestCount}`)
+      if (data.message) opmerkingenParts.push(`Bericht: ${data.message}`)
+      if (data.utm_source) opmerkingenParts.push(`UTM source: ${data.utm_source}`)
+
+      await upsertLead({
+        name: primaryName,
+        email: data.email,
+        phone: data.phone,
+        kanaal: 'open-dag',
+        klantgroep: 'b2c-villa-bruiloften',
+        tijdslot: data.timeSlot,
+        deelnameEvent: 'open-trouw-28-6-26',
+        eventdatum: data.weddingDate || undefined,
+        naamPartner: partnerName,
+        opmerkingen: opmerkingenParts.join('\n'),
+      })
+    } catch (attioError) {
+      console.error('Attio upsert failed (non-fatal):', attioError)
     }
 
     return NextResponse.json({

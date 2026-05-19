@@ -413,6 +413,12 @@ function OptionForm({ pkg }: { pkg: typeof PACKAGES[PackageKey] }) {
           phone: form.phone,
           subject: 'zakelijk',
           message,
+          // Structured fields voor Attio + Sheet:
+          eventDate: form.date,
+          guests: form.guests,
+          company: form.company || undefined,
+          packageName: pkg.name,
+          totalPrice: total,
         }),
       })
       const data = await res.json()
