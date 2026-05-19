@@ -126,14 +126,17 @@ async function upsertPerson(input: PersonInput): Promise<string | null> {
     }
   } else {
     // Create new
+    const createBody = JSON.stringify({ data: { values } })
     try {
       const data = await attioFetch('/objects/people/records', {
         method: 'POST',
-        body: JSON.stringify({ data: { values } }),
+        body: createBody,
       })
+      console.log('Attio create person response:', JSON.stringify(data).slice(0, 500))
       return data.data?.id?.record_id || null
     } catch (err) {
-      console.error('Attio create person failed:', err)
+      console.error('Attio create person failed. Body sent:', createBody)
+      console.error('Attio create person error detail:', err instanceof Error ? err.message : String(err))
       return null
     }
   }
