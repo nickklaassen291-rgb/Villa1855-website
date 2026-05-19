@@ -127,18 +127,11 @@ async function upsertPerson(input: PersonInput): Promise<string | null> {
   } else {
     // Create new
     const createBody = JSON.stringify({ data: { values } })
-    try {
-      const data = await attioFetch('/objects/people/records', {
-        method: 'POST',
-        body: createBody,
-      })
-      console.log('Attio create person response:', JSON.stringify(data).slice(0, 500))
-      return data.data?.id?.record_id || null
-    } catch (err) {
-      console.error('Attio create person failed. Body sent:', createBody)
-      console.error('Attio create person error detail:', err instanceof Error ? err.message : String(err))
-      return null
-    }
+    const data = await attioFetch('/objects/people/records', {
+      method: 'POST',
+      body: createBody,
+    })
+    return data.data?.id?.record_id || null
   }
 }
 
@@ -216,14 +209,10 @@ async function createLeadPipelineEntry(personId: string, input: LeadEntryInput):
     entryValues.naam_partner = input.naamPartner
   }
 
-  try {
-    await attioFetch(`/lists/${LEAD_PIPELINE_LIST_ID}/entries`, {
-      method: 'POST',
-      body: JSON.stringify({ data: { entry_values: entryValues } }),
-    })
-  } catch (err) {
-    console.error('Attio create list entry failed:', err)
-  }
+  await attioFetch(`/lists/${LEAD_PIPELINE_LIST_ID}/entries`, {
+    method: 'POST',
+    body: JSON.stringify({ data: { entry_values: entryValues } }),
+  })
 }
 
 // ----------------------------------------------------------------------------
@@ -250,7 +239,7 @@ export interface UpsertLeadInput {
 
 /**
  * Upsert person op email en voeg toe aan Lead pipeline list met form-data.
- * Failure-tolerant: errors worden gelogd maar gooi geen exceptions.
+ * Throws een Error bij failure — caller handelt dit non-fatal af.
  */
 export async function upsertLead(input: UpsertLeadInput): Promise<void> {
   if (!process.env.ATTIO_API_KEY) {
@@ -258,29 +247,24 @@ export async function upsertLead(input: UpsertLeadInput): Promise<void> {
     return
   }
 
-  try {
-    const personId = await upsertPerson({
-      name: input.name,
-      email: input.email,
-      phone: input.phone,
-    })
-    if (!personId) {
-      console.error('Attio upsertLead: no person ID returned')
-      return
-    }
-
-    await createLeadPipelineEntry(personId, {
-      kanaal: input.kanaal,
-      eventdatum: input.eventdatum,
-      aantalPersonen: input.aantalPersonen,
-      geschatteWaarde: input.geschatteWaarde,
-      opmerkingen: input.opmerkingen,
-      klantgroep: input.klantgroep,
-      tijdslot: input.tijdslot,
-      deelnameEvent: input.deelnameEvent,
-      naamPartner: input.naamPartner,
-    })
-  } catch (err) {
-    console.error('Attio upsertLead failed:', err)
+  const personId = await upsertPerson({
+    name: input.name,
+    email: input.email,
+    phone: input.phone,
+  })
+  if (!personId) {
+    throw new Error('Attio upsertLead: no person ID returned')
   }
+
+  await createLeadPipelineEntry(personId, {
+    kanaal: input.kanaal,
+    eventdatum: input.eventdatum,
+    aantalPersonen: input.aantalPersonen,
+    geschatteWaarde: input.geschatteWaarde,
+    opmerkingen: input.opmerkingen,
+    klantgroep: input.klantgroep,
+    tijdslot: input.tijdslot,
+    deelnameEvent: input.deelnameEvent,
+    naamPartner: input.naamPartner,
+  })
 }
