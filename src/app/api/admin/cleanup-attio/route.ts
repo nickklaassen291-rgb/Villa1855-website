@@ -44,6 +44,8 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify({ limit: 100 }),
     })
     const entries = entriesRes?.data || []
+    results.totalEntries = entries.length
+    results.sampleEntry = entries[0]
 
     // 2. Get parent people for each entry, check if email matches test pattern.
     // If person GET fails (orphan), delete the entry anyway.
