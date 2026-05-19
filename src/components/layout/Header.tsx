@@ -97,8 +97,10 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         <div
-          className={`lg:hidden overflow-hidden transition-all duration-300 ${
-            mobileMenuOpen ? 'max-h-[400px] opacity-100 mt-4' : 'max-h-0 opacity-0'
+          className={`lg:hidden transition-all duration-300 ${
+            mobileMenuOpen
+              ? 'max-h-[calc(100vh-5rem)] overflow-y-auto opacity-100 mt-4'
+              : 'max-h-0 overflow-hidden opacity-0'
           }`}
         >
           <div className="py-4 border-t border-white/10">
