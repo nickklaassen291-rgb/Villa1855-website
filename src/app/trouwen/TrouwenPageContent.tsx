@@ -33,17 +33,37 @@ export default function TrouwenPageContent() {
     e.preventDefault()
     setFormStatus('submitting')
 
-    // Hier kun je de data naar een API sturen (bijv. Mailchimp, HubSpot, of eigen backend)
-    // Voor nu simuleren we een succesvolle submit
+    const formattedDate = formData.trouwdatum
+      ? new Date(formData.trouwdatum).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })
+      : 'nog niet bekend'
+
+    const message = [
+      `Brochure-aanvraag via /trouwen`,
+      ``,
+      `Namen: ${formData.naam}`,
+      `Telefoon: ${formData.telefoon || '-'}`,
+      `Gewenste trouwdatum: ${formattedDate}`,
+    ].join('\n')
+
     try {
-      // Simuleer API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
-
-      console.log('Form data:', formData)
-      setFormStatus('success')
-
-      // Reset form
-      setFormData({ naam: '', email: '', telefoon: '', trouwdatum: '' })
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.naam,
+          email: formData.email,
+          phone: formData.telefoon,
+          subject: 'brochure',
+          message,
+        }),
+      })
+      const data = await res.json()
+      if (data.success) {
+        setFormStatus('success')
+        setFormData({ naam: '', email: '', telefoon: '', trouwdatum: '' })
+      } else {
+        setFormStatus('error')
+      }
     } catch (error) {
       setFormStatus('error')
     }
