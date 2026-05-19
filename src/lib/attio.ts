@@ -163,8 +163,6 @@ async function createLeadPipelineEntry(personId: string, input: LeadEntryInput):
   }[input.kanaal]
 
   const entryValues: Record<string, any> = {
-    parent_record_id: personId,
-    parent_object: 'people',
     kanaal: kanaalId,
     test: LEAD_STATUS.NIEUW, // Lead Status (api_slug is "test")
     datum_binnenkomst: new Date().toISOString().slice(0, 10),
@@ -211,7 +209,13 @@ async function createLeadPipelineEntry(personId: string, input: LeadEntryInput):
 
   await attioFetch(`/lists/${LEAD_PIPELINE_LIST_ID}/entries`, {
     method: 'POST',
-    body: JSON.stringify({ data: { entry_values: entryValues } }),
+    body: JSON.stringify({
+      data: {
+        parent_record_id: personId,
+        parent_object: 'people',
+        entry_values: entryValues,
+      },
+    }),
   })
 }
 
