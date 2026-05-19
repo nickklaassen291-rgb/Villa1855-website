@@ -38,14 +38,16 @@ export async function POST(request: NextRequest) {
   const results: any = { deletedEntries: 0, deletedPeople: 0, errors: [] }
 
   try {
-    // 1. Get all entries on Lead pipeline
+    // 1. Get recent entries on Lead pipeline (today's tests are newest)
     const entriesRes = await attioFetch('/lists/d2eaf63c-ded2-4ed6-99b8-ee45f75cba0c/entries/query', {
       method: 'POST',
-      body: JSON.stringify({ limit: 100 }),
+      body: JSON.stringify({
+        limit: 50,
+        sorts: [{ attribute: 'created_at', direction: 'desc' }],
+      }),
     })
     const entries = entriesRes?.data || []
     results.totalEntries = entries.length
-    results.sampleEntry = entries[0]
 
     // 2. Get parent people for each entry, check if email matches test pattern.
     // If person GET fails (orphan), delete the entry anyway.
