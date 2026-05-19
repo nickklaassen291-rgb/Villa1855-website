@@ -667,10 +667,10 @@ function PackageRow({
       {expanded && (
         <div className="border-t border-primary-lighter p-6 lg:p-8 bg-offwhite">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            <div>
+            <div className="order-2 lg:order-1">
               <OptionForm pkg={pkg} />
             </div>
-            <div className="lg:border-l lg:border-primary-lighter lg:pl-12">
+            <div className="order-1 lg:order-2 lg:border-l lg:border-primary-lighter lg:pl-12">
               <PackageDetails pkg={pkg} />
             </div>
           </div>
