@@ -49,6 +49,27 @@ export default function TrouwenPageContent() {
     }
   }
 
+  const reviews = [
+    {
+      text: 'Wat een top team op een geweldige locatie. Mooi wijn arrangement en een heerlijk menu vol met verrassingen. Werd goed meegedacht met dieetwensen. Een avond om niet snel te vergeten!',
+      avatar: 'A',
+      author: 'Angelique & Partner',
+      meta: 'Getrouwd april 2025'
+    },
+    {
+      text: 'Op de dag zelf ging het personeel above and beyond. Het eten was GEWELDIG - dat doet nog niet voor de helft recht aan hoe lekker het was. Villa 1855 heeft aan onze dag het gouden randje toegevoegd.',
+      avatar: 'W',
+      author: 'Wessel & Partner',
+      meta: 'Getrouwd juli 2025'
+    },
+    {
+      text: 'Vanaf het eerste moment waren wij enthousiast. Het personeel ziet je, hoort je en is supergastvrij. Zowel de locatie als het team zorgden voor een topdag waaraan niets ontbrak. Zeker aanbevolen!',
+      avatar: 'N',
+      author: 'Nikki & Partner',
+      meta: 'Getrouwd augustus 2025'
+    }
+  ]
+
   const faqItems = [
     {
       question: 'Voor hoeveel gasten is Villa 1855 geschikt als trouwlocatie?',
@@ -318,53 +339,49 @@ export default function TrouwenPageContent() {
             <div className="reviews-header">
               <h2>Wat stellen zeggen over hun dag</h2>
             </div>
-            <div className="reviews-grid">
-              <div className="review-card">
-                <div className="review-stars">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  ))}
-                </div>
-                <p className="review-text">&ldquo;Wat een top team op een geweldige locatie. Mooi wijn arrangement en een heerlijk menu vol met verrassingen. Werd goed meegedacht met dieetwensen. Een avond om niet snel te vergeten!&rdquo;</p>
-                <div className="review-author">
-                  <div className="review-avatar">A</div>
-                  <div className="review-info">
-                    <h4>Angelique & Partner</h4>
-                    <span>Getrouwd april 2025</span>
+            {/* Desktop: bestaande horizontale flex-layout */}
+            <div className="reviews-grid hidden md:flex">
+              {reviews.map((review, index) => (
+                <div key={index} className="review-card">
+                  <div className="review-stars">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    ))}
+                  </div>
+                  <p className="review-text">&ldquo;{review.text}&rdquo;</p>
+                  <div className="review-author">
+                    <div className="review-avatar">{review.avatar}</div>
+                    <div className="review-info">
+                      <h4>{review.author}</h4>
+                      <span>{review.meta}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
+            </div>
 
-              <div className="review-card">
-                <div className="review-stars">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  ))}
-                </div>
-                <p className="review-text">&ldquo;Op de dag zelf ging het personeel above and beyond. Het eten was GEWELDIG - dat doet nog niet voor de helft recht aan hoe lekker het was. Villa 1855 heeft aan onze dag het gouden randje toegevoegd.&rdquo;</p>
-                <div className="review-author">
-                  <div className="review-avatar">W</div>
-                  <div className="review-info">
-                    <h4>Wessel & Partner</h4>
-                    <span>Getrouwd juli 2025</span>
+            {/* Mobiel: auto-scrollende marquee */}
+            <div className="md:hidden overflow-hidden -mx-6">
+              <div className="marquee-track flex gap-6 w-max px-6">
+                {[...reviews, ...reviews].map((review, index) => (
+                  <div key={index} className="w-[80vw] max-w-[340px] flex-shrink-0">
+                    <div className="review-card">
+                      <div className="review-stars">
+                        {[...Array(5)].map((_, i) => (
+                          <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        ))}
+                      </div>
+                      <p className="review-text">&ldquo;{review.text}&rdquo;</p>
+                      <div className="review-author">
+                        <div className="review-avatar">{review.avatar}</div>
+                        <div className="review-info">
+                          <h4>{review.author}</h4>
+                          <span>{review.meta}</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-
-              <div className="review-card">
-                <div className="review-stars">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  ))}
-                </div>
-                <p className="review-text">&ldquo;Vanaf het eerste moment waren wij enthousiast. Het personeel ziet je, hoort je en is supergastvrij. Zowel de locatie als het team zorgden voor een topdag waaraan niets ontbrak. Zeker aanbevolen!&rdquo;</p>
-                <div className="review-author">
-                  <div className="review-avatar">N</div>
-                  <div className="review-info">
-                    <h4>Nikki & Partner</h4>
-                    <span>Getrouwd augustus 2025</span>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>

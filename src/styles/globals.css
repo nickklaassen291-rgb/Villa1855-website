@@ -2066,6 +2066,13 @@
     animation: marquee-x 32s linear infinite;
   }
 
+  .marquee-track .review-card {
+    flex: initial;
+    max-width: none;
+    width: 100%;
+    scroll-snap-align: unset;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .marquee-track {
       animation: none;

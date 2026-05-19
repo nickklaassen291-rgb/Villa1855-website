@@ -223,7 +223,8 @@ export default function ZakelijkPageContent() {
             <div className="reviews-header">
               <h2>Wat bedrijven zeggen</h2>
             </div>
-            <div className="reviews-grid">
+            {/* Desktop: bestaande horizontale flex-layout */}
+            <div className="reviews-grid hidden md:flex">
               {reviews.map((review, index) => (
                 <div key={index} className="review-card">
                   <div className="review-stars">
@@ -241,6 +242,31 @@ export default function ZakelijkPageContent() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Mobiel: auto-scrollende marquee */}
+            <div className="md:hidden overflow-hidden -mx-6">
+              <div className="marquee-track flex gap-6 w-max px-6">
+                {[...reviews, ...reviews].map((review, index) => (
+                  <div key={index} className="w-[80vw] max-w-[340px] flex-shrink-0">
+                    <div className="review-card">
+                      <div className="review-stars">
+                        {[...Array(5)].map((_, i) => (
+                          <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        ))}
+                      </div>
+                      <p className="review-text">{review.text}</p>
+                      <div className="review-author">
+                        <div className="review-avatar">{review.initials}</div>
+                        <div className="review-info">
+                          <h4>{review.author}</h4>
+                          <span>{review.role}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
