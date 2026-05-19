@@ -68,7 +68,7 @@ export default function HeroSection() {
         </p>
 
         {/* Practical info */}
-        <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-primary-light/80 text-sm mb-8">
+        <div className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-y-1 sm:gap-x-6 sm:gap-y-2 text-primary-light/80 text-sm mb-8 text-center">
           <span>Noordstraat 36, Tilburg centrum</span>
           <span className="hidden sm:inline">|</span>
           <span>10:00 – 16:00 uur</span>
