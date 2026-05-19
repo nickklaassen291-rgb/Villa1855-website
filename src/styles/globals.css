@@ -2162,8 +2162,22 @@
     }
 
     .faq-content {
-      grid-template-columns: 1fr;
-      gap: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .faq-header {
+      display: contents;
+    }
+
+    .faq-header h2 { order: 1; }
+    .faq-header p { order: 2; }
+    .faq-list { order: 3; }
+    .faq-header .btn {
+      order: 4;
+      margin-top: 0.5rem;
+      align-self: center;
     }
 
     .intro-stats {
