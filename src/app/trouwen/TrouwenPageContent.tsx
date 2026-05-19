@@ -429,7 +429,7 @@ export default function TrouwenPageContent() {
               <div className="faq-header">
                 <h2>Veelgestelde vragen</h2>
                 <p>De antwoorden op de meest gestelde vragen over trouwen bij Villa 1855.</p>
-                <Link href="#contact" className="btn btn-primary" style={{ marginTop: '1rem' }}>
+                <Link href="/contact" className="btn btn-primary" style={{ marginTop: '1rem' }}>
                   Andere vraag? Neem contact op
                 </Link>
               </div>
@@ -621,18 +621,15 @@ export default function TrouwenPageContent() {
         </section>
 
         {/* CTA */}
-        <section className="cta" id="contact">
+        <section className="cta" id="beschikbaarheid">
           <div className="container">
             <div className="cta-content">
-              <h2>Liever direct contact?</h2>
-              <p>Neem gerust contact met ons op voor een vrijblijvend gesprek of om een bezichtiging te plannen.</p>
+              <h2>Check jullie beschikbaarheid</h2>
+              <p>Bekijk meteen of jullie droomdatum nog vrij is in onze online beschikbaarheidskalender.</p>
               <div className="cta-buttons">
                 <Link href="/beschikbaarheid" className="btn btn-secondary">
                   Check beschikbaarheid
                 </Link>
-                <a href="mailto:info@villa1855.nl" className="btn btn-outline">
-                  E-mail ons
-                </a>
               </div>
             </div>
           </div>
