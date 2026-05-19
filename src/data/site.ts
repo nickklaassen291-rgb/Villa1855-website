@@ -34,7 +34,7 @@ export const navigation = {
     { name: 'Trouwen', href: '/trouwen', external: false },
     { name: 'Zakelijk', href: '/zakelijk', external: false },
     { name: 'Pop-up Restaurant', href: '/popup-restaurant', external: false },
-    { name: 'Open Dagen', href: '/open-trouw-route', external: false },
+    { name: 'Open Dag', href: '/open-trouw-route', external: false },
     { name: 'De Locatie', href: '/locatie', external: false },
     { name: 'Beschikbaarheid', href: '/beschikbaarheid', external: false },
     { name: 'Contact', href: '/contact', external: false },
@@ -49,13 +49,13 @@ export const navigation = {
     info: [
       { name: 'De Locatie', href: '/locatie' },
       { name: 'Beschikbaarheid', href: '/beschikbaarheid' },
-      { name: 'Open Dagen', href: '/open-trouw-route' },
+      { name: 'Open Dag', href: '/open-trouw-route' },
       { name: 'Contact', href: '/contact' },
     ],
   },
 }
 
-// Open Dagen 2026
+// Open Dag 2026
 export const openDays = [
   { date: '2026-04-12', label: '12 april 2026' },
   { date: '2026-06-28', label: '28 juni 2026' },
