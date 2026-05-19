@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Header from '@/components/layout/Header'
 import HeroSection from '@/components/open-trouw-route/HeroSection'
 import TrustSection from '@/components/open-trouw-route/TrustSection'
 import EventDetails from '@/components/open-trouw-route/EventDetails'
@@ -93,6 +94,7 @@ export default function OpenTrouwRoutePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
       />
       <MetaPixel />
+      <Header />
       <main>
         <HeroSection />
         <TrustSection />

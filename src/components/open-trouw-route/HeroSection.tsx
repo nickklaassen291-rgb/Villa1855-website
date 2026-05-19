@@ -30,17 +30,6 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Logo top left */}
-      <div className="absolute top-6 left-6 z-20">
-        <Image
-          src="/images/logo-light.png"
-          alt="Villa 1855 trouwlocatie Tilburg logo"
-          width={120}
-          height={60}
-          className="h-12 w-auto"
-        />
-      </div>
-
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         {/* Badge */}
