@@ -229,7 +229,6 @@ export async function POST(request: NextRequest) {
     }
 
     // 3. Push to Attio CRM (non-fatal)
-    let debugAttio: string | undefined
     try {
       let kanaal: LeadKanaal = 'contact'
       let klantgroep: 'b2c-villa-bruiloften' | 'b2b-villa' | undefined
@@ -270,13 +269,11 @@ export async function POST(request: NextRequest) {
       })
     } catch (attioError) {
       console.error('Attio upsert failed (non-fatal):', attioError)
-      debugAttio = attioError instanceof Error ? attioError.message : String(attioError)
     }
 
     return NextResponse.json({
       success: true,
       message: 'Bedankt voor je bericht! We nemen binnen 1 werkdag contact met je op.',
-      _debugAttio: debugAttio,
     })
 
   } catch (error) {
