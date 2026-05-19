@@ -2086,6 +2086,10 @@
       padding: 0 2rem;
     }
 
+    .hero-text .label {
+      justify-content: center;
+    }
+
     .hero-text .label::before {
       display: none;
     }
@@ -2191,6 +2195,20 @@
   @media (max-width: 768px) {
     :root {
       --section-padding: 4rem;
+    }
+
+    .page-hero .btn,
+    .hero .btn {
+      padding: 0.85rem 1.25rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      gap: 0.5rem;
+    }
+
+    .page-hero .btn svg,
+    .hero .btn svg {
+      width: 16px;
+      height: 16px;
     }
 
     .nav-links {
