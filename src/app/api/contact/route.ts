@@ -54,12 +54,20 @@ function getBrochureBuffer(): Buffer | null {
 
 function customerAutoReplyHtml(data: ContactData, brochureAttached: boolean): string {
   const isBrochure = data.subject === 'brochure'
-  const title = isBrochure ? 'Jullie trouwbrochure komt eraan!' : 'We hebben je bericht ontvangen'
-  const intro = isBrochure
-    ? (brochureAttached
-        ? 'Bedankt voor jullie interesse in Villa 1855. In de bijlage vinden jullie onze trouwbrochure met alle informatie. Ik neem binnen één werkdag persoonlijk contact op om jullie wensen te bespreken en eventueel een vrijblijvende kennismaking in te plannen.'
-        : 'Bedankt voor jullie interesse in Villa 1855. Ik stuur jullie persoonlijk de brochure toe en neem binnen één werkdag contact op om jullie wensen te bespreken.')
-    : 'Bedankt voor je bericht. Ik kijk er even goed naar en neem binnen één werkdag contact met je op.'
+
+  let title: string
+  let intro: string
+
+  if (isBrochure && brochureAttached) {
+    title = 'Hier is jullie trouwbrochure'
+    intro = 'Bedankt voor jullie interesse in Villa 1855. In de bijlage vinden jullie onze trouwbrochure met alles over de villa, de ruimtes, en wat een dag bij ons inhoudt.<br><br>De komende periode ontvangen jullie nog wat verhalen, inspiratie en praktische tips van ons — zodat jullie alle tijd hebben om rustig na te denken over wat past bij jullie dag.'
+  } else if (isBrochure) {
+    title = 'Jullie trouwbrochure komt eraan'
+    intro = 'Bedankt voor jullie interesse in Villa 1855. We sturen jullie binnenkort de brochure toe met alles over de villa en de ruimtes.'
+  } else {
+    title = 'We hebben je bericht ontvangen'
+    intro = 'Bedankt voor je bericht. Ik kijk er even goed naar en neem binnen één werkdag contact met je op.'
+  }
 
   return `<!DOCTYPE html>
 <html lang="nl">
@@ -79,12 +87,15 @@ function customerAutoReplyHtml(data: ContactData, brochureAttached: boolean): st
       <p style="margin:0 0 24px;font-size:15px;line-height:1.6;">${intro}</p>
 
       <div style="background:#F5F1E8;padding:20px;margin:24px 0;border-left:3px solid #B58C67;">
-        <p style="margin:0 0 8px;font-size:14px;color:#5A6864;"><em>Jullie aanspreekpunt:</em></p>
-        <p style="margin:0;font-size:16px;font-weight:bold;color:#102B2A;">Lotte Willems</p>
-        <p style="margin:4px 0 0;font-size:14px;color:#5A6864;">Heb je iets dringends? Bel gerust direct: <a href="tel:+310852736709" style="color:#B58C67;text-decoration:none;">085 273 6709</a></p>
+        <p style="margin:0 0 8px;font-size:14px;color:#5A6864;"><em>Vragen of een afspraak inplannen?</em></p>
+        <p style="margin:0 0 4px;font-size:15px;color:#102B2A;">Neem gerust contact op met Lotte:</p>
+        <p style="margin:4px 0 0;font-size:14px;color:#5A6864;">
+          📞 <a href="tel:+310852736709" style="color:#B58C67;text-decoration:none;">085 273 6709</a><br>
+          ✉️ <a href="mailto:info@villa1855.nl" style="color:#B58C67;text-decoration:none;">info@villa1855.nl</a>
+        </p>
       </div>
 
-      <p style="margin:24px 0 8px;font-size:15px;line-height:1.6;">Tot snel!</p>
+      <p style="margin:24px 0 8px;font-size:15px;line-height:1.6;">Hartelijke groet,</p>
       <p style="margin:0;font-size:15px;line-height:1.6;">Lotte &amp; team Villa 1855</p>
     </div>
 
