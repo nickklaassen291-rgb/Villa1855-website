@@ -5,6 +5,7 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import Image from 'next/image'
 import { MapPin, Phone, Mail, Clock, Send, Loader2, Check, AlertCircle } from 'lucide-react'
+import { trackEvent } from '@/components/PostHogProvider'
 
 type FormState = 'idle' | 'loading' | 'success' | 'error'
 
@@ -68,6 +69,7 @@ export default function ContactPageContent() {
         throw new Error(result.message || 'Verzenden mislukt')
       }
 
+      trackEvent('form_submit', { form: 'contact', subject: formData.subject || 'anders' })
       setFormState('success')
       setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
     } catch {

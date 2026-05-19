@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Lock, Check, AlertCircle, Loader2 } from 'lucide-react'
+import { trackEvent } from '@/components/PostHogProvider'
 
 const timeSlots = [
   { value: '10:00', label: '10:00 - 11:00' },
@@ -111,6 +112,13 @@ export default function RegistrationForm() {
         throw new Error(result.message || 'Registration failed')
       }
 
+      trackEvent('form_submit', {
+        form: 'open_dag',
+        time_slot: formData.timeSlot,
+        has_guest_count: !!formData.guestCount,
+        has_wedding_date: !!formData.weddingDate,
+        utm_source: utmParams.utm_source || null,
+      })
       router.push('/open-trouw-route/bedankt')
       return
     } catch (err) {

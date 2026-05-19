@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer'
 import { Calendar } from '@/components/calendar'
 import { ChevronDown } from 'lucide-react'
 import Link from 'next/link'
+import { trackEvent } from '@/components/PostHogProvider'
 
 // ============================================================
 // PRIJZEN - Villa 1855
@@ -776,6 +777,14 @@ function SendCalculationForm({
       })
       const json = await res.json()
       if (json.success) {
+        trackEvent('form_submit', {
+          form: 'calculator_bruiloften',
+          day_guests: dayGuests,
+          evening_guests: eveningGuests,
+          total_price: costs.total,
+          has_wedding_date: !!weddingDate,
+          discounts: discounts.length,
+        })
         setStatus({ type: 'success', message: json.message })
       } else {
         setStatus({ type: 'error', message: json.message || 'Er ging iets mis.' })

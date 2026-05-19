@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Lora, Public_Sans, Great_Vibes } from 'next/font/google'
 import Script from 'next/script'
 import '@/styles/globals.css'
+import PostHogProvider from '@/components/PostHogProvider'
+import CookieConsent from '@/components/CookieConsent'
 
 const GA_MEASUREMENT_ID = 'G-TBBKG39G8K'
 
@@ -117,7 +119,10 @@ export default function RootLayout({
             }),
           }}
         />
-        {children}
+        <PostHogProvider>
+          {children}
+          <CookieConsent />
+        </PostHogProvider>
       </body>
     </html>
   )

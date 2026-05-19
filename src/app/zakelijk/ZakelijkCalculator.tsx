@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { Check, Users, CalendarDays, Sparkles, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react'
+import { trackEvent } from '@/components/PostHogProvider'
 
 type BookingStatus = 'available' | 'option' | 'booked' | 'limited' | 'closed'
 interface DayStatus {
@@ -424,6 +425,13 @@ function OptionForm({ pkg }: { pkg: typeof PACKAGES[PackageKey] }) {
       const data = await res.json()
       setSubmitResult({ success: !!data.success, message: data.message || (data.success ? 'Verzonden!' : 'Er ging iets mis.') })
       if (data.success) {
+        trackEvent('form_submit', {
+          form: 'zakelijk_pakket',
+          package: pkg.name,
+          guests: form.guests,
+          total_price: total,
+          has_company: !!form.company,
+        })
         setForm({ date: '', guests: 0, name: '', company: '', email: '', phone: '', message: '', extras: [] })
         setAvailability('idle')
       }

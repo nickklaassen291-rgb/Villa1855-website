@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer'
 import Image from 'next/image'
 import Link from 'next/link'
 import AutoplayYouTube from '@/components/AutoplayYouTube'
+import { trackEvent } from '@/components/PostHogProvider'
 
 // Video ID
 const YOUTUBE_VIDEO_ID = 'ko5JAY5v7-E'
@@ -61,6 +62,10 @@ export default function TrouwenPageContent() {
       })
       const data = await res.json()
       if (data.success) {
+        trackEvent('form_submit', {
+          form: 'brochure',
+          has_wedding_date: !!formData.trouwdatum,
+        })
         setFormStatus('success')
         setFormData({ naam: '', email: '', telefoon: '', trouwdatum: '' })
       } else {
