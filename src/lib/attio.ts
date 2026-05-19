@@ -96,6 +96,18 @@ interface PersonInput {
   phone?: string
 }
 
+function normalizePhone(phone: string): string {
+  // Strip spaces, dashes, parentheses
+  const cleaned = phone.replace(/[\s\-()]/g, '')
+  // Already E.164? Return as-is
+  if (cleaned.startsWith('+')) return cleaned
+  // Dutch leading 0 → +31
+  if (cleaned.startsWith('00')) return '+' + cleaned.slice(2)
+  if (cleaned.startsWith('0')) return '+31' + cleaned.slice(1)
+  // Onbekend formaat → veronderstel NL
+  return '+31' + cleaned
+}
+
 async function upsertPerson(input: PersonInput): Promise<string | null> {
   const existingId = await findPersonByEmail(input.email)
 
@@ -109,7 +121,7 @@ async function upsertPerson(input: PersonInput): Promise<string | null> {
     email_addresses: [{ email_address: input.email }],
   }
   if (input.phone) {
-    values.phone_numbers = [{ original_phone_number: input.phone }]
+    values.phone_numbers = [{ original_phone_number: normalizePhone(input.phone) }]
   }
 
   if (existingId) {
