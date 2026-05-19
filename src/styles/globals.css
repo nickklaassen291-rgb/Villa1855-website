@@ -2203,12 +2203,19 @@
       font-size: 0.75rem;
       letter-spacing: 0.08em;
       gap: 0.5rem;
+      margin-bottom: 3rem;
     }
 
     .page-hero .btn svg,
     .hero .btn svg {
       width: 16px;
       height: 16px;
+    }
+
+    .page-hero {
+      height: auto;
+      min-height: 600px;
+      padding: 5rem 0 4rem;
     }
 
     .nav-links {
