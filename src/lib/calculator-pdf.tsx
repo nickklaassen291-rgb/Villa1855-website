@@ -94,9 +94,9 @@ export interface OfferteData {
 // ============================================================================
 
 export type DinnerType = 'three-course' | 'four-course' | 'shared'
-export type ReceptionType = 'a' | 'b' | 'c'
+export type ReceptionType = 'a' | 'b'
 export type PartyFoodType = 'a' | 'b'
-export type LateNightType = 'none' | 'a' | 'b'
+export type LateNightType = 'none' | 'a' | 'b' | 'c'
 
 export interface CalculatorPdfData {
   customerName: string
@@ -138,18 +138,19 @@ function dinnerLabel(type: DinnerType): string {
 }
 
 function receptionLabel(type: ReceptionType): string {
-  if (type === 'b') return 'Receptie hapjes B'
-  if (type === 'c') return 'Receptie hapjes C'
-  return 'Receptie hapjes A'
+  if (type === 'b') return 'Hapjes assortiment borrel | tafelgarnituur en 2 luxe hapjes'
+  return 'Borrelplanken'
 }
 
 function partyFoodLabel(type: PartyFoodType): string {
-  return type === 'b' ? 'Feestavond hapjes B' : 'Feestavond hapjes A'
+  if (type === 'b') return 'Hapjes assortiment feestavond | luxe | tafelgarnituur | 3 bites | 3 gefrituurd'
+  return 'Hapjes assortiment feestavond | basis | tafelgarnituur | 2 bites | 4 gefrituurd'
 }
 
 function lateNightLabel(type: LateNightType): string {
-  if (type === 'a') return 'Late night snack A'
-  if (type === 'b') return 'Late night snack B'
+  if (type === 'a') return 'Puntzak friet'
+  if (type === 'b') return 'Worstenbroodje'
+  if (type === 'c') return 'Midi burger'
   return ''
 }
 
@@ -734,13 +735,13 @@ export const sampleOfferteData: OfferteData = {
   generatedDate: '18 mei 2026',
   dayProgram: [
     { label: 'Dranken dagprogramma', amount: 900 },
-    { label: 'Receptie hapjes A', amount: 720 },
+    { label: 'Borrelplanken', amount: 720 },
     { label: '3-gangen diner', amount: 4200 },
   ],
   eveningProgram: [
     { label: 'Dranken avondprogramma', amount: 1250 },
-    { label: 'Feestavond hapjes B', amount: 840 },
-    { label: 'Late night snack A', amount: 480 },
+    { label: 'Hapjes assortiment feestavond | luxe | tafelgarnituur | 3 bites | 3 gefrituurd', amount: 840 },
+    { label: 'Puntzak friet', amount: 480 },
   ],
   rentalStandard: 5000,
   discount: {

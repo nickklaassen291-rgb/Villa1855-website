@@ -12,19 +12,19 @@ import Link from 'next/link'
 // ============================================================
 const PRICES = {
   // Dagprogramma
-  receptionA: 6.00,
-  receptionB: 9.00,
-  receptionC: 11.00,
+  receptionA: 8.00,
+  receptionB: 10.00,
   drinksDay: 42.50,
   dinnerThreeCourse: 49.50,
   dinnerFourCourse: 54.50,
   dinnerShared: 59.50,
   // Avondprogramma
-  partyFoodA: 12.50,
-  partyFoodB: 15.00,
+  partyFoodA: 14.50,
+  partyFoodB: 17.50,
   drinksEvening: 38.25,
-  lateNightA: 8.00,
-  lateNightB: 10.00,
+  lateNightA: 4.50,
+  lateNightB: 4.00,
+  lateNightC: 8.50,
   // Vast
   houseRental: 2950,
 }
@@ -57,9 +57,9 @@ const DEALS = [
 // TYPES
 // ============================================================
 type DinnerType = 'three-course' | 'four-course' | 'shared'
-type ReceptionType = 'a' | 'b' | 'c'
+type ReceptionType = 'a' | 'b'
 type PartyFoodType = 'a' | 'b'
-type LateNightType = 'none' | 'a' | 'b'
+type LateNightType = 'none' | 'a' | 'b' | 'c'
 
 interface FormData {
   dayGuests: number
@@ -132,31 +132,21 @@ function getDinnerPriceFormatted(type: DinnerType): string {
 }
 
 function getReceptionLabel(type: ReceptionType): string {
-  switch (type) {
-    case 'b': return 'Receptie hapjes B'
-    case 'c': return 'Receptie hapjes C'
-    default: return 'Receptie hapjes A'
-  }
+  if (type === 'b') return 'Hapjes assortiment borrel | tafelgarnituur en 2 luxe hapjes'
+  return 'Borrelplanken'
 }
 
 function getReceptionPrice(type: ReceptionType): number {
-  switch (type) {
-    case 'b': return PRICES.receptionB
-    case 'c': return PRICES.receptionC
-    default: return PRICES.receptionA
-  }
+  return type === 'b' ? PRICES.receptionB : PRICES.receptionA
 }
 
 function getReceptionPriceFormatted(type: ReceptionType): string {
-  switch (type) {
-    case 'b': return '9,00'
-    case 'c': return '11,00'
-    default: return '6,00'
-  }
+  return type === 'b' ? '10,00' : '8,00'
 }
 
 function getPartyFoodLabel(type: PartyFoodType): string {
-  return type === 'b' ? 'Feestavond hapjes B' : 'Feestavond hapjes A'
+  if (type === 'b') return 'Hapjes assortiment feestavond | luxe | tafelgarnituur | 3 bites | 3 gefrituurd'
+  return 'Hapjes assortiment feestavond | basis | tafelgarnituur | 2 bites | 4 gefrituurd'
 }
 
 function getPartyFoodPrice(type: PartyFoodType): number {
@@ -164,18 +154,20 @@ function getPartyFoodPrice(type: PartyFoodType): number {
 }
 
 function getPartyFoodPriceFormatted(type: PartyFoodType): string {
-  return type === 'b' ? '15,00' : '12,50'
+  return type === 'b' ? '17,50' : '14,50'
 }
 
 function getLateNightLabel(type: LateNightType): string {
-  if (type === 'a') return 'Late night snack A'
-  if (type === 'b') return 'Late night snack B'
+  if (type === 'a') return 'Puntzak friet'
+  if (type === 'b') return 'Worstenbroodje'
+  if (type === 'c') return 'Midi burger'
   return 'Geen late night snack'
 }
 
 function getLateNightPrice(type: LateNightType): number {
   if (type === 'a') return PRICES.lateNightA
   if (type === 'b') return PRICES.lateNightB
+  if (type === 'c') return PRICES.lateNightC
   return 0
 }
 
@@ -222,9 +214,8 @@ function GuestForm({ data, onChange }: { data: FormData; onChange: (data: FormDa
         <label className="text-sm font-medium text-primary-darkest">Keuze receptie hapjes</label>
         <div className="space-y-3">
           {([
-            { value: 'a' as ReceptionType, label: 'Hapjes A (€6,00)' },
-            { value: 'b' as ReceptionType, label: 'Hapjes B (€9,00)' },
-            { value: 'c' as ReceptionType, label: 'Hapjes C (€11,00)' },
+            { value: 'a' as ReceptionType, label: 'Borrelplanken (€8,00)' },
+            { value: 'b' as ReceptionType, label: 'Hapjes assortiment borrel | tafelgarnituur en 2 luxe hapjes (€10,00)' },
           ]).map((option) => (
             <label key={option.value} className="flex items-center space-x-3 cursor-pointer group">
               <div className="relative flex items-center justify-center">
@@ -328,8 +319,8 @@ function GuestForm({ data, onChange }: { data: FormData; onChange: (data: FormDa
         <label className="text-sm font-medium text-primary-darkest">Keuze feestavond hapjes</label>
         <div className="space-y-3">
           {([
-            { value: 'a' as PartyFoodType, label: 'Hapjes A (€12,50)' },
-            { value: 'b' as PartyFoodType, label: 'Hapjes B (€15,00)' },
+            { value: 'a' as PartyFoodType, label: 'Hapjes assortiment feestavond | basis | tafelgarnituur | 2 bites | 4 gefrituurd (€14,50)' },
+            { value: 'b' as PartyFoodType, label: 'Hapjes assortiment feestavond | luxe | tafelgarnituur | 3 bites | 3 gefrituurd (€17,50)' },
           ]).map((option) => (
             <label key={option.value} className="flex items-center space-x-3 cursor-pointer group">
               <div className="relative flex items-center justify-center">
@@ -365,8 +356,9 @@ function GuestForm({ data, onChange }: { data: FormData; onChange: (data: FormDa
         <div className="space-y-3">
           {([
             { value: 'none' as LateNightType, label: 'Geen late night snack' },
-            { value: 'a' as LateNightType, label: 'Snack A (€8,00)' },
-            { value: 'b' as LateNightType, label: 'Snack B (€10,00)' },
+            { value: 'a' as LateNightType, label: 'Puntzak friet (€4,50)' },
+            { value: 'b' as LateNightType, label: 'Worstenbroodje (€4,00)' },
+            { value: 'c' as LateNightType, label: 'Midi burger (€8,50)' },
           ]).map((option) => (
             <label key={option.value} className="flex items-center space-x-3 cursor-pointer group">
               <div className="relative flex items-center justify-center">

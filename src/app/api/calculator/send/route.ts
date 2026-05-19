@@ -46,18 +46,19 @@ function dinnerLabel(type: DinnerType): string {
 }
 
 function receptionLabel(type: ReceptionType): string {
-  if (type === 'b') return 'Receptie hapjes B'
-  if (type === 'c') return 'Receptie hapjes C'
-  return 'Receptie hapjes A'
+  if (type === 'b') return 'Hapjes assortiment borrel | tafelgarnituur en 2 luxe hapjes'
+  return 'Borrelplanken'
 }
 
 function partyFoodLabel(type: PartyFoodType): string {
-  return type === 'b' ? 'Feestavond hapjes B' : 'Feestavond hapjes A'
+  if (type === 'b') return 'Hapjes assortiment feestavond | luxe | tafelgarnituur | 3 bites | 3 gefrituurd'
+  return 'Hapjes assortiment feestavond | basis | tafelgarnituur | 2 bites | 4 gefrituurd'
 }
 
 function lateNightLabel(type: LateNightType): string {
-  if (type === 'a') return 'Late night snack A'
-  if (type === 'b') return 'Late night snack B'
+  if (type === 'a') return 'Puntzak friet'
+  if (type === 'b') return 'Worstenbroodje'
+  if (type === 'c') return 'Midi burger'
   return 'Geen'
 }
 
