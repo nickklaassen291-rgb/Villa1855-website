@@ -51,8 +51,8 @@ function receptionLabel(type: ReceptionType): string {
 }
 
 function partyFoodLabel(type: PartyFoodType): string {
-  if (type === 'b') return 'Hapjes assortiment feestavond | luxe | tafelgarnituur | 3 bites | 3 gefrituurd'
-  return 'Hapjes assortiment feestavond | basis | tafelgarnituur | 2 bites | 4 gefrituurd'
+  if (type === 'b') return 'Hapjes | luxe | tafelgarnituur | 3 bites | 3 gefrituurd'
+  return 'Hapjes | basis | tafelgarnituur | 2 bites | 4 gefrituurd'
 }
 
 function lateNightLabel(type: LateNightType): string {

@@ -145,8 +145,8 @@ function getReceptionPriceFormatted(type: ReceptionType): string {
 }
 
 function getPartyFoodLabel(type: PartyFoodType): string {
-  if (type === 'b') return 'Hapjes assortiment feestavond | luxe | tafelgarnituur | 3 bites | 3 gefrituurd'
-  return 'Hapjes assortiment feestavond | basis | tafelgarnituur | 2 bites | 4 gefrituurd'
+  if (type === 'b') return 'Hapjes | luxe | tafelgarnituur | 3 bites | 3 gefrituurd'
+  return 'Hapjes | basis | tafelgarnituur | 2 bites | 4 gefrituurd'
 }
 
 function getPartyFoodPrice(type: PartyFoodType): number {
@@ -319,8 +319,8 @@ function GuestForm({ data, onChange }: { data: FormData; onChange: (data: FormDa
         <label className="text-sm font-medium text-primary-darkest">Keuze feestavond hapjes</label>
         <div className="space-y-3">
           {([
-            { value: 'a' as PartyFoodType, label: 'Hapjes assortiment feestavond | basis | tafelgarnituur | 2 bites | 4 gefrituurd (€14,50)' },
-            { value: 'b' as PartyFoodType, label: 'Hapjes assortiment feestavond | luxe | tafelgarnituur | 3 bites | 3 gefrituurd (€17,50)' },
+            { value: 'a' as PartyFoodType, label: 'Hapjes | basis | tafelgarnituur | 2 bites | 4 gefrituurd (€14,50)' },
+            { value: 'b' as PartyFoodType, label: 'Hapjes | luxe | tafelgarnituur | 3 bites | 3 gefrituurd (€17,50)' },
           ]).map((option) => (
             <label key={option.value} className="flex items-center space-x-3 cursor-pointer group">
               <div className="relative flex items-center justify-center">
