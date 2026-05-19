@@ -195,10 +195,7 @@ async function createLeadPipelineEntry(personId: string, input: LeadEntryInput):
   }
 
   if (input.geschatteWaarde) {
-    entryValues.geschatte_waarde = {
-      currency_value: input.geschatteWaarde,
-      currency_code: 'EUR',
-    }
+    entryValues.geschatte_waarde = { currency_value: input.geschatteWaarde }
   }
 
   if (input.opmerkingen) {
