@@ -101,9 +101,38 @@ function formatCurrency(amount: number): string {
   }).format(amount)
 }
 
-function getDiscountPercentage(discounts: string[]): number {
-  if (discounts.includes('bruiloft-2026')) return 50
-  if (discounts.includes('winterdeal') || discounts.includes('zondag')) return 25
+function parseWeddingDate(str: string): Date | null {
+  if (!str) return null
+  const parts = str.split('-').map(Number)
+  if (parts.length !== 3 || parts.some((n) => Number.isNaN(n))) return null
+  const [y, m, d] = parts
+  return new Date(y, m - 1, d)
+}
+
+// Returns: true (matches date), false (doesn't match), null (no date set → treat as valid)
+function isDealValidForDate(dealId: string, dateStr: string): boolean | null {
+  const date = parseWeddingDate(dateStr)
+  if (!date) return null
+
+  if (dealId === 'bruiloft-2026') {
+    return date.getFullYear() === 2026
+  }
+  if (dealId === 'winterdeal') {
+    const month = date.getMonth() + 1
+    return month >= 10 || month <= 4
+  }
+  if (dealId === 'zondag') {
+    return date.getDay() === 0
+  }
+  return null
+}
+
+function getDiscountPercentage(discounts: string[], weddingDate: string = ''): number {
+  // Drop discounts that don't match the wedding date (when one is set)
+  const validDiscounts = discounts.filter((d) => isDealValidForDate(d, weddingDate) !== false)
+
+  if (validDiscounts.includes('bruiloft-2026')) return 50
+  if (validDiscounts.includes('winterdeal') || validDiscounts.includes('zondag')) return 25
   return 0
 }
 
@@ -410,7 +439,7 @@ function GuestForm({ data, onChange }: { data: FormData; onChange: (data: FormDa
 // ============================================================
 // DEALS COMPONENT
 // ============================================================
-function DealsSection({ selectedDiscounts, onChange }: { selectedDiscounts: string[]; onChange: (discounts: string[]) => void }) {
+function DealsSection({ selectedDiscounts, weddingDate, onChange }: { selectedDiscounts: string[]; weddingDate: string; onChange: (discounts: string[]) => void }) {
   const handleToggle = (dealId: string, checked: boolean) => {
     if (checked) {
       const newDiscounts = [...selectedDiscounts, dealId]
@@ -420,48 +449,59 @@ function DealsSection({ selectedDiscounts, onChange }: { selectedDiscounts: stri
     }
   }
 
-  const highestDiscount = selectedDiscounts.includes('bruiloft-2026')
-    ? 50
-    : selectedDiscounts.some((d) => d === 'winterdeal' || d === 'zondag')
-    ? 25
-    : 0
+  const highestDiscount = getDiscountPercentage(selectedDiscounts, weddingDate)
 
   return (
     <div className="space-y-4">
       <h3 className="font-medium text-primary-darkest">Beschikbare kortingen</h3>
       <div className="space-y-3">
-        {DEALS.map((deal) => (
-          <label key={deal.id} className="flex items-start space-x-3 cursor-pointer group">
-            <div className="relative flex items-center justify-center mt-0.5">
-              <input
-                type="checkbox"
-                checked={selectedDiscounts.includes(deal.id)}
-                onChange={(e) => handleToggle(deal.id, e.target.checked)}
-                className="sr-only"
-              />
-              <div className={`w-5 h-5 border-2 transition-colors flex items-center justify-center ${
-                selectedDiscounts.includes(deal.id)
-                  ? 'border-accent bg-accent'
-                  : 'border-primary-light group-hover:border-accent'
-              }`}>
-                {selectedDiscounts.includes(deal.id) && (
-                  <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
+        {DEALS.map((deal) => {
+          const isSelected = selectedDiscounts.includes(deal.id)
+          const validity = isDealValidForDate(deal.id, weddingDate)
+          const isInvalidForDate = validity === false
+          return (
+            <label key={deal.id} className="flex items-start space-x-3 cursor-pointer group">
+              <div className="relative flex items-center justify-center mt-0.5">
+                <input
+                  type="checkbox"
+                  checked={isSelected}
+                  onChange={(e) => handleToggle(deal.id, e.target.checked)}
+                  className="sr-only"
+                />
+                <div className={`w-5 h-5 border-2 transition-colors flex items-center justify-center ${
+                  isSelected
+                    ? 'border-accent bg-accent'
+                    : 'border-primary-light group-hover:border-accent'
+                }`}>
+                  {isSelected && (
+                    <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  )}
+                </div>
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-medium text-primary-darkest">{deal.label}</span>
+                  <span className="inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-accent/20 text-accent-hover">
+                    {deal.discount}
+                  </span>
+                </div>
+                <p className="text-xs text-primary mt-1">{deal.description}</p>
+                {isSelected && isInvalidForDate && (
+                  <p className="text-xs text-amber-700 mt-2 flex items-start gap-1.5">
+                    <svg className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                      <line x1="12" y1="9" x2="12" y2="13"/>
+                      <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                    <span>Deze korting geldt niet voor de gekozen trouwdatum en wordt daarom niet toegepast.</span>
+                  </p>
                 )}
               </div>
-            </div>
-            <div className="flex-1">
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-primary-darkest">{deal.label}</span>
-                <span className="inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-accent/20 text-accent-hover">
-                  {deal.discount}
-                </span>
-              </div>
-              <p className="text-xs text-primary mt-1">{deal.description}</p>
-            </div>
-          </label>
-        ))}
+            </label>
+          )
+        })}
       </div>
 
       {highestDiscount > 0 && (
@@ -667,11 +707,15 @@ function CostOverview({ costs }: { costs: Costs }) {
 function SendCalculationForm({
   formData,
   costs,
+  weddingDate,
+  setWeddingDate,
   defaultOpen = false,
   hideClosedState = false,
 }: {
   formData: FormData
   costs: Costs
+  weddingDate: string
+  setWeddingDate: (date: string) => void
   defaultOpen?: boolean
   hideClosedState?: boolean
 }) {
@@ -679,7 +723,6 @@ function SendCalculationForm({
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
-  const [weddingDate, setWeddingDate] = useState('')
   const [message, setMessage] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [status, setStatus] = useState<{ type: 'idle' | 'success' | 'error'; message: string }>({
@@ -911,7 +954,7 @@ function SendCalculationForm({
 // ============================================================
 // AVAILABILITY + CONTACT (collapsible)
 // ============================================================
-function AvailabilityContactBlock({ formData, costs }: { formData: FormData; costs: Costs }) {
+function AvailabilityContactBlock({ formData, costs, weddingDate, setWeddingDate }: { formData: FormData; costs: Costs; weddingDate: string; setWeddingDate: (date: string) => void }) {
   const [expanded, setExpanded] = useState(false)
   const canSubmit = costs.total > 0
 
@@ -945,7 +988,7 @@ function AvailabilityContactBlock({ formData, costs }: { formData: FormData; cos
               <Calendar compact />
             </div>
             <div className="lg:border-l lg:border-primary-lighter lg:pl-12">
-              <SendCalculationForm formData={formData} costs={costs} defaultOpen hideClosedState />
+              <SendCalculationForm formData={formData} costs={costs} weddingDate={weddingDate} setWeddingDate={setWeddingDate} defaultOpen hideClosedState />
               {!canSubmit && (
                 <p className="text-xs text-primary mt-3 italic">Vul eerst het aantal gasten in om de berekening te kunnen versturen.</p>
               )}
@@ -970,6 +1013,8 @@ export default function WeddingCalculator() {
     lateNightType: 'none',
     discounts: [],
   })
+
+  const [weddingDate, setWeddingDate] = useState('')
 
   const [costs, setCosts] = useState<Costs>({
     reception: 0,
@@ -1009,7 +1054,7 @@ export default function WeddingCalculator() {
 
     const subtotal = reception + drinksDay + dinner + partyFood + drinksEvening + lateNight
 
-    const discountPercent = getDiscountPercentage(discounts)
+    const discountPercent = getDiscountPercentage(discounts, weddingDate)
     const discountAmount = PRICES.houseRental * discountPercent / 100
     const houseRental = PRICES.houseRental - discountAmount
 
@@ -1039,7 +1084,7 @@ export default function WeddingCalculator() {
       partyFoodType,
       lateNightType,
     })
-  }, [formData])
+  }, [formData, weddingDate])
 
   return (
     <>
@@ -1078,6 +1123,7 @@ export default function WeddingCalculator() {
                   <div className="mt-8 pt-6 border-t border-primary-lighter">
                     <DealsSection
                       selectedDiscounts={formData.discounts}
+                      weddingDate={weddingDate}
                       onChange={(discounts) => setFormData({ ...formData, discounts })}
                     />
                   </div>
@@ -1098,7 +1144,7 @@ export default function WeddingCalculator() {
         <section className="py-20 md:py-28 bg-white">
           <div className="container">
             <div className="max-w-5xl mx-auto">
-              <AvailabilityContactBlock formData={formData} costs={costs} />
+              <AvailabilityContactBlock formData={formData} costs={costs} weddingDate={weddingDate} setWeddingDate={setWeddingDate} />
             </div>
           </div>
         </section>
