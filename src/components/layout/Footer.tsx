@@ -1,7 +1,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { navigation } from '@/data/site'
 
 export default function Footer() {
+  const footerNav = navigation.main.filter((item) => item.name !== 'Home')
   return (
     <footer className="footer">
       <div className="container">
@@ -20,10 +22,11 @@ export default function Footer() {
           <div className="footer-column">
             <h4>Navigatie</h4>
             <ul>
-              <li><Link href="#diensten">Diensten</Link></li>
-              <li><Link href="#locatie">De Locatie</Link></li>
-              <li><Link href="#gallery">Sfeerimpressie</Link></li>
-              <li><Link href="#contact">Contact</Link></li>
+              {footerNav.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href}>{item.name}</Link>
+                </li>
+              ))}
             </ul>
           </div>
 
