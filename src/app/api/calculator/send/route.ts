@@ -56,8 +56,8 @@ function partyFoodLabel(type: PartyFoodType): string {
 }
 
 function lateNightLabel(type: LateNightType): string {
-  if (type === 'a') return 'Puntzak friet'
-  if (type === 'b') return 'Worstenbroodje'
+  if (type === 'a') return 'Worstenbroodje'
+  if (type === 'b') return 'Puntzak friet'
   if (type === 'c') return 'Midi burger'
   return 'Geen'
 }

@@ -148,8 +148,8 @@ function partyFoodLabel(type: PartyFoodType): string {
 }
 
 function lateNightLabel(type: LateNightType): string {
-  if (type === 'a') return 'Puntzak friet'
-  if (type === 'b') return 'Worstenbroodje'
+  if (type === 'a') return 'Worstenbroodje'
+  if (type === 'b') return 'Puntzak friet'
   if (type === 'c') return 'Midi burger'
   return ''
 }
@@ -741,7 +741,7 @@ export const sampleOfferteData: OfferteData = {
   eveningProgram: [
     { label: 'Dranken avondprogramma', amount: 1250 },
     { label: 'Hapjes assortiment feestavond | luxe | tafelgarnituur | 3 bites | 3 gefrituurd', amount: 840 },
-    { label: 'Puntzak friet', amount: 480 },
+    { label: 'Worstenbroodje', amount: 480 },
   ],
   rentalStandard: 5000,
   discount: {

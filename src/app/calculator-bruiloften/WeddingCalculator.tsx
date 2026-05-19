@@ -22,8 +22,8 @@ const PRICES = {
   partyFoodA: 14.50,
   partyFoodB: 17.50,
   drinksEvening: 38.25,
-  lateNightA: 4.50,
-  lateNightB: 4.00,
+  lateNightA: 4.00,
+  lateNightB: 4.50,
   lateNightC: 8.50,
   // Vast
   houseRental: 2950,
@@ -158,8 +158,8 @@ function getPartyFoodPriceFormatted(type: PartyFoodType): string {
 }
 
 function getLateNightLabel(type: LateNightType): string {
-  if (type === 'a') return 'Puntzak friet'
-  if (type === 'b') return 'Worstenbroodje'
+  if (type === 'a') return 'Worstenbroodje'
+  if (type === 'b') return 'Puntzak friet'
   if (type === 'c') return 'Midi burger'
   return 'Geen late night snack'
 }
@@ -356,8 +356,8 @@ function GuestForm({ data, onChange }: { data: FormData; onChange: (data: FormDa
         <div className="space-y-3">
           {([
             { value: 'none' as LateNightType, label: 'Geen late night snack' },
-            { value: 'a' as LateNightType, label: 'Puntzak friet (€4,50)' },
-            { value: 'b' as LateNightType, label: 'Worstenbroodje (€4,00)' },
+            { value: 'a' as LateNightType, label: 'Worstenbroodje (€4,00)' },
+            { value: 'b' as LateNightType, label: 'Puntzak friet (€4,50)' },
             { value: 'c' as LateNightType, label: 'Midi burger (€8,50)' },
           ]).map((option) => (
             <label key={option.value} className="flex items-center space-x-3 cursor-pointer group">
