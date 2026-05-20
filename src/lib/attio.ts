@@ -269,12 +269,20 @@ export async function upsertLead(input: UpsertLeadInput): Promise<void> {
     throw new Error('Attio upsertLead: no person ID returned')
   }
 
+  // Prepend submission identity to opmerkingen so we always see who
+  // actually filled in the form — useful when the email matches an
+  // existing person-record with a different name (or no name at all).
+  const submissionHeader = `Aanvraag ingediend door: ${input.name} (${input.email}${input.phone ? `, ${input.phone}` : ''})`
+  const enrichedOpmerkingen = input.opmerkingen
+    ? `${submissionHeader}\n\n${input.opmerkingen}`
+    : submissionHeader
+
   await createLeadPipelineEntry(personId, {
     kanaal: input.kanaal,
     eventdatum: input.eventdatum,
     aantalPersonen: input.aantalPersonen,
     geschatteWaarde: input.geschatteWaarde,
-    opmerkingen: input.opmerkingen,
+    opmerkingen: enrichedOpmerkingen,
     klantgroep: input.klantgroep,
     tijdslot: input.tijdslot,
     deelnameEvent: input.deelnameEvent,
