@@ -779,11 +779,11 @@ function SendCalculationForm({
       if (json.success) {
         trackEvent('form_submit', {
           form: 'calculator_bruiloften',
-          day_guests: dayGuests,
-          evening_guests: eveningGuests,
+          day_guests: formData.dayGuests,
+          evening_guests: formData.eveningGuests,
           total_price: costs.total,
           has_wedding_date: !!weddingDate,
-          discounts: discounts.length,
+          discounts: formData.discounts.length,
         })
         setStatus({ type: 'success', message: json.message })
       } else {
