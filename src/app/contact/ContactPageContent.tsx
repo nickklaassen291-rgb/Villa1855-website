@@ -94,7 +94,7 @@ export default function ContactPageContent() {
         {/* Page Hero */}
         <section className="page-hero">
           <Image
-            src="/images/villa-hoofdfoto.png"
+            src="/images/villa-hoofdfoto.jpg"
             alt="Villa 1855"
             fill
             className="page-hero-image"
@@ -114,7 +114,7 @@ export default function ContactPageContent() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 max-w-5xl mx-auto items-center">
               <div className="relative aspect-square max-w-md w-full mx-auto md:mx-0">
                 <Image
-                  src="/images/lotte.png"
+                  src="/images/lotte.jpg"
                   alt="Lotte Willems, jullie aanspreekpunt bij Villa 1855"
                   fill
                   className="object-cover"

@@ -45,7 +45,7 @@ const spaces: Space[] = [
   {
     name: 'De Binnentuin',
     description: 'Een verborgen groene oase in het hart van de villa. Met zijn sfeervolle uitstraling de ultieme plek voor buitenceremonies, zomerse recepties en sfeervolle diners onder de open hemel.',
-    image: '/images/villa-hoofdfoto.png',
+    image: '/images/villa-hoofdfoto.jpg',
     capacities: [
       { number: 250, label: 'STAANPLAATSEN', description: 'Voor zomerse borrels en recepties.', icon: 'users' },
       { number: 100, label: 'CEREMONIE', description: 'Voor een buitenceremonie in groene setting.', icon: 'heart' },

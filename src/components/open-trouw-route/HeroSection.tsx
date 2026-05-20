@@ -13,7 +13,7 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/otr-hero.png"
+          src="/images/otr-hero.jpg"
           alt="Villa 1855 - Exclusieve trouwlocatie in centrum Tilburg met monumentale feestzaal"
           fill
           className="object-cover"
